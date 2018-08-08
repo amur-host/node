@@ -1,6 +1,7 @@
 package com.wavesplatform.lang
 
-import com.wavesplatform.lang.v1.traits.{DataType, Environment, Recipient, Tx}
+import com.wavesplatform.lang.v1.traits.domain.{Recipient, Tx}
+import com.wavesplatform.lang.v1.traits.{DataType, Environment}
 
 object WavesContext {
   val env = new Environment {

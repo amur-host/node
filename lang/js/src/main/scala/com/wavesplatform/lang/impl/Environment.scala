@@ -1,6 +1,7 @@
 package com.wavesplatform.lang.impl
 
-import com.wavesplatform.lang.v1.traits.{DataType, Recipient, Tx}
+import com.wavesplatform.lang.v1.traits.DataType
+import com.wavesplatform.lang.v1.traits.domain.{Recipient, Tx}
 
 import scala.scalajs.js.annotation.JSGlobalScope
 import scala.scalajs.{js => platform}
