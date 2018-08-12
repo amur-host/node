@@ -3,16 +3,16 @@ package tools
 import java.io.{File, FileNotFoundException}
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.crypto
-import com.wavesplatform.settings.{GenesisSettings, GenesisTransactionSettings}
-import com.wavesplatform.state._
+import com.localplatform.crypto
+import com.localplatform.settings.{GenesisSettings, GenesisTransactionSettings}
+import com.localplatform.state._
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
-import com.wavesplatform.account.{Address, AddressScheme, PrivateKeyAccount}
-import com.wavesplatform.block.Block
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.wallet.Wallet
+import com.localplatform.account.{Address, AddressScheme, PrivateKeyAccount}
+import com.localplatform.block.Block
+import com.localplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.localplatform.transaction.GenesisTransaction
+import com.localplatform.wallet.Wallet
 import scorex.crypto.signatures.Curve25519._
 import scala.concurrent.duration._
 
@@ -69,7 +69,7 @@ object GenesisBlockGenerator extends App {
     ConfigFactory.parseFile(file).as[Settings]("genesis-generator")
   }
 
-  com.wavesplatform.account.AddressScheme.current = new AddressScheme {
+  com.localplatform.account.AddressScheme.current = new AddressScheme {
     override val chainId: Byte = settings.networkByte
   }
 

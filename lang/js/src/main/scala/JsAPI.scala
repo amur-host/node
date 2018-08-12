@@ -1,13 +1,13 @@
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.Serde
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.parser.{Expressions, Parser}
-import com.wavesplatform.lang.v1.traits.{DataType, Environment, Recipient, Tx}
-import com.wavesplatform.lang.v1.FunctionHeader.{Native, User}
+import com.localplatform.lang.Global
+import com.localplatform.lang.v1.Serde
+import com.localplatform.lang.v1.compiler.CompilerV1
+import com.localplatform.lang.v1.compiler.Terms._
+import com.localplatform.lang.v1.evaluator.ctx.impl.local.LocalContext
+import com.localplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.localplatform.lang.v1.parser.{Expressions, Parser}
+import com.localplatform.lang.v1.traits.{DataType, Environment, Recipient, Tx}
+import com.localplatform.lang.v1.FunctionHeader.{Native, User}
 import fastparse.core.Parsed.{Failure, Success}
 
 import scala.scalajs.js
@@ -45,7 +45,7 @@ object JsAPI {
   @JSExportTopLevel("compile")
   def compile(input: String): js.Dynamic = {
 
-    val wavesContext = WavesContext.build(new Environment {
+    val localContext = LocalContext.build(new Environment {
       override def height: Int                                                                                     = ???
       override def networkByte: Byte                                                                               = ???
       override def inputEntity: Tx                                                                                 = ???
@@ -59,7 +59,7 @@ object JsAPI {
     //comment
     val cryptoContext = CryptoContext.build(Global)
 
-    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, wavesContext)).compilerContext
+    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, localContext)).compilerContext
 
     def hash(m: Array[Byte]) = Global.keccak256(Global.blake2b256(m))
 
