@@ -1,7 +1,7 @@
 package com
 
 import com.localplatform.block.Block
-import com.localplatform.settings.LcaolSettings
+import com.localplatform.settings.LocalSettings
 import com.localplatform.state.NG
 import com.localplatform.transaction.BlockchainUpdater
 import com.localplatform.utils.ScorexLogging
