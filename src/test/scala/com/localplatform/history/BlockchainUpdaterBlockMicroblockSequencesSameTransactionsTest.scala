@@ -28,7 +28,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       case (gen, rest) =>
         val finalMinerBalances = rest.map {
           case (a @ (bmb: BlockAndMicroblockSequence, last: Block)) =>
-            withDomain(MicroblocksActivatedAt0LoaclSettings) { d =>
+            withDomain(MicroblocksActivatedAt0LocalSettings) { d =>
               d.blockchainUpdater.processBlock(gen).explicitGet()
               bmb.foreach {
                 case (b, mbs) =>
