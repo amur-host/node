@@ -9,12 +9,12 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
     val config = ConfigFactory.parseString("""waves {
         |  network.file = "xxx"
         |  fees {
-        |    payment.WAVES = 100000
-        |    issue.WAVES = 100000000
-        |    transfer.WAVES = 100000
-        |    reissue.WAVES = 100000
-        |    burn.WAVES = 100000
-        |    exchange.WAVES = 100000
+        |    payment.AMUR = 100000
+        |    issue.AMUR = 100000000
+        |    transfer.AMUR = 100000
+        |    reissue.AMUR = 100000
+        |    burn.AMUR = 100000
+        |    exchange.AMUR = 100000
         |  }
         |  miner.timeout = 10
         |}
@@ -63,18 +63,18 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   it should "override values" in {
     val config = ConfigFactory
       .parseString("""waves.fees {
-        |  payment.WAVES1 = 1111
-        |  reissue.WAVES5 = 0
+        |  payment.AMUR1 = 1111
+        |  reissue.AMUR5 = 0
         |}
       """.stripMargin)
       .withFallback(
         ConfigFactory.parseString("""waves.fees {
-          |  payment.WAVES = 100000
-          |  issue.WAVES = 100000000
-          |  transfer.WAVES = 100000
-          |  reissue.WAVES = 100000
-          |  burn.WAVES = 100000
-          |  exchange.WAVES = 100000
+          |  payment.AMUR = 100000
+          |  issue.AMUR = 100000000
+          |  transfer.AMUR = 100000
+          |  reissue.AMUR = 100000
+          |  burn.AMUR = 100000
+          |  exchange.AMUR = 100000
           |}
         """.stripMargin)
       )
@@ -88,7 +88,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
 
   it should "fail on incorrect long values" in {
     val config = ConfigFactory.parseString("""waves.fees {
-        |  payment.WAVES=N/A
+        |  payment.AMUR=N/A
         |}""".stripMargin).resolve()
     intercept[WrongType] {
       FeesSettings.fromConfig(config)
@@ -97,7 +97,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
 
   it should "not fail on long values as strings" in {
     val config   = ConfigFactory.parseString("""waves.fees {
-        |  transfer.WAVES="1000"
+        |  transfer.AMUR="1000"
         |}""".stripMargin).resolve()
     val settings = FeesSettings.fromConfig(config)
     settings.fees(4).toSet should equal(Set(FeeSettings("AMUR", 1000)))
@@ -105,7 +105,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
 
   it should "fail on unknown transaction type" in {
     val config = ConfigFactory.parseString("""waves.fees {
-        |  shmayment.WAVES=100
+        |  shmayment.AMUR=100
         |}""".stripMargin).resolve()
     intercept[NoSuchElementException] {
       FeesSettings.fromConfig(config)
@@ -117,41 +117,41 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
     val config        = ConfigFactory.parseString("""
         |waves.fees {
         |  issue {
-        |    WAVES = 200000000
+        |    AMUR = 200000000
         |  }
         |  transfer {
-        |    WAVES = 300000
+        |    AMUR = 300000
         |    "6MPKrD5B7GrfbciHECg1MwdvRUhRETApgNZspreBJ8JL" = 1
         |  }
         |  reissue {
-        |    WAVES = 400000
+        |    AMUR = 400000
         |  }
         |  burn {
-        |    WAVES = 500000
+        |    AMUR = 500000
         |  }
         |  exchange {
-        |    WAVES = 600000
+        |    AMUR = 600000
         |  }
         |  lease {
-        |    WAVES = 700000
+        |    AMUR = 700000
         |  }
         |  lease-cancel {
-        |    WAVES = 800000
+        |    AMUR = 800000
         |  }
         |  create-alias {
-        |    WAVES = 900000
+        |    AMUR = 900000
         |  }
         |  mass-transfer {
-        |    WAVES = 10000
+        |    AMUR = 10000
         |  }
         |  data {
-        |    WAVES = 200000
+        |    AMUR = 200000
         |  }
         |  set-script {
-        |    WAVES = 300000
+        |    AMUR = 300000
         |  }
         |  sponsor-fee {
-        |    WAVES = 400000
+        |    AMUR = 400000
         |  }
         |}
       """.stripMargin).withFallback(defaultConfig).resolve()

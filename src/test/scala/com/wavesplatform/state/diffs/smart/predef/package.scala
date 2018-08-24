@@ -47,9 +47,9 @@ package object predef {
        |   case d: TransferTransaction => d.recipient == Address(base58'${t.recipient.bytes.base58}')
        |   case _ => false
        | }
-       |   
+       |
        | let basic = longAll && sumString && sumByteVector && eqUnion
-       | 
+       |
        | # 2) ne
        | let nePrim = 1000 != 999 && "ha" +"ha" != "ha-ha" && tx.bodyBytes != base64'hahaha'
        | let neDataEntryAndGetElement = match tx {
@@ -140,7 +140,7 @@ package object predef {
        |
        | let balances = assetBalance(tx.sender, unit) > 0 && wavesBalance(tx.sender) != 0
        |
-       | let waves = txById && entries && balances && aFromPK && aFromStrOrRecip && height > 0
+       | let local = txById && entries && balances && aFromPK && aFromStrOrRecip && height > 0
        |
        | # Crypto context
        | let bks = blake2b256(base58'') != base58'' && keccak256(base58'') != base58'' && sha256(base58'') != base58''
