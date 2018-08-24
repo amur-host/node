@@ -1,9 +1,9 @@
-package com..database
+package com.amurplatform.database
 
 import java.nio.ByteBuffer
 
 import com.google.common.primitives.{Ints, Shorts}
-import com..state.ByteStr
+import com.amurplatform.state.ByteStr
 
 object KeyHelpers {
   def h(prefix: Short, height: Int): Array[Byte] =

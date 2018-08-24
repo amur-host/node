@@ -1,18 +1,18 @@
-package com..matcher.smart
+package com.amurplatform.matcher.smart
 
 import cats.data.EitherT
 import cats.implicits._
 import cats.kernel.Monoid
-import com..lang.Global
-import com..lang.v1.compiler.Types.{FINAL, UNIT}
-import com..lang.v1.evaluator.FunctionIds._
-import com..lang.v1.evaluator.ctx._
-import com..lang.v1.evaluator.ctx.impl.waves.Bindings.orderObject
-import com..lang.v1.evaluator.ctx.impl.waves.Types._
-import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com..lang.v1.{CTX, FunctionHeader}
-import com..transaction.assets.exchange.Order
-import com..transaction.smart.RealTransactionWrapper
+import com.amurplatform.lang.Global
+import com.amurplatform.lang.v1.compiler.Types.{FINAL, UNIT}
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Bindings.orderObject
+import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Types._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.amurplatform.lang.v1.{CTX, FunctionHeader}
+import com.amurplatform.transaction.assets.exchange.Order
+import com.amurplatform.transaction.smart.RealTransactionWrapper
 import monix.eval.Coeval
 
 object MatcherContext {
@@ -28,7 +28,7 @@ object MatcherContext {
     val matcherTypes = Seq(addressType, aliasType, orderType, assetPairType)
 
     val matcherVars: Map[String, (FINAL, LazyVal)] = Map(
-      ("height", (com..lang.v1.compiler.Types.LONG, LazyVal(EitherT(heightCoeval)))),
+      ("height", (com.amurplatform.lang.v1.compiler.Types.LONG, LazyVal(EitherT(heightCoeval)))),
       ("tx", (orderType.typeRef, LazyVal(EitherT(inputEntityCoeval))))
     )
 

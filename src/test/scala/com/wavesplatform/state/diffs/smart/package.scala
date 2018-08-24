@@ -1,7 +1,7 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..features.BlockchainFeatures
-import com..settings.{FunctionalitySettings, TestFunctionalitySettings}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.settings.{FunctionalitySettings, TestFunctionalitySettings}
 
 package object smart {
   val smartEnabledFS: FunctionalitySettings =

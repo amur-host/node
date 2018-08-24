@@ -1,21 +1,21 @@
-package com..state
+package com.amurplatform.state
 
-import com..account.{Address, PrivateKeyAccount}
-import com..crypto.SignatureLength
-import com..db.WithState
-import com..features._
-import com..lagonaki.mocks.TestBlock
-import com..lang.v1.compiler.Terms.TRUE
-import com..settings.{TestFunctionalitySettings, WavesSettings}
-import com..state.reader.LeaseDetails
-import com..transaction.ValidationError.AliasDoesNotExist
-import com..transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
-import com..transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
-import com..transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction}
-import com..{NoShrink, TestTime, TransactionGen, history}
+import com.amurplatform.account.{Address, PrivateKeyAccount}
+import com.amurplatform.crypto.SignatureLength
+import com.amurplatform.db.WithState
+import com.amurplatform.features._
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.lang.v1.compiler.Terms.TRUE
+import com.amurplatform.settings.{TestFunctionalitySettings, WavesSettings}
+import com.amurplatform.state.reader.LeaseDetails
+import com.amurplatform.transaction.ValidationError.AliasDoesNotExist
+import com.amurplatform.transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
+import com.amurplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction}
+import com.amurplatform.{NoShrink, TestTime, TransactionGen, history}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
@@ -34,7 +34,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
     TransferTransactionV1.selfSigned(None, sender, recipient, amount, nextTs, None, 1, Array.empty[Byte]).explicitGet()
 
   private def randomOp(sender: PrivateKeyAccount, recipient: Address, amount: Long, op: Int) = {
-    import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
+    import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
     op match {
       case 1 =>
         val lease = LeaseTransactionV1.selfSigned(sender, amount, 100000, nextTs, recipient).explicitGet()
@@ -74,7 +74,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
     "forget rollbacked transaction for querying" in forAll(accountGen, accountGen, Gen.nonEmptyListOf(Gen.choose(1, 10))) {
       case (sender, recipient, txCount) =>
         withDomain(createSettings(BlockchainFeatures.MassTransfer -> 0)) { d =>
-          d.appendBlock(genesisBlock(nextTs, sender, com..state.diffs.ENOUGH_AMT))
+          d.appendBlock(genesisBlock(nextTs, sender, com.amurplatform.state.diffs.ENOUGH_AMT))
 
           val genesisSignature = d.lastBlockId
 

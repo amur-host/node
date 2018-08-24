@@ -1,24 +1,24 @@
-package com..state.diffs.smart.scenarios
+package com.amurplatform.state.diffs.smart.scenarios
 
 import java.nio.charset.StandardCharsets
 
-import com..lang.Global
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.evaluator.EvaluatorV1
-import com..lang.v1.parser.Parser
-import com..state._
-import com..state.diffs._
-import com..state.diffs.smart._
-import com..utils._
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.lang.Global
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.evaluator.EvaluatorV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state._
+import com.amurplatform.state.diffs._
+import com.amurplatform.state.diffs.smart._
+import com.amurplatform.utils._
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..account.AddressScheme
-import com..transaction.assets.IssueTransactionV2
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
-import com..transaction.{DataTransaction, GenesisTransaction}
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.transaction.assets.IssueTransactionV2
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{DataTransaction, GenesisTransaction}
 
 class NotaryControlledTransferScenartioTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
   val preconditions: Gen[

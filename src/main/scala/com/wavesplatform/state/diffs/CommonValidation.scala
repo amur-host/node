@@ -1,18 +1,18 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats._
-import com..features.FeatureProvider._
-import com..features.{BlockchainFeature, BlockchainFeatures}
-import com..settings.FunctionalitySettings
-import com..state._
-import com..account.Address
-import com..transaction.ValidationError._
-import com..transaction._
-import com..transaction.assets._
-import com..transaction.assets.exchange._
-import com..transaction.lease._
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.transfer._
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.features.{BlockchainFeature, BlockchainFeatures}
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.account.Address
+import com.amurplatform.transaction.ValidationError._
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.transaction.lease._
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.{Left, Right}

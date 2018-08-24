@@ -1,6 +1,6 @@
-package com.
+package com.amurplatform
 
-import com..utils.Time
+import com.amurplatform.utils.Time
 
 import scala.concurrent.duration.FiniteDuration
 

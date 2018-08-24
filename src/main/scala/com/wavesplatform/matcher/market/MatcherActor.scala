@@ -1,4 +1,4 @@
-package com..matcher.market
+package com.amurplatform.matcher.market
 
 import java.util.concurrent.atomic.AtomicReference
 
@@ -9,22 +9,22 @@ import akka.persistence.{PersistentActor, RecoveryCompleted, _}
 import akka.util.Timeout
 import cats.implicits._
 import com.google.common.base.Charsets
-import com..account.Address
-import com..matcher.api.{BadMatcherResponse, MatcherResponse, StatusCodeMatcherResponse}
-import com..matcher.market.OrderBookActor._
-import com..matcher.model.OrderBook
-import com..matcher.smart.MatcherScriptRunner
-import com..matcher.{AssetPairBuilder, MatcherSettings}
-import com..settings.FunctionalitySettings
-import com..state.{AssetDescription, Blockchain}
-import com..transaction.ValidationError.{GenericError, ScriptExecutionError, TransactionNotAllowedByScript}
-import com..transaction.assets.exchange.Validation.booleanOperators
-import com..transaction.assets.exchange.{AssetPair, Order}
-import com..transaction.smart.script.Script
-import com..transaction.{AssetId, ValidationError}
-import com..utils.{Base58, NTP, ScorexLogging}
-import com..utx.UtxPool
-import com..wallet.Wallet
+import com.amurplatform.account.Address
+import com.amurplatform.matcher.api.{BadMatcherResponse, MatcherResponse, StatusCodeMatcherResponse}
+import com.amurplatform.matcher.market.OrderBookActor._
+import com.amurplatform.matcher.model.OrderBook
+import com.amurplatform.matcher.smart.MatcherScriptRunner
+import com.amurplatform.matcher.{AssetPairBuilder, MatcherSettings}
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.{AssetDescription, Blockchain}
+import com.amurplatform.transaction.ValidationError.{GenericError, ScriptExecutionError, TransactionNotAllowedByScript}
+import com.amurplatform.transaction.assets.exchange.Validation.booleanOperators
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.{AssetId, ValidationError}
+import com.amurplatform.utils.{Base58, NTP, ScorexLogging}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import play.api.libs.json._
 import scorex.utils._

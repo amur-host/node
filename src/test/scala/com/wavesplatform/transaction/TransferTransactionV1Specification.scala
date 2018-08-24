@@ -1,14 +1,14 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..TransactionGen
-import com..state.{ByteStr, EitherExt2}
+import com.amurplatform.TransactionGen
+import com.amurplatform.state.{ByteStr, EitherExt2}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com..account.{Address, PublicKeyAccount}
-import com..transaction.transfer._
-import com..state.diffs._
-import com..utils.Base58
+import com.amurplatform.account.{Address, PublicKeyAccount}
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.state.diffs._
+import com.amurplatform.utils.Base58
 
 class TransferTransactionV1Specification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

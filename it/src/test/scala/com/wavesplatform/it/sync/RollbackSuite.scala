@@ -1,10 +1,10 @@
-package com..it.sync
+package com.amurplatform.it.sync
 
 import com.typesafe.config.Config
-import com..it.api.SyncHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..it.{NodeConfigs, TransferSending}
-import com..state.{BooleanDataEntry, IntegerDataEntry}
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.{NodeConfigs, TransferSending}
+import com.amurplatform.state.{BooleanDataEntry, IntegerDataEntry}
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
 
 import scala.concurrent.Await

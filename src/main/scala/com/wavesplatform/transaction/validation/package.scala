@@ -1,9 +1,9 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import cats.data.{Validated, ValidatedNel}
 import cats.implicits._
 import cats.{Order => _}
-import com..transaction.transfer._
+import com.amurplatform.transaction.transfer._
 
 import scala.util.Try
 

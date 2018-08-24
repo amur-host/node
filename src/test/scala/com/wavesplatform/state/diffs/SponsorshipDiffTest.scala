@@ -1,17 +1,17 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..TransactionGen
-import com..features.BlockchainFeatures
-import com..settings.{Constants, TestFunctionalitySettings}
-import com..state._
-import com..utils.Base58
+import com.amurplatform.TransactionGen
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.settings.{Constants, TestFunctionalitySettings}
+import com.amurplatform.state._
+import com.amurplatform.utils.Base58
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..lagonaki.mocks.TestBlock.{create => block}
-import com..transaction.GenesisTransaction
-import com..transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
-import com..transaction.lease.LeaseTransactionV1
-import com..transaction.transfer._
+import com.amurplatform.lagonaki.mocks.TestBlock.{create => block}
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
+import com.amurplatform.transaction.lease.LeaseTransactionV1
+import com.amurplatform.transaction.transfer._
 
 class SponsorshipDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

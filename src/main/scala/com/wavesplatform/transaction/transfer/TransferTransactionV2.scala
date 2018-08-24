@@ -1,10 +1,10 @@
-package com..transaction.transfer
+package com.amurplatform.transaction.transfer
 
 import com.google.common.primitives.Bytes
-import com..account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
-import com..crypto
-import com..state._
-import com..transaction._
+import com.amurplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.crypto
+import com.amurplatform.state._
+import com.amurplatform.transaction._
 import monix.eval.Coeval
 
 import scala.util.{Failure, Success, Try}

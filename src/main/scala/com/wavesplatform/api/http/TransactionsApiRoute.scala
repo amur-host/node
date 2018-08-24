@@ -1,27 +1,27 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
-import com..account.{Address, PublicKeyAccount}
-import com..api.http.DataRequest._
-import com..api.http.alias.{CreateAliasV1Request, CreateAliasV2Request}
-import com..api.http.assets.SponsorFeeRequest._
-import com..api.http.assets._
-import com..api.http.leasing._
-import com..http.BroadcastRoute
-import com..settings.{FunctionalitySettings, RestAPISettings}
-import com..state.diffs.CommonValidation
-import com..state.{Blockchain, ByteStr}
-import com..transaction.ValidationError.GenericError
-import com..transaction._
-import com..transaction.assets._
-import com..transaction.lease._
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.transfer._
-import com..utils.Time
-import com..utx.UtxPool
-import com..wallet.Wallet
+import com.amurplatform.account.{Address, PublicKeyAccount}
+import com.amurplatform.api.http.DataRequest._
+import com.amurplatform.api.http.alias.{CreateAliasV1Request, CreateAliasV2Request}
+import com.amurplatform.api.http.assets.SponsorFeeRequest._
+import com.amurplatform.api.http.assets._
+import com.amurplatform.api.http.leasing._
+import com.amurplatform.http.BroadcastRoute
+import com.amurplatform.settings.{FunctionalitySettings, RestAPISettings}
+import com.amurplatform.state.diffs.CommonValidation
+import com.amurplatform.state.{Blockchain, ByteStr}
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.lease._
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.utils.Time
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
@@ -320,10 +320,10 @@ case class TransactionsApiRoute(settings: RestAPISettings,
   }
 
   private def txToExtendedJson(tx: Transaction): JsObject = {
-    import com..transaction.lease.LeaseTransaction
+    import com.amurplatform.transaction.lease.LeaseTransaction
     tx match {
       case lease: LeaseTransaction =>
-        import com..transaction.lease.LeaseTransaction.Status._
+        import com.amurplatform.transaction.lease.LeaseTransaction.Status._
         lease.json() ++ Json.obj("status" -> (if (blockchain.leaseDetails(lease.id()).exists(_.isActive)) Active else Canceled))
       case leaseCancel: LeaseCancelTransaction =>
         leaseCancel.json() ++ Json.obj("lease" -> blockchain.transactionInfo(leaseCancel.leaseId).map(_._2.json()).getOrElse[JsValue](JsNull))
@@ -336,7 +336,7 @@ case class TransactionsApiRoute(settings: RestAPISettings,
     * Currently implemented for MassTransfer transaction only.
     */
   private def txToCompactJson(address: Address, tx: Transaction): JsObject = {
-    import com..transaction.transfer._
+    import com.amurplatform.transaction.transfer._
     tx match {
       case mtt: MassTransferTransaction if mtt.sender.toAddress != address =>
         val addresses = blockchain.aliasesOfAddress(address) :+ address

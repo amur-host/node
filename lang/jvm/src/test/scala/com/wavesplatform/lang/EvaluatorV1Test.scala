@@ -1,23 +1,23 @@
-package com..lang
+package com.amurplatform.lang
 
 import java.nio.ByteBuffer
 
 import cats.data.EitherT
 import cats.kernel.Monoid
-import com..lang.Common._
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.compiler.Types._
-import com..lang.v1.evaluator.EvaluatorV1
-import com..lang.v1.evaluator.FunctionIds._
-import com..lang.v1.evaluator.ctx._
-import com..lang.v1.evaluator.ctx.impl.PureContext._
-import com..lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com..lang.v1.evaluator.ctx.impl.{CryptoContext, EnvironmentFunctions, PureContext}
-import com..lang.v1.testing.ScriptGen
-import com..lang.v1.traits.Environment
-import com..lang.v1.{CTX, FunctionHeader}
-import com..utils.{Base58, Base64}
+import com.amurplatform.lang.Common._
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.evaluator.EvaluatorV1
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, EnvironmentFunctions, PureContext}
+import com.amurplatform.lang.v1.testing.ScriptGen
+import com.amurplatform.lang.v1.traits.Environment
+import com.amurplatform.lang.v1.{CTX, FunctionHeader}
+import com.amurplatform.utils.{Base58, Base64}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

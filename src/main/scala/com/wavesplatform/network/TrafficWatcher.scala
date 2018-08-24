@@ -1,6 +1,6 @@
-package com..network
+package com.amurplatform.network
 
-import com..network.message.{Message => ScorexMessage}
+import com.amurplatform.network.message.{Message => ScorexMessage}
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelDuplexHandler, ChannelHandlerContext, ChannelPromise}
 import kamon.Kamon

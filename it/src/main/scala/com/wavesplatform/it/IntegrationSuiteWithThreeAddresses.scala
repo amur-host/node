@@ -1,12 +1,12 @@
-package com..it
+package com.amurplatform.it
 
-import com..it.api.AsyncHttpApi._
-import com..it.util._
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.util._
 import org.scalatest._
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
-import com..account.PrivateKeyAccount
-import com..utils.ScorexLogging
-import com..transaction.transfer._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future.traverse

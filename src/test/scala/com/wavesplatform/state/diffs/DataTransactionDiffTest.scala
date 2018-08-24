@@ -1,15 +1,15 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..features.BlockchainFeatures
-import com..state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry}
-import com..{NoShrink, TransactionGen, WithDB}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry}
+import com.amurplatform.{NoShrink, TransactionGen, WithDB}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..account.PrivateKeyAccount
-import com..settings.TestFunctionalitySettings
-import com..lagonaki.mocks.TestBlock.{create => block}
-import com..transaction.{DataTransaction, GenesisTransaction}
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.lagonaki.mocks.TestBlock.{create => block}
+import com.amurplatform.transaction.{DataTransaction, GenesisTransaction}
 
 class DataTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink with WithDB {
 

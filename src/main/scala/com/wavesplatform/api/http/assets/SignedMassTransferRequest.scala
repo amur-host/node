@@ -1,13 +1,13 @@
-package com..api.http.assets
+package com.amurplatform.api.http.assets
 
 import cats.implicits._
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json._
-import com..account.PublicKeyAccount
-import com..api.http.BroadcastRequest
-import com..transaction.transfer.MassTransferTransaction.Transfer
-import com..transaction.transfer._
-import com..transaction.{AssetIdStringLength, Proofs, ValidationError}
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.transfer.MassTransferTransaction.Transfer
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
 
 object SignedMassTransferRequest {
   implicit val reads = Json.reads[SignedMassTransferRequest]

@@ -1,25 +1,25 @@
-package com..database
+package com.amurplatform.database
 
 import cats.kernel.Monoid
 import com.google.common.cache.CacheBuilder
-import com..database.patch.DisableHijackedAliases
-import com..features.BlockchainFeatures
-import com..settings.FunctionalitySettings
-import com..state._
-import com..state.reader.LeaseDetails
+import com.amurplatform.database.patch.DisableHijackedAliases
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.state.reader.LeaseDetails
 import org.iq80.leveldb.{DB, ReadOptions}
-import com..account.{Address, Alias}
-import com..utils.ScorexLogging
-import com..block.{Block, BlockHeader}
-import com..transaction.Transaction.Type
-import com..transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
-import com..transaction._
-import com..transaction.assets._
-import com..transaction.assets.exchange.ExchangeTransaction
-import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.Script
-import com..transaction.transfer._
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.block.{Block, BlockHeader}
+import com.amurplatform.transaction.Transaction.Type
+import com.amurplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.transfer._
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer

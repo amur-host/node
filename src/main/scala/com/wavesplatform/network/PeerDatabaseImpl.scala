@@ -1,12 +1,12 @@
-package com..network
+package com.amurplatform.network
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util.concurrent.TimeUnit
 
 import com.google.common.cache.CacheBuilder
 import com.google.common.collect.EvictingQueue
-import com..settings.NetworkSettings
-import com..utils.{JsonFileStorage, ScorexLogging}
+import com.amurplatform.settings.NetworkSettings
+import com.amurplatform.utils.{JsonFileStorage, ScorexLogging}
 import io.netty.channel.Channel
 import io.netty.channel.socket.nio.NioSocketChannel
 

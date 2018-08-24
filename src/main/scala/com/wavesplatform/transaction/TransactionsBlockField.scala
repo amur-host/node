@@ -1,12 +1,12 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 
 import com.google.common.primitives.{Bytes, Ints}
-import com..network.TransactionSpec
+import com.amurplatform.network.TransactionSpec
 import play.api.libs.json.{JsArray, JsObject, Json}
-import com..block.BlockField
+import com.amurplatform.block.BlockField
 
 trait TransactionsBlockField extends BlockField[Seq[Transaction]]
 

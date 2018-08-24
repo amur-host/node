@@ -1,22 +1,22 @@
-package com..state.diffs.smart.performance
+package com.amurplatform.state.diffs.smart.performance
 
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..metrics.Instrumented
-import com..state._
-import com..utils._
-import com..state.diffs._
-import com..state.diffs.smart._
-import com..{NoShrink, TransactionGen, WithDB}
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.metrics.Instrumented
+import com.amurplatform.state._
+import com.amurplatform.utils._
+import com.amurplatform.state.diffs._
+import com.amurplatform.state.diffs.smart._
+import com.amurplatform.{NoShrink, TransactionGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..lagonaki.mocks.TestBlock
-import com..transaction.GenesisTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
 
 class SigVerifyPerformanceTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink with WithDB {
 

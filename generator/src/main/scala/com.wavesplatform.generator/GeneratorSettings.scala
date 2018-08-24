@@ -1,11 +1,11 @@
-package com..generator
+package com.amurplatform.generator
 
 import java.net.InetSocketAddress
 
 import cats.Show
 import cats.implicits.showInterpolator
-import com..state.EitherExt2
-import com..account.PrivateKeyAccount
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.account.PrivateKeyAccount
 
 case class GeneratorSettings(chainId: String,
                              accounts: Seq[String],

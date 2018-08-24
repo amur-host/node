@@ -1,4 +1,4 @@
-package com..database
+package com.amurplatform.database
 
 import org.iq80.leveldb.{DB, DBIterator, ReadOptions}
 

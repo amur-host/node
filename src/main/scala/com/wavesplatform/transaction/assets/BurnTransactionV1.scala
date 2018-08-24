@@ -1,12 +1,12 @@
-package com..transaction.assets
+package com.amurplatform.transaction.assets
 
 import com.google.common.primitives.Bytes
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..transaction._
-import com..crypto._
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.transaction._
+import com.amurplatform.crypto._
 import scala.util.{Failure, Success, Try}
 
 case class BurnTransactionV1 private (sender: PublicKeyAccount, assetId: ByteStr, quantity: Long, fee: Long, timestamp: Long, signature: ByteStr)

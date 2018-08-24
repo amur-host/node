@@ -1,4 +1,4 @@
-package com..discovery.network
+package com.amurplatform.discovery.network
 
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
 

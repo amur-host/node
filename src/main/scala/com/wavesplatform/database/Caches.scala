@@ -1,15 +1,15 @@
-package com..database
+package com.amurplatform.database
 
 import java.util
 
 import cats.syntax.monoid._
 import com.google.common.cache.{CacheBuilder, CacheLoader, LoadingCache}
-import com..state._
-import com..account.{Address, Alias}
-import com..block.Block
-import com..transaction.smart.script.Script
-import com..transaction.Transaction
-import com..transaction.AssetId
+import com.amurplatform.state._
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.AssetId
 
 import scala.collection.JavaConverters._
 

@@ -1,10 +1,10 @@
-package com..transaction.api.http.assets
+package com.amurplatform.transaction.api.http.assets
 
-import com..state.EitherExt2
-import com..utils.Base58
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.utils.Base58
 import org.scalatest.{FunSuite, Matchers}
 import play.api.libs.json.Json
-import com..api.http.assets._
+import com.amurplatform.api.http.assets._
 
 class SignedRequestsTest extends FunSuite with Matchers {
 

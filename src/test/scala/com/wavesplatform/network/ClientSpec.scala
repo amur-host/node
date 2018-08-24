@@ -1,8 +1,8 @@
-package com..network
+package com.amurplatform.network
 
 import java.util.concurrent.ConcurrentHashMap
 
-import com..{TransactionGen, Version}
+import com.amurplatform.{TransactionGen, Version}
 import io.netty.buffer.{ByteBuf, Unpooled}
 import io.netty.channel.Channel
 import io.netty.channel.embedded.EmbeddedChannel

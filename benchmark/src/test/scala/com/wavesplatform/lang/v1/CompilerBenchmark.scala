@@ -1,11 +1,11 @@
-package com..lang.v1
+package com.amurplatform.lang.v1
 
 import java.util.concurrent.TimeUnit
 
-import com..lang.v1.CompilerBenchmark.St
+import com.amurplatform.lang.v1.CompilerBenchmark.St
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole
-import com..transaction.smart.script.ScriptCompiler
+import com.amurplatform.transaction.smart.script.ScriptCompiler
 
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Array(Mode.AverageTime))

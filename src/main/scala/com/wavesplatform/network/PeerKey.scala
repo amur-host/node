@@ -1,4 +1,4 @@
-package com..network
+package com.amurplatform.network
 
 import java.net.{InetAddress, SocketAddress}
 

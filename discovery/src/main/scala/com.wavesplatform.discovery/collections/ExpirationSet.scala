@@ -1,4 +1,4 @@
-package com..discovery.collections
+package com.amurplatform.discovery.collections
 
 import java.util.concurrent.TimeUnit
 import scala.collection.JavaConverters._

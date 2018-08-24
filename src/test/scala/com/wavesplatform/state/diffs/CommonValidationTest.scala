@@ -1,22 +1,22 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..db.WithState
-import com..features.{BlockchainFeature, BlockchainFeatures}
-import com..lang.v1.compiler.Terms._
-import com..mining.MiningConstraint
-import com..settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
-import com..state.EitherExt2
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.db.WithState
+import com.amurplatform.features.{BlockchainFeature, BlockchainFeatures}
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.mining.MiningConstraint
+import com.amurplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertion, Matchers, PropSpec}
-import com..account.AddressScheme
-import com..lagonaki.mocks.TestBlock
-import com..transaction.assets.{IssueTransactionV1, IssueTransactionV2, SponsorFeeTransaction}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
-import com..transaction.{GenesisTransaction, Transaction, ValidationError}
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.assets.{IssueTransactionV1, IssueTransactionV2, SponsorFeeTransaction}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{GenesisTransaction, Transaction, ValidationError}
 
 class CommonValidationTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with WithState with NoShrink {
 

@@ -1,10 +1,10 @@
-package com..http
+package com.amurplatform.http
 
 import akka.http.scaladsl.testkit.RouteTest
 import org.scalatest.matchers.{MatchResult, Matcher}
 import play.api.libs.json._
-import com..http.ApiMarshallers._
-import com..api.http.ApiError
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.api.http.ApiError
 
 trait ApiErrorMatchers { this: RouteTest =>
   class ProduceError(error: ApiError) extends Matcher[RouteTestResult] {

@@ -1,10 +1,10 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..TransactionGen
-import com..account.{Address, PublicKeyAccount}
-import com..state._
-import com..transaction.transfer._
-import com..utils.Base58
+import com.amurplatform.TransactionGen
+import com.amurplatform.account.{Address, PublicKeyAccount}
+import com.amurplatform.state._
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.utils.Base58
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks

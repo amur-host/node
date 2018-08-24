@@ -1,10 +1,10 @@
-package com..consensus
+package com.amurplatform.consensus
 
-import com..features.BlockchainFeatures
-import com..settings.FunctionalitySettings
-import com..state.Blockchain
-import com..account.Address
-import com..block.Block
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.Blockchain
+import com.amurplatform.account.Address
+import com.amurplatform.block.Block
 
 object GeneratingBalanceProvider {
   private val MinimalEffectiveBalanceForGenerator1: Long = 1000000000000L

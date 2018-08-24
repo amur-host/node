@@ -1,6 +1,6 @@
-package com..network
+package com.amurplatform.network
 
-import com..network.PipelineInitializer.HandlerWrapper
+import com.amurplatform.network.PipelineInitializer.HandlerWrapper
 import io.netty.channel.{Channel, ChannelHandler, ChannelInitializer}
 import io.netty.util.concurrent.EventExecutorGroup
 

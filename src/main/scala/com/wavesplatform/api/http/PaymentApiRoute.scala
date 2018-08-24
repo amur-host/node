@@ -1,16 +1,16 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import javax.ws.rs.Path
 import akka.http.scaladsl.server.Route
-import com..settings.RestAPISettings
-import com..utx.UtxPool
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
-import com..api.http.assets.TransferV1Request
-import com..http.BroadcastRoute
-import com..utils.Time
-import com..transaction.TransactionFactory
-import com..wallet.Wallet
+import com.amurplatform.api.http.assets.TransferV1Request
+import com.amurplatform.http.BroadcastRoute
+import com.amurplatform.utils.Time
+import com.amurplatform.transaction.TransactionFactory
+import com.amurplatform.wallet.Wallet
 
 @Path("/payment")
 @Api(value = "/payment")
@@ -36,7 +36,7 @@ case class PaymentApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPo
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..api.http.assets.TransferV1Request",
+        dataType = "com.amurplatform.api.http.assets.TransferV1Request",
         defaultValue = "{\n\t\"amount\":400,\n\t\"fee\":1,\n\t\"sender\":\"senderId\",\n\t\"recipient\":\"recipientId\"\n}"
       )
     ))

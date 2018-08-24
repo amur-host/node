@@ -1,9 +1,9 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..db.WithState
-import com..settings.TestFunctionalitySettings
-import com..state._
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.db.WithState
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

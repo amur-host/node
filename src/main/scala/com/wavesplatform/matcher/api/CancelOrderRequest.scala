@@ -1,11 +1,11 @@
-package com..matcher.api
+package com.amurplatform.matcher.api
 
 import com.google.common.primitives.Longs
-import com..account.PublicKeyAccount
-import com..crypto
-import com..state.ByteStr
-import com..transaction.assets.exchange.OrderJson._
-import com..utils.Base58
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.assets.exchange.OrderJson._
+import com.amurplatform.utils.Base58
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
 import play.api.libs.functional.syntax._

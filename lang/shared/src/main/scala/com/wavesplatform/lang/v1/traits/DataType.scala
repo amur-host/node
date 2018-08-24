@@ -1,6 +1,6 @@
-package com..lang.v1.traits
+package com.amurplatform.lang.v1.traits
 
-import com..lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.compiler.Types._
 
 sealed abstract case class DataType(innerType: REAL)
 object DataType {

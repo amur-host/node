@@ -1,15 +1,15 @@
-package com..it.sync.matcher
+package com.amurplatform.it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it.ReportingTestName
-import com..it.api.SyncHttpApi._
-import com..it.api.SyncMatcherHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..it.util._
-import com..matcher.market.MatcherActor
-import com..matcher.model.MatcherModel.Price
-import com..state.ByteStr
-import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.amurplatform.it.ReportingTestName
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.api.SyncMatcherHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.util._
+import com.amurplatform.matcher.market.MatcherActor
+import com.amurplatform.matcher.model.MatcherModel.Price
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.util.Random
@@ -238,7 +238,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
 object TradersTestSuite {
 
   import ConfigFactory._
-  import com..it.NodeConfigs._
+  import com.amurplatform.it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   private val AssetQuantity    = 1000

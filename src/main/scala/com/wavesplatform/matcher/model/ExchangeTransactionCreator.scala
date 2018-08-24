@@ -1,13 +1,13 @@
-package com..matcher.model
+package com.amurplatform.matcher.model
 
-import com..matcher.MatcherSettings
-import com..settings.FunctionalitySettings
-import com..state.Blockchain
-import com..utils.{NTP, ScorexLogging}
-import com..utx.UtxPool
-import com..transaction.ValidationError
-import com..transaction.assets.exchange._
-import com..wallet.Wallet
+import com.amurplatform.matcher.MatcherSettings
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.Blockchain
+import com.amurplatform.utils.{NTP, ScorexLogging}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.wallet.Wallet
 
 trait ExchangeTransactionCreator extends ScorexLogging {
   val functionalitySettings: FunctionalitySettings

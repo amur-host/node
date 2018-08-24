@@ -1,21 +1,21 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats.Monoid
 import cats.implicits._
 import cats.syntax.either.catsSyntaxEitherId
-import com..features.BlockchainFeatures
-import com..features.FeatureProvider._
-import com..metrics.Instrumented
-import com..mining.MiningConstraint
-import com..settings.FunctionalitySettings
-import com..state._
-import com..state.patch.{CancelAllLeases, CancelInvalidLeaseIn, CancelLeaseOverflow}
-import com..state.reader.CompositeBlockchain.composite
-import com..account.Address
-import com..utils.ScorexLogging
-import com..block.{Block, MicroBlock}
-import com..transaction.ValidationError.ActivationError
-import com..transaction.{Transaction, ValidationError}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.metrics.Instrumented
+import com.amurplatform.mining.MiningConstraint
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.state.patch.{CancelAllLeases, CancelInvalidLeaseIn, CancelLeaseOverflow}
+import com.amurplatform.state.reader.CompositeBlockchain.composite
+import com.amurplatform.account.Address
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.block.{Block, MicroBlock}
+import com.amurplatform.transaction.ValidationError.ActivationError
+import com.amurplatform.transaction.{Transaction, ValidationError}
 
 object BlockDiffer extends ScorexLogging with Instrumented {
 

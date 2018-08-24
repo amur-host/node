@@ -1,14 +1,14 @@
-package com..generator
+package com.amurplatform.generator
 
 import cats.Show
-import com..account.PrivateKeyAccount
-import com..generator.OracleTransactionGenerator.Settings
-import com..generator.utils.Gen
-import com..it.util._
-import com..state._
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.transfer.TransferTransactionV1
-import com..transaction.{DataTransaction, Transaction}
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.generator.OracleTransactionGenerator.Settings
+import com.amurplatform.generator.utils.Gen
+import com.amurplatform.it.util._
+import com.amurplatform.state._
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.transfer.TransferTransactionV1
+import com.amurplatform.transaction.{DataTransaction, Transaction}
 
 class OracleTransactionGenerator(settings: Settings, val accounts: Seq[PrivateKeyAccount]) extends TransactionGenerator {
   override def next(): Iterator[Transaction] = generate(settings).toIterator

@@ -1,4 +1,4 @@
-package com..matcher
+package com.amurplatform.matcher
 
 import java.io.File
 

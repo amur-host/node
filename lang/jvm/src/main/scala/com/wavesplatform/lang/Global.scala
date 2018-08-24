@@ -1,7 +1,7 @@
-package com..lang
+package com.amurplatform.lang
 
-import com..lang.v1.BaseGlobal
-import com..utils.{Base58, Base64}
+import com.amurplatform.lang.v1.BaseGlobal
+import com.amurplatform.utils.{Base58, Base64}
 import scorex.crypto.hash.{Blake2b256, Keccak256, Sha256}
 import scorex.crypto.signatures.{Curve25519, PublicKey, Signature}
 

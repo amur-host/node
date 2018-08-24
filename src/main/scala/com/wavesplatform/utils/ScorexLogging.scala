@@ -1,4 +1,4 @@
-package com..utils
+package com.amurplatform.utils
 
 import com.google.common.util.concurrent.UncheckedExecutionException
 import monix.eval.Task

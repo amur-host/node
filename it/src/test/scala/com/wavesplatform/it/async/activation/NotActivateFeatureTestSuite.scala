@@ -1,12 +1,12 @@
-package com..it.async.activation
+package com.amurplatform.it.async.activation
 
 import com.typesafe.config.Config
-import com..features.BlockchainFeatureStatus
-import com..features.api.{FeatureActivationStatus, NodeFeatureStatus}
-import com..it.api.AsyncHttpApi._
-import com..it.api.BlockHeaders
-import com..it.transactions.NodesFromDocker
-import com..it.{NodeConfigs, ReportingTestName}
+import com.amurplatform.features.BlockchainFeatureStatus
+import com.amurplatform.features.api.{FeatureActivationStatus, NodeFeatureStatus}
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.api.BlockHeaders
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.{NodeConfigs, ReportingTestName}
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.Await

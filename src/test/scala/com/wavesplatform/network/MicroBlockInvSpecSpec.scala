@@ -1,12 +1,12 @@
-package com..network
+package com.amurplatform.network
 
-import com..TransactionGen
-import com..state.ByteStr
+import com.amurplatform.TransactionGen
+import com.amurplatform.state.ByteStr
 import org.scalacheck.Gen
 import org.scalatest.concurrent.Eventually
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
-import com..crypto._
+import com.amurplatform.crypto._
 
 class MicroBlockInvSpecSpec extends FreeSpec with Matchers with PropertyChecks with Eventually with TransactionGen {
 

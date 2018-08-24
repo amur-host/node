@@ -1,8 +1,8 @@
-package com..state.patch
+package com.amurplatform.state.patch
 
-import com..state.{Blockchain, Diff, LeaseBalance, Portfolio}
-import com..utils.ScorexLogging
-import com..transaction.lease.{LeaseTransaction, LeaseTransactionV1}
+import com.amurplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
 
 object CancelLeaseOverflow extends ScorexLogging {
   def apply(blockchain: Blockchain): Diff = {

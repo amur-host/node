@@ -1,4 +1,4 @@
-package com..utils
+package com.amurplatform.utils
 
 import java.io.{File, PrintWriter}
 import javax.crypto.Cipher

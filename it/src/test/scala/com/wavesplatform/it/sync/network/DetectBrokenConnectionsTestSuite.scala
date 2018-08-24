@@ -1,10 +1,10 @@
-package com..it.sync.network
+package com.amurplatform.it.sync.network
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it.NodeConfigs.Default
-import com..it.ReportingTestName
-import com..it.api.SyncHttpApi._
-import com..it.transactions.NodesFromDocker
+import com.amurplatform.it.NodeConfigs.Default
+import com.amurplatform.it.ReportingTestName
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
 import org.scalatest.{FreeSpec, Matchers}
 
 import scala.concurrent.duration._

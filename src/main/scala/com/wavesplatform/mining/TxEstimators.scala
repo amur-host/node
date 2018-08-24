@@ -1,10 +1,10 @@
-package com..mining
+package com.amurplatform.mining
 
-import com..state.Blockchain
-import com..transaction.assets.exchange.ExchangeTransaction
-import com..transaction.assets.{BurnTransaction, ReissueTransaction, SponsorFeeTransaction}
-import com..transaction.transfer.{MassTransferTransaction, TransferTransaction}
-import com..transaction.{Authorized, Transaction}
+import com.amurplatform.state.Blockchain
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
+import com.amurplatform.transaction.assets.{BurnTransaction, ReissueTransaction, SponsorFeeTransaction}
+import com.amurplatform.transaction.transfer.{MassTransferTransaction, TransferTransaction}
+import com.amurplatform.transaction.{Authorized, Transaction}
 
 object TxEstimators {
   abstract class Fn extends ((Blockchain, Transaction) => Long) {

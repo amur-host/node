@@ -1,9 +1,9 @@
-package com..http
+package com.amurplatform.http
 
 import com.typesafe.config.ConfigFactory
-import com..crypto
-import com..settings.RestAPISettings
-import com..utils.Base58
+import com.amurplatform.crypto
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.utils.Base58
 
 trait RestAPISettingsHelper {
   def apiKey: String = "test_api_key"

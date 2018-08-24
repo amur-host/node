@@ -1,15 +1,15 @@
-package com.
+package com.amurplatform
 
 import java.nio.charset.StandardCharsets
 
-import com..state.ByteStr
+import com.amurplatform.state.ByteStr
 import org.scalatest.matchers.{HavePropertyMatchResult, HavePropertyMatcher}
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
-import com..account.{AddressOrAlias, PublicKeyAccount}
-import com..utils.Base58
-import com..transaction.{AssetId, Proofs}
-import com..transaction.transfer._
+import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
+import com.amurplatform.utils.Base58
+import com.amurplatform.transaction.{AssetId, Proofs}
+import com.amurplatform.transaction.transfer._
 import shapeless.{:+:, CNil, Coproduct}
 
 import scala.reflect.ClassTag

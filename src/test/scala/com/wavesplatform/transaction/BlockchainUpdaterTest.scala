@@ -1,17 +1,17 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import java.security.Permission
 import java.util.concurrent.{Semaphore, TimeUnit}
 
-import com..db.WithState
-import com..features.BlockchainFeatureStatus
-import com..features.FeatureProvider._
-import com..history
-import com..state._
-import com..state.diffs.produce
+import com.amurplatform.db.WithState
+import com.amurplatform.features.BlockchainFeatureStatus
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.history
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.produce
 import org.scalatest.words.ShouldVerb
 import org.scalatest.{FreeSpec, Matchers}
-import com..block.Block
+import com.amurplatform.block.Block
 
 class BlockchainUpdaterTest extends FreeSpec with Matchers with HistoryTest with ShouldVerb with WithState {
 

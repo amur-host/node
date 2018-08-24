@@ -1,13 +1,13 @@
-package com..transaction.assets.exchange
+package com.amurplatform.transaction.assets.exchange
 
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com..account.PublicKeyAccount
-import com..transaction.ValidationError.{GenericError, OrderValidationError}
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.transaction.ValidationError.{GenericError, OrderValidationError}
 
 import scala.util.Failure
-import com..transaction._
+import com.amurplatform.transaction._
 
 import scala.util.Try
 

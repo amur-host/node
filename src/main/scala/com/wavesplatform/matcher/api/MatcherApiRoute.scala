@@ -1,4 +1,4 @@
-package com..matcher.api
+package com.amurplatform.matcher.api
 
 import java.util.concurrent.Executors
 
@@ -8,23 +8,23 @@ import akka.http.scaladsl.server.{Directive1, Route}
 import akka.pattern.ask
 import akka.util.Timeout
 import com.google.common.primitives.Longs
-import com..account.PublicKeyAccount
-import com..api.http._
-import com..crypto
-import com..matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse}
-import com..matcher.market.MatcherTransactionWriter.GetTransactionsByOrder
-import com..matcher.market.OrderBookActor._
-import com..matcher.market.OrderHistoryActor._
-import com..matcher.model.MatcherModel.{Level, Price}
-import com..matcher.model.{LevelAgg, LimitOrder, OrderBook, OrderInfo}
-import com..matcher.{AssetPairBuilder, MatcherSettings}
-import com..metrics.TimerExt
-import com..settings.RestAPISettings
-import com..state.ByteStr
-import com..transaction.assets.exchange.OrderJson._
-import com..transaction.assets.exchange.{AssetPair, Order}
-import com..utils.{Base58, NTP, ScorexLogging}
-import com..wallet.Wallet
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.api.http._
+import com.amurplatform.crypto
+import com.amurplatform.matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse}
+import com.amurplatform.matcher.market.MatcherTransactionWriter.GetTransactionsByOrder
+import com.amurplatform.matcher.market.OrderBookActor._
+import com.amurplatform.matcher.market.OrderHistoryActor._
+import com.amurplatform.matcher.model.MatcherModel.{Level, Price}
+import com.amurplatform.matcher.model.{LevelAgg, LimitOrder, OrderBook, OrderInfo}
+import com.amurplatform.matcher.{AssetPairBuilder, MatcherSettings}
+import com.amurplatform.metrics.TimerExt
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.assets.exchange.OrderJson._
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.utils.{Base58, NTP, ScorexLogging}
+import com.amurplatform.wallet.Wallet
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import kamon.Kamon
@@ -144,7 +144,7 @@ case class MatcherApiRoute(wallet: Wallet,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..transaction.assets.exchange.Order"
+        dataType = "com.amurplatform.transaction.assets.exchange.Order"
       )
     ))
   def place: Route = path("orderbook") {
@@ -172,7 +172,7 @@ case class MatcherApiRoute(wallet: Wallet,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..matcher.api.CancelOrderRequest"
+        dataType = "com.amurplatform.matcher.api.CancelOrderRequest"
       )
     ))
   def cancelAll: Route = (path("orderbook" / "cancel") & post) {
@@ -222,7 +222,7 @@ case class MatcherApiRoute(wallet: Wallet,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..matcher.api.CancelOrderRequest"
+        dataType = "com.amurplatform.matcher.api.CancelOrderRequest"
       )
     ))
   def cancel: Route = (path("orderbook" / AssetPairPM / "cancel") & post) { p =>
@@ -275,7 +275,7 @@ case class MatcherApiRoute(wallet: Wallet,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..matcher.api.CancelOrderRequest"
+        dataType = "com.amurplatform.matcher.api.CancelOrderRequest"
       )
     ))
   def historyDelete: Route = (path("orderbook" / AssetPairPM / "delete") & post) { p =>

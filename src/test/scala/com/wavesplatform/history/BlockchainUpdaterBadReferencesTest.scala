@@ -1,14 +1,14 @@
-package com..history
+package com.amurplatform.history
 
-import com..TransactionGen
-import com..state._
-import com..state.diffs._
+import com.amurplatform.TransactionGen
+import com.amurplatform.state._
+import com.amurplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com..transaction.GenesisTransaction
-import com..transaction.transfer._
-import com..features.BlockchainFeatures
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.features.BlockchainFeatures
 
 class BlockchainUpdaterBadReferencesTest
     extends PropSpec

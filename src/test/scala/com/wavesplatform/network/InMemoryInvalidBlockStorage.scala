@@ -1,8 +1,8 @@
-package com..network
+package com.amurplatform.network
 
-import com..state.ByteStr
-import com..transaction.ValidationError
-import com..transaction.ValidationError.GenericError
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.GenericError
 
 class InMemoryInvalidBlockStorage extends InvalidBlockStorage {
 

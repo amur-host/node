@@ -1,4 +1,4 @@
-package com..discovery
+package com.amurplatform.discovery
 
 import java.util.concurrent.TimeUnit
 
@@ -8,9 +8,9 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.ws.TextMessage
 import akka.stream.scaladsl.{Flow, Sink, Source}
 import akka.stream.{ActorMaterializer, OverflowStrategy}
-import com..discovery.actors.MainActor
-import com..discovery.actors.MainActor.WebSocketConnected
-import com..discovery.CancellableExt._
+import com.amurplatform.discovery.actors.MainActor
+import com.amurplatform.discovery.actors.MainActor.WebSocketConnected
+import com.amurplatform.discovery.CancellableExt._
 import scorex.utils.ScorexLogging
 
 import scala.concurrent.ExecutionContext

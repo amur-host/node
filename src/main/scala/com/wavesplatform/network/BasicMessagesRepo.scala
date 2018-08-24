@@ -1,17 +1,17 @@
-package com..network
+package com.amurplatform.network
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util
 
 import com.google.common.primitives.{Bytes, Ints}
-import com..mining.Miner.MaxTransactionsPerMicroblock
-import com..state.ByteStr
-import com..account.PublicKeyAccount
-import com..block.{Block, MicroBlock}
-import com..network.message.Message._
-import com..network.message._
-import com..transaction.{Transaction, TransactionParsers}
-import com..crypto._
+import com.amurplatform.mining.Miner.MaxTransactionsPerMicroblock
+import com.amurplatform.state.ByteStr
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.block.{Block, MicroBlock}
+import com.amurplatform.network.message.Message._
+import com.amurplatform.network.message._
+import com.amurplatform.transaction.{Transaction, TransactionParsers}
+import com.amurplatform.crypto._
 import scala.util.Try
 
 object GetPeersSpec extends MessageSpec[GetPeers.type] {
@@ -189,7 +189,7 @@ object CheckpointSpec extends MessageSpec[Checkpoint] {
 object TransactionSpec extends MessageSpec[Transaction] {
   override val messageCode: MessageCode = 25: Byte
 
-  // Modeled after Data Transaction https://.atlassian.net/wiki/spaces/MAIN/pages/119734321/Data+Transaction
+  // Modeled after Data Transaction https://amurplatform.atlassian.net/wiki/spaces/MAIN/pages/119734321/Data+Transaction
   override val maxLength: Int = 150 * 1024
 
   override def deserializeData(bytes: Array[Byte]): Try[Transaction] =

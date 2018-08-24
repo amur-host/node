@@ -1,6 +1,6 @@
-package com..features.api
+package com.amurplatform.features.api
 
-import com..features.BlockchainFeatureStatus
+import com.amurplatform.features.BlockchainFeatureStatus
 
 case class FeatureActivationStatus(id: Short,
                                    description: String,

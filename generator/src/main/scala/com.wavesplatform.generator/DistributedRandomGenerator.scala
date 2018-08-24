@@ -1,4 +1,4 @@
-package com..generator
+package com.amurplatform.generator
 
 import scala.collection.immutable.TreeMap
 

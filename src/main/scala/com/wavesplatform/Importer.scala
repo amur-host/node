@@ -1,21 +1,21 @@
-package com.
+package com.amurplatform
 
 import java.io._
 
 import com.google.common.primitives.Ints
 import com.typesafe.config.ConfigFactory
-import com..account.{Address, AddressScheme}
-import com..block.Block
-import com..consensus.PoSSelector
-import com..db.openDB
-import com..history.{CheckpointServiceImpl, StorageFactory}
-import com..mining.MultiDimensionalMiningConstraint
-import com..settings.{WavesSettings, loadConfig}
-import com..state.ByteStr
-import com..state.appender.BlockAppender
-import com..transaction.Transaction
-import com..utils._
-import com..utx.UtxPool
+import com.amurplatform.account.{Address, AddressScheme}
+import com.amurplatform.block.Block
+import com.amurplatform.consensus.PoSSelector
+import com.amurplatform.db.openDB
+import com.amurplatform.history.{CheckpointServiceImpl, StorageFactory}
+import com.amurplatform.mining.MultiDimensionalMiningConstraint
+import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.state.ByteStr
+import com.amurplatform.state.appender.BlockAppender
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.utils._
+import com.amurplatform.utx.UtxPool
 import monix.execution.Scheduler
 import org.slf4j.bridge.SLF4JBridgeHandler
 import scala.concurrent.Await

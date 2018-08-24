@@ -1,4 +1,4 @@
-package com..serialization
+package com.amurplatform.serialization
 
 import monix.eval.Coeval
 

@@ -1,11 +1,11 @@
-package com..state
+package com.amurplatform.state
 
-import com..account.{Address, Alias}
-import com..block.{Block, BlockHeader}
-import com..state.reader.LeaseDetails
-import com..transaction.lease.LeaseTransaction
-import com..transaction.smart.script.Script
-import com..transaction.{AssetId, Transaction, ValidationError}
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.block.{Block, BlockHeader}
+import com.amurplatform.state.reader.LeaseDetails
+import com.amurplatform.transaction.lease.LeaseTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.{AssetId, Transaction, ValidationError}
 
 trait Blockchain {
   def height: Int

@@ -1,11 +1,11 @@
-package com..lang.v1.testing
+package com.amurplatform.lang.v1.testing
 
-import com..lang.v1.FunctionHeader
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.FunctionHeader
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.Types._
 import org.scalacheck._
 import scodec.bits.ByteVector
-import com..lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
 
 trait TypedScriptGen {
 

@@ -1,7 +1,7 @@
-package com..network
+package com.amurplatform.network
 
-import com..network.RxScoreObserver.{BestChannel, SyncWith}
-import com..{RxScheduler, TransactionGen}
+import com.amurplatform.network.RxScoreObserver.{BestChannel, SyncWith}
+import com.amurplatform.{RxScheduler, TransactionGen}
 import io.netty.channel.Channel
 import io.netty.channel.local.LocalChannel
 import monix.eval.Coeval

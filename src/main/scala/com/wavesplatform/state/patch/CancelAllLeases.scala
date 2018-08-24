@@ -1,7 +1,7 @@
-package com..state.patch
+package com.amurplatform.state.patch
 
-import com..state.{Blockchain, Diff, LeaseBalance, Portfolio}
-import com..utils.ScorexLogging
+import com.amurplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
+import com.amurplatform.utils.ScorexLogging
 
 object CancelAllLeases extends ScorexLogging {
   private def invertLeaseInfo(p: Portfolio) = Portfolio(0, LeaseBalance(-p.lease.in, -p.lease.out), Map.empty)

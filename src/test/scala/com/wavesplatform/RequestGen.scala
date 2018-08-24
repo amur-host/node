@@ -1,16 +1,16 @@
-package com.
+package com.amurplatform
 
 import org.scalacheck.Gen.{alphaNumChar, choose, listOfN, oneOf}
 import org.scalacheck.{Arbitrary, Gen => G}
 import org.scalatest.Suite
-import com..account.Alias
-import com..api.http.alias.SignedCreateAliasV1Request
-import com..api.http.assets._
-import com..api.http.leasing.{SignedLeaseCancelV1Request, SignedLeaseV1Request}
-import com..utils.Base58
-import com..transaction.assets._
-import com..transaction.transfer._
-import com..crypto._
+import com.amurplatform.account.Alias
+import com.amurplatform.api.http.alias.SignedCreateAliasV1Request
+import com.amurplatform.api.http.assets._
+import com.amurplatform.api.http.leasing.{SignedLeaseCancelV1Request, SignedLeaseV1Request}
+import com.amurplatform.utils.Base58
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.crypto._
 
 trait RequestGen extends TransactionGen { _: Suite =>
   val nonPositiveLong: G[Long] = choose(Long.MinValue, 0).label("non-positive value")

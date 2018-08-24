@@ -1,12 +1,12 @@
-package com..network.client
+package com.amurplatform.network.client
 
 import java.io.IOException
 import java.net.InetSocketAddress
 
-import com..Version
-import com..network.Handshake
-import com..settings._
-import com..utils.ScorexLogging
+import com.amurplatform.Version
+import com.amurplatform.network.Handshake
+import com.amurplatform.settings._
+import com.amurplatform.utils.ScorexLogging
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel._
 import io.netty.channel.group.ChannelGroup

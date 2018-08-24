@@ -1,19 +1,19 @@
-package com..it.async
+package com.amurplatform.it.async
 
 import com.typesafe.config.Config
-import com..it.api.AsyncHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..it.{NodeConfigs, TransferSending}
-import com..lang.v1.compiler.Terms
-import com..mining.MiningConstraints.MaxScriptRunsInBlock
-import com..state.EitherExt2
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.{NodeConfigs, TransferSending}
+import com.amurplatform.lang.v1.compiler.Terms
+import com.amurplatform.mining.MiningConstraints.MaxScriptRunsInBlock
+import com.amurplatform.state.EitherExt2
 import org.scalatest._
 import play.api.libs.json.{JsNumber, Json}
-import com..account.PrivateKeyAccount
-import com..api.http.assets.SignedSetScriptRequest
-import com..utils.Base58
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.api.http.assets.SignedSetScriptRequest
+import com.amurplatform.utils.Base58
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
 
 import scala.concurrent.Await.result
 import scala.concurrent.ExecutionContext.Implicits.global

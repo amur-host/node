@@ -1,15 +1,15 @@
-package com.
+package com.amurplatform
 
-import com..state._
+import com.amurplatform.state._
 import monix.execution.schedulers.SchedulerService
 import monix.execution.{Ack, Scheduler}
 import monix.reactive.Observer
 import org.scalatest.{BeforeAndAfterAll, Suite}
-import com..account.PrivateKeyAccount
-import com..block.{Block, MicroBlock, SignerData}
-import com..lagonaki.mocks.TestBlock
-import com..transaction.transfer._
-import com..crypto._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.{Block, MicroBlock, SignerData}
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.crypto._
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 

@@ -1,16 +1,16 @@
-package com..http
+package com.amurplatform.http
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util.concurrent.ConcurrentHashMap
 
-import com..http.ApiMarshallers._
-import com..network.{PeerDatabase, PeerInfo}
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.network.{PeerDatabase, PeerInfo}
 import io.netty.channel.Channel
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{Format, JsObject, JsValue, Json}
-import com..api.http.{ApiKeyNotValid, PeersApiRoute}
+import com.amurplatform.api.http.{ApiKeyNotValid, PeersApiRoute}
 
 class PeersRouteSpec extends RouteSpec("/peers") with RestAPISettingsHelper with PropertyChecks with MockFactory {
 

@@ -1,24 +1,24 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import com.google.common.base.Charsets
-import com..account._
-import com..api.http.DataRequest._
-import com..api.http.alias.{CreateAliasV1Request, CreateAliasV2Request, SignedCreateAliasV1Request, SignedCreateAliasV2Request}
-import com..api.http.assets.SponsorFeeRequest._
-import com..api.http.assets._
-import com..api.http.leasing._
-import com..api.http.{DataRequest, SignedDataRequest, versionReads}
-import com..crypto.SignatureLength
-import com..state.ByteStr
-import com..transaction.ValidationError.GenericError
-import com..transaction.assets._
-import com..transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
-import com..transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.Script
-import com..transaction.transfer._
-import com..utils.{Base58, Time}
-import com..wallet.Wallet
+import com.amurplatform.account._
+import com.amurplatform.api.http.DataRequest._
+import com.amurplatform.api.http.alias.{CreateAliasV1Request, CreateAliasV2Request, SignedCreateAliasV1Request, SignedCreateAliasV2Request}
+import com.amurplatform.api.http.assets.SponsorFeeRequest._
+import com.amurplatform.api.http.assets._
+import com.amurplatform.api.http.leasing._
+import com.amurplatform.api.http.{DataRequest, SignedDataRequest, versionReads}
+import com.amurplatform.crypto.SignatureLength
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
+import com.amurplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.utils.{Base58, Time}
+import com.amurplatform.wallet.Wallet
 import play.api.libs.json.JsValue
 
 object TransactionFactory {

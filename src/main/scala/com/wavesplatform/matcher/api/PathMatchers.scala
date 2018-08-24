@@ -1,11 +1,11 @@
-package com..matcher.api
+package com.amurplatform.matcher.api
 
 import akka.http.scaladsl.model.Uri.Path
 import akka.http.scaladsl.server.PathMatcher.{Matched, Unmatched}
 import akka.http.scaladsl.server.{PathMatcher, PathMatcher1, PathMatchers => AkkaMatchers}
-import com..account.{Address, PublicKeyAccount}
-import com..state.ByteStr
-import com..transaction.assets.exchange.AssetPair
+import com.amurplatform.account.{Address, PublicKeyAccount}
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.assets.exchange.AssetPair
 
 object PathMatchers {
   class Base58[A](f: String => Option[A]) extends PathMatcher1[A] {

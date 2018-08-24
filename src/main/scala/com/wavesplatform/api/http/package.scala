@@ -1,4 +1,4 @@
-package com..api
+package com.amurplatform.api
 
 import play.api.libs.json._
 

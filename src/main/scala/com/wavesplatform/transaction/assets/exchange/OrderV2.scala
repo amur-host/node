@@ -1,14 +1,14 @@
-package com..transaction.assets.exchange
+package com.amurplatform.transaction.assets.exchange
 
 import com.google.common.primitives.Longs
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..serialization.Deser
-import com..transaction._
-import com..crypto._
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.serialization.Deser
+import com.amurplatform.transaction._
+import com.amurplatform.crypto._
 import scala.util.Try
 import cats.data.State
 

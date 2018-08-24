@@ -1,16 +1,16 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import java.security.SecureRandom
 
 import javax.ws.rs.Path
 import akka.http.scaladsl.server.Route
-import com..crypto
-import com..settings.RestAPISettings
-import com..state.diffs.CommonValidation
-import com..utils.{Base58, Time}
+import com.amurplatform.crypto
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.diffs.CommonValidation
+import com.amurplatform.utils.{Base58, Time}
 import io.swagger.annotations._
 import play.api.libs.json.Json
-import com..transaction.smart.script.{Script, ScriptCompiler}
+import com.amurplatform.transaction.smart.script.{Script, ScriptCompiler}
 
 @Path("/utils")
 @Api(value = "/utils", description = "Useful functions", position = 3, produces = "application/json")

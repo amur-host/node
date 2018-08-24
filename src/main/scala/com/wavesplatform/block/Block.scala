@@ -1,21 +1,21 @@
-package com..block
+package com.amurplatform.block
 
 import java.nio.ByteBuffer
 
 import cats._
 import com.google.common.primitives.{Bytes, Ints, Longs}
-import com..crypto
-import com..settings.GenesisSettings
-import com..state._
+import com.amurplatform.crypto
+import com.amurplatform.settings.GenesisSettings
+import com.amurplatform.state._
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com..account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com..block.fields.FeaturesBlockField
-import com..consensus.nxt.{NxtConsensusBlockField, NxtLikeConsensusBlockData}
-import com..utils.ScorexLogging
-import com..transaction.ValidationError.GenericError
-import com..transaction._
-import com..crypto._
+import com.amurplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.block.fields.FeaturesBlockField
+import com.amurplatform.consensus.nxt.{NxtConsensusBlockField, NxtLikeConsensusBlockData}
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction._
+import com.amurplatform.crypto._
 import scala.util.{Failure, Try}
 
 class BlockHeader(val timestamp: Long,

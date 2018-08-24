@@ -1,11 +1,11 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..state._
-import com..utils.base58Length
+import com.amurplatform.state._
+import com.amurplatform.utils.base58Length
 import monix.eval.Coeval
-import com..utils.Base58
-import com..serialization.Deser
-import com..transaction.ValidationError.GenericError
+import com.amurplatform.utils.Base58
+import com.amurplatform.serialization.Deser
+import com.amurplatform.transaction.ValidationError.GenericError
 
 import scala.util.Try
 

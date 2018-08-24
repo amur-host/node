@@ -1,16 +1,16 @@
-package com..state.reader
+package com.amurplatform.state.reader
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com..account.{Address, Alias}
-import com..block.{Block, BlockHeader}
-import com..state._
-import com..transaction.Transaction.Type
-import com..transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
-import com..transaction.assets.IssueTransaction
-import com..transaction.lease.LeaseTransaction
-import com..transaction.smart.script.Script
-import com..transaction.{AssetId, Transaction, ValidationError}
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.block.{Block, BlockHeader}
+import com.amurplatform.state._
+import com.amurplatform.transaction.Transaction.Type
+import com.amurplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
+import com.amurplatform.transaction.assets.IssueTransaction
+import com.amurplatform.transaction.lease.LeaseTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.{AssetId, Transaction, ValidationError}
 
 class CompositeBlockchain(inner: Blockchain, maybeDiff: => Option[Diff]) extends Blockchain {
 

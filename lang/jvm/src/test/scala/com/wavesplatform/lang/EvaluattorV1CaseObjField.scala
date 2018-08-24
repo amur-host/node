@@ -1,13 +1,13 @@
-package com..lang
+package com.amurplatform.lang
 
 import cats.kernel.Monoid
-import com..lang.Common._
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.evaluator.ctx.EvaluationContext._
-import com..lang.v1.evaluator.ctx._
-import com..lang.v1.evaluator.ctx.impl.PureContext
-import com..lang.v1.evaluator.ctx.impl.PureContext._
-import com..lang.v1.testing.ScriptGen
+import com.amurplatform.lang.Common._
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.evaluator.ctx.EvaluationContext._
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext._
+import com.amurplatform.lang.v1.testing.ScriptGen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

@@ -1,7 +1,7 @@
-package com..lang
+package com.amurplatform.lang
 
-import com..lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com..lang.v1.traits.{DataType, Environment}
+import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com.amurplatform.lang.v1.traits.{DataType, Environment}
 import shapeless.{:+:, CNil}
 
 object WavesContext {

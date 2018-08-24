@@ -1,11 +1,11 @@
-package com..transaction.smart.script
+package com.amurplatform.transaction.smart.script
 
-import com..crypto
-import com..lang.ScriptVersion
-import com..lang.ScriptVersion.Versions.V1
-import com..lang.v1.Serde
-import com..transaction.ValidationError.ScriptParseError
-import com..transaction.smart.script.v1.ScriptV1
+import com.amurplatform.crypto
+import com.amurplatform.lang.ScriptVersion
+import com.amurplatform.lang.ScriptVersion.Versions.V1
+import com.amurplatform.lang.v1.Serde
+import com.amurplatform.transaction.ValidationError.ScriptParseError
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
 
 object ScriptReader {
 

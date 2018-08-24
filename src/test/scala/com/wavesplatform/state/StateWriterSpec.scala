@@ -1,4 +1,4 @@
-package com..state
+package com.amurplatform.state
 
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}

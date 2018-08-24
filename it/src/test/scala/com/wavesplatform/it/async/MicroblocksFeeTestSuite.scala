@@ -1,11 +1,11 @@
-package com..it.async
+package com.amurplatform.it.async
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it.NodeConfigs.Default
-import com..it.api.AsyncHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..it.util._
-import com..utils.ScorexLogging
+import com.amurplatform.it.NodeConfigs.Default
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.util._
+import com.amurplatform.utils.ScorexLogging
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.ExecutionContext.Implicits.global

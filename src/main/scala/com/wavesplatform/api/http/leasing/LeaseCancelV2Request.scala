@@ -1,4 +1,4 @@
-package com..api.http.leasing
+package com.amurplatform.api.http.leasing
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}

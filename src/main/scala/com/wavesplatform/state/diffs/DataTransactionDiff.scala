@@ -1,7 +1,7 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..state._
-import com..transaction.{DataTransaction, ValidationError}
+import com.amurplatform.state._
+import com.amurplatform.transaction.{DataTransaction, ValidationError}
 
 object DataTransactionDiff {
 

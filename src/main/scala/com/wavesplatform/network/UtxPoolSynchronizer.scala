@@ -1,15 +1,15 @@
-package com..network
+package com.amurplatform.network
 
 import java.util.concurrent.TimeUnit
 
 import com.google.common.cache.CacheBuilder
-import com..settings.SynchronizationSettings.UtxSynchronizerSettings
-import com..state.ByteStr
-import com..utx.UtxPool
+import com.amurplatform.settings.SynchronizationSettings.UtxSynchronizerSettings
+import com.amurplatform.state.ByteStr
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.{ChannelGroup, ChannelMatcher}
 import monix.execution.{CancelableFuture, Scheduler}
-import com..transaction.Transaction
+import com.amurplatform.transaction.Transaction
 
 object UtxPoolSynchronizer {
   def start(utx: UtxPool,

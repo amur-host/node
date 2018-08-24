@@ -1,12 +1,12 @@
-package com..api.http.assets
+package com.amurplatform.api.http.assets
 
 import cats.implicits._
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.{Json, OFormat}
-import com..account.{AddressOrAlias, PublicKeyAccount}
-import com..api.http.BroadcastRequest
-import com..transaction.transfer._
-import com..transaction.{AssetIdStringLength, Proofs, ValidationError}
+import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
 
 object SignedTransferV2Request {
   implicit val format: OFormat[SignedTransferV2Request] = Json.format

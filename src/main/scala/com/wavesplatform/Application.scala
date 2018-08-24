@@ -1,4 +1,4 @@
-package com.
+package com.amurplatform
 
 import java.io.File
 import java.security.Security
@@ -10,29 +10,29 @@ import akka.http.scaladsl.Http.ServerBinding
 import akka.stream.ActorMaterializer
 import cats.instances.all._
 import com.typesafe.config._
-import com..account.AddressScheme
-import com..actor.RootActorSystem
-import com..api.http._
-import com..api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
-import com..api.http.assets.{AssetsApiRoute, AssetsBroadcastApiRoute}
-import com..api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
-import com..consensus.PoSSelector
-import com..consensus.nxt.api.http.NxtConsensusApiRoute
-import com..db.openDB
-import com..features.api.ActivationApiRoute
-import com..history.{CheckpointServiceImpl, StorageFactory}
-import com..http.{DebugApiRoute, NodeApiRoute, WavesApiRoute}
-import com..matcher.Matcher
-import com..metrics.Metrics
-import com..mining.{Miner, MinerImpl}
-import com..network.RxExtensionLoader.RxExtensionLoaderShutdownHook
-import com..network._
-import com..settings._
-import com..state.appender.{BlockAppender, CheckpointAppender, ExtensionAppender, MicroblockAppender}
-import com..transaction._
-import com..utils.{NTP, ScorexLogging, SystemInformationReporter, Time, forceStopApplication}
-import com..utx.{MatcherUtxPool, UtxPool, UtxPoolImpl}
-import com..wallet.Wallet
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.actor.RootActorSystem
+import com.amurplatform.api.http._
+import com.amurplatform.api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
+import com.amurplatform.api.http.assets.{AssetsApiRoute, AssetsBroadcastApiRoute}
+import com.amurplatform.api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
+import com.amurplatform.consensus.PoSSelector
+import com.amurplatform.consensus.nxt.api.http.NxtConsensusApiRoute
+import com.amurplatform.db.openDB
+import com.amurplatform.features.api.ActivationApiRoute
+import com.amurplatform.history.{CheckpointServiceImpl, StorageFactory}
+import com.amurplatform.http.{DebugApiRoute, NodeApiRoute, WavesApiRoute}
+import com.amurplatform.matcher.Matcher
+import com.amurplatform.metrics.Metrics
+import com.amurplatform.mining.{Miner, MinerImpl}
+import com.amurplatform.network.RxExtensionLoader.RxExtensionLoaderShutdownHook
+import com.amurplatform.network._
+import com.amurplatform.settings._
+import com.amurplatform.state.appender.{BlockAppender, CheckpointAppender, ExtensionAppender, MicroblockAppender}
+import com.amurplatform.transaction._
+import com.amurplatform.utils.{NTP, ScorexLogging, SystemInformationReporter, Time, forceStopApplication}
+import com.amurplatform.utx.{MatcherUtxPool, UtxPool, UtxPoolImpl}
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.Channel
 import io.netty.channel.group.DefaultChannelGroup
 import io.netty.util.concurrent.GlobalEventExecutor
@@ -384,7 +384,7 @@ object Application extends ScorexLogging {
         if (!cfg.hasPath("waves")) {
           log.error("Malformed configuration file was provided! Aborting!")
           log.error("Please, read following article about configuration file format:")
-          log.error("https://github.com//Waves/wiki/Waves-Node-configuration-file")
+          log.error("https://github.com/amurplatform/Waves/wiki/Waves-Node-configuration-file")
           forceStopApplication()
         }
         loadConfig(cfg)
@@ -429,7 +429,7 @@ object Application extends ScorexLogging {
 
     val isMetricsStarted = Metrics.start(settings.metrics)
 
-    RootActorSystem.start("", config) { actorSystem =>
+    RootActorSystem.start("amurplatform", config) { actorSystem =>
       import actorSystem.dispatcher
       isMetricsStarted.foreach { started =>
         if (started) {

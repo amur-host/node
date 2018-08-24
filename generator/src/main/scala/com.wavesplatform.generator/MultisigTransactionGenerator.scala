@@ -1,14 +1,14 @@
-package com..generator
+package com.amurplatform.generator
 import cats.Show
-import com..crypto
-import com..generator.utils.Gen
-import com..state._
-import com..account.PrivateKeyAccount
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.Script
-import com..transaction.transfer.TransferTransactionV2
-import com..transaction.{Proofs, Transaction}
-import com..it.util._
+import com.amurplatform.crypto
+import com.amurplatform.generator.utils.Gen
+import com.amurplatform.state._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.transfer.TransferTransactionV2
+import com.amurplatform.transaction.{Proofs, Transaction}
+import com.amurplatform.it.util._
 import scala.util.Random
 
 class MultisigTransactionGenerator(settings: MultisigTransactionGenerator.Settings, val accounts: Seq[PrivateKeyAccount])

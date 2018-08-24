@@ -1,12 +1,12 @@
-package com..history
+package com.amurplatform.history
 
-import com..crypto
-import com..db.{CheckpointCodec, PropertiesStorage, SubStorage}
-import com..network.Checkpoint
-import com..settings.CheckpointsSettings
+import com.amurplatform.crypto
+import com.amurplatform.db.{CheckpointCodec, PropertiesStorage, SubStorage}
+import com.amurplatform.network.Checkpoint
+import com.amurplatform.settings.CheckpointsSettings
 import org.iq80.leveldb.DB
-import com..transaction.ValidationError.GenericError
-import com..transaction.{CheckpointService, ValidationError}
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.{CheckpointService, ValidationError}
 
 class CheckpointServiceImpl(db: DB, settings: CheckpointsSettings)
     extends SubStorage(db, "checkpoints")

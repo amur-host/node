@@ -1,16 +1,16 @@
-package com.
+package com.amurplatform
 
 import java.io.{BufferedOutputStream, File, FileOutputStream, OutputStream}
 import java.nio.charset.StandardCharsets
 
 import com.google.common.primitives.Ints
 import com.typesafe.config.ConfigFactory
-import com..account.AddressScheme
-import com..db.openDB
-import com..history.StorageFactory
-import com..settings.{WavesSettings, loadConfig}
-import com..state.Blockchain
-import com..utils._
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.db.openDB
+import com.amurplatform.history.StorageFactory
+import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.state.Blockchain
+import com.amurplatform.utils._
 import org.slf4j.bridge.SLF4JBridgeHandler
 
 import scala.util.{Failure, Success, Try}

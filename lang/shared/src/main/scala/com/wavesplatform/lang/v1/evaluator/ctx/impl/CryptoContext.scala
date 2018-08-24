@@ -1,10 +1,10 @@
-package com..lang.v1.evaluator.ctx.impl
+package com.amurplatform.lang.v1.evaluator.ctx.impl
 
-import com..lang.v1.compiler.CompilerContext
-import com..lang.v1.compiler.Types.{BOOLEAN, BYTEVECTOR, STRING}
-import com..lang.v1.evaluator.FunctionIds._
-import com..lang.v1.evaluator.ctx.{BaseFunction, EvaluationContext, NativeFunction}
-import com..lang.v1.{BaseGlobal, CTX}
+import com.amurplatform.lang.v1.compiler.CompilerContext
+import com.amurplatform.lang.v1.compiler.Types.{BOOLEAN, BYTEVECTOR, STRING}
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.evaluator.ctx.{BaseFunction, EvaluationContext, NativeFunction}
+import com.amurplatform.lang.v1.{BaseGlobal, CTX}
 import scodec.bits.ByteVector
 
 object CryptoContext {

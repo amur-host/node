@@ -1,14 +1,14 @@
-package com..transaction.smart.script
+package com.amurplatform.transaction.smart.script
 
 import cats.implicits._
-import com..lang.ScriptVersion
-import com..lang.ScriptVersion.Versions.V1
-import com..lang.directives.{Directive, DirectiveKey, DirectiveParser}
-import com..lang.v1.ScriptEstimator
-import com..lang.v1.compiler.CompilerV1
-import com..utils
-import com..utils.functionCosts
-import com..transaction.smart.script.v1.ScriptV1
+import com.amurplatform.lang.ScriptVersion
+import com.amurplatform.lang.ScriptVersion.Versions.V1
+import com.amurplatform.lang.directives.{Directive, DirectiveKey, DirectiveParser}
+import com.amurplatform.lang.v1.ScriptEstimator
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.utils
+import com.amurplatform.utils.functionCosts
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
 
 import scala.util.{Failure, Success, Try}
 

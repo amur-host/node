@@ -1,5 +1,5 @@
-package com..consensus.nxt
+package com.amurplatform.consensus.nxt
 
-import com..state.ByteStr
+import com.amurplatform.state.ByteStr
 
 case class NxtLikeConsensusBlockData(baseTarget: Long, generationSignature: ByteStr)

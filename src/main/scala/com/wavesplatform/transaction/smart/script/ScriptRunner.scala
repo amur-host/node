@@ -1,15 +1,15 @@
-package com..transaction.smart.script
+package com.amurplatform.transaction.smart.script
 
 import cats.implicits._
-import com..lang.v1.evaluator.EvaluatorV1
-import com..lang.v1.evaluator.ctx.EvaluationContext
-import com..lang.ExecutionError
-import com..state._
+import com.amurplatform.lang.v1.evaluator.EvaluatorV1
+import com.amurplatform.lang.v1.evaluator.ctx.EvaluationContext
+import com.amurplatform.lang.ExecutionError
+import com.amurplatform.state._
 import monix.eval.Coeval
-import com..account.AddressScheme
-import com..transaction.Transaction
-import com..transaction.assets.exchange.Order
-import com..transaction.smart.BlockchainContext
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.assets.exchange.Order
+import com.amurplatform.transaction.smart.BlockchainContext
 import shapeless._
 
 object ScriptRunner {

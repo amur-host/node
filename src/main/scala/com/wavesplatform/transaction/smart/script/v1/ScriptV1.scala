@@ -1,14 +1,14 @@
-package com..transaction.smart.script.v1
+package com.amurplatform.transaction.smart.script.v1
 
-import com..crypto
-import com..lang.ScriptVersion.Versions.V1
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.evaluator.FunctionIds._
-import com..lang.v1.{FunctionHeader, ScriptEstimator, Serde}
-import com..state.ByteStr
-import com..utils.functionCosts
+import com.amurplatform.crypto
+import com.amurplatform.lang.ScriptVersion.Versions.V1
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.{FunctionHeader, ScriptEstimator, Serde}
+import com.amurplatform.state.ByteStr
+import com.amurplatform.utils.functionCosts
 import monix.eval.Coeval
-import com..transaction.smart.script.Script
+import com.amurplatform.transaction.smart.script.Script
 
 object ScriptV1 {
   private val checksumLength = 4

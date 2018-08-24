@@ -1,11 +1,11 @@
-package com..it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
-import com..it.api.SyncHttpApi._
-import com..it.transactions.BaseTransactionSuite
-import com..it.util._
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.Json
-import com..it.sync._
+import com.amurplatform.it.sync._
 
 class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFailure {
 
@@ -45,7 +45,7 @@ class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFail
   }
 
   test("lease cancellation reverts eff.b. changes; lessor pays fee for both lease and cancellation") {
-    import com..transaction.lease.LeaseTransaction.Status._
+    import com.amurplatform.transaction.lease.LeaseTransaction.Status._
 
     def getStatus(txId: String): String = {
       val r = sender.get(s"/transactions/info/$txId")

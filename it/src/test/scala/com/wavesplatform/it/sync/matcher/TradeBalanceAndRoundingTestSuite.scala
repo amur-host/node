@@ -1,21 +1,21 @@
-package com..it.sync.matcher
+package com.amurplatform.it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..account.PrivateKeyAccount
-import com..api.http.assets.SignedIssueV1Request
-import com..it.ReportingTestName
-import com..it.api.AssetDecimalsInfo
-import com..it.api.SyncHttpApi._
-import com..it.api.SyncMatcherHttpApi._
-import com..it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
-import com..it.sync._
-import com..it.transactions.NodesFromDocker
-import com..it.util._
-import com..transaction.AssetId
-import com..transaction.assets.IssueTransactionV1
-import com..transaction.assets.exchange.OrderType.{BUY, SELL}
-import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com..utils.Base58
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.api.http.assets.SignedIssueV1Request
+import com.amurplatform.it.ReportingTestName
+import com.amurplatform.it.api.AssetDecimalsInfo
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.api.SyncMatcherHttpApi._
+import com.amurplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
+import com.amurplatform.it.sync._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.util._
+import com.amurplatform.transaction.AssetId
+import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.amurplatform.transaction.assets.exchange.OrderType.{BUY, SELL}
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.amurplatform.utils.Base58
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -252,7 +252,7 @@ class TradeBalanceAndRoundingTestSuite
 object TradeBalanceAndRoundingTestSuite {
 
   import ConfigFactory._
-  import com..it.NodeConfigs._
+  import com.amurplatform.it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   val Decimals: Byte           = 2

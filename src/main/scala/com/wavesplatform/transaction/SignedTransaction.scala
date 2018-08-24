@@ -1,7 +1,7 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..crypto
-import com..state.{ByteStr, _}
+import com.amurplatform.crypto
+import com.amurplatform.state.{ByteStr, _}
 import monix.eval.Coeval
 import play.api.libs.json._
 

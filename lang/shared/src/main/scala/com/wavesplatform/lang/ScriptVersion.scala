@@ -1,7 +1,7 @@
-package com..lang
+package com.amurplatform.lang
 
-import com..lang.v1.compiler.Terms
-import com..lang.v1.evaluator.ctx.EvaluationContext
+import com.amurplatform.lang.v1.compiler.Terms
+import com.amurplatform.lang.v1.evaluator.ctx.EvaluationContext
 
 sealed trait ScriptVersion { self =>
   type ExprT

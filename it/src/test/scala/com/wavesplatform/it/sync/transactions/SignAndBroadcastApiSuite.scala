@@ -1,19 +1,19 @@
-package com..it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
-import com..crypto
-import com..it.api.SyncHttpApi._
-import com..it.sync.someAssetAmount
-import com..it.transactions.BaseTransactionSuite
-import com..it.util._
-import com..state._
+import com.amurplatform.crypto
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync.someAssetAmount
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
+import com.amurplatform.state._
 import org.asynchttpclient.util.HttpConstants
 import play.api.libs.json._
-import com..account.PublicKeyAccount
-import com..api.http.assets.SignedTransferV1Request
-import com..utils.{Base58, NTP}
-import com..transaction.assets.exchange._
-import com..it.sync._
-import com..transaction.transfer.MassTransferTransaction.Transfer
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.api.http.assets.SignedTransferV1Request
+import com.amurplatform.utils.{Base58, NTP}
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.it.sync._
+import com.amurplatform.transaction.transfer.MassTransferTransaction.Transfer
 
 import scala.util.Random
 

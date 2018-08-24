@@ -1,8 +1,8 @@
-package com.
+package com.amurplatform
 
-import com..account.PrivateKeyAccount
-import com..transaction.Proofs
-import com..transaction.assets.exchange._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.transaction.Proofs
+import com.amurplatform.transaction.assets.exchange._
 
 class OrderOps(val o: Order) extends AnyVal {
   @inline def copy(withV1: OrderV1 => OrderV1, withV2: OrderV2 => OrderV2): Order = {

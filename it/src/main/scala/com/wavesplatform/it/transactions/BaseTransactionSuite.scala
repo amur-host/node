@@ -1,9 +1,9 @@
-package com..it.transactions
+package com.amurplatform.it.transactions
 
 import java.io.File
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it._
+import com.amurplatform.it._
 import monix.eval.Coeval
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 

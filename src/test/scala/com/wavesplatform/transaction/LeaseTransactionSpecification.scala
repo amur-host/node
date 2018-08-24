@@ -1,12 +1,12 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..TransactionGen
-import com..state.{ByteStr, EitherExt2}
+import com.amurplatform.TransactionGen
+import com.amurplatform.state.{ByteStr, EitherExt2}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com..account.{Address, PublicKeyAccount}
-import com..transaction.lease.{LeaseTransaction, LeaseTransactionV1, LeaseTransactionV2}
+import com.amurplatform.account.{Address, PublicKeyAccount}
+import com.amurplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1, LeaseTransactionV2}
 
 class LeaseTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

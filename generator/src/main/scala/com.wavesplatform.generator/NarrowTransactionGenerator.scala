@@ -1,20 +1,20 @@
-package com..generator
+package com.amurplatform.generator
 
 import java.util.concurrent.ThreadLocalRandom
 
 import cats.Show
-import com..generator.NarrowTransactionGenerator.Settings
-import com..state.DataEntry.{MaxValueSize, Type}
-import com..state.{BinaryDataEntry, BooleanDataEntry, ByteStr, EitherExt2, IntegerDataEntry, StringDataEntry}
+import com.amurplatform.generator.NarrowTransactionGenerator.Settings
+import com.amurplatform.state.DataEntry.{MaxValueSize, Type}
+import com.amurplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, EitherExt2, IntegerDataEntry, StringDataEntry}
 import org.slf4j.LoggerFactory
-import com..account.{Alias, PrivateKeyAccount}
-import com..utils.LoggerFacade
-import com..transaction._
-import com..transaction.assets._
-import com..transaction.assets.exchange._
-import com..transaction.lease.{LeaseCancelTransaction, LeaseCancelTransactionV1, LeaseTransactionV1}
-import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com..transaction.transfer._
+import com.amurplatform.account.{Alias, PrivateKeyAccount}
+import com.amurplatform.utils.LoggerFacade
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseCancelTransactionV1, LeaseTransactionV1}
+import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.Random

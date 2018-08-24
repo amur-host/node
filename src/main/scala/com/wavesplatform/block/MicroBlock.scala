@@ -1,16 +1,16 @@
-package com..block
+package com.amurplatform.block
 
 import com.google.common.primitives.{Bytes, Ints}
-import com..crypto
-import com..mining.Miner.MaxTransactionsPerMicroblock
-import com..state._
+import com.amurplatform.crypto
+import com.amurplatform.mining.Miner.MaxTransactionsPerMicroblock
+import com.amurplatform.state._
 import monix.eval.Coeval
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..utils.ScorexLogging
-import com..block.Block.{BlockId, transParseBytes}
-import com..transaction.ValidationError.GenericError
-import com..transaction._
-import com..crypto._
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.block.Block.{BlockId, transParseBytes}
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction._
+import com.amurplatform.crypto._
 import scala.util.{Failure, Try}
 
 case class MicroBlock(version: Byte,

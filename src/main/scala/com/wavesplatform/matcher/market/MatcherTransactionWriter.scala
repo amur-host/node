@@ -1,14 +1,14 @@
-package com..matcher.market
+package com.amurplatform.matcher.market
 
 import akka.actor.{Actor, Props}
 import akka.http.scaladsl.model.StatusCodes
-import com..database.{DBExt, RW}
-import com..matcher.api.MatcherResponse
-import com..matcher.model.Events._
-import com..matcher.{MatcherKeys, MatcherSettings}
-import com..state._
-import com..transaction.assets.exchange.ExchangeTransaction
-import com..utils.ScorexLogging
+import com.amurplatform.database.{DBExt, RW}
+import com.amurplatform.matcher.api.MatcherResponse
+import com.amurplatform.matcher.model.Events._
+import com.amurplatform.matcher.{MatcherKeys, MatcherSettings}
+import com.amurplatform.state._
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
+import com.amurplatform.utils.ScorexLogging
 import org.iq80.leveldb.DB
 import play.api.libs.json.JsArray
 

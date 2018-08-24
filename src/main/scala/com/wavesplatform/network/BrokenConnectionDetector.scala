@@ -1,8 +1,8 @@
-package com..network
+package com.amurplatform.network
 
 import java.util.concurrent.{ConcurrentHashMap, ScheduledFuture}
 
-import com..utils.ScorexLogging
+import com.amurplatform.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._
 

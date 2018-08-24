@@ -1,19 +1,19 @@
-package com..transaction.transfer
+package com.amurplatform.transaction.transfer
 
 import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs, Shorts}
-import com..account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
-import com..crypto
-import com..serialization.Deser
-import com..state._
-import com..transaction.ValidationError.Validation
-import com..transaction._
-import com..transaction.transfer.MassTransferTransaction.{ParsedTransfer, toJson}
-import com..utils.Base58
+import com.amurplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.crypto
+import com.amurplatform.serialization.Deser
+import com.amurplatform.state._
+import com.amurplatform.transaction.ValidationError.Validation
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.transfer.MassTransferTransaction.{ParsedTransfer, toJson}
+import com.amurplatform.utils.Base58
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import monix.eval.Coeval
 import play.api.libs.json.{Format, JsObject, JsValue, Json}
-import com..crypto._
+import com.amurplatform.crypto._
 
 import scala.annotation.meta.field
 import scala.util.{Either, Failure, Success, Try}

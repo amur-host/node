@@ -1,14 +1,14 @@
-package com..history
+package com.amurplatform.history
 
-import com..TransactionGen
-import com..features.BlockchainFeatures
-import com..state.EitherExt2
-import com..state.diffs._
+import com.amurplatform.TransactionGen
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com..transaction._
-import com..transaction.transfer._
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.transfer._
 
 class BlockchainUpdaterBlockOnlyTest extends PropSpec with PropertyChecks with DomainScenarioDrivenPropertyCheck with Matchers with TransactionGen {
 

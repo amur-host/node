@@ -1,11 +1,11 @@
-package com..it.sync
+package com.amurplatform.it.sync
 
 import com.typesafe.config.Config
-import com..it.NodeConfigs
-import com..it.api.SyncHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..state.Sponsorship
-import com..utils.ScorexLogging
+import com.amurplatform.it.NodeConfigs
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.state.Sponsorship
+import com.amurplatform.utils.ScorexLogging
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 class MicroblocksSponsoredFeeTestSuite extends FreeSpec with Matchers with CancelAfterFailure with NodesFromDocker with ScorexLogging {

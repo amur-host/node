@@ -1,7 +1,7 @@
-package com.
+package com.amurplatform
 
-import com..settings.WalletSettings
-import com..wallet.Wallet
+import com.amurplatform.settings.WalletSettings
+import com.amurplatform.wallet.Wallet
 
 trait TestWallet {
   protected val testWallet = {

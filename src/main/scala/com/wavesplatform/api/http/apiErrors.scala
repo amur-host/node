@@ -1,4 +1,4 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import akka.http.scaladsl.model.{StatusCode, StatusCodes}
 import play.api.libs.json.JsError

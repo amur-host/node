@@ -1,15 +1,15 @@
-package com..it
+package com.amurplatform.it
 
 import com.typesafe.config.ConfigFactory.{defaultApplication, defaultReference}
-import com..consensus.PoSSelector
-import com..db.openDB
-import com..history.StorageFactory
-import com..settings._
-import com..state.{ByteStr, EitherExt2}
+import com.amurplatform.consensus.PoSSelector
+import com.amurplatform.db.openDB
+import com.amurplatform.history.StorageFactory
+import com.amurplatform.settings._
+import com.amurplatform.state.{ByteStr, EitherExt2}
 import net.ceedubs.ficus.Ficus._
-import com..account.PublicKeyAccount
-import com..utils.NTP
-import com..block.Block
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.utils.NTP
+import com.amurplatform.block.Block
 
 object BaseTargetChecker {
   def main(args: Array[String]): Unit = {

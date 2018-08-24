@@ -1,27 +1,27 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats.{Order => _, _}
-import com..OrderOps._
-import com..account.{AddressScheme, PrivateKeyAccount}
-import com..features.BlockchainFeatures
-import com..lagonaki.mocks.TestBlock
-import com..lang.directives.DirectiveParser
-import com..lang.v1.ScriptEstimator
-import com..lang.v1.compiler.Terms.TRUE
-import com..lang.v1.compiler.{CompilerContext, CompilerV1}
-import com..settings.{Constants, TestFunctionalitySettings}
-import com..state._
-import com..state.diffs.TransactionDiffer.TransactionValidationError
-import com..transaction.ValidationError.AccountBalanceError
-import com..transaction.assets.exchange.{Order, _}
-import com..transaction.assets.{IssueTransaction, IssueTransactionV1, IssueTransactionV2}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.smart.script.{Script, ScriptCompiler}
-import com..transaction.transfer.TransferTransaction
-import com..transaction.{GenesisTransaction, Proofs, Transaction, ValidationError}
-import com..utils.functionCosts
-import com..{NoShrink, TransactionGen, crypto}
+import com.amurplatform.OrderOps._
+import com.amurplatform.account.{AddressScheme, PrivateKeyAccount}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.lang.directives.DirectiveParser
+import com.amurplatform.lang.v1.ScriptEstimator
+import com.amurplatform.lang.v1.compiler.Terms.TRUE
+import com.amurplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
+import com.amurplatform.settings.{Constants, TestFunctionalitySettings}
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
+import com.amurplatform.transaction.ValidationError.AccountBalanceError
+import com.amurplatform.transaction.assets.exchange.{Order, _}
+import com.amurplatform.transaction.assets.{IssueTransaction, IssueTransactionV1, IssueTransactionV2}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.smart.script.{Script, ScriptCompiler}
+import com.amurplatform.transaction.transfer.TransferTransaction
+import com.amurplatform.transaction.{GenesisTransaction, Proofs, Transaction, ValidationError}
+import com.amurplatform.utils.functionCosts
+import com.amurplatform.{NoShrink, TransactionGen, crypto}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Inside, Matchers, PropSpec}

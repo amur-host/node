@@ -1,15 +1,15 @@
-package com..transaction.smart
+package com.amurplatform.transaction.smart
 
-import com..account.{Address, AddressOrAlias, Alias}
-import com..lang.v1.traits.domain.Tx.{Header, Proven}
-import com..lang.v1.traits.domain._
-import com..state._
-import com..transaction._
-import com..transaction.assets._
-import com..transaction.assets.exchange.OrderType.{BUY, SELL}
-import com..transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
-import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com..transaction.transfer._
+import com.amurplatform.account.{Address, AddressOrAlias, Alias}
+import com.amurplatform.lang.v1.traits.domain.Tx.{Header, Proven}
+import com.amurplatform.lang.v1.traits.domain._
+import com.amurplatform.state._
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange.OrderType.{BUY, SELL}
+import com.amurplatform.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.amurplatform.transaction.transfer._
 import scodec.bits.ByteVector
 
 object RealTransactionWrapper {
@@ -89,7 +89,7 @@ object RealTransactionWrapper {
           assetId = ms.assetId.map(a => ByteVector(a.arr)),
           transferCount = ms.transfers.length,
           totalAmount = ms.transfers.map(_.amount).sum,
-          transfers = ms.transfers.map(r => com..lang.v1.traits.domain.Tx.TransferItem(r.address, r.amount)).toIndexedSeq,
+          transfers = ms.transfers.map(r => com.amurplatform.lang.v1.traits.domain.Tx.TransferItem(r.address, r.amount)).toIndexedSeq,
           attachment = ByteVector(ms.attachment)
         )
       case ss: SetScriptTransaction => Tx.SetScript(proven(ss), ss.script.map(_.bytes()).map(toByteVector))

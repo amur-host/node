@@ -1,11 +1,11 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import com.google.common.primitives.Bytes
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com..account._
-import com..crypto._
+import com.amurplatform.account._
+import com.amurplatform.crypto._
 import scala.util.{Failure, Success, Try}
 
 case class CreateAliasTransactionV1 private (sender: PublicKeyAccount, alias: Alias, fee: Long, timestamp: Long, signature: ByteStr)

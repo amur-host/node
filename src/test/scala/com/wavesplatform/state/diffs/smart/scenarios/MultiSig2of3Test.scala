@@ -1,22 +1,22 @@
-package com..state.diffs.smart.scenarios
+package com.amurplatform.state.diffs.smart.scenarios
 
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..state._
-import com..state.diffs._
-import com..state.diffs.smart._
-import com..utils._
-import com..{NoShrink, TransactionGen, crypto}
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state._
+import com.amurplatform.state.diffs._
+import com.amurplatform.state.diffs.smart._
+import com.amurplatform.utils._
+import com.amurplatform.{NoShrink, TransactionGen, crypto}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..account.PublicKeyAccount
-import com..lagonaki.mocks.TestBlock
-import com..transaction._
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
 
 class MultiSig2of3Test extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

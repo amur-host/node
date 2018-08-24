@@ -1,7 +1,7 @@
-package com..settings
+package com.amurplatform.settings
 
 import com.typesafe.config.ConfigFactory
-import com..state.ByteStr
+import com.amurplatform.state.ByteStr
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.duration._

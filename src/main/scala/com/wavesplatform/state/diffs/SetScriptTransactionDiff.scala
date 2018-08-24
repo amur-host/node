@@ -1,8 +1,8 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..state.{Diff, LeaseBalance, Portfolio}
-import com..transaction.ValidationError
-import com..transaction.smart.SetScriptTransaction
+import com.amurplatform.state.{Diff, LeaseBalance, Portfolio}
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.smart.SetScriptTransaction
 
 import scala.util.Right
 

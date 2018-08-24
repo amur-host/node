@@ -1,12 +1,12 @@
-package com..transaction.smart.script
+package com.amurplatform.transaction.smart.script
 
-import com..lang.ScriptVersion.Versions.V1
-import com..lang.Versioned
-import com..lang.v1.compiler.Terms
-import com..state.ByteStr
+import com.amurplatform.lang.ScriptVersion.Versions.V1
+import com.amurplatform.lang.Versioned
+import com.amurplatform.lang.v1.compiler.Terms
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com..utils.Base64
-import com..transaction.ValidationError.ScriptParseError
+import com.amurplatform.utils.Base64
+import com.amurplatform.transaction.ValidationError.ScriptParseError
 
 trait Script extends Versioned {
   val expr: version.ExprT

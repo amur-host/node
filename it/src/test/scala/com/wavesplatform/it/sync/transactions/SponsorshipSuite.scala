@@ -1,15 +1,15 @@
-package com..it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
 import com.typesafe.config.Config
-import com..api.http.assets.SignedSponsorFeeRequest
-import com..it.api.SyncHttpApi._
-import com..it.sync._
-import com..it.transactions.NodesFromDocker
-import com..it.util._
-import com..it.{NodeConfigs, ReportingTestName}
-import com..state.{ByteStr, Sponsorship}
-import com..transaction.assets.SponsorFeeTransaction
-import com..utils.Base58
+import com.amurplatform.api.http.assets.SignedSponsorFeeRequest
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.util._
+import com.amurplatform.it.{NodeConfigs, ReportingTestName}
+import com.amurplatform.state.{ByteStr, Sponsorship}
+import com.amurplatform.transaction.assets.SponsorFeeTransaction
+import com.amurplatform.utils.Base58
 import org.scalatest.{Assertion, CancelAfterFailure, FreeSpec, Matchers}
 import play.api.libs.json.{JsNumber, JsObject, Json}
 

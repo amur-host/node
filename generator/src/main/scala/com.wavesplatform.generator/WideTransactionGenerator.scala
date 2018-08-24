@@ -1,10 +1,10 @@
-package com..generator
+package com.amurplatform.generator
 
 import cats.Show
-import com..generator.WideTransactionGenerator.Settings
-import com..generator.utils.Gen
-import com..account.PrivateKeyAccount
-import com..transaction.Transaction
+import com.amurplatform.generator.WideTransactionGenerator.Settings
+import com.amurplatform.generator.utils.Gen
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.transaction.Transaction
 
 class WideTransactionGenerator(settings: Settings, accounts: Seq[PrivateKeyAccount]) extends TransactionGenerator {
   require(accounts.nonEmpty)

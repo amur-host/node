@@ -1,16 +1,16 @@
-package com..http
+package com.amurplatform.http
 
 import akka.http.scaladsl.server.{Directive, Route}
-import com..api.http.assets.TransferV1Request
-import com..api.http.{ApiRoute, DiscontinuedApi}
-import com..settings.RestAPISettings
-import com..transaction.TransactionFactory
-import com..utils.Time
-import com..utx.UtxPool
+import com.amurplatform.api.http.assets.TransferV1Request
+import com.amurplatform.api.http.{ApiRoute, DiscontinuedApi}
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.transaction.TransactionFactory
+import com.amurplatform.utils.Time
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
-import com..wallet.Wallet
+import com.amurplatform.wallet.Wallet
 
 @Path("/waves")
 @Api(value = "waves")
@@ -39,7 +39,7 @@ case class WavesApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..api.http.assets.TransferV1Request",
+        dataType = "com.amurplatform.api.http.assets.TransferV1Request",
         defaultValue = "{\n\t\"amount\":400,\n\t\"fee\":1,\n\t\"sender\":\"senderId\",\n\t\"recipient\":\"recipientId\"\n}"
       )
     ))

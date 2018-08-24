@@ -1,6 +1,6 @@
-package com..lang.v1.parser
+package com.amurplatform.lang.v1.parser
 
-import com..lang.v1.parser.Expressions._
+import com.amurplatform.lang.v1.parser.Expressions._
 import fastparse.all._
 
 sealed abstract class BinaryOperation {

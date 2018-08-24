@@ -1,4 +1,4 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import play.api.libs.json.{JsPath, Reads}
 import play.api.libs.functional.syntax._

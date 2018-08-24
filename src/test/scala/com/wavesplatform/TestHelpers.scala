@@ -1,11 +1,11 @@
-package com.
+package com.amurplatform
 
 import java.io.IOException
 import java.nio.file.attribute.BasicFileAttributes
 import java.nio.file.{FileVisitResult, Files, Path, SimpleFileVisitor}
 
-import com..settings.{GenesisSettings, GenesisTransactionSettings}
-import com..account.Address
+import com.amurplatform.settings.{GenesisSettings, GenesisTransactionSettings}
+import com.amurplatform.account.Address
 
 import scala.concurrent.duration._
 

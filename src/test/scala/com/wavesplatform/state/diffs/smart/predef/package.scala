@@ -1,13 +1,13 @@
-package com..state.diffs.smart
+package com.amurplatform.state.diffs.smart
 
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.evaluator.EvaluatorV1
-import com..lang.v1.parser.Parser
-import com..state.ByteStr
-import com..transaction.smart.BlockchainContext
-import com..transaction.transfer.TransferTransaction
-import com..transaction.{DataTransaction, Transaction}
-import com..utils.dummyCompilerContext
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.evaluator.EvaluatorV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.smart.BlockchainContext
+import com.amurplatform.transaction.transfer.TransferTransaction
+import com.amurplatform.transaction.{DataTransaction, Transaction}
+import com.amurplatform.utils.dummyCompilerContext
 import fastparse.core.Parsed.Success
 import monix.eval.Coeval
 import shapeless.Coproduct

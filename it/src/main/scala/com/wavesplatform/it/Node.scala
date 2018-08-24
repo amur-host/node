@@ -1,16 +1,16 @@
-package com..it
+package com.amurplatform.it
 
 import java.net.{InetSocketAddress, URL}
 
 import com.typesafe.config.Config
-import com..it.util.GlobalTimer
-import com..settings.WavesSettings
-import com..state.EitherExt2
-import com..utils.{Base58, LoggerFacade}
+import com.amurplatform.it.util.GlobalTimer
+import com.amurplatform.settings.WavesSettings
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.utils.{Base58, LoggerFacade}
 import org.asynchttpclient.Dsl.{config => clientConfig, _}
 import org.asynchttpclient._
 import org.slf4j.LoggerFactory
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
 
 import scala.concurrent.duration.FiniteDuration
 

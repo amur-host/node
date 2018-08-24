@@ -1,11 +1,11 @@
-package com..lang.v1.evaluator.ctx.impl
+package com.amurplatform.lang.v1.evaluator.ctx.impl
 
-import com..lang.ExecutionError
-import com..lang.v1.evaluator.ctx.CaseObj
-import com..lang.v1.evaluator.ctx.impl.waves.Types
-import com..lang.v1.traits.domain.Recipient
-import com..lang.v1.traits.domain.Recipient.{Address, Alias}
-import com..lang.v1.traits.{DataType, Environment}
+import com.amurplatform.lang.ExecutionError
+import com.amurplatform.lang.v1.evaluator.ctx.CaseObj
+import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Types
+import com.amurplatform.lang.v1.traits.domain.Recipient
+import com.amurplatform.lang.v1.traits.domain.Recipient.{Address, Alias}
+import com.amurplatform.lang.v1.traits.{DataType, Environment}
 import scodec.bits.ByteVector
 
 class EnvironmentFunctions(environment: Environment) {

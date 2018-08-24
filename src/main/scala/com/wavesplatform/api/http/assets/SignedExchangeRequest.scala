@@ -1,15 +1,15 @@
-package com..api.http.assets
+package com.amurplatform.api.http.assets
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com..account.PublicKeyAccount
-import com..api.http.BroadcastRequest
-import com..transaction.TransactionParsers.SignatureStringLength
-import com..transaction.ValidationError
-import com..transaction.assets.exchange.{ExchangeTransaction, ExchangeTransactionV1, Order, OrderV1}
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.TransactionParsers.SignatureStringLength
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.assets.exchange.{ExchangeTransaction, ExchangeTransactionV1, Order, OrderV1}
 
 object SignedExchangeRequest {
-  implicit val orderFormat: Format[Order]                                 = com..transaction.assets.exchange.OrderJson.orderFormat
+  implicit val orderFormat: Format[Order]                                 = com.amurplatform.transaction.assets.exchange.OrderJson.orderFormat
   implicit val signedExchangeRequestFormat: Format[SignedExchangeRequest] = Json.format
 }
 

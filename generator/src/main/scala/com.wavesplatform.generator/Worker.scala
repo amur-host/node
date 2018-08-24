@@ -1,4 +1,4 @@
-package com..generator
+package com.amurplatform.generator
 
 import java.io.IOException
 import java.net.InetSocketAddress
@@ -6,10 +6,10 @@ import java.net.InetSocketAddress
 import cats.Show
 import cats.data._
 import cats.implicits._
-import com..generator.Worker.Settings
-import com..network.RawBytes
-import com..network.client.NetworkSender
-import com..utils.ScorexLogging
+import com.amurplatform.generator.Worker.Settings
+import com.amurplatform.network.RawBytes
+import com.amurplatform.network.client.NetworkSender
+import com.amurplatform.utils.ScorexLogging
 import io.netty.channel.Channel
 
 import scala.concurrent.duration.FiniteDuration

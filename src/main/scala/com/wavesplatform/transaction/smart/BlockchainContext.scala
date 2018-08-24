@@ -1,13 +1,13 @@
-package com..transaction.smart
+package com.amurplatform.transaction.smart
 
 import cats.kernel.Monoid
-import com..lang.Global
-import com..lang.v1.evaluator.ctx.EvaluationContext
-import com..lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com..state._
-import com..transaction._
-import com..transaction.assets.exchange.Order
+import com.amurplatform.lang.Global
+import com.amurplatform.lang.v1.evaluator.ctx.EvaluationContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.amurplatform.state._
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets.exchange.Order
 import monix.eval.Coeval
 import shapeless._
 

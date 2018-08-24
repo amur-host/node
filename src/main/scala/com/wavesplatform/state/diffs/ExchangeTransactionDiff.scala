@@ -1,12 +1,12 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats._
 import cats.implicits._
-import com..features.BlockchainFeatures
-import com..state._
-import com..transaction.ValidationError
-import com..transaction.ValidationError.{GenericError, OrderValidationError}
-import com..transaction.assets.exchange.ExchangeTransaction
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.state._
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.{GenericError, OrderValidationError}
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
 
 import scala.util.Right
 

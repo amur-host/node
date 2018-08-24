@@ -1,18 +1,18 @@
-package com..state.diffs.smart.predef
+package com.amurplatform.state.diffs.smart.predef
 
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..settings.TestFunctionalitySettings
-import com..state._
-import com..state.diffs.{ENOUGH_AMT, assertDiffAndState}
-import com..utils.dummyCompilerContext
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.{ENOUGH_AMT, assertDiffAndState}
+import com.amurplatform.utils.dummyCompilerContext
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..lagonaki.mocks.TestBlock
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.{GenesisTransaction, PaymentTransaction}
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.{GenesisTransaction, PaymentTransaction}
 
 class ObsoleteTransactionBindingsTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

@@ -1,11 +1,11 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import akka.http.scaladsl.model.{StatusCode, StatusCodes}
-import com..lang.v1.evaluator.ctx.LazyVal
-import com..state.diffs.TransactionDiffer.TransactionValidationError
+import com.amurplatform.lang.v1.evaluator.ctx.LazyVal
+import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
 import play.api.libs.json._
-import com..account.{Address, AddressOrAlias, Alias}
-import com..transaction.{Transaction, ValidationError}
+import com.amurplatform.account.{Address, AddressOrAlias, Alias}
+import com.amurplatform.transaction.{Transaction, ValidationError}
 
 case class ApiErrorResponse(error: Int, message: String)
 

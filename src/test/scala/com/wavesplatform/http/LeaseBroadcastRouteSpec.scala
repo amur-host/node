@@ -1,11 +1,11 @@
-package com..http
+package com.amurplatform.http
 
 import com.typesafe.config.ConfigFactory
-import com..RequestGen
-import com..http.ApiMarshallers._
-import com..settings.RestAPISettings
-import com..state.diffs.TransactionDiffer.TransactionValidationError
-import com..utx.UtxPool
+import com.amurplatform.RequestGen
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen.posNum
 import org.scalacheck.{Gen => G}
@@ -13,11 +13,11 @@ import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json._
 import play.api.libs.json._
-import com..api.http._
-import com..api.http.leasing.LeaseBroadcastApiRoute
-import com..transaction.ValidationError.GenericError
-import com..transaction.Transaction
-import com..transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
+import com.amurplatform.api.http._
+import com.amurplatform.api.http.leasing.LeaseBroadcastApiRoute
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
 
 class LeaseBroadcastRouteSpec extends RouteSpec("/leasing/broadcast/") with RequestGen with PathMockFactory with PropertyChecks {
   private val settings    = RestAPISettings.fromConfig(ConfigFactory.load())

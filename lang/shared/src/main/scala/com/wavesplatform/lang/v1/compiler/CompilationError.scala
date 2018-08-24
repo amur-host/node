@@ -1,8 +1,8 @@
-package com..lang.v1.compiler
+package com.amurplatform.lang.v1.compiler
 
 import cats.Show
-import com..lang.v1.compiler.Types._
-import com..lang.v1.evaluator.ctx.FunctionTypeSignature
+import com.amurplatform.lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.evaluator.ctx.FunctionTypeSignature
 
 sealed trait CompilationError {
   def start: Int

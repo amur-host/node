@@ -1,16 +1,16 @@
-package com.
+package com.amurplatform
 
 import java.io.File
 import java.nio.ByteBuffer
 import java.util
 
 import com.typesafe.config.ConfigFactory
-import com..account.{Address, AddressScheme}
-import com..database.{Keys, LevelDBWriter}
-import com..db.openDB
-import com..settings.{WavesSettings, loadConfig}
-import com..state.{ByteStr, EitherExt2}
-import com..utils.{Base58, Base64, ScorexLogging}
+import com.amurplatform.account.{Address, AddressScheme}
+import com.amurplatform.database.{Keys, LevelDBWriter}
+import com.amurplatform.db.openDB
+import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.state.{ByteStr, EitherExt2}
+import com.amurplatform.utils.{Base58, Base64, ScorexLogging}
 import org.slf4j.bridge.SLF4JBridgeHandler
 
 import scala.collection.JavaConverters._

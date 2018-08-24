@@ -1,14 +1,14 @@
-package com..consensus
+package com.amurplatform.consensus
 
 import cats.implicits._
-import com..features.BlockchainFeatures
-import com..features.FeatureProvider._
-import com..settings.BlockchainSettings
-import com..state.{Blockchain, ByteStr, _}
-import com..block.Block
-import com..consensus.nxt.NxtLikeConsensusBlockData
-import com..transaction.ValidationError
-import com..transaction.ValidationError.GenericError
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.settings.BlockchainSettings
+import com.amurplatform.state.{Blockchain, ByteStr, _}
+import com.amurplatform.block.Block
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.GenericError
 
 import scala.concurrent.duration.FiniteDuration
 

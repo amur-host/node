@@ -1,13 +1,13 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats._
 import cats.implicits._
-import com..settings.FunctionalitySettings
-import com..state._
-import com..account.Address
-import com..transaction.ValidationError
-import com..transaction.ValidationError.GenericError
-import com..transaction.lease._
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.account.Address
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.lease._
 
 import scala.util.{Left, Right}
 

@@ -1,12 +1,12 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import com.google.common.primitives.{Bytes, Ints, Longs}
-import com..crypto
-import com..state.{ByteStr, _}
+import com.amurplatform.crypto
+import com.amurplatform.state.{ByteStr, _}
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com..account.Address
-import com..transaction.TransactionParsers._
+import com.amurplatform.account.Address
+import com.amurplatform.transaction.TransactionParsers._
 
 import scala.util.{Failure, Success, Try}
 

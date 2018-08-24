@@ -1,10 +1,10 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..features.BlockchainFeatures
-import com..state.{Blockchain, Diff, LeaseBalance, Portfolio}
-import com..transaction.ValidationError.GenericError
-import com..transaction.{CreateAliasTransaction, ValidationError}
-import com..features.FeatureProvider._
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.{CreateAliasTransaction, ValidationError}
+import com.amurplatform.features.FeatureProvider._
 
 import scala.util.Right
 

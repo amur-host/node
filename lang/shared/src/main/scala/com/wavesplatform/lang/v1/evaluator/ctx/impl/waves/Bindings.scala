@@ -1,9 +1,9 @@
-package com..lang.v1.evaluator.ctx.impl.waves
+package com.amurplatform.lang.v1.evaluator.ctx.impl.waves
 
-import com..lang.v1.evaluator.ctx.CaseObj
-import com..lang.v1.evaluator.ctx.impl.PureContext.fromOption
-import com..lang.v1.traits.domain.Tx._
-import com..lang.v1.traits.domain._
+import com.amurplatform.lang.v1.evaluator.ctx.CaseObj
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext.fromOption
+import com.amurplatform.lang.v1.traits.domain.Tx._
+import com.amurplatform.lang.v1.traits.domain._
 import scodec.bits.ByteVector
 
 object Bindings {

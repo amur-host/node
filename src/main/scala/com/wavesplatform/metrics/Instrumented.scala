@@ -1,6 +1,6 @@
-package com..metrics
+package com.amurplatform.metrics
 
-import com..utils.ScorexLogging
+import com.amurplatform.utils.ScorexLogging
 import kamon.metric.{Counter, Histogram}
 
 trait Instrumented {

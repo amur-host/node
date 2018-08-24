@@ -1,19 +1,19 @@
-package com..it.async.network
+package com.amurplatform.it.async.network
 
 import java.nio.charset.StandardCharsets
 
 import com.typesafe.config.Config
-import com..it._
-import com..it.api.AsyncHttpApi._
-import com..it.api.AsyncNetworkApi._
-import com..it.api._
-import com..it.transactions.BaseTransactionSuite
-import com..network.{RawBytes, TransactionSpec}
-import com..state.EitherExt2
+import com.amurplatform.it._
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.api.AsyncNetworkApi._
+import com.amurplatform.it.api._
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.network.{RawBytes, TransactionSpec}
+import com.amurplatform.state.EitherExt2
 import org.scalatest._
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
-import com..account.Address
-import com..transaction.transfer._
+import com.amurplatform.account.Address
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.Await
 import scala.concurrent.Future.traverse

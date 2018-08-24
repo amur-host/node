@@ -1,14 +1,14 @@
-package com..utx
+package com.amurplatform.utx
 
 import akka.event.EventStream
 import cats.kernel.Monoid
-import com..matcher.MatcherSettings
-import com..matcher.model.Events.BalanceChanged
-import com..mining.MultiDimensionalMiningConstraint
-import com..state.{ByteStr, Diff, Portfolio}
-import com..account.Address
-import com..utils.ScorexLogging
-import com..transaction.{AssetId, Authorized, Transaction, ValidationError}
+import com.amurplatform.matcher.MatcherSettings
+import com.amurplatform.matcher.model.Events.BalanceChanged
+import com.amurplatform.mining.MultiDimensionalMiningConstraint
+import com.amurplatform.state.{ByteStr, Diff, Portfolio}
+import com.amurplatform.account.Address
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.transaction.{AssetId, Authorized, Transaction, ValidationError}
 
 import scala.collection.mutable
 

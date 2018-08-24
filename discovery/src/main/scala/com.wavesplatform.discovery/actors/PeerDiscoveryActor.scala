@@ -1,12 +1,12 @@
-package com..discovery.actors
+package com.amurplatform.discovery.actors
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util.concurrent.TimeUnit
 
 import akka.actor.Actor
-import com..discovery._
-import com..discovery.network._
-import com..network.{GetPeers, Handshake, KnownPeers, LegacyFrameCodec, PeerDatabase, PipelineInitializer}
+import com.amurplatform.discovery._
+import com.amurplatform.discovery.network._
+import com.amurplatform.network.{GetPeers, Handshake, KnownPeers, LegacyFrameCodec, PeerDatabase, PipelineInitializer}
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel.Channel
 import io.netty.channel.nio.NioEventLoopGroup

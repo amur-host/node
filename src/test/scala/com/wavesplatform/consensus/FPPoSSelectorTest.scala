@@ -1,17 +1,17 @@
-package com..consensus
+package com.amurplatform.consensus
 
 import com.typesafe.config.ConfigFactory
-import com..account.PrivateKeyAccount
-import com..block.Block
-import com..consensus.nxt.NxtLikeConsensusBlockData
-import com..database.LevelDBWriter
-import com..lagonaki.mocks.TestBlock
-import com..settings.{WavesSettings, _}
-import com..state._
-import com..state.diffs.{ENOUGH_AMT, ProduceError}
-import com..transaction.{BlockchainUpdater, GenesisTransaction}
-import com..utils.{Time, TimeImpl}
-import com..{TransactionGen, WithDB}
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.Block
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.database.LevelDBWriter
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.settings.{WavesSettings, _}
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.{ENOUGH_AMT, ProduceError}
+import com.amurplatform.transaction.{BlockchainUpdater, GenesisTransaction}
+import com.amurplatform.utils.{Time, TimeImpl}
+import com.amurplatform.{TransactionGen, WithDB}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.{FreeSpec, Matchers}
 

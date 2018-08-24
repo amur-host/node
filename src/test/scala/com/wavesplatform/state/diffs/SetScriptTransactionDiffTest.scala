@@ -1,15 +1,15 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..features.BlockchainFeatures
-import com..settings.TestFunctionalitySettings
-import com..state._
-import com..{NoShrink, TransactionGen, WithDB}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.{NoShrink, TransactionGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..lagonaki.mocks.TestBlock
-import com..transaction.GenesisTransaction
-import com..transaction.smart.SetScriptTransaction
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.smart.SetScriptTransaction
 
 class SetScriptTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink with WithDB {
 

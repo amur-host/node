@@ -1,10 +1,10 @@
-package com..http
+package com.amurplatform.http
 
-import com..TestWallet
-import com..http.ApiMarshallers._
+import com.amurplatform.TestWallet
+import com.amurplatform.http.ApiMarshallers._
 import play.api.libs.json.JsObject
-import com..api.http.{ApiKeyNotValid, WalletApiRoute}
-import com..utils.Base58
+import com.amurplatform.api.http.{ApiKeyNotValid, WalletApiRoute}
+import com.amurplatform.utils.Base58
 
 class WalletRouteSpec extends RouteSpec("/wallet") with RestAPISettingsHelper with TestWallet {
   private val route = WalletApiRoute(restAPISettings, testWallet).route

@@ -1,18 +1,18 @@
-package com..state
+package com.amurplatform.state
 
-import com..consensus.{GeneratingBalanceProvider, PoSSelector, TransactionsOrdering}
-import com..mining._
-import com..network._
-import com..settings.{FunctionalitySettings, WavesSettings}
-import com..utx.UtxPool
+import com.amurplatform.consensus.{GeneratingBalanceProvider, PoSSelector, TransactionsOrdering}
+import com.amurplatform.mining._
+import com.amurplatform.network._
+import com.amurplatform.settings.{FunctionalitySettings, WavesSettings}
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import monix.eval.Task
-import com..block.Block
-import com..transaction.ValidationError.{BlockAppendError, BlockFromFuture, GenericError}
-import com..transaction._
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.ValidationError.{BlockAppendError, BlockFromFuture, GenericError}
+import com.amurplatform.transaction._
 import cats.implicits._
-import com..utils.{ScorexLogging, Time}
+import com.amurplatform.utils.{ScorexLogging, Time}
 
 import scala.util.{Left, Right}
 

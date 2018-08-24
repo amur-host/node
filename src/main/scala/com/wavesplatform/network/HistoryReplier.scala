@@ -1,11 +1,11 @@
-package com..network
+package com.amurplatform.network
 
 import com.google.common.cache.{CacheBuilder, CacheLoader}
-import com..network.HistoryReplier._
-import com..network.MicroBlockSynchronizer.MicroBlockSignature
-import com..settings.SynchronizationSettings
-import com..state.{ByteStr, NG}
-import com..utils.ScorexLogging
+import com.amurplatform.network.HistoryReplier._
+import com.amurplatform.network.MicroBlockSynchronizer.MicroBlockSignature
+import com.amurplatform.settings.SynchronizationSettings
+import com.amurplatform.state.{ByteStr, NG}
+import com.amurplatform.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
 import monix.eval.Task

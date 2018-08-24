@@ -1,18 +1,18 @@
-package com..it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
-import com..it.api.SyncHttpApi._
-import com..it.sync._
-import com..it.transactions.BaseTransactionSuite
-import com..it.util._
-import com..state.EitherExt2
-import com..utils.Base58
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync._
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.utils.Base58
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json._
-import com..account.Alias
-import com..api.http.assets.{MassTransferRequest, SignedMassTransferRequest}
-import com..transaction.transfer.MassTransferTransaction.{MaxTransferCount, Transfer}
-import com..transaction.transfer.TransferTransaction.MaxAttachmentSize
-import com..transaction.transfer._
+import com.amurplatform.account.Alias
+import com.amurplatform.api.http.assets.{MassTransferRequest, SignedMassTransferRequest}
+import com.amurplatform.transaction.transfer.MassTransferTransaction.{MaxTransferCount, Transfer}
+import com.amurplatform.transaction.transfer.TransferTransaction.MaxAttachmentSize
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.Random
@@ -97,7 +97,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
   }
 
   test("invalid transfer should not be in UTX or blockchain") {
-    import com..transaction.transfer._
+    import com.amurplatform.transaction.transfer._
 
     def request(version: Byte = MassTransferTransaction.version,
                 transfers: List[Transfer] = List(Transfer(secondAddress, transferAmount)),

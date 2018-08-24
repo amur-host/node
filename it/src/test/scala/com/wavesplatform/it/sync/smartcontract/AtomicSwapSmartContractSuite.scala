@@ -1,20 +1,20 @@
-package com..it.sync.smartcontract
+package com.amurplatform.it.sync.smartcontract
 
 import com.typesafe.config.Config
-import com..account.AddressOrAlias
-import com..crypto
-import com..it.NodeConfigs
-import com..it.api.SyncHttpApi._
-import com..it.sync._
-import com..it.transactions.BaseTransactionSuite
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..state._
-import com..transaction.Proofs
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
-import com..utils.dummyCompilerContext
+import com.amurplatform.account.AddressOrAlias
+import com.amurplatform.crypto
+import com.amurplatform.it.NodeConfigs
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync._
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state._
+import com.amurplatform.transaction.Proofs
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.utils.dummyCompilerContext
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.JsNumber
 

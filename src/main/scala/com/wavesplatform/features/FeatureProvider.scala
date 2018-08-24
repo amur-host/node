@@ -1,6 +1,6 @@
-package com..features
+package com.amurplatform.features
 
-import com..state.Blockchain
+import com.amurplatform.state.Blockchain
 
 object FeatureProvider {
   implicit class FeatureProviderExt(provider: Blockchain) {

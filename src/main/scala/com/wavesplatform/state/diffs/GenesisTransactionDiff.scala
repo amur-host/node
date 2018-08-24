@@ -1,8 +1,8 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..state.{Diff, LeaseBalance, Portfolio}
-import com..transaction.ValidationError.GenericError
-import com..transaction.{GenesisTransaction, ValidationError}
+import com.amurplatform.state.{Diff, LeaseBalance, Portfolio}
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.{GenesisTransaction, ValidationError}
 
 import scala.util.{Left, Right}
 

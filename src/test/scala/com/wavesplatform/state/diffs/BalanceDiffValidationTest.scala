@@ -1,15 +1,15 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..settings.TestFunctionalitySettings
-import com..state.EitherExt2
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..lagonaki.mocks.TestBlock
-import com..transaction.GenesisTransaction
-import com..transaction.lease.LeaseTransaction
-import com..transaction.transfer._
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.lease.LeaseTransaction
+import com.amurplatform.transaction.transfer._
 
 class BalanceDiffValidationTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

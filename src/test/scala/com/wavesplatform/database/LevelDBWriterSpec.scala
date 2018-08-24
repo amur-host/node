@@ -1,20 +1,20 @@
-package com..database
+package com.amurplatform.database
 
 import com.typesafe.config.ConfigFactory
-import com..account.{Address, PrivateKeyAccount}
-import com..block.Block
-import com..features.BlockchainFeatures
-import com..lagonaki.mocks.TestBlock
-import com..lang.v1.compiler.Terms
-import com..settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
-import com..state.diffs.ENOUGH_AMT
-import com..state.{BlockchainUpdaterImpl, EitherExt2}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer.{TransferTransaction, TransferTransactionV1}
-import com..transaction.{GenesisTransaction, Transaction}
-import com..utils.{Time, TimeImpl}
-import com..{RequestGen, WithDB}
+import com.amurplatform.account.{Address, PrivateKeyAccount}
+import com.amurplatform.block.Block
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.lang.v1.compiler.Terms
+import com.amurplatform.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
+import com.amurplatform.state.diffs.ENOUGH_AMT
+import com.amurplatform.state.{BlockchainUpdaterImpl, EitherExt2}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer.{TransferTransaction, TransferTransactionV1}
+import com.amurplatform.transaction.{GenesisTransaction, Transaction}
+import com.amurplatform.utils.{Time, TimeImpl}
+import com.amurplatform.{RequestGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.{FreeSpec, Matchers}
 

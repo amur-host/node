@@ -1,19 +1,19 @@
-package com..state
+package com.amurplatform.state
 
 import java.util.concurrent.TimeUnit
 
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..settings.FunctionalitySettings
-import com..state.StateSyntheticBenchmark._
-import com..utils.dummyCompilerContext
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.StateSyntheticBenchmark._
+import com.amurplatform.utils.dummyCompilerContext
 import org.openjdk.jmh.annotations._
 import org.scalacheck.Gen
-import com..account.PrivateKeyAccount
-import com..transaction.Transaction
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
 
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @BenchmarkMode(Array(Mode.AverageTime))

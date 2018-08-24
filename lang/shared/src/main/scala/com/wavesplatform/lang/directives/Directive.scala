@@ -1,3 +1,3 @@
-package com..lang.directives
+package com.amurplatform.lang.directives
 
 final case class Directive(key: DirectiveKey, value: String)

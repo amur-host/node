@@ -1,18 +1,18 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import java.util.concurrent.ThreadLocalRandom
 
-import com..BlockGen
-import com..account.PrivateKeyAccount
-import com..block.Block
-import com..db.WithState
-import com..lagonaki.mocks.TestBlock
-import com..mining.MiningConstraint
-import com..settings.FunctionalitySettings
-import com..state.{Blockchain, Diff, EitherExt2}
-import com..transaction.{GenesisTransaction, ValidationError}
+import com.amurplatform.BlockGen
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.Block
+import com.amurplatform.db.WithState
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.mining.MiningConstraint
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.{Blockchain, Diff, EitherExt2}
+import com.amurplatform.transaction.{GenesisTransaction, ValidationError}
 import org.scalatest.{FreeSpecLike, Matchers}
-import com..crypto._
+import com.amurplatform.crypto._
 
 class BlockDifferTest extends FreeSpecLike with Matchers with BlockGen with WithState {
 

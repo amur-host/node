@@ -1,6 +1,6 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..account.PublicKeyAccount
+import com.amurplatform.account.PublicKeyAccount
 
 trait Authorized {
   val sender: PublicKeyAccount

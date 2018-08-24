@@ -1,9 +1,9 @@
-package com..http
+package com.amurplatform.http
 
-import com..api.http.ApiError
-import com..network._
-import com..transaction.{Transaction, ValidationError}
-import com..utx.UtxPool
+import com.amurplatform.api.http.ApiError
+import com.amurplatform.network._
+import com.amurplatform.transaction.{Transaction, ValidationError}
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 
 import scala.concurrent.Future

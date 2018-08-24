@@ -1,4 +1,4 @@
-package com.
+package com.amurplatform
 
 import kamon.metric.{Histogram, Timer}
 

@@ -1,6 +1,6 @@
-package com..network
+package com.amurplatform.network
 
-import com..TransactionGen
+import com.amurplatform.TransactionGen
 import io.netty.channel.embedded.EmbeddedChannel
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks

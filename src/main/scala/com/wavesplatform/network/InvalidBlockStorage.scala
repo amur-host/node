@@ -1,9 +1,9 @@
-package com..network
+package com.amurplatform.network
 
 import com.google.common.cache.CacheBuilder
-import com..network.InvalidBlockStorageImpl._
-import com..state.ByteStr
-import com..transaction.ValidationError
+import com.amurplatform.network.InvalidBlockStorageImpl._
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.ValidationError
 
 import scala.concurrent.duration.FiniteDuration
 

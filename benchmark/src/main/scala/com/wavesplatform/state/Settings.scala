@@ -1,4 +1,4 @@
-package com..state
+package com.amurplatform.state
 
 import com.typesafe.config.Config
 import net.ceedubs.ficus.Ficus._

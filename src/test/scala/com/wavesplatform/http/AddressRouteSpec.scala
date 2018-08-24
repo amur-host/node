@@ -1,21 +1,21 @@
-package com..http
+package com.amurplatform.http
 
-import com..http.ApiMarshallers._
-import com..lang.v1.compiler.Terms._
-import com..state.diffs.CommonValidation
-import com..state.{Blockchain, EitherExt2}
-import com..utils.Base58
-import com..utx.UtxPool
-import com..{NoShrink, TestTime, TestWallet, crypto}
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.state.diffs.CommonValidation
+import com.amurplatform.state.{Blockchain, EitherExt2}
+import com.amurplatform.utils.Base58
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.{NoShrink, TestTime, TestWallet, crypto}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json._
-import com..account.Address
-import com..api.http.{AddressApiRoute, ApiKeyNotValid}
-import com..settings.TestFunctionalitySettings
-import com..transaction.smart.script.v1.ScriptV1
+import com.amurplatform.account.Address
+import com.amurplatform.api.http.{AddressApiRoute, ApiKeyNotValid}
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
 
 class AddressRouteSpec
     extends RouteSpec("/addresses")

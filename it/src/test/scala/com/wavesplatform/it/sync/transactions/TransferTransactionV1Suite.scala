@@ -1,17 +1,17 @@
-package com..it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
-import com..it.TransferSending
-import com..it.api.SyncHttpApi._
-import com..it.sync._
-import com..it.transactions.BaseTransactionSuite
-import com..it.util._
-import com..state.EitherExt2
-import com..utils.Base58
+import com.amurplatform.it.TransferSending
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync._
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
+import com.amurplatform.state.EitherExt2
+import com.amurplatform.utils.Base58
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json._
-import com..account.AddressOrAlias
-import com..api.http.assets.SignedTransferV1Request
-import com..transaction.transfer._
+import com.amurplatform.account.AddressOrAlias
+import com.amurplatform.api.http.assets.SignedTransferV1Request
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 

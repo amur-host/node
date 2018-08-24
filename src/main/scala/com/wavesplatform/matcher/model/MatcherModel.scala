@@ -1,10 +1,10 @@
-package com..matcher.model
+package com.amurplatform.matcher.model
 
-import com..account.Address
-import com..matcher.model.MatcherModel.Price
-import com..state.{ByteStr, Portfolio}
-import com..transaction.assets.exchange._
-import com..transaction.{AssetAcc, AssetId}
+import com.amurplatform.account.Address
+import com.amurplatform.matcher.model.MatcherModel.Price
+import com.amurplatform.state.{ByteStr, Portfolio}
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.transaction.{AssetAcc, AssetId}
 import play.api.libs.json.{JsObject, JsValue, Json}
 
 import scala.math.BigDecimal.RoundingMode

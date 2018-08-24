@@ -1,4 +1,4 @@
-package com..utils
+package com.amurplatform.utils
 
 import org.scalacheck.Gen
 import org.scalatest.{Matchers, PropSpec}

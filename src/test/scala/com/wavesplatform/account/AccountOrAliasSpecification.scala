@@ -1,7 +1,7 @@
-package com..account
+package com.amurplatform.account
 
-import com..TransactionGen
-import com..state.EitherExt2
+import com.amurplatform.TransactionGen
+import com.amurplatform.state.EitherExt2
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

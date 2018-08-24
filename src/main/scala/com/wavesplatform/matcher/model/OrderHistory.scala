@@ -1,23 +1,23 @@
-package com..matcher.model
+package com.amurplatform.matcher.model
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com..account.Address
-import com..database.{DBExt, RW}
-import com..matcher.api.DBUtils
-import com..matcher.model.Events._
-import com..matcher.model.LimitOrder.{Filled, OrderStatus}
-import com..matcher.{MatcherKeys, MatcherSettings, OrderAssets}
-import com..metrics.TimerExt
-import com..state._
-import com..transaction.AssetId
-import com..transaction.assets.exchange.{Order, OrderType}
+import com.amurplatform.account.Address
+import com.amurplatform.database.{DBExt, RW}
+import com.amurplatform.matcher.api.DBUtils
+import com.amurplatform.matcher.model.Events._
+import com.amurplatform.matcher.model.LimitOrder.{Filled, OrderStatus}
+import com.amurplatform.matcher.{MatcherKeys, MatcherSettings, OrderAssets}
+import com.amurplatform.metrics.TimerExt
+import com.amurplatform.state._
+import com.amurplatform.transaction.AssetId
+import com.amurplatform.transaction.assets.exchange.{Order, OrderType}
 import kamon.Kamon
 import org.iq80.leveldb.DB
 
 class OrderHistory(db: DB, settings: MatcherSettings) {
   import OrderHistory._
-  import com..matcher.MatcherKeys._
+  import com.amurplatform.matcher.MatcherKeys._
 
   private val timer               = Kamon.timer("matcher.order-history.impl")
   private val saveOpenVolumeTimer = timer.refine("action" -> "save-open-volume")

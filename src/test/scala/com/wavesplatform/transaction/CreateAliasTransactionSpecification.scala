@@ -1,11 +1,11 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..TransactionGen
-import com..state.{ByteStr, EitherExt2}
+import com.amurplatform.TransactionGen
+import com.amurplatform.state.{ByteStr, EitherExt2}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com..account.{Alias, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.account.{Alias, PrivateKeyAccount, PublicKeyAccount}
 
 class CreateAliasTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

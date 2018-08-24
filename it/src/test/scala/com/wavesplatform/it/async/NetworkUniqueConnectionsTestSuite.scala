@@ -1,8 +1,8 @@
-package com..it.async
+package com.amurplatform.it.async
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it.api.AsyncHttpApi._
-import com..it.{DockerBased, NodeConfigs}
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.{DockerBased, NodeConfigs}
 import org.scalatest.{FreeSpec, Matchers}
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -11,7 +11,7 @@ import scala.concurrent.duration.DurationInt
 
 class NetworkUniqueConnectionsTestSuite extends FreeSpec with Matchers with DockerBased {
 
-  import com..it.async.NetworkUniqueConnectionsTestSuite._
+  import com.amurplatform.it.async.NetworkUniqueConnectionsTestSuite._
 
   "nodes should up and connect with each other" in {
     val firstNode = docker.startNode(FirstNodeConfig)

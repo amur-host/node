@@ -1,7 +1,7 @@
-package com..settings
+package com.amurplatform.settings
 
 import com.typesafe.config.Config
-import com..mining.Miner
+import com.amurplatform.mining.Miner
 
 import scala.concurrent.duration.FiniteDuration
 

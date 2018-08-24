@@ -1,8 +1,8 @@
-package com..it
+package com.amurplatform.it
 
-import com..http.DebugMessage
-import com..it.api.AsyncHttpApi._
-import com..utils.ScorexLogging
+import com.amurplatform.http.DebugMessage
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.utils.ScorexLogging
 import org.scalatest.{Args, Status, Suite, SuiteMixin}
 
 import scala.concurrent.duration._

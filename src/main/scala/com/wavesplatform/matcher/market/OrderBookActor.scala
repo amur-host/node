@@ -1,28 +1,28 @@
-package com..matcher.market
+package com.amurplatform.matcher.market
 
 import akka.actor.{ActorRef, Cancellable, Props, Stash}
 import akka.http.scaladsl.model.StatusCodes
 import akka.persistence._
 import com.google.common.cache.CacheBuilder
-import com..account.PublicKeyAccount
-import com..matcher.MatcherSettings
-import com..matcher.api.MatcherResponse
-import com..matcher.market.MatcherActor.{Shutdown, ShutdownComplete}
-import com..matcher.market.OrderBookActor._
-import com..matcher.market.OrderHistoryActor._
-import com..matcher.model.Events.{Event, ExchangeTransactionCreated, OrderAdded, OrderExecuted}
-import com..matcher.model.MatcherModel.{Level, Price}
-import com..matcher.model._
-import com..metrics.TimerExt
-import com..network._
-import com..settings.FunctionalitySettings
-import com..state.{Blockchain, ByteStr}
-import com..transaction.ValidationError
-import com..transaction.ValidationError.{AccountBalanceError, GenericError, NegativeAmount, OrderValidationError}
-import com..transaction.assets.exchange._
-import com..utils.{NTP, ScorexLogging}
-import com..utx.UtxPool
-import com..wallet.Wallet
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.matcher.MatcherSettings
+import com.amurplatform.matcher.api.MatcherResponse
+import com.amurplatform.matcher.market.MatcherActor.{Shutdown, ShutdownComplete}
+import com.amurplatform.matcher.market.OrderBookActor._
+import com.amurplatform.matcher.market.OrderHistoryActor._
+import com.amurplatform.matcher.model.Events.{Event, ExchangeTransactionCreated, OrderAdded, OrderExecuted}
+import com.amurplatform.matcher.model.MatcherModel.{Level, Price}
+import com.amurplatform.matcher.model._
+import com.amurplatform.metrics.TimerExt
+import com.amurplatform.network._
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.{Blockchain, ByteStr}
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.{AccountBalanceError, GenericError, NegativeAmount, OrderValidationError}
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.utils.{NTP, ScorexLogging}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import play.api.libs.json._

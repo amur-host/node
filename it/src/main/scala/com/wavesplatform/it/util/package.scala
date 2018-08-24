@@ -1,6 +1,6 @@
-package com..it
+package com.amurplatform.it
 
-import com..settings.Constants
+import com.amurplatform.settings.Constants
 import io.netty.util.Timer
 
 import scala.concurrent.duration.FiniteDuration

@@ -1,21 +1,21 @@
-package com..state
+package com.amurplatform.state
 
 import java.io.File
 import java.nio.file.Files
 
-import com..TransactionGenBase
-import com..database.LevelDBWriter
-import com..db.LevelDBFactory
-import com..mining.MiningConstraint
-import com..settings.FunctionalitySettings
-import com..state.diffs.BlockDiffer
+import com.amurplatform.TransactionGenBase
+import com.amurplatform.database.LevelDBWriter
+import com.amurplatform.db.LevelDBFactory
+import com.amurplatform.mining.MiningConstraint
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.diffs.BlockDiffer
 import org.iq80.leveldb.{DB, Options}
 import org.openjdk.jmh.annotations.{Setup, TearDown}
 import org.scalacheck.Gen
-import com..account.PrivateKeyAccount
-import com..block.Block
-import com..lagonaki.mocks.TestBlock
-import com..transaction.{GenesisTransaction, Transaction}
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.Block
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.{GenesisTransaction, Transaction}
 
 trait BaseState extends TransactionGenBase {
   import BaseState._

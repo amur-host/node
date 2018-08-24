@@ -1,12 +1,12 @@
-package com..it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it.api.SyncHttpApi._
-import com..it.transactions.BaseTransactionSuite
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.BaseTransactionSuite
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.Json
-import com..it.sync._
-import com..transaction.lease.LeaseTransaction.Status.{Active, Canceled}
+import com.amurplatform.it.sync._
+import com.amurplatform.transaction.lease.LeaseTransaction.Status.{Active, Canceled}
 
 class LeaseStatusTestSuite extends BaseTransactionSuite with CancelAfterFailure {
   import LeaseStatusTestSuite._
@@ -37,7 +37,7 @@ class LeaseStatusTestSuite extends BaseTransactionSuite with CancelAfterFailure 
 
 object LeaseStatusTestSuite {
   private val blockGenerationOffset = "10000ms"
-  import com..it.NodeConfigs.Default
+  import com.amurplatform.it.NodeConfigs.Default
 
   private val minerConfig = ConfigFactory.parseString(s"""waves {
        |   miner{

@@ -1,12 +1,12 @@
-package com..mining
+package com.amurplatform.mining
 
-import com..state.Blockchain
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.state.Blockchain
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
-import com..transaction.Transaction
+import com.amurplatform.transaction.Transaction
 
 class OneDimensionalMiningConstraintSuite extends FreeSpec with Matchers with PropertyChecks with PathMockFactory with TransactionGen with NoShrink {
   "OneDimensionalMiningConstraint" - {

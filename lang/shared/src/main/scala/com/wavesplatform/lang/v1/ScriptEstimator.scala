@@ -1,7 +1,7 @@
-package com..lang.v1
+package com.amurplatform.lang.v1
 
 import cats.data.EitherT
-import com..lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.Terms._
 import monix.eval.Coeval
 
 object ScriptEstimator {

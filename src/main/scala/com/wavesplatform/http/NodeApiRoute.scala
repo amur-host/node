@@ -1,16 +1,16 @@
-package com..http
+package com.amurplatform.http
 
 import java.time.Instant
 
 import akka.http.scaladsl.server.Route
-import com..Shutdownable
-import com..settings.{Constants, RestAPISettings}
-import com..state.Blockchain
+import com.amurplatform.Shutdownable
+import com.amurplatform.settings.{Constants, RestAPISettings}
+import com.amurplatform.state.Blockchain
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.Json
-import com..api.http.{ApiRoute, CommonApiFunctions}
-import com..utils.ScorexLogging
+import com.amurplatform.api.http.{ApiRoute, CommonApiFunctions}
+import com.amurplatform.utils.ScorexLogging
 
 @Path("/node")
 @Api(value = "node")

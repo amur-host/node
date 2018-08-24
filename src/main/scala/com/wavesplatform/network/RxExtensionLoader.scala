@@ -1,20 +1,20 @@
-package com..network
+package com.amurplatform.network
 
-import com..network.RxExtensionLoader.ApplierState.Buffer
-import com..network.RxExtensionLoader.LoaderState.WithPeer
-import com..network.RxScoreObserver.{ChannelClosedAndSyncWith, SyncWith}
-import com..state.ByteStr
-import com..utils.ScorexLogging
+import com.amurplatform.network.RxExtensionLoader.ApplierState.Buffer
+import com.amurplatform.network.RxExtensionLoader.LoaderState.WithPeer
+import com.amurplatform.network.RxScoreObserver.{ChannelClosedAndSyncWith, SyncWith}
+import com.amurplatform.state.ByteStr
+import com.amurplatform.utils.ScorexLogging
 import io.netty.channel._
 import monix.eval.{Coeval, Task}
 import monix.execution.CancelableFuture
 import monix.execution.schedulers.SchedulerService
 import monix.reactive.subjects.{ConcurrentSubject, Subject}
 import monix.reactive.{Observable, Observer}
-import com..block.Block
-import com..block.Block.BlockId
-import com..transaction.ValidationError
-import com..transaction.ValidationError.GenericError
+import com.amurplatform.block.Block
+import com.amurplatform.block.Block.BlockId
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.GenericError
 
 import scala.concurrent.duration._
 

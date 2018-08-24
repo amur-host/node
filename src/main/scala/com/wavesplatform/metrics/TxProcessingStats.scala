@@ -1,7 +1,7 @@
-package com..metrics
+package com.amurplatform.metrics
 
 import com.google.common.base.CaseFormat
-import com..transaction.TransactionParsers
+import com.amurplatform.transaction.TransactionParsers
 import kamon.Kamon
 import kamon.metric.TimerMetric
 import supertagged._

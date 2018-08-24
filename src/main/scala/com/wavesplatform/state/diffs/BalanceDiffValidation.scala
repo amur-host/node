@@ -1,12 +1,12 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats.implicits._
-import com..account.Address
-import com..metrics.Instrumented
-import com..settings.FunctionalitySettings
-import com..state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
-import com..transaction.ValidationError.AccountBalanceError
-import com..utils.ScorexLogging
+import com.amurplatform.account.Address
+import com.amurplatform.metrics.Instrumented
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
+import com.amurplatform.transaction.ValidationError.AccountBalanceError
+import com.amurplatform.utils.ScorexLogging
 
 import scala.util.{Left, Right}
 

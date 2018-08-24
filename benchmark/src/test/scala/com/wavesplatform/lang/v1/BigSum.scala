@@ -1,7 +1,7 @@
-package com..lang.v1
+package com.amurplatform.lang.v1
 
-import com..lang.v1.compiler.Terms.{CONST_LONG, EXPR, FUNCTION_CALL}
-import com..lang.v1.evaluator.ctx.impl.PureContext
+import com.amurplatform.lang.v1.compiler.Terms.{CONST_LONG, EXPR, FUNCTION_CALL}
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext
 import org.openjdk.jmh.annotations.{Scope, State}
 
 @State(Scope.Benchmark)

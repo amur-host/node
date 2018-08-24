@@ -1,8 +1,8 @@
-package com..api.http
+package com.amurplatform.api.http
 
-import com..state.ByteStr
-import com..transaction.ValidationError
-import com..transaction.ValidationError.Validation
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.Validation
 
 trait BroadcastRequest {
   protected def parseBase58(v: String, error: String, maxLength: Int): Validation[ByteStr] =

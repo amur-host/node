@@ -1,14 +1,14 @@
-package com..matcher.model
+package com.amurplatform.matcher.model
 
 import com.google.common.base.Charsets
-import com..WithDB
-import com..account.{Address, PrivateKeyAccount}
-import com..matcher.MatcherTestData
-import com..matcher.api.DBUtils
-import com..matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
-import com..state.ByteStr
-import com..transaction.AssetId
-import com..transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.WithDB
+import com.amurplatform.account.{Address, PrivateKeyAccount}
+import com.amurplatform.matcher.MatcherTestData
+import com.amurplatform.matcher.api.DBUtils
+import com.amurplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.AssetId
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 

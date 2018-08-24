@@ -1,12 +1,12 @@
-package com..api.http.leasing
+package com.amurplatform.api.http.leasing
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com..account.{AddressOrAlias, PublicKeyAccount}
-import com..api.http.BroadcastRequest
-import com..transaction.TransactionParsers.SignatureStringLength
-import com..transaction.ValidationError
-import com..transaction.lease.LeaseTransactionV1
+import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.TransactionParsers.SignatureStringLength
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.lease.LeaseTransactionV1
 
 case class SignedLeaseV1Request(@ApiModelProperty(value = "Base58 encoded sender public key", required = true)
                                 senderPublicKey: String,

@@ -1,8 +1,8 @@
-package com..settings
+package com.amurplatform.settings
 
 import com.typesafe.config.ConfigFactory
-import com..network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
-import com..settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
+import com.amurplatform.network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
+import com.amurplatform.settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.duration._

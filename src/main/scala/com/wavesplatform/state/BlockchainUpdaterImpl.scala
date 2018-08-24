@@ -1,26 +1,26 @@
-package com..state
+package com.amurplatform.state
 
 import cats.implicits._
-import com..features.BlockchainFeatures
-import com..features.FeatureProvider._
-import com..metrics.{Instrumented, TxsInBlockchainStats}
-import com..mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
-import com..settings.WavesSettings
-import com..state.diffs.BlockDiffer
-import com..state.reader.{CompositeBlockchain, LeaseDetails}
-import com..utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.metrics.{Instrumented, TxsInBlockchainStats}
+import com.amurplatform.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
+import com.amurplatform.settings.WavesSettings
+import com.amurplatform.state.diffs.BlockDiffer
+import com.amurplatform.state.reader.{CompositeBlockchain, LeaseDetails}
+import com.amurplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.reactive.Observable
 import monix.reactive.subjects.ConcurrentSubject
-import com..account.{Address, Alias}
-import com..block.Block.BlockId
-import com..block.{Block, BlockHeader, MicroBlock}
-import com..transaction.Transaction.Type
-import com..transaction.ValidationError.{BlockAppendError, GenericError, MicroBlockAppendError}
-import com..transaction._
-import com..transaction.lease._
-import com..transaction.smart.script.Script
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.block.Block.BlockId
+import com.amurplatform.block.{Block, BlockHeader, MicroBlock}
+import com.amurplatform.transaction.Transaction.Type
+import com.amurplatform.transaction.ValidationError.{BlockAppendError, GenericError, MicroBlockAppendError}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.lease._
+import com.amurplatform.transaction.smart.script.Script
 
 class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, time: Time)
     extends BlockchainUpdater
@@ -28,7 +28,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, tim
     with ScorexLogging
     with Instrumented {
 
-  import com..state.BlockchainUpdaterImpl._
+  import com.amurplatform.state.BlockchainUpdaterImpl._
   import settings.blockchainSettings.functionalitySettings
 
   private lazy val maxBlockReadinessAge = settings.minerSettings.intervalAfterLastBlockThenGenerationIsAllowed.toMillis

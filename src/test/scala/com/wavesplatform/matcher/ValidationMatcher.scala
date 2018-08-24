@@ -1,8 +1,8 @@
-package com..matcher
+package com.amurplatform.matcher
 
 import org.scalatest.enablers.Containing
 import org.scalatest.matchers.{BeMatcher, MatchResult}
-import com..transaction.assets.exchange.Validation
+import com.amurplatform.transaction.assets.exchange.Validation
 
 trait ValidationMatcher {
   class ValidationMatcher extends BeMatcher[Validation] {

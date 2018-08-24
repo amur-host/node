@@ -1,13 +1,13 @@
-package com..transaction.lease
+package com.amurplatform.transaction.lease
 
 import com.google.common.primitives.{Bytes, Longs}
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com..account.PublicKeyAccount
-import com..transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
-import com..crypto.KeyLength
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
+import com.amurplatform.crypto.KeyLength
 
 trait LeaseCancelTransaction extends ProvenTransaction with VersionedTransaction {
   def chainByte: Option[Byte]

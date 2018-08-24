@@ -1,17 +1,17 @@
-package com..http
+package com.amurplatform.http
 
-import com..http.ApiMarshallers._
-import com..state.{Diff, EitherExt2}
-import com..utx.UtxPool
-import com..{NoShrink, TestWallet, TransactionGen}
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.state.{Diff, EitherExt2}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.{NoShrink, TestWallet, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{JsObject, Json}
-import com..api.http.{ApiKeyNotValid, PaymentApiRoute}
-import com..utils.Time
-import com..transaction.Transaction
-import com..transaction.transfer._
+import com.amurplatform.api.http.{ApiKeyNotValid, PaymentApiRoute}
+import com.amurplatform.utils.Time
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.transfer._
 
 class PaymentRouteSpec
     extends RouteSpec("/payment")

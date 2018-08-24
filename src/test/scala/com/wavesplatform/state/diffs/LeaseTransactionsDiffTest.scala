@@ -1,17 +1,17 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats._
-import com..state._
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.state._
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..account.Address
-import com..settings.TestFunctionalitySettings
-import com..lagonaki.mocks.TestBlock
-import com..transaction.GenesisTransaction
-import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com..transaction.transfer._
+import com.amurplatform.account.Address
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.amurplatform.transaction.transfer._
 
 class LeaseTransactionsDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

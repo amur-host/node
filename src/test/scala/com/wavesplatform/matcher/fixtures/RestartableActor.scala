@@ -1,8 +1,8 @@
-package com..matcher.fixtures
+package com.amurplatform.matcher.fixtures
 
 import akka.persistence.PersistentActor
 
-import com..matcher.fixtures.RestartableActor.{RestartActor, RestartActorException}
+import com.amurplatform.matcher.fixtures.RestartableActor.{RestartActor, RestartActorException}
 
 trait RestartableActor extends PersistentActor {
 

@@ -1,4 +1,4 @@
-package com..settings
+package com.amurplatform.settings
 
 import com.typesafe.config.ConfigException.WrongType
 import com.typesafe.config.ConfigFactory

@@ -1,22 +1,22 @@
-package com..matcher.market
+package com.amurplatform.matcher.market
 
 import akka.actor.{Actor, Props}
 import akka.http.scaladsl.model.{StatusCode, StatusCodes}
-import com..account.Address
-import com..matcher.MatcherSettings
-import com..matcher.api.{BadMatcherResponse, DBUtils, MatcherResponse}
-import com..matcher.market.OrderBookActor.CancelOrder
-import com..matcher.market.OrderHistoryActor.{ExpirableOrderHistoryRequest, _}
-import com..matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
-import com..matcher.model._
-import com..metrics.TimerExt
-import com..state.ByteStr
-import com..transaction.AssetAcc
-import com..transaction.ValidationError.GenericError
-import com..transaction.assets.exchange.{AssetPair, Order}
-import com..utils.NTP
-import com..utx.UtxPool
-import com..wallet.Wallet
+import com.amurplatform.account.Address
+import com.amurplatform.matcher.MatcherSettings
+import com.amurplatform.matcher.api.{BadMatcherResponse, DBUtils, MatcherResponse}
+import com.amurplatform.matcher.market.OrderBookActor.CancelOrder
+import com.amurplatform.matcher.market.OrderHistoryActor.{ExpirableOrderHistoryRequest, _}
+import com.amurplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
+import com.amurplatform.matcher.model._
+import com.amurplatform.metrics.TimerExt
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.AssetAcc
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.utils.NTP
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import kamon.Kamon
 import org.iq80.leveldb.DB
 import play.api.libs.json._

@@ -1,11 +1,11 @@
-package com..mining
+package com.amurplatform.mining
 
 import cats.data.NonEmptyList
-import com..features.BlockchainFeatures
-import com..features.FeatureProvider._
-import com..settings.MinerSettings
-import com..state.Blockchain
-import com..block.Block
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.settings.MinerSettings
+import com.amurplatform.state.Blockchain
+import com.amurplatform.block.Block
 
 case class MiningConstraints(total: MiningConstraint, keyBlock: MiningConstraint, micro: MiningConstraint)
 

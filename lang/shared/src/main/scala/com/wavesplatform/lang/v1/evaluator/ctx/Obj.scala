@@ -1,6 +1,6 @@
-package com..lang.v1.evaluator.ctx
+package com.amurplatform.lang.v1.evaluator.ctx
 
-import com..lang.v1.compiler.Types.CASETYPEREF
+import com.amurplatform.lang.v1.compiler.Types.CASETYPEREF
 
 case class CaseObj(caseType: CASETYPEREF, fields: Map[String, Any]) {
   override def toString: String = {

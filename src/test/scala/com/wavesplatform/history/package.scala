@@ -1,15 +1,15 @@
-package com.
+package com.amurplatform
 
 import com.typesafe.config.ConfigFactory
-import com..account.PrivateKeyAccount
-import com..block.{Block, MicroBlock}
-import com..consensus.nxt.NxtLikeConsensusBlockData
-import com..features.BlockchainFeatures
-import com..lagonaki.mocks.TestBlock
-import com..settings.{BlockchainSettings, TestFunctionalitySettings, WavesSettings}
-import com..state._
-import com..transaction.Transaction
-import com..crypto._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.{Block, MicroBlock}
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.settings.{BlockchainSettings, TestFunctionalitySettings, WavesSettings}
+import com.amurplatform.state._
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.crypto._
 
 package object history {
   val MaxTransactionsPerBlockDiff = 10

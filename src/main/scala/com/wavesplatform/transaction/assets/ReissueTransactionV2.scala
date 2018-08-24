@@ -1,12 +1,12 @@
-package com..transaction.assets
+package com.amurplatform.transaction.assets
 
 import com.google.common.primitives.Bytes
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com..account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
-import com..transaction.ValidationError.{GenericError, UnsupportedVersion}
-import com..transaction._
+import com.amurplatform.account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.transaction.ValidationError.{GenericError, UnsupportedVersion}
+import com.amurplatform.transaction._
 
 import scala.util._
 

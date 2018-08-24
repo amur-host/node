@@ -1,13 +1,13 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import javax.ws.rs.Path
 
 import akka.http.scaladsl.server.Route
-import com..settings.RestAPISettings
+import com.amurplatform.settings.RestAPISettings
 import io.swagger.annotations._
 import play.api.libs.json.Json
-import com..utils.Base58
-import com..wallet.Wallet
+import com.amurplatform.utils.Base58
+import com.amurplatform.wallet.Wallet
 
 @Path("/wallet")
 @Api(value = "/wallet")

@@ -1,19 +1,19 @@
-package com..lang.v1
+package com.amurplatform.lang.v1
 
 import cats.data.EitherT
 import cats.kernel.Monoid
-import com..lang.Common._
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.compiler.{CompilerContext, CompilerV1}
-import com..lang.v1.evaluator.ctx._
-import com..lang.v1.evaluator.ctx.impl.PureContext
-import com..lang.v1.evaluator.ctx.impl.waves.Types.transferTransactionType
-import com..lang.v1.parser.Parser
-import com..lang.v1.testing.ScriptGen
-import com..lang._
+import com.amurplatform.lang.Common._
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Types.transferTransactionType
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.lang.v1.testing.ScriptGen
+import com.amurplatform.lang._
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
 import monix.eval.Coeval
 
 class ScriptEstimatorTest extends PropSpec with PropertyChecks with Matchers with ScriptGen with NoShrink {

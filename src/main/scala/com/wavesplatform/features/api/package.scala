@@ -1,7 +1,7 @@
-package com..features
+package com.amurplatform.features
 
-import com..features.BlockchainFeatureStatus.{Activated, Approved, Undefined}
-import com..features.api.NodeFeatureStatus.{Implemented, NotImplemented, Voted}
+import com.amurplatform.features.BlockchainFeatureStatus.{Activated, Approved, Undefined}
+import com.amurplatform.features.api.NodeFeatureStatus.{Implemented, NotImplemented, Voted}
 import play.api.libs.json._
 
 package object api {

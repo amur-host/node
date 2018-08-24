@@ -1,4 +1,4 @@
-package com..features.api
+package com.amurplatform.features.api
 
 sealed trait NodeFeatureStatus
 

@@ -1,13 +1,13 @@
-package com..lang
+package com.amurplatform.lang
 
 import cats.data.EitherT
-import com..lang.v1.compiler.Terms.EXPR
-import com..lang.v1.compiler.Types._
-import com..lang.v1.evaluator.EvaluatorV1
-import com..lang.v1.evaluator.ctx._
-import com..lang.v1.evaluator.ctx.impl.{EnvironmentFunctions, PureContext}
-import com..lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com..lang.v1.traits.{DataType, Environment}
+import com.amurplatform.lang.v1.compiler.Terms.EXPR
+import com.amurplatform.lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.evaluator.EvaluatorV1
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.{EnvironmentFunctions, PureContext}
+import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com.amurplatform.lang.v1.traits.{DataType, Environment}
 import monix.eval.Coeval
 import org.scalacheck.Shrink
 import org.scalatest.matchers.{MatchResult, Matcher}

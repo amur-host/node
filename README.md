@@ -1,8 +1,8 @@
-# Waves [![Build Status](https://travis-ci.org//Waves.svg?branch=master)](https://travis-ci.org//Waves) [![](https://images.microbadger.com/badges/version//waves-testnet.svg)]
+# Waves [![Build Status](https://travis-ci.org/amurplatform/Waves.svg?branch=master)](https://travis-ci.org/amurplatform/Waves) [![](https://images.microbadger.com/badges/version/amurplatform/waves-testnet.svg)]
 
-In the master branch there is a code with functions that is under development. The latest release for each network can be found in the [Releases section](https://github.com//Waves/releases), you can switch to the corresponding tag and build the application.
+In the master branch there is a code with functions that is under development. The latest release for each network can be found in the [Releases section](https://github.com/amurplatform/Waves/releases), you can switch to the corresponding tag and build the application.
 
-For further information please refer the official [documentation](https://docs..com).
+For further information please refer the official [documentation](https://docs.amurplatform.com).
 
 # Acknowledgement
 

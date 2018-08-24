@@ -1,19 +1,19 @@
-package com..api.http.alias
+package com.amurplatform.api.http.alias
 
 import akka.http.scaladsl.server.Route
-import com..settings.RestAPISettings
-import com..state.Blockchain
-import com..utx.UtxPool
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.Blockchain
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.{Format, Json}
-import com..account.Alias
-import com..api.http._
-import com..http.BroadcastRoute
-import com..utils.Time
-import com..transaction._
-import com..wallet.Wallet
+import com.amurplatform.account.Alias
+import com.amurplatform.api.http._
+import com.amurplatform.http.BroadcastRoute
+import com.amurplatform.utils.Time
+import com.amurplatform.transaction._
+import com.amurplatform.wallet.Wallet
 
 @Path("/alias")
 @Api(value = "/alias")
@@ -34,7 +34,7 @@ case class AliasApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..api.http.alias.CreateAliasV1Request",
+        dataType = "com.amurplatform.api.http.alias.CreateAliasV1Request",
         defaultValue = "{\n\t\"alias\": \"aliasalias\",\n\t\"sender\": \"3Mx2afTZ2KbRrLNbytyzTtXukZvqEB8SkW7\",\n\t\"fee\": 100000\n}"
       )
     ))
@@ -69,7 +69,7 @@ case class AliasApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool
       new ApiImplicitParam(name = "address", value = "3Mx2afTZ2KbRrLNbytyzTtXukZvqEB8SkW7", required = true, dataType = "string", paramType = "path")
     ))
   def aliasOfAddress: Route = (get & path("by-address" / Segment)) { addressString =>
-    val result: Either[ApiError, Seq[String]] = com..account.Address
+    val result: Either[ApiError, Seq[String]] = com.amurplatform.account.Address
       .fromString(addressString)
       .map(acc => blockchain.aliasesOfAddress(acc).map(_.stringRepr))
       .left

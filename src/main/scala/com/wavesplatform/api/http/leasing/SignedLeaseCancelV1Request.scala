@@ -1,13 +1,13 @@
-package com..api.http.leasing
+package com.amurplatform.api.http.leasing
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
-import com..account.PublicKeyAccount
-import com..api.http.BroadcastRequest
-import com..transaction.TransactionParsers.SignatureStringLength
-import com..transaction.ValidationError
-import com..transaction.lease.LeaseCancelTransactionV1
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.TransactionParsers.SignatureStringLength
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.lease.LeaseCancelTransactionV1
 
 case class SignedLeaseCancelV1Request(@ApiModelProperty(value = "Base58 encoded sender public key", required = true)
                                       senderPublicKey: String,

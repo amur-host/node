@@ -1,13 +1,13 @@
-package com..api.http.assets
+package com.amurplatform.api.http.assets
 
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
-import com..account.{AddressOrAlias, PublicKeyAccount}
-import com..api.http.BroadcastRequest
-import com..transaction.TransactionParsers.SignatureStringLength
-import com..transaction.transfer._
-import com..transaction.{AssetIdStringLength, ValidationError}
+import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.TransactionParsers.SignatureStringLength
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{AssetIdStringLength, ValidationError}
 
 object SignedTransferV1Request {
   implicit val reads: Reads[SignedTransferV1Request] = (

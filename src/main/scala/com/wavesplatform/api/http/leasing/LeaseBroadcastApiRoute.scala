@@ -1,13 +1,13 @@
-package com..api.http.leasing
+package com.amurplatform.api.http.leasing
 
 import javax.ws.rs.Path
 import akka.http.scaladsl.server.Route
-import com..settings.RestAPISettings
-import com..utx.UtxPool
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
-import com..api.http._
-import com..http.BroadcastRoute
+import com.amurplatform.api.http._
+import com.amurplatform.http.BroadcastRoute
 
 @Path("/leasing/broadcast")
 @Api(value = "/leasing")
@@ -25,7 +25,7 @@ case class LeaseBroadcastApiRoute(settings: RestAPISettings, utx: UtxPool, allCh
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..api.http.leasing.SignedLeaseV1Request",
+        dataType = "com.amurplatform.api.http.leasing.SignedLeaseV1Request",
         defaultValue =
           "{\n\t\"amount\": 100000000,\n\t\"recipient\": \"3NBsppTVpai9jq6agi9wXXrWhaMPPig48Aw\",\n\t\"senderPublicKey\": \"11111\",\n\t\"fee\": 100000\n\t\"timestamp\": 12345678,\n\t\"signature\": \"asdasdasd\"\n}"
       )
@@ -49,7 +49,7 @@ case class LeaseBroadcastApiRoute(settings: RestAPISettings, utx: UtxPool, allCh
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com..api.http.leasing.SignedLeaseCancelV1Request",
+        dataType = "com.amurplatform.api.http.leasing.SignedLeaseCancelV1Request",
         defaultValue =
           "{\n\t\"sender\": \"3Myss6gmMckKYtka3cKCM563TBJofnxvfD7\",\n\t\"txId\": \"ABMZDPY4MyQz7kKNAevw5P9eNmRErMutJoV9UNeCtqRV\",\n\t\"fee\": 10000000\n\t\"timestamp\": 12345678,\n\t\"signature\": \"asdasdasd\"\n}"
       )

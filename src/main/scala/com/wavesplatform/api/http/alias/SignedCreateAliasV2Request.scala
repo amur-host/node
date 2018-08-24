@@ -1,10 +1,10 @@
-package com..api.http.alias
+package com.amurplatform.api.http.alias
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com..account.{Alias, PublicKeyAccount}
-import com..api.http.BroadcastRequest
-import com..transaction.{CreateAliasTransaction, CreateAliasTransactionV2, Proofs, ValidationError}
+import com.amurplatform.account.{Alias, PublicKeyAccount}
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.{CreateAliasTransaction, CreateAliasTransactionV2, Proofs, ValidationError}
 import cats.implicits._
 
 case class SignedCreateAliasV2Request(@ApiModelProperty(required = true)

@@ -1,9 +1,9 @@
-package com..state
+package com.amurplatform.state
 
 import cats._
 import cats.kernel.instances.map._
-import com..block.Block.Fraction
-import com..transaction.AssetId
+import com.amurplatform.block.Block.Fraction
+import com.amurplatform.transaction.AssetId
 
 case class Portfolio(balance: Long, lease: LeaseBalance, assets: Map[ByteStr, Long]) {
   lazy val effectiveBalance: Long = safeSum(balance, lease.in) - lease.out

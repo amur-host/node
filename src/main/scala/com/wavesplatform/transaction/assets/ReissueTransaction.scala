@@ -1,14 +1,14 @@
-package com..transaction.assets
+package com.amurplatform.transaction.assets
 
 import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs}
-import com..state.ByteStr
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com..account.PublicKeyAccount
-import com..transaction.validation._
-import com..transaction.{AssetId, ProvenTransaction, ValidationError, _}
-import com..crypto._
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.transaction.validation._
+import com.amurplatform.transaction.{AssetId, ProvenTransaction, ValidationError, _}
+import com.amurplatform.crypto._
 
 trait ReissueTransaction extends ProvenTransaction with VersionedTransaction {
   def assetId: ByteStr

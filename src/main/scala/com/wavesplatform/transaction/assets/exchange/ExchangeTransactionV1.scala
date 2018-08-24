@@ -1,15 +1,15 @@
-package com..transaction.assets.exchange
+package com.amurplatform.transaction.assets.exchange
 
 import cats.data.State
 import com.google.common.primitives.{Ints, Longs}
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..crypto
-import com..state.ByteStr
-import com..transaction._
-import com..transaction.assets.exchange.ExchangeTransaction._
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction._
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
-import com..crypto._
+import com.amurplatform.crypto._
 
 import scala.util.{Failure, Success, Try}
 

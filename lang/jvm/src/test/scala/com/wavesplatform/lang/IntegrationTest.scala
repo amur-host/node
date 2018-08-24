@@ -1,16 +1,16 @@
-package com..lang
+package com.amurplatform.lang
 
 import cats.data.EitherT
 import cats.kernel.Monoid
-import com..lang.Common._
-import com..lang.v1.CTX
-import com..lang.v1.compiler.Types.FINAL
-import com..lang.v1.compiler.{CompilerV1, Terms}
-import com..lang.v1.evaluator.EvaluatorV1
-import com..lang.v1.evaluator.ctx._
-import com..lang.v1.evaluator.ctx.impl.PureContext
-import com..lang.v1.parser.Parser
-import com..lang.v1.testing.ScriptGen
+import com.amurplatform.lang.Common._
+import com.amurplatform.lang.v1.CTX
+import com.amurplatform.lang.v1.compiler.Types.FINAL
+import com.amurplatform.lang.v1.compiler.{CompilerV1, Terms}
+import com.amurplatform.lang.v1.evaluator.EvaluatorV1
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.lang.v1.testing.ScriptGen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

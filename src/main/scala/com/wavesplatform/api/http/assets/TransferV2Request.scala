@@ -1,4 +1,4 @@
-package com..api.http.assets
+package com.amurplatform.api.http.assets
 
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.{Format, Json}

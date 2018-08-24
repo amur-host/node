@@ -1,4 +1,4 @@
-package com..lang.v1.evaluator
+package com.amurplatform.lang.v1.evaluator
 
 object FunctionIds {
 

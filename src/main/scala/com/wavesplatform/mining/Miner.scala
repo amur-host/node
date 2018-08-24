@@ -1,29 +1,29 @@
-package com..mining
+package com.amurplatform.mining
 
 import cats.data.EitherT
 import cats.implicits._
-import com..consensus.{GeneratingBalanceProvider, PoSSelector}
-import com..features.BlockchainFeatures
-import com..features.FeatureProvider._
-import com..metrics.{BlockStats, HistogramExt, Instrumented}
-import com..network._
-import com..settings.{FunctionalitySettings, WavesSettings}
-import com..state._
-import com..state.appender.{BlockAppender, MicroblockAppender}
-import com..utx.UtxPool
+import com.amurplatform.consensus.{GeneratingBalanceProvider, PoSSelector}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.metrics.{BlockStats, HistogramExt, Instrumented}
+import com.amurplatform.network._
+import com.amurplatform.settings.{FunctionalitySettings, WavesSettings}
+import com.amurplatform.state._
+import com.amurplatform.state.appender.{BlockAppender, MicroblockAppender}
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.eval.Task
 import monix.execution.cancelables.{CompositeCancelable, SerialCancelable}
 import monix.execution.schedulers.SchedulerService
-import com..account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com..block.Block._
-import com..block.{Block, MicroBlock}
-import com..consensus.nxt.NxtLikeConsensusBlockData
-import com..utils.{ScorexLogging, Time}
-import com..transaction._
-import com..wallet.Wallet
+import com.amurplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.block.Block._
+import com.amurplatform.block.{Block, MicroBlock}
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.utils.{ScorexLogging, Time}
+import com.amurplatform.transaction._
+import com.amurplatform.wallet.Wallet
 
 import scala.collection.mutable.{Map => MMap}
 import scala.concurrent.Await

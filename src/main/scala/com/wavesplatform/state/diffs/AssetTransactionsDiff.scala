@@ -1,13 +1,13 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..features.BlockchainFeatures
-import com..features.FeatureProvider._
-import com..settings.FunctionalitySettings
-import com..state.{AssetInfo, Blockchain, Diff, LeaseBalance, Portfolio, SponsorshipValue}
-import com..account.PublicKeyAccount
-import com..transaction.ValidationError.GenericError
-import com..transaction.assets._
-import com..transaction.{AssetId, ProvenTransaction, ValidationError}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.{AssetInfo, Blockchain, Diff, LeaseBalance, Portfolio, SponsorshipValue}
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.{AssetId, ProvenTransaction, ValidationError}
 
 import scala.util.{Left, Right}
 

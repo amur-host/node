@@ -1,4 +1,4 @@
-package com..state
+package com.amurplatform.state
 
 import java.nio.charset.StandardCharsets
 

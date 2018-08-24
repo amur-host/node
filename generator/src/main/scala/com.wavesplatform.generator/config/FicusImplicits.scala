@@ -1,9 +1,9 @@
-package com..generator.config
+package com.amurplatform.generator.config
 
 import com.google.common.base.CaseFormat
 import com.typesafe.config.Config
-import com..state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, IntegerDataEntry, StringDataEntry}
-import com..transaction.{TransactionParser, TransactionParsers}
+import com.amurplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, IntegerDataEntry, StringDataEntry}
+import com.amurplatform.transaction.{TransactionParser, TransactionParsers}
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.{CollectionReaders, ValueReader}
 

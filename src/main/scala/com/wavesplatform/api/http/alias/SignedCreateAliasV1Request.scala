@@ -1,11 +1,11 @@
-package com..api.http.alias
+package com.amurplatform.api.http.alias
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com..account.{Alias, PublicKeyAccount}
-import com..api.http.BroadcastRequest
-import com..transaction.TransactionParsers.SignatureStringLength
-import com..transaction.{CreateAliasTransactionV1, ValidationError}
+import com.amurplatform.account.{Alias, PublicKeyAccount}
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.TransactionParsers.SignatureStringLength
+import com.amurplatform.transaction.{CreateAliasTransactionV1, ValidationError}
 
 case class SignedCreateAliasV1Request(@ApiModelProperty(value = "Base58 encoded sender public key", required = true)
                                       senderPublicKey: String,

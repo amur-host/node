@@ -1,18 +1,18 @@
-package com..network
+package com.amurplatform.network
 
 import java.util.concurrent.TimeUnit
 
 import com.google.common.cache.{Cache, CacheBuilder}
-import com..metrics.BlockStats
-import com..settings.SynchronizationSettings.MicroblockSynchronizerSettings
-import com..state.ByteStr
+import com.amurplatform.metrics.BlockStats
+import com.amurplatform.settings.SynchronizationSettings.MicroblockSynchronizerSettings
+import com.amurplatform.state.ByteStr
 import io.netty.channel._
 import monix.eval.{Coeval, Task}
 import monix.execution.CancelableFuture
 import monix.execution.schedulers.SchedulerService
 import monix.reactive.Observable
-import com..block.Block.BlockId
-import com..block.MicroBlock
+import com.amurplatform.block.Block.BlockId
+import com.amurplatform.block.MicroBlock
 
 import scala.collection.mutable.{Set => MSet}
 import scala.concurrent.duration.FiniteDuration

@@ -1,4 +1,4 @@
-package com..it
+package com.amurplatform.it
 
 import java.nio.charset.StandardCharsets
 

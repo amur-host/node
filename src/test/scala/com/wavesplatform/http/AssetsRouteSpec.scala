@@ -1,21 +1,21 @@
-package com..http
+package com.amurplatform.http
 
 import akka.http.scaladsl.model.StatusCodes
 import com.typesafe.config.ConfigFactory
-import com..http.ApiMarshallers._
-import com..settings.RestAPISettings
-import com..state.{Blockchain, Diff}
-import com..utx.UtxPool
-import com..{RequestGen, TestTime}
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.{Blockchain, Diff}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.{RequestGen, TestTime}
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.concurrent.Eventually
 import play.api.libs.json.Writes
-import com..account.Address
-import com..api.http.assets.{AssetsApiRoute, TransferV1Request, TransferV2Request}
-import com..transaction.Transaction
-import com..transaction.transfer._
-import com..wallet.Wallet
+import com.amurplatform.account.Address
+import com.amurplatform.api.http.assets.{AssetsApiRoute, TransferV1Request, TransferV2Request}
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.wallet.Wallet
 
 class AssetsRouteSpec extends RouteSpec("/assets") with RequestGen with PathMockFactory with Eventually {
 

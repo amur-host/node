@@ -1,12 +1,12 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..utils.base58Length
-import com..transaction.assets._
-import com..transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
-import com..transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.transfer._
-import com..crypto._
+import com.amurplatform.utils.base58Length
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
+import com.amurplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.crypto._
 
 import scala.util.{Failure, Success, Try}
 

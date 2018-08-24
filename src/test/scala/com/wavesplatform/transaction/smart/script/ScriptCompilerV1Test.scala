@@ -1,14 +1,14 @@
-package com..transaction.smart.script
+package com.amurplatform.transaction.smart.script
 
 import cats.implicits._
-import com..lang.v1.FunctionHeader
-import com..lang.v1.compiler.Terms._
-import com..state.EitherExt2
+import com.amurplatform.lang.v1.FunctionHeader
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.state.EitherExt2
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..transaction.smart.script.v1.ScriptV1
-import com..lang.v1.evaluator.FunctionIds._
-import com..lang.v1.evaluator.ctx.impl.PureContext
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext
 
 class ScriptCompilerV1Test extends PropSpec with PropertyChecks with Matchers {
 

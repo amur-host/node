@@ -1,16 +1,16 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..TransactionGen
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..state.{ByteStr, EitherExt2}
-import com..transaction.ValidationError.OrderValidationError
-import com..transaction.assets.exchange.{Order, _}
-import com..utils.{Base58, NTP}
+import com.amurplatform.TransactionGen
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.state.{ByteStr, EitherExt2}
+import com.amurplatform.transaction.ValidationError.OrderValidationError
+import com.amurplatform.transaction.assets.exchange.{Order, _}
+import com.amurplatform.utils.{Base58, NTP}
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com..OrderOps._
+import com.amurplatform.OrderOps._
 
 class ExchangeTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

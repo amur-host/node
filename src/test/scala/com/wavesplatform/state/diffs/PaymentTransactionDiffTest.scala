@@ -1,14 +1,14 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats.Monoid
-import com..settings.TestFunctionalitySettings
-import com..state._
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..lagonaki.mocks.TestBlock
-import com..transaction.{GenesisTransaction, PaymentTransaction}
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.{GenesisTransaction, PaymentTransaction}
 
 class PaymentTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

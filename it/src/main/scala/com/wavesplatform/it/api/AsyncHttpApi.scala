@@ -1,24 +1,24 @@
-package com..it.api
+package com.amurplatform.it.api
 
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.util.concurrent.TimeoutException
 
-import com..api.http.PeersApiRoute.{ConnectReq, connectFormat}
-import com..api.http.alias.CreateAliasV1Request
-import com..api.http.assets._
-import com..api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
-import com..api.http.{AddressApiRoute, DataRequest}
-import com..features.api.ActivationStatus
-import com..http.DebugApiRoute._
-import com..http.DebugMessage._
-import com..http.{DebugMessage, RollbackParams, api_key}
-import com..it.Node
-import com..it.util.GlobalTimer.{instance => timer}
-import com..it.util._
-import com..state.{DataEntry, Portfolio}
-import com..transaction.transfer.MassTransferTransaction.Transfer
-import com..transaction.transfer._
+import com.amurplatform.api.http.PeersApiRoute.{ConnectReq, connectFormat}
+import com.amurplatform.api.http.alias.CreateAliasV1Request
+import com.amurplatform.api.http.assets._
+import com.amurplatform.api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
+import com.amurplatform.api.http.{AddressApiRoute, DataRequest}
+import com.amurplatform.features.api.ActivationStatus
+import com.amurplatform.http.DebugApiRoute._
+import com.amurplatform.http.DebugMessage._
+import com.amurplatform.http.{DebugMessage, RollbackParams, api_key}
+import com.amurplatform.it.Node
+import com.amurplatform.it.util.GlobalTimer.{instance => timer}
+import com.amurplatform.it.util._
+import com.amurplatform.state.{DataEntry, Portfolio}
+import com.amurplatform.transaction.transfer.MassTransferTransaction.Transfer
+import com.amurplatform.transaction.transfer._
 import org.asynchttpclient.Dsl.{get => _get, post => _post}
 import org.asynchttpclient._
 import org.asynchttpclient.util.HttpConstants

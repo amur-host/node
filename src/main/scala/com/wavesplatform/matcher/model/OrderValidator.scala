@@ -1,20 +1,20 @@
-package com..matcher.model
+package com.amurplatform.matcher.model
 
 import cats.implicits._
-import com..account.PublicKeyAccount
-import com..matcher.MatcherSettings
-import com..matcher.market.OrderBookActor.CancelOrder
-import com..matcher.model.OrderHistory.OrderInfoChange
-import com..metrics.TimerExt
-import com..state._
-import com..transaction.AssetAcc
-import com..transaction.ValidationError.GenericError
-import com..transaction.assets.exchange.Validation.booleanOperators
-import com..transaction.assets.exchange.{Order, Validation}
-import com..transaction.smart.Verifier
-import com..utils.NTP
-import com..utx.UtxPool
-import com..wallet.Wallet
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.matcher.MatcherSettings
+import com.amurplatform.matcher.market.OrderBookActor.CancelOrder
+import com.amurplatform.matcher.model.OrderHistory.OrderInfoChange
+import com.amurplatform.metrics.TimerExt
+import com.amurplatform.state._
+import com.amurplatform.transaction.AssetAcc
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.assets.exchange.Validation.booleanOperators
+import com.amurplatform.transaction.assets.exchange.{Order, Validation}
+import com.amurplatform.transaction.smart.Verifier
+import com.amurplatform.utils.NTP
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import kamon.Kamon
 
 trait OrderValidator {

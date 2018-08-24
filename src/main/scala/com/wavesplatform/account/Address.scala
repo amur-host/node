@@ -1,12 +1,12 @@
-package com..account
+package com.amurplatform.account
 
 import java.nio.ByteBuffer
 
-import com..crypto
-import com..state.ByteStr
-import com..utils.{Base58, ScorexLogging, base58Length}
-import com..transaction.ValidationError
-import com..transaction.ValidationError.InvalidAddress
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
+import com.amurplatform.utils.{Base58, ScorexLogging, base58Length}
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.InvalidAddress
 
 sealed trait Address extends AddressOrAlias {
   val bytes: ByteStr

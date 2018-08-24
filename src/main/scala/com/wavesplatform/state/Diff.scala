@@ -1,13 +1,13 @@
-package com..state
+package com.amurplatform.state
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com..features.BlockchainFeatures
-import com..features.FeatureProvider._
-import com..settings.FunctionalitySettings
-import com..account.{Address, Alias, PublicKeyAccount}
-import com..transaction.smart.script.Script
-import com..transaction.{AssetId, Transaction}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.account.{Address, Alias, PublicKeyAccount}
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.{AssetId, Transaction}
 
 case class LeaseBalance(in: Long, out: Long)
 

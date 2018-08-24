@@ -1,7 +1,7 @@
-package com..history
+package com.amurplatform.history
 
-import com..db.WithState
-import com..settings.WavesSettings
+import com.amurplatform.db.WithState
+import com.amurplatform.settings.WavesSettings
 import org.scalacheck.Gen
 import org.scalatest.Assertion
 import org.scalatest.prop.GeneratorDrivenPropertyChecks

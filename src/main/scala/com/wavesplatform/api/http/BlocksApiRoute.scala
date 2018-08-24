@@ -1,18 +1,18 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.server.{Route, StandardRoute}
-import com..network._
-import com..settings.RestAPISettings
-import com..state.{Blockchain, ByteStr}
+import com.amurplatform.network._
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.{Blockchain, ByteStr}
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import monix.eval.Task
 import monix.execution.Scheduler.Implicits.global
 import play.api.libs.json._
-import com..block.BlockHeader
-import com..transaction._
+import com.amurplatform.block.BlockHeader
+import com.amurplatform.transaction._
 
 import scala.concurrent._
 import scala.util.Try
@@ -247,7 +247,7 @@ case class BlocksApiRoute(settings: RestAPISettings,
                            value = "Checkpoint message",
                            required = true,
                            paramType = "body",
-                           dataType = "com..network.Checkpoint")
+                           dataType = "com.amurplatform.network.Checkpoint")
     ))
   @ApiResponses(
     Array(

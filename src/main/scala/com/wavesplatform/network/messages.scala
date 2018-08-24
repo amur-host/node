@@ -1,13 +1,13 @@
-package com..network
+package com.amurplatform.network
 
 import java.net.InetSocketAddress
 
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..block.{Block, MicroBlock}
-import com..transaction.{Signed, Transaction}
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.block.{Block, MicroBlock}
+import com.amurplatform.transaction.{Signed, Transaction}
 
 sealed trait Message
 

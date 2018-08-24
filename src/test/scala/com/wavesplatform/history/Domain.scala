@@ -1,9 +1,9 @@
-package com..history
+package com.amurplatform.history
 
-import com..state._
-import com..account.Address
-import com..block.Block
-import com..transaction.BlockchainUpdater
+import com.amurplatform.state._
+import com.amurplatform.account.Address
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.BlockchainUpdater
 
 case class Domain(blockchainUpdater: BlockchainUpdater with NG) {
   def effBalance(a: Address): Long          = blockchainUpdater.effectiveBalance(a, blockchainUpdater.height, 1000)

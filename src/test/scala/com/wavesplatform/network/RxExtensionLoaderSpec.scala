@@ -1,9 +1,9 @@
-package com..network
+package com.amurplatform.network
 
-import com..network.RxExtensionLoader.ExtensionBlocks
-import com..network.RxScoreObserver.{BestChannel, ChannelClosedAndSyncWith}
-import com..state.ByteStr
-import com..{BlockGen, RxScheduler, TransactionGen}
+import com.amurplatform.network.RxExtensionLoader.ExtensionBlocks
+import com.amurplatform.network.RxScoreObserver.{BestChannel, ChannelClosedAndSyncWith}
+import com.amurplatform.state.ByteStr
+import com.amurplatform.{BlockGen, RxScheduler, TransactionGen}
 import io.netty.channel.Channel
 import io.netty.channel.embedded.EmbeddedChannel
 import io.netty.channel.local.LocalChannel
@@ -11,9 +11,9 @@ import monix.eval.{Coeval, Task}
 import monix.reactive.Observable
 import monix.reactive.subjects.{PublishSubject => PS}
 import org.scalatest.{FreeSpec, Matchers}
-import com..block.Block
-import com..transaction.ValidationError
-import com..transaction.ValidationError.GenericError
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.GenericError
 
 import scala.concurrent.duration._
 

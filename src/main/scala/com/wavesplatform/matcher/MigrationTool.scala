@@ -1,4 +1,4 @@
-package com..matcher
+package com.amurplatform.matcher
 
 import java.io.File
 import java.util.{HashMap => JHashMap}
@@ -6,17 +6,17 @@ import java.util.{HashMap => JHashMap}
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.Shorts
 import com.typesafe.config.ConfigFactory
-import com..account.{Address, AddressScheme}
-import com..crypto.DigestSize
-import com..database.DBExt
-import com..db.openDB
-import com..matcher.api.DBUtils
-import com..matcher.model.{LimitOrder, OrderInfo}
-import com..settings.{WavesSettings, loadConfig}
-import com..state.{ByteStr, EitherExt2}
-import com..transaction.AssetId
-import com..transaction.assets.exchange.AssetPair
-import com..utils.ScorexLogging
+import com.amurplatform.account.{Address, AddressScheme}
+import com.amurplatform.crypto.DigestSize
+import com.amurplatform.database.DBExt
+import com.amurplatform.db.openDB
+import com.amurplatform.matcher.api.DBUtils
+import com.amurplatform.matcher.model.{LimitOrder, OrderInfo}
+import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.state.{ByteStr, EitherExt2}
+import com.amurplatform.transaction.AssetId
+import com.amurplatform.transaction.assets.exchange.AssetPair
+import com.amurplatform.utils.ScorexLogging
 import org.iq80.leveldb.DB
 
 import scala.collection.JavaConverters._

@@ -1,7 +1,7 @@
-package com..settings
+package com.amurplatform.settings
 
 import com.typesafe.config.Config
-import com..state.ByteStr
+import com.amurplatform.state.ByteStr
 import net.ceedubs.ficus.Ficus._
 
 case class CheckpointsSettings(publicKey: ByteStr)

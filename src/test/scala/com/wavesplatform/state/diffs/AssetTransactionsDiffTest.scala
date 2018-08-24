@@ -1,24 +1,24 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats._
-import com..features.BlockchainFeatures
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..state._
-import com..state.diffs.smart.smartEnabledFS
-import com..utils.dummyCompilerContext
-import com..{NoShrink, TransactionGen, WithDB}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.smart.smartEnabledFS
+import com.amurplatform.utils.dummyCompilerContext
+import com.amurplatform.{NoShrink, TransactionGen, WithDB}
 import fastparse.core.Parsed
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..account.AddressScheme
-import com..settings.TestFunctionalitySettings
-import com..lagonaki.mocks.TestBlock
-import com..transaction.GenesisTransaction
-import com..transaction.assets._
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer._
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.settings.TestFunctionalitySettings
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer._
 
 class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink with WithDB {
 

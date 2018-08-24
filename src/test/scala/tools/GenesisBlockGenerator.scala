@@ -3,17 +3,17 @@ package tools
 import java.io.{File, FileNotFoundException}
 
 import com.typesafe.config.ConfigFactory
-import com..crypto
-import com..settings.{GenesisSettings, GenesisTransactionSettings}
-import com..state._
+import com.amurplatform.crypto
+import com.amurplatform.settings.{GenesisSettings, GenesisTransactionSettings}
+import com.amurplatform.state._
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
-import com..account.{Address, AddressScheme, PrivateKeyAccount}
-import com..block.Block
-import com..consensus.nxt.NxtLikeConsensusBlockData
-import com..transaction.GenesisTransaction
-import com..wallet.Wallet
-import com..crypto._
+import com.amurplatform.account.{Address, AddressScheme, PrivateKeyAccount}
+import com.amurplatform.block.Block
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.wallet.Wallet
+import com.amurplatform.crypto._
 import scala.concurrent.duration._
 
 object GenesisBlockGenerator extends App {
@@ -69,7 +69,7 @@ object GenesisBlockGenerator extends App {
     ConfigFactory.parseFile(file).as[Settings]("genesis-generator")
   }
 
-  com..account.AddressScheme.current = new AddressScheme {
+  com.amurplatform.account.AddressScheme.current = new AddressScheme {
     override val chainId: Byte = settings.networkByte
   }
 

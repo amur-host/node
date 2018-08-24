@@ -1,20 +1,20 @@
-package com..generator
+package com.amurplatform.generator
 
 import java.util.concurrent.Executors
 
 import cats.implicits.showInterpolator
 import com.typesafe.config.ConfigFactory
-import com..generator.cli.ScoptImplicits
-import com..generator.config.FicusImplicits
-import com..network.client.NetworkSender
-import com..settings.inetSocketAddressReader
+import com.amurplatform.generator.cli.ScoptImplicits
+import com.amurplatform.generator.config.FicusImplicits
+import com.amurplatform.network.client.NetworkSender
+import com.amurplatform.settings.inetSocketAddressReader
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.{EnumerationReader, NameMapper}
 import org.slf4j.LoggerFactory
 import scopt.OptionParser
-import com..account.AddressScheme
-import com..utils.LoggerFacade
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.utils.LoggerFacade
 
 import scala.concurrent._
 import scala.concurrent.duration._

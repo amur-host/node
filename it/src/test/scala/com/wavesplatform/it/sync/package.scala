@@ -1,7 +1,7 @@
-package com..it
+package com.amurplatform.it
 
-import com..state.DataEntry
-import com..it.util._
+import com.amurplatform.state.DataEntry
+import com.amurplatform.it.util._
 
 package object sync {
   val minFee                     = 0.001.waves

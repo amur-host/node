@@ -1,8 +1,8 @@
-package com..mining
+package com.amurplatform.mining
 
 import cats.data.NonEmptyList
-import com..state.Blockchain
-import com..transaction.Transaction
+import com.amurplatform.state.Blockchain
+import com.amurplatform.transaction.Transaction
 
 trait MiningConstraint {
   def isEmpty: Boolean

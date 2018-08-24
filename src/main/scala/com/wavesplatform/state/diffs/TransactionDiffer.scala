@@ -1,16 +1,16 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
-import com..metrics._
-import com..settings.FunctionalitySettings
-import com..state._
-import com..transaction.ValidationError.UnsupportedTransactionType
-import com..transaction._
-import com..transaction.assets._
-import com..transaction.assets.exchange.ExchangeTransaction
-import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com..transaction.smart.{SetScriptTransaction, Verifier}
-import com..transaction.transfer._
-import com..utils.ScorexLogging
+import com.amurplatform.metrics._
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.transaction.ValidationError.UnsupportedTransactionType
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.amurplatform.transaction.smart.{SetScriptTransaction, Verifier}
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.utils.ScorexLogging
 
 object TransactionDiffer extends Instrumented with ScorexLogging {
 

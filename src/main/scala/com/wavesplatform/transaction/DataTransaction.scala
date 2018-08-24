@@ -1,12 +1,12 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import com.google.common.primitives.{Bytes, Longs, Shorts}
-import com..crypto
-import com..state._
+import com.amurplatform.crypto
+import com.amurplatform.state._
 import monix.eval.Coeval
 import play.api.libs.json._
-import com..account.{PrivateKeyAccount, PublicKeyAccount}
-import com..crypto._
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.crypto._
 import scala.util.{Failure, Success, Try}
 
 case class DataTransaction private (version: Byte, sender: PublicKeyAccount, data: List[DataEntry[_]], fee: Long, timestamp: Long, proofs: Proofs)

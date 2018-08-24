@@ -1,8 +1,8 @@
-package com..state
+package com.amurplatform.state
 
-import com..block.Block
-import com..lagonaki.mocks.TestBlock
-import com..crypto._
+import com.amurplatform.block.Block
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.crypto._
 
 trait HistoryTest {
   val genesisBlock: Block = TestBlock.withReference(ByteStr(Array.fill(SignatureLength)(0: Byte)))

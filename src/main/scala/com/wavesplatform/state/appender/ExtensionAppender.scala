@@ -1,21 +1,21 @@
-package com..state.appender
+package com.amurplatform.state.appender
 
-import com..consensus.PoSSelector
-import com..metrics.{BlockStats, Instrumented, Metrics}
-import com..mining.Miner
-import com..network.{InvalidBlockStorage, PeerDatabase, formatBlocks, id}
-import com..settings.WavesSettings
-import com..state._
-import com..utils.{ScorexLogging, Time}
-import com..utx.UtxPool
+import com.amurplatform.consensus.PoSSelector
+import com.amurplatform.metrics.{BlockStats, Instrumented, Metrics}
+import com.amurplatform.mining.Miner
+import com.amurplatform.network.{InvalidBlockStorage, PeerDatabase, formatBlocks, id}
+import com.amurplatform.settings.WavesSettings
+import com.amurplatform.state._
+import com.amurplatform.utils.{ScorexLogging, Time}
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import monix.eval.{Coeval, Task}
 import monix.execution.Scheduler
 import org.influxdb.dto.Point
-import com..block.Block
-import com..transaction.ValidationError.GenericError
-import com..transaction._
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction._
 
 import scala.util.{Left, Right}
 

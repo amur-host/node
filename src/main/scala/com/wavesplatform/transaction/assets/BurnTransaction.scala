@@ -1,12 +1,12 @@
-package com..transaction.assets
+package com.amurplatform.transaction.assets
 
 import com.google.common.primitives.{Bytes, Longs}
-import com..state.ByteStr
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com..account.PublicKeyAccount
-import com..transaction._
-import com..crypto._
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.transaction._
+import com.amurplatform.crypto._
 
 trait BurnTransaction extends ProvenTransaction with VersionedTransaction {
 

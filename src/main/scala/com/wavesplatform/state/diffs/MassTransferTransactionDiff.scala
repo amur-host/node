@@ -1,12 +1,12 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import cats.implicits._
-import com..state._
-import com..account.Address
-import com..transaction.ValidationError
-import com..transaction.ValidationError.{GenericError, Validation}
-import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com..transaction.transfer._
+import com.amurplatform.state._
+import com.amurplatform.account.Address
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.{GenericError, Validation}
+import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.amurplatform.transaction.transfer._
 
 object MassTransferTransactionDiff {
 

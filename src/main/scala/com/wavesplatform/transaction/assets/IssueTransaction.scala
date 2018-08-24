@@ -1,4 +1,4 @@
-package com..transaction.assets
+package com.amurplatform.transaction.assets
 
 import java.nio.charset.StandardCharsets
 
@@ -6,12 +6,12 @@ import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs}
 import monix.eval.Coeval
 import play.api.libs.json.Json
-import com..account.PublicKeyAccount
-import com..serialization.Deser
-import com..transaction.smart.script.Script
-import com..transaction.validation._
-import com..transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
-import com..crypto._
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.serialization.Deser
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.validation._
+import com.amurplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
+import com.amurplatform.crypto._
 
 trait IssueTransaction extends ProvenTransaction with VersionedTransaction {
   def name: Array[Byte]

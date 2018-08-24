@@ -1,20 +1,20 @@
-package com.
+package com.amurplatform
 
 import java.security.SecureRandom
 
 import cats.kernel.Monoid
 import com.google.common.base.Throwables
-import com..account.AddressScheme
-import com..db.{Storage, VersionedStorage}
-import com..lang.Global
-import com..lang.v1.compiler.CompilerContext
-import com..lang.v1.compiler.CompilerContext._
-import com..lang.v1.compiler.Terms.TRUE
-import com..lang.v1.evaluator.ctx._
-import com..lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com..lang.v1.{FunctionHeader, ScriptEstimator}
-import com..transaction.smart.{BlockchainContext, WavesEnvironment}
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.db.{Storage, VersionedStorage}
+import com.amurplatform.lang.Global
+import com.amurplatform.lang.v1.compiler.CompilerContext
+import com.amurplatform.lang.v1.compiler.CompilerContext._
+import com.amurplatform.lang.v1.compiler.Terms.TRUE
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.amurplatform.lang.v1.{FunctionHeader, ScriptEstimator}
+import com.amurplatform.transaction.smart.{BlockchainContext, WavesEnvironment}
 import monix.eval.Coeval
 import monix.execution.UncaughtExceptionReporter
 import org.joda.time.Duration

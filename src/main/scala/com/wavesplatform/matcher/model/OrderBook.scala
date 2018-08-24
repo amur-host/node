@@ -1,7 +1,7 @@
-package com..matcher.model
+package com.amurplatform.matcher.model
 
-import com..matcher.model.MatcherModel.{Level, Price}
-import com..state.ByteStr
+import com.amurplatform.matcher.model.MatcherModel.{Level, Price}
+import com.amurplatform.state.ByteStr
 
 import scala.collection.immutable.TreeMap
 

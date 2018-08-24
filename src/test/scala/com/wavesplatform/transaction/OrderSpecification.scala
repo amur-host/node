@@ -1,15 +1,15 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..TransactionGen
-import com..matcher.ValidationMatcher
-import com..state.ByteStr
-import com..state.diffs._
-import com..transaction.assets.exchange._
-import com..utils.NTP
+import com.amurplatform.TransactionGen
+import com.amurplatform.matcher.ValidationMatcher
+import com.amurplatform.state.ByteStr
+import com.amurplatform.state.diffs._
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.utils.NTP
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com..OrderOps._
-import com..transaction.smart.Verifier
+import com.amurplatform.OrderOps._
+import com.amurplatform.transaction.smart.Verifier
 
 class OrderSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen with ValidationMatcher {
 

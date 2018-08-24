@@ -1,10 +1,10 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..settings.{FeesSettings, FunctionalitySettings}
-import com..state._
-import com..transaction.FeeCalculator._
-import com..transaction.ValidationError.GenericError
-import com..transaction.transfer._
+import com.amurplatform.settings.{FeesSettings, FunctionalitySettings}
+import com.amurplatform.state._
+import com.amurplatform.transaction.FeeCalculator._
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.transfer._
 
 class FeeCalculator(settings: FeesSettings, blockchain: Blockchain) {
 

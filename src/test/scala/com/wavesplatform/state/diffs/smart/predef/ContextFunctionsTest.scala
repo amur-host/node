@@ -1,18 +1,18 @@
-package com..state.diffs.smart.predef
+package com.amurplatform.state.diffs.smart.predef
 
-import com..account.PrivateKeyAccount
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..state._
-import com..state.diffs.smart.smartEnabledFS
-import com..state.diffs.{ENOUGH_AMT, assertDiffAndState}
-import com..utils.{Base58, dummyCompilerContext}
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.smart.smartEnabledFS
+import com.amurplatform.state.diffs.{ENOUGH_AMT, assertDiffAndState}
+import com.amurplatform.utils.{Base58, dummyCompilerContext}
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.GenesisTransaction
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.GenesisTransaction
 import org.scalacheck.Gen
 
 class ContextFunctionsTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {

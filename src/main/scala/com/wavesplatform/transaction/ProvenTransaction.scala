@@ -1,7 +1,7 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import play.api.libs.json._
-import com..utils.Base58
+import com.amurplatform.utils.Base58
 
 trait ProvenTransaction extends Transaction with Proven {
 

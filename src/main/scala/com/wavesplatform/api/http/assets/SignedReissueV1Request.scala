@@ -1,12 +1,12 @@
-package com..api.http.assets
+package com.amurplatform.api.http.assets
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com..account.PublicKeyAccount
-import com..api.http.BroadcastRequest
-import com..transaction.TransactionParsers.SignatureStringLength
-import com..transaction.assets.ReissueTransactionV1
-import com..transaction.{AssetIdStringLength, ValidationError}
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.TransactionParsers.SignatureStringLength
+import com.amurplatform.transaction.assets.ReissueTransactionV1
+import com.amurplatform.transaction.{AssetIdStringLength, ValidationError}
 
 object SignedReissueV1Request {
   implicit val assetReissueRequestReads: Format[SignedReissueV1Request] = Json.format

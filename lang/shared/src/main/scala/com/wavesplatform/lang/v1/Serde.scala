@@ -1,10 +1,10 @@
-package com..lang.v1
+package com.amurplatform.lang.v1
 
 import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
 
-import com..lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.Terms._
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 

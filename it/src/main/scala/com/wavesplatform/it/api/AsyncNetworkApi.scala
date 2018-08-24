@@ -1,8 +1,8 @@
-package com..it.api
+package com.amurplatform.it.api
 
-import com..it.Node
-import com..network.RawBytes
-import com..network.client.NetworkSender
+import com.amurplatform.it.Node
+import com.amurplatform.network.RawBytes
+import com.amurplatform.network.client.NetworkSender
 
 import scala.concurrent.Future
 

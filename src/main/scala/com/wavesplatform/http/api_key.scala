@@ -1,4 +1,4 @@
-package com..http
+package com.amurplatform.http
 
 import akka.http.scaladsl.model.headers._
 

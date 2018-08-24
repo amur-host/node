@@ -1,7 +1,7 @@
-package com..transaction
+package com.amurplatform.transaction
 
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
 
 trait FastHashId extends ProvenTransaction {

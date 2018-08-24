@@ -1,11 +1,11 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import cats.implicits._
 import com.google.common.primitives.Bytes
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com..account.{Alias, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.account.{Alias, PrivateKeyAccount, PublicKeyAccount}
 
 import scala.util.{Failure, Success, Try}
 

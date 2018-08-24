@@ -1,13 +1,13 @@
-package com..transaction.lease
+package com.amurplatform.transaction.lease
 
 import com.google.common.primitives.Bytes
-import com..crypto
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com..account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
-import com..serialization.Deser
-import com..transaction.ValidationError.UnsupportedVersion
-import com..transaction._
+import com.amurplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.serialization.Deser
+import com.amurplatform.transaction.ValidationError.UnsupportedVersion
+import com.amurplatform.transaction._
 
 import scala.util.{Either, Failure, Success, Try}
 

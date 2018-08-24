@@ -1,11 +1,11 @@
-package com..lagonaki.unit
+package com.amurplatform.lagonaki.unit
 
 import java.io.File
 import java.nio.file.Files
 
-import com..settings.WalletSettings
-import com..state.ByteStr
-import com..wallet.Wallet
+import com.amurplatform.settings.WalletSettings
+import com.amurplatform.state.ByteStr
+import com.amurplatform.wallet.Wallet
 import org.scalatest.{FunSuite, Matchers}
 
 class WalletSpecification extends FunSuite with Matchers {

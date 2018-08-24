@@ -1,16 +1,16 @@
-package com..it.sync.smartcontract
+package com.amurplatform.it.sync.smartcontract
 
-import com..it.api.SyncHttpApi.assertBadRequestAndResponse
-import com..it.sync.minFee
-import com..it.transactions.BaseTransactionSuite
-import com..lang.v1.FunctionHeader
-import com..lang.v1.compiler.Terms
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.v1.ScriptV1
+import com.amurplatform.it.api.SyncHttpApi.assertBadRequestAndResponse
+import com.amurplatform.it.sync.minFee
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.lang.v1.FunctionHeader
+import com.amurplatform.lang.v1.compiler.Terms
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.JsNumber
-import com..it.api.SyncHttpApi._
-import com..state._
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.state._
 
 class ScriptExecutionErrorSuite extends BaseTransactionSuite with CancelAfterFailure {
 

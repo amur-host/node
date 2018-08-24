@@ -1,6 +1,6 @@
-package com..state
+package com.amurplatform.state
 
-import com..block.Block.BlockId
-import com..consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.block.Block.BlockId
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
 
 case class BlockMinerInfo(consensus: NxtLikeConsensusBlockData, timestamp: Long, blockId: BlockId)

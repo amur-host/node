@@ -1,30 +1,30 @@
-package com.
+package com.amurplatform
 
 import cats.syntax.semigroup._
-import com..lang.Global
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.compiler.Terms._
-import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com..lang.v1.testing.ScriptGen
-import com..settings.Constants
-import com..state._
-import com..state.diffs.ENOUGH_AMT
+import com.amurplatform.lang.Global
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.amurplatform.lang.v1.testing.ScriptGen
+import com.amurplatform.settings.Constants
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.ENOUGH_AMT
 import org.scalacheck.Gen.{alphaLowerChar, alphaUpperChar, frequency, numChar}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.{BeforeAndAfterAll, Suite}
-import com..account.PublicKeyAccount._
-import com..account._
-import com..transaction._
-import com..transaction.assets._
-import com..transaction.assets.exchange._
-import com..transaction.lease._
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.Script
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com..transaction.transfer._
+import com.amurplatform.account.PublicKeyAccount._
+import com.amurplatform.account._
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.transaction.lease._
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.amurplatform.transaction.transfer._
 import MassTransferTransaction.MaxTransferCount
-import com..utils.TimeImpl
+import com.amurplatform.utils.TimeImpl
 
 import scala.util.Random
 

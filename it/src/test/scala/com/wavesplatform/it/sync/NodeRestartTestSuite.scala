@@ -1,9 +1,9 @@
-package com..it.sync
+package com.amurplatform.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it.api.SyncHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..it.{ReportingTestName, WaitForHeight2}
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.{ReportingTestName, WaitForHeight2}
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 class NodeRestartTestSuite extends FreeSpec with Matchers with WaitForHeight2 with CancelAfterFailure with ReportingTestName with NodesFromDocker {
@@ -29,7 +29,7 @@ class NodeRestartTestSuite extends FreeSpec with Matchers with WaitForHeight2 wi
 }
 
 object NodeRestartTestSuite {
-  import com..it.NodeConfigs._
+  import com.amurplatform.it.NodeConfigs._
   private val FirstNode = ConfigFactory.parseString(s"""
                                                          |waves {
                                                          |  synchronization.synchronization-timeout = 10s

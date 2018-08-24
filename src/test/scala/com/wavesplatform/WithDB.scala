@@ -1,8 +1,8 @@
-package com.
+package com.amurplatform
 
 import java.nio.file.{Files, Path}
 
-import com..db.LevelDBFactory
+import com.amurplatform.db.LevelDBFactory
 import org.iq80.leveldb.{DB, Options}
 import org.scalatest.{BeforeAndAfterEach, TestSuite}
 

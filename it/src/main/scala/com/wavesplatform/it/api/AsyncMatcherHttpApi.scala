@@ -1,14 +1,14 @@
-package com..it.api
+package com.amurplatform.it.api
 
 import com.google.common.primitives.Longs
-import com..crypto
-import com..http.api_key
-import com..it.Node
-import com..it.api.AsyncHttpApi.NodeAsyncHttpApi
-import com..matcher.api.CancelOrderRequest
-import com..state.ByteStr
-import com..transaction.Proofs
-import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.amurplatform.crypto
+import com.amurplatform.http.api_key
+import com.amurplatform.it.Node
+import com.amurplatform.it.api.AsyncHttpApi.NodeAsyncHttpApi
+import com.amurplatform.matcher.api.CancelOrderRequest
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.Proofs
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
 import org.asynchttpclient.Dsl.{get => _get}
 import org.asynchttpclient.util.HttpConstants
 import org.asynchttpclient.{RequestBuilder, Response}

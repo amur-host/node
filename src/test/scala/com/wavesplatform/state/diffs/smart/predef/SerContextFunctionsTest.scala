@@ -1,14 +1,14 @@
-package com..state.diffs.smart.predef
+package com.amurplatform.state.diffs.smart.predef
 
-import com..account.{Address, PublicKeyAccount}
-import com..lang.v1.Serde
-import com..lang.v1.compiler.CompilerV1
-import com..lang.v1.parser.Parser
-import com..state.{BinaryDataEntry, BooleanDataEntry, ByteStr, IntegerDataEntry, StringDataEntry}
-import com..transaction.transfer.TransferTransactionV2
-import com..transaction.{DataTransaction, Proofs}
-import com..utils.{Base58, dummyCompilerContext}
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.account.{Address, PublicKeyAccount}
+import com.amurplatform.lang.v1.Serde
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, IntegerDataEntry, StringDataEntry}
+import com.amurplatform.transaction.transfer.TransferTransactionV2
+import com.amurplatform.transaction.{DataTransaction, Proofs}
+import com.amurplatform.utils.{Base58, dummyCompilerContext}
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 import scorex.crypto.encode.Base64

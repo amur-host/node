@@ -1,15 +1,15 @@
-package com..lagonaki.unit
+package com.amurplatform.lagonaki.unit
 
-import com..mining.Miner
-import com..state._
-import com..state.diffs.produce
+import com.amurplatform.mining.Miner
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.produce
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.words.ShouldVerb
 import org.scalatest.{FunSuite, Matchers}
-import com..account.PrivateKeyAccount
-import com..block.{Block, MicroBlock}
-import com..transaction._
-import com..transaction.transfer._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.{Block, MicroBlock}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.transfer._
 
 import scala.util.Random
 

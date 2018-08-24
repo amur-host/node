@@ -1,18 +1,18 @@
-package com..http
+package com.amurplatform.http
 
 import akka.http.scaladsl.model.StatusCodes
-import com..account.PublicKeyAccount
-import com..api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
-import com..features.BlockchainFeatures
-import com..http.ApiMarshallers._
-import com..lang.v1.compiler.Terms.TRUE
-import com..settings.{TestFunctionalitySettings, WalletSettings}
-import com..state.{AssetDescription, Blockchain, ByteStr}
-import com..transaction.smart.script.v1.ScriptV1
-import com..utils.Base58
-import com..utx.UtxPool
-import com..wallet.Wallet
-import com..{BlockGen, NoShrink, TestTime, TransactionGen}
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.lang.v1.compiler.Terms.TRUE
+import com.amurplatform.settings.{TestFunctionalitySettings, WalletSettings}
+import com.amurplatform.state.{AssetDescription, Blockchain, ByteStr}
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.utils.Base58
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
+import com.amurplatform.{BlockGen, NoShrink, TestTime, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen._
 import org.scalamock.scalatest.MockFactory

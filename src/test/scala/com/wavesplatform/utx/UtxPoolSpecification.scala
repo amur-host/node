@@ -1,27 +1,27 @@
-package com..utx
+package com.amurplatform.utx
 
 import com.typesafe.config.ConfigFactory
-import com..account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com..block.Block
-import com..features.BlockchainFeatures
-import com..history.StorageFactory
-import com..lagonaki.mocks.TestBlock
-import com..lang.v1.compiler.Terms.EXPR
-import com..lang.v1.compiler.{CompilerContext, CompilerV1}
-import com..mining._
-import com..settings._
-import com..state.diffs._
-import com..state.{ByteStr, EitherExt2, _}
-import com..transaction.ValidationError.SenderIsBlacklisted
-import com..transaction.assets.IssueTransactionV1
-import com..transaction.smart.SetScriptTransaction
-import com..transaction.smart.script.Script
-import com..transaction.smart.script.v1.ScriptV1
-import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com..transaction.transfer._
-import com..transaction.{FeeCalculator, GenesisTransaction, Transaction}
-import com..utils.Time
-import com.._
+import com.amurplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.block.Block
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.history.StorageFactory
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.lang.v1.compiler.Terms.EXPR
+import com.amurplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
+import com.amurplatform.mining._
+import com.amurplatform.settings._
+import com.amurplatform.state.diffs._
+import com.amurplatform.state.{ByteStr, EitherExt2, _}
+import com.amurplatform.transaction.ValidationError.SenderIsBlacklisted
+import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{FeeCalculator, GenesisTransaction, Transaction}
+import com.amurplatform.utils.Time
+import com.amurplatform._
 import org.scalacheck.Gen
 import org.scalacheck.Gen._
 import org.scalamock.scalatest.MockFactory

@@ -1,17 +1,17 @@
-package com..api.http
+package com.amurplatform.api.http
 
 import java.nio.charset.StandardCharsets
 
-import com..http.ApiMarshallers._
-import com..http.{RestAPISettingsHelper, RouteSpec}
-import com..state.{AssetDescription, Blockchain, ByteStr}
-import com..utx.UtxPool
-import com..{NoShrink, TestTime, TestWallet, TransactionGen}
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.http.{RestAPISettingsHelper, RouteSpec}
+import com.amurplatform.state.{AssetDescription, Blockchain, ByteStr}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.{NoShrink, TestTime, TestWallet, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json._
-import com..api.http.assets.AssetsApiRoute
+import com.amurplatform.api.http.assets.AssetsApiRoute
 
 class AssetsApiRouteSpec
     extends RouteSpec("/assets")

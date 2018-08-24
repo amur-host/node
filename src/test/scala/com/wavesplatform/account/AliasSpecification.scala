@@ -1,6 +1,6 @@
-package com..account
+package com.amurplatform.account
 
-import com..{NoShrink, TransactionGen}
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

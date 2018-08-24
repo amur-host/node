@@ -1,12 +1,12 @@
-package com..matcher
+package com.amurplatform.matcher
 
 import com.google.common.base.Charsets
 import com.typesafe.config.ConfigFactory
-import com..account.PublicKeyAccount
-import com..settings.loadConfig
-import com..state.diffs.produce
-import com..state.{AssetDescription, Blockchain, ByteStr}
-import com..transaction.assets.exchange.AssetPair
+import com.amurplatform.account.PublicKeyAccount
+import com.amurplatform.settings.loadConfig
+import com.amurplatform.state.diffs.produce
+import com.amurplatform.state.{AssetDescription, Blockchain, ByteStr}
+import com.amurplatform.transaction.assets.exchange.AssetPair
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FreeSpec, Matchers}

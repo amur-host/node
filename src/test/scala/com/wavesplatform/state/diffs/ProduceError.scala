@@ -1,4 +1,4 @@
-package com..state.diffs
+package com.amurplatform.state.diffs
 
 import org.scalatest.matchers.{MatchResult, Matcher}
 

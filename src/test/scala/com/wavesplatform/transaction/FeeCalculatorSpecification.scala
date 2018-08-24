@@ -1,17 +1,17 @@
-package com..transaction
+package com.amurplatform.transaction
 
 import com.typesafe.config.ConfigFactory
-import com..TransactionGen
-import com..settings.FeesSettings
-import com..state.{ByteStr, _}
+import com.amurplatform.TransactionGen
+import com.amurplatform.settings.FeesSettings
+import com.amurplatform.state.{ByteStr, _}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertion, Matchers, PropSpec}
-import com..account.{Address, PrivateKeyAccount}
-import com..transaction.assets._
-import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com..transaction.smart.script.Script
-import com..transaction.transfer._
+import com.amurplatform.account.{Address, PrivateKeyAccount}
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.transfer._
 
 class FeeCalculatorSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen with MockFactory {
 

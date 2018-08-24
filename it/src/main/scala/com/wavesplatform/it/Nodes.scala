@@ -1,4 +1,4 @@
-package com..it
+package com.amurplatform.it
 
 import com.typesafe.config.Config
 

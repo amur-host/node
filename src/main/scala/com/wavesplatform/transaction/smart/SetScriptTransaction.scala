@@ -1,16 +1,16 @@
-package com..transaction.smart
+package com.amurplatform.transaction.smart
 
 import com.google.common.primitives.{Bytes, Longs}
-import com..account._
-import com..crypto
-import com..serialization.Deser
-import com..state._
-import com..transaction.ValidationError.GenericError
-import com..transaction._
-import com..transaction.smart.script.{Script, ScriptReader}
+import com.amurplatform.account._
+import com.amurplatform.crypto
+import com.amurplatform.serialization.Deser
+import com.amurplatform.state._
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.smart.script.{Script, ScriptReader}
 import monix.eval.Coeval
 import play.api.libs.json.Json
-import com..crypto.KeyLength
+import com.amurplatform.crypto.KeyLength
 
 import scala.util.{Failure, Success, Try}
 

@@ -1,7 +1,7 @@
-package com..settings
+package com.amurplatform.settings
 
-import com..Version
-import com..utils.ScorexLogging
+import com.amurplatform.Version
+import com.amurplatform.utils.ScorexLogging
 
 /**
   * System constants here.

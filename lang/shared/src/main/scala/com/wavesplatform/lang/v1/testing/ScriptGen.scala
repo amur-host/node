@@ -1,9 +1,9 @@
-package com..lang.v1.testing
+package com.amurplatform.lang.v1.testing
 
-import com..lang.v1.parser.Parser.keywords
-import com..lang.v1.parser.BinaryOperation
-import com..lang.v1.parser.BinaryOperation._
-import com..lang.v1.parser.Expressions._
+import com.amurplatform.lang.v1.parser.Parser.keywords
+import com.amurplatform.lang.v1.parser.BinaryOperation
+import com.amurplatform.lang.v1.parser.BinaryOperation._
+import com.amurplatform.lang.v1.parser.Expressions._
 import org.scalacheck._
 import scodec.bits.ByteVector
 import scorex.crypto.encode.Base58

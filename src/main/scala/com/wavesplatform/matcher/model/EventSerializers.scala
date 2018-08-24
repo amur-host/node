@@ -1,18 +1,18 @@
-package com..matcher.model
+package com.amurplatform.matcher.model
 
 import java.io.NotSerializableException
 
 import akka.serialization._
-import com..matcher.market.MatcherActor.OrderBookCreated
-import com..matcher.market.OrderBookActor.Snapshot
-import com..matcher.market.{MatcherActor, OrderBookActor}
-import com..matcher.model.Events._
-import com..matcher.model.MatcherModel.{Level, Price}
+import com.amurplatform.matcher.market.MatcherActor.OrderBookCreated
+import com.amurplatform.matcher.market.OrderBookActor.Snapshot
+import com.amurplatform.matcher.market.{MatcherActor, OrderBookActor}
+import com.amurplatform.matcher.model.Events._
+import com.amurplatform.matcher.model.MatcherModel.{Level, Price}
 import play.api.libs.functional.syntax._
 import play.api.libs.json.Reads._
 import play.api.libs.json._
-import com..transaction.assets.exchange.OrderJson._
-import com..transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.transaction.assets.exchange.OrderJson._
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
 
 import scala.collection.immutable.TreeMap
 

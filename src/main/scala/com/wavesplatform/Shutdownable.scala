@@ -1,4 +1,4 @@
-package com.
+package com.amurplatform
 
 trait Shutdownable {
   def shutdown(): Unit

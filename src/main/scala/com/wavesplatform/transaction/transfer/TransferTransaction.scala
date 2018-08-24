@@ -1,15 +1,15 @@
-package com..transaction.transfer
+package com.amurplatform.transaction.transfer
 
 import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs}
-import com..account.{AddressOrAlias, PublicKeyAccount}
-import com..serialization.Deser
-import com..transaction._
-import com..transaction.validation._
-import com..utils.{Base58, base58Length}
+import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
+import com.amurplatform.serialization.Deser
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.validation._
+import com.amurplatform.utils.{Base58, base58Length}
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com..crypto._
+import com.amurplatform.crypto._
 
 trait TransferTransaction extends ProvenTransaction with VersionedTransaction {
   def assetId: Option[AssetId]

@@ -1,26 +1,26 @@
-package com..http
+package com.amurplatform.http
 
 import akka.http.scaladsl.model.StatusCodes
 import com.typesafe.config.ConfigFactory
-import com..RequestGen
-import com..http.ApiMarshallers._
-import com..settings.RestAPISettings
-import com..state.Diff
-import com..state.diffs.TransactionDiffer.TransactionValidationError
-import com..utx.{UtxBatchOps, UtxPool}
+import com.amurplatform.RequestGen
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.Diff
+import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
+import com.amurplatform.utx.{UtxBatchOps, UtxPool}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen._
 import org.scalacheck.{Gen => G}
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{JsObject, JsValue, Json, Writes}
-import com..api.http._
-import com..api.http.assets._
-import com..utils.Base58
-import com..transaction.ValidationError.GenericError
-import com..transaction.transfer._
-import com..transaction.{Proofs, Transaction, ValidationError}
-import com..wallet.Wallet
+import com.amurplatform.api.http._
+import com.amurplatform.api.http.assets._
+import com.amurplatform.utils.Base58
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{Proofs, Transaction, ValidationError}
+import com.amurplatform.wallet.Wallet
 import shapeless.Coproduct
 
 class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with RequestGen with PathMockFactory with PropertyChecks {

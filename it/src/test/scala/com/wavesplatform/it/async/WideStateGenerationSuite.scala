@@ -1,12 +1,12 @@
-package com..it.async
+package com.amurplatform.it.async
 
 import java.util.concurrent.TimeoutException
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com..it._
-import com..it.api.AsyncHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..it.util._
+import com.amurplatform.it._
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.util._
 import org.scalatest._
 
 import scala.concurrent.ExecutionContext.Implicits.global

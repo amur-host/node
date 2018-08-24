@@ -1,11 +1,11 @@
-package com..state
+package com.amurplatform.state
 
 import java.nio.charset.StandardCharsets.UTF_8
 
 import com.google.common.primitives.{Longs, Shorts}
-import com..state.DataEntry._
+import com.amurplatform.state.DataEntry._
 import play.api.libs.json._
-import com..serialization.Deser
+import com.amurplatform.serialization.Deser
 
 sealed abstract class DataEntry[T](val key: String, val value: T) {
   def valueBytes: Array[Byte]

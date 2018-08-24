@@ -1,4 +1,4 @@
-package com..utils
+package com.amurplatform.utils
 
 sealed abstract class ApplicationStopReason(val code: Int)
 case object Default            extends ApplicationStopReason(1)

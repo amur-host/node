@@ -1,5 +1,5 @@
-package com..state.reader
+package com.amurplatform.state.reader
 
-import com..account.{AddressOrAlias, PublicKeyAccount}
+import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
 
 case class LeaseDetails(sender: PublicKeyAccount, recipient: AddressOrAlias, height: Int, amount: Long, isActive: Boolean)

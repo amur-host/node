@@ -1,16 +1,16 @@
-package com..matcher
+package com.amurplatform.matcher
 
 import com.google.common.primitives.{Bytes, Ints}
 import com.typesafe.config.ConfigFactory
-import com..crypto
-import com..matcher.model.MatcherModel.Price
-import com..matcher.model.{BuyLimitOrder, SellLimitOrder}
-import com..settings.loadConfig
-import com..state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.matcher.model.MatcherModel.Price
+import com.amurplatform.matcher.model.{BuyLimitOrder, SellLimitOrder}
+import com.amurplatform.settings.loadConfig
+import com.amurplatform.state.ByteStr
 import org.scalacheck.{Arbitrary, Gen}
-import com..account.PrivateKeyAccount
-import com..utils.NTP
-import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.utils.NTP
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
 
 trait MatcherTestData {
   private val signatureSize = 32

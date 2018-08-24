@@ -1,21 +1,21 @@
-package com..it.sync
+package com.amurplatform.it.sync
 
 import com.typesafe.config.Config
-import com..consensus.FairPoSCalculator
-import com..crypto
-import com..it.api.AsyncNetworkApi.NodeAsyncNetworkApi
-import com..it.api.SyncHttpApi._
-import com..it.transactions.NodesFromDocker
-import com..it.{NodeConfigs, WaitForHeight2}
-import com..network.RawBytes
-import com..state._
-import com..utils.Base58
+import com.amurplatform.consensus.FairPoSCalculator
+import com.amurplatform.crypto
+import com.amurplatform.it.api.AsyncNetworkApi.NodeAsyncNetworkApi
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.{NodeConfigs, WaitForHeight2}
+import com.amurplatform.network.RawBytes
+import com.amurplatform.state._
+import com.amurplatform.utils.Base58
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
 import play.api.libs.json.{JsSuccess, Json, Reads}
-import com..account.PrivateKeyAccount
-import com..block.{Block, SignerData}
-import com..consensus.nxt.NxtLikeConsensusBlockData
-import com..http.DebugMessage
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.{Block, SignerData}
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.http.DebugMessage
 
 import scala.util.Random
 
