@@ -1,14 +1,16 @@
 import cats.kernel.Monoid
-import com.localplatform.lang.Global
-import com.localplatform.lang.v1.Serde
-import com.localplatform.lang.v1.compiler.CompilerV1
-import com.localplatform.lang.v1.compiler.Terms._
-import com.localplatform.lang.v1.evaluator.ctx.impl.local.LocalContext
-import com.localplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.localplatform.lang.v1.parser.{Expressions, Parser}
-import com.localplatform.lang.v1.traits.{DataType, Environment, Recipient, Tx}
-import com.localplatform.lang.v1.FunctionHeader.{Native, User}
+import com.wavesplatform.lang.Global
+import com.wavesplatform.lang.v1.FunctionHeader.{Native, User}
+import com.wavesplatform.lang.v1.Serde
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.wavesplatform.lang.v1.parser.{Expressions, Parser}
+import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com.wavesplatform.lang.v1.traits.{DataType, Environment}
 import fastparse.core.Parsed.{Failure, Success}
+import shapeless.{:+:, CNil}
 
 import scala.scalajs.js
 import scala.scalajs.js.Dynamic.{literal => jObj}
@@ -45,10 +47,10 @@ object JsAPI {
   @JSExportTopLevel("compile")
   def compile(input: String): js.Dynamic = {
 
-    val localContext = LocalContext.build(new Environment {
+    val wavesContext = WavesContext.build(new Environment {
       override def height: Int                                                                                     = ???
       override def networkByte: Byte                                                                               = ???
-      override def inputEntity: Tx                                                                                 = ???
+      override def inputEntity: Tx :+: Ord :+: CNil                                                                = ???
       override def transactionById(id: Array[Byte]): Option[Tx]                                                    = ???
       override def transactionHeightById(id: Array[Byte]): Option[Int]                                             = ???
       override def data(addressOrAlias: Recipient, key: String, dataType: DataType): Option[Any]                   = ???
@@ -59,7 +61,7 @@ object JsAPI {
     //comment
     val cryptoContext = CryptoContext.build(Global)
 
-    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, localContext)).compilerContext
+    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, wavesContext)).compilerContext
 
     def hash(m: Array[Byte]) = Global.keccak256(Global.blake2b256(m))
 

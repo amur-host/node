@@ -18,15 +18,15 @@ inTask(docker)(
   Seq(
     dockerfile := {
       val configTemplate = (Compile / resourceDirectory).value / "template.conf"
-      val startLocal     = sourceDirectory.value / "container" / "start-local.sh"
+      val startWaves     = sourceDirectory.value / "container" / "start-waves.sh"
 
       val withAspectJ     = Option(System.getenv("WITH_ASPECTJ")).fold(false)(_.toBoolean)
-      val aspectjAgentUrl = "http://search.maven.org/remotecontent?filepath=org/aspectj/aspectjweaver/1.8.13/aspectjweaver-1.8.13.jar"
+      val aspectjAgentUrl = "http://search.maven.org/remotecontent?filepath=org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar"
       val yourKitArchive  = "YourKit-JavaProfiler-2018.04-docker.zip"
 
       new Dockerfile {
         from("anapsix/alpine-java:8_server-jre")
-        runRaw("mkdir -p /opt/local")
+        runRaw("mkdir -p /opt/waves")
 
         // Install YourKit
         runRaw(s"""apk update && \\
@@ -35,12 +35,12 @@ inTask(docker)(
                   |unzip /tmp/$yourKitArchive -d /usr/local && \\
                   |rm /tmp/$yourKitArchive""".stripMargin)
 
-        if (withAspectJ) run("wget", "--quiet", aspectjAgentUrl, "-O", "/opt/local/aspectjweaver.jar")
+        if (withAspectJ) run("wget", "--quiet", aspectjAgentUrl, "-O", "/opt/waves/aspectjweaver.jar")
 
-        add((assembly in LocalProject("node")).value, "/opt/local/local.jar")
-        add(Seq(configTemplate, startLocal), "/opt/local/")
-        run("chmod", "+x", "/opt/local/start-local.sh")
-        entryPoint("/opt/local/start-local.sh")
+        add((assembly in LocalProject("node")).value, "/opt/waves/waves.jar")
+        add(Seq(configTemplate, startWaves), "/opt/waves/")
+        run("chmod", "+x", "/opt/waves/start-waves.sh")
+        entryPoint("/opt/waves/start-waves.sh")
         expose(10001)
       }
     },
@@ -85,8 +85,8 @@ lazy val itTestsCommonSettings: Seq[Def.Setting[_]] = Seq(
             runJVMOptions = Vector(
               "-XX:+IgnoreUnrecognizedVMOptions",
               "--add-modules=java.xml.bind",
-              "-Dlocal.it.logging.appender=FILE",
-              s"-Dlocal.it.logging.dir=${logDirectoryValue / suite.name.replaceAll("""(\w)\w*\.""", "$1.")}"
+              "-Dwaves.it.logging.appender=FILE",
+              s"-Dwaves.it.logging.dir=${logDirectoryValue / suite.name.replaceAll("""(\w)\w*\.""", "$1.")}"
             ) ++ javaOptionsValue,
             connectInput = false,
             envVars = envVarsValue
