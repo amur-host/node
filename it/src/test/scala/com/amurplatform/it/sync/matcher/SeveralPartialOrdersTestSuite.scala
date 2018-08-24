@@ -42,7 +42,7 @@ class SeveralPartialOrdersTestSuite
   matcherNode.signedIssue(createSignedIssueRequest(IssueUsdTx))
   nodes.waitForHeightArise()
 
-  "Alice and Bob trade WAVES-USD" - {
+  "Alice and Bob trade AMUR-USD" - {
     nodes.waitForHeightArise()
     val bobAmurBalanceBefore = matcherNode.accountBalances(bobNode.address)._1
 
@@ -56,8 +56,8 @@ class SeveralPartialOrdersTestSuite
       val bobOrder   = matcherNode.prepareOrder(bobNode, amurUsdPair, OrderType.SELL, price, sellOrderAmount)
       val bobOrderId = matcherNode.placeOrder(bobOrder).message.id
       matcherNode.waitOrderStatus(amurUsdPair, bobOrderId, "Accepted", 1.minute)
-      matcherNode.reservedBalance(bobNode)("WAVES") shouldBe sellOrderAmount + matcherFee
-      matcherNode.tradableBalance(bobNode, amurUsdPair)("WAVES") shouldBe bobAmurBalanceBefore - (sellOrderAmount + matcherFee)
+      matcherNode.reservedBalance(bobNode)("AMUR") shouldBe sellOrderAmount + matcherFee
+      matcherNode.tradableBalance(bobNode, amurUsdPair)("AMUR") shouldBe bobAmurBalanceBefore - (sellOrderAmount + matcherFee)
 
       val aliceOrder   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, price, buyOrderAmount)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
@@ -140,7 +140,7 @@ object SeveralPartialOrdersTestSuite {
 
   private val updatedMatcherConfig = parseString(s"""
                                                     |amur.matcher {
-                                                    |  price-assets = [ "$UsdId", "WAVES"]
+                                                    |  price-assets = [ "$UsdId", "AMUR"]
                                                     |}
      """.stripMargin)
 

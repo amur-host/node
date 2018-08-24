@@ -34,7 +34,7 @@ case class AssetPair(@ApiModelProperty(dataType = "java.lang.String") amountAsse
 }
 
 object AssetPair {
-  val AmurName = "WAVES"
+  val AmurName = "AMUR"
 
   def assetIdStr(aid: Option[AssetId]): String = aid.fold(AmurName)(_.base58)
 

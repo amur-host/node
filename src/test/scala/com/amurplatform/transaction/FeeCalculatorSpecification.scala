@@ -19,32 +19,32 @@ class FeeCalculatorSpecification extends PropSpec with PropertyChecks with Match
     """amur {
       |  fees {
       |    payment {
-      |      WAVES = 100000
+      |      AMUR = 100000
       |    }
       |    issue {
-      |      WAVES = 100000000
+      |      AMUR = 100000000
       |    }
       |    transfer {
-      |      WAVES = 100000
+      |      AMUR = 100000
       |      "JAudr64y6YxTgLn9T5giKKqWGkbMfzhdRAxmNNfn6FJN" = 2
       |    }
       |    reissue {
-      |      WAVES = 200000
+      |      AMUR = 200000
       |    }
       |    burn {
-      |      WAVES = 300000
+      |      AMUR = 300000
       |    }
       |    lease {
-      |      WAVES = 400000
+      |      AMUR = 400000
       |    }
       |    lease-cancel {
-      |      WAVES = 500000
+      |      AMUR = 500000
       |    }
       |    create-alias {
-      |      WAVES = 600000
+      |      AMUR = 600000
       |    }
       |    data {
-      |      WAVES = 100000
+      |      AMUR = 100000
       |    }
       |  }
       |}""".stripMargin

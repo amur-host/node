@@ -14,7 +14,7 @@ class FeeCalculator(settings: FeesSettings, blockchain: Blockchain) {
     settings.fees.flatMap { fs =>
       val transactionType = fs._1
       fs._2.map { v =>
-        val maybeAsset = if (v.asset.toUpperCase == "WAVES") None else Some(ByteStr.decodeBase58(v.asset).get)
+        val maybeAsset = if (v.asset.toUpperCase == "AMUR") None else Some(ByteStr.decodeBase58(v.asset).get)
         val fee        = v.fee
 
         TransactionAssetFee(transactionType, maybeAsset).key -> fee
@@ -36,7 +36,7 @@ class FeeCalculator(settings: FeesSettings, blockchain: Blockchain) {
         txFeeValue >= minTxFee,
         (),
         GenericError {
-          s"Fee in ${txFeeAssetId.fold("WAVES")(_.toString)} for ${tx.builder.classTag} transaction does not exceed minimal value of $minTxFee"
+          s"Fee in ${txFeeAssetId.fold("AMUR")(_.toString)} for ${tx.builder.classTag} transaction does not exceed minimal value of $minTxFee"
         }
       )
     } yield tx

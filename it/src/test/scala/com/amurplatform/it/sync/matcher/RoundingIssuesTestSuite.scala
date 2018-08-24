@@ -121,7 +121,7 @@ object RoundingIssuesTestSuite {
 
   private val updatedMatcherConfig = parseString(s"""
                                                     |amur.matcher {
-                                                    |  price-assets = [ "$UsdId", "WAVES"]
+                                                    |  price-assets = [ "$UsdId", "AMUR"]
                                                     |}
      """.stripMargin)
 
