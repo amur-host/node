@@ -1,7 +1,7 @@
-package com.amurplatform.matcher.model
+package com.wavesplatform.matcher.model
 
 import play.api.libs.json.{Json, Writes}
-import com.amurplatform.transaction.assets.exchange.AssetPair
+import com.wavesplatform.transaction.assets.exchange.AssetPair
 
 case class OrderBookResult(timestamp: Long, pair: AssetPair, bids: Seq[LevelAgg], asks: Seq[LevelAgg]) {}
 

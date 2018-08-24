@@ -1,16 +1,16 @@
-package com.amurplatform.matcher
+package com.wavesplatform.matcher
 
 import com.google.common.primitives.{Bytes, Ints}
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.crypto
-import com.amurplatform.matcher.model.MatcherModel.Price
-import com.amurplatform.matcher.model.{BuyLimitOrder, SellLimitOrder}
-import com.amurplatform.settings.loadConfig
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.crypto
+import com.wavesplatform.matcher.model.MatcherModel.Price
+import com.wavesplatform.matcher.model.{BuyLimitOrder, SellLimitOrder}
+import com.wavesplatform.settings.loadConfig
+import com.wavesplatform.state.ByteStr
 import org.scalacheck.{Arbitrary, Gen}
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.utils.NTP
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.utils.NTP
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
 
 trait MatcherTestData {
   private val signatureSize = 32
@@ -22,16 +22,16 @@ trait MatcherTestData {
   val accountGen: Gen[PrivateKeyAccount] = bytes32gen.map(seed => PrivateKeyAccount(seed))
   val positiveLongGen: Gen[Long]         = Gen.choose(1, Long.MaxValue)
 
-  val amurAssetGen: Gen[Option[Array[Byte]]] = Gen.const(None)
-  val assetIdGen: Gen[Option[Array[Byte]]]    = Gen.frequency((1, amurAssetGen), (10, bytes32gen.map(Some(_))))
+  val wavesAssetGen: Gen[Option[Array[Byte]]] = Gen.const(None)
+  val assetIdGen: Gen[Option[Array[Byte]]]    = Gen.frequency((1, wavesAssetGen), (10, bytes32gen.map(Some(_))))
 
   val assetPairGen = Gen.zip(assetIdGen, assetIdGen).suchThat(p => p._1 != p._2).map(p => AssetPair(p._1.map(ByteStr(_)), p._2.map(ByteStr(_))))
 
   val maxTimeGen: Gen[Long]     = Gen.choose(10000L, Order.MaxLiveTime).map(_ + NTP.correctedTime())
   val createdTimeGen: Gen[Long] = Gen.choose(0L, 10000L).map(NTP.correctedTime() - _)
 
-  val config = loadConfig(ConfigFactory.parseString("""amur {
-      |  directory: "/tmp/amur-test"
+  val config = loadConfig(ConfigFactory.parseString("""waves {
+      |  directory: "/tmp/waves-test"
       |  matcher {
       |    enable: yes
       |    account: ""
@@ -58,7 +58,7 @@ trait MatcherTestData {
     value.get
   }
 
-  val maxAmurAmountGen: Gen[Long] = Gen.choose(1, 100000000L * 100000000L)
+  val maxWavesAmountGen: Gen[Long] = Gen.choose(1, 100000000L * 100000000L)
 
   def buyGenerator(pair: AssetPair,
                    price: Long,
@@ -70,7 +70,7 @@ trait MatcherTestData {
       sender: PrivateKeyAccount <- sender.map(Gen.const).getOrElse(accountGen)
       timestamp: Long           <- timestamp.map(Gen.const).getOrElse(createdTimeGen)
       expiration: Long          <- maxTimeGen
-      matcherFee: Long          <- matcherFee.map(Gen.const).getOrElse(maxAmurAmountGen)
+      matcherFee: Long          <- matcherFee.map(Gen.const).getOrElse(maxWavesAmountGen)
     } yield (Order.buy(sender, MatcherAccount, pair, price, amount, timestamp, expiration, matcherFee), sender)
 
   def sellGenerator(pair: AssetPair,
@@ -83,7 +83,7 @@ trait MatcherTestData {
       sender: PrivateKeyAccount <- sender.map(Gen.const).getOrElse(accountGen)
       timestamp: Long           <- timestamp.map(Gen.const).getOrElse(createdTimeGen)
       expiration: Long          <- maxTimeGen
-      matcherFee: Long          <- matcherFee.map(Gen.const).getOrElse(maxAmurAmountGen)
+      matcherFee: Long          <- matcherFee.map(Gen.const).getOrElse(maxWavesAmountGen)
     } yield (Order.sell(sender, MatcherAccount, pair, price, amount, timestamp, expiration, matcherFee), sender)
 
   def buy(pair: AssetPair,
@@ -122,22 +122,22 @@ trait MatcherTestData {
     sender: PrivateKeyAccount <- accountGen
     pair                      <- assetPairGen
     orderType                 <- orderTypeGenerator
-    price: Long               <- maxAmurAmountGen
-    amount: Long              <- maxAmurAmountGen
+    price: Long               <- maxWavesAmountGen
+    amount: Long              <- maxWavesAmountGen
     timestamp: Long           <- createdTimeGen
     expiration: Long          <- maxTimeGen
-    matcherFee: Long          <- maxAmurAmountGen
+    matcherFee: Long          <- maxWavesAmountGen
     orderVersion: Byte        <- Gen.oneOf(1: Byte, 2: Byte)
   } yield (Order(sender, MatcherAccount, pair, orderType, price, amount, timestamp, expiration, matcherFee, orderVersion), sender)
 
   val buyLimitOrderGenerator: Gen[BuyLimitOrder] = for {
     sender: PrivateKeyAccount <- accountGen
     pair                      <- assetPairGen
-    price: Long               <- maxAmurAmountGen
-    amount: Long              <- maxAmurAmountGen
+    price: Long               <- maxWavesAmountGen
+    amount: Long              <- maxWavesAmountGen
     timestamp: Long           <- createdTimeGen
     expiration: Long          <- maxTimeGen
-    matcherFee: Long          <- maxAmurAmountGen
+    matcherFee: Long          <- maxWavesAmountGen
     orderVersion: Byte        <- Gen.oneOf(1: Byte, 2: Byte)
   } yield
     BuyLimitOrder(price, amount, matcherFee, Order.buy(sender, MatcherAccount, pair, price, amount, timestamp, expiration, matcherFee, orderVersion))
@@ -145,11 +145,11 @@ trait MatcherTestData {
   val sellLimitOrderGenerator: Gen[SellLimitOrder] = for {
     sender: PrivateKeyAccount <- accountGen
     pair                      <- assetPairGen
-    price: Long               <- maxAmurAmountGen
-    amount: Long              <- maxAmurAmountGen
+    price: Long               <- maxWavesAmountGen
+    amount: Long              <- maxWavesAmountGen
     timestamp: Long           <- createdTimeGen
     expiration: Long          <- maxTimeGen
-    matcherFee: Long          <- maxAmurAmountGen
+    matcherFee: Long          <- maxWavesAmountGen
     orderVersion: Byte        <- Gen.oneOf(1: Byte, 2: Byte)
   } yield
     SellLimitOrder(price,

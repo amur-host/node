@@ -1,8 +1,8 @@
-package com.amurplatform.utils
+package com.wavesplatform.utils
 
-import com.amurplatform.lang.v1.compiler.Terms.{FUNCTION_CALL, TRUE}
-import com.amurplatform.lang.v1.compiler.Types.BOOLEAN
-import com.amurplatform.lang.v1.evaluator.ctx.{EvaluationContext, UserFunction}
+import com.wavesplatform.lang.v1.compiler.Terms.{FUNCTION_CALL, TRUE}
+import com.wavesplatform.lang.v1.compiler.Types.BOOLEAN
+import com.wavesplatform.lang.v1.evaluator.ctx.{EvaluationContext, UserFunction}
 import org.scalatest.{FreeSpec, Matchers}
 
 class UtilsSpecification extends FreeSpec with Matchers {

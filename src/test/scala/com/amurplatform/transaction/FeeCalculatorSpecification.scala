@@ -1,50 +1,50 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.TransactionGen
-import com.amurplatform.settings.FeesSettings
-import com.amurplatform.state.{ByteStr, _}
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.settings.FeesSettings
+import com.wavesplatform.state.{ByteStr, _}
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertion, Matchers, PropSpec}
-import com.amurplatform.account.{Address, PrivateKeyAccount}
-import com.amurplatform.transaction.assets._
-import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.amurplatform.transaction.smart.script.Script
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.{Address, PrivateKeyAccount}
+import com.wavesplatform.transaction.assets._
+import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.wavesplatform.transaction.smart.script.Script
+import com.wavesplatform.transaction.transfer._
 
 class FeeCalculatorSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen with MockFactory {
 
   private val configString =
-    """amur {
+    """waves {
       |  fees {
       |    payment {
-      |      AMUR = 100000
+      |      WAVES = 100000
       |    }
       |    issue {
-      |      AMUR = 100000000
+      |      WAVES = 100000000
       |    }
       |    transfer {
-      |      AMUR = 100000
+      |      WAVES = 100000
       |      "JAudr64y6YxTgLn9T5giKKqWGkbMfzhdRAxmNNfn6FJN" = 2
       |    }
       |    reissue {
-      |      AMUR = 200000
+      |      WAVES = 200000
       |    }
       |    burn {
-      |      AMUR = 300000
+      |      WAVES = 300000
       |    }
       |    lease {
-      |      AMUR = 400000
+      |      WAVES = 400000
       |    }
       |    lease-cancel {
-      |      AMUR = 500000
+      |      WAVES = 500000
       |    }
       |    create-alias {
-      |      AMUR = 600000
+      |      WAVES = 600000
       |    }
       |    data {
-      |      AMUR = 100000
+      |      WAVES = 100000
       |    }
       |  }
       |}""".stripMargin

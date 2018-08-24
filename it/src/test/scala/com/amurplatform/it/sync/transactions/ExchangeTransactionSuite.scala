@@ -1,14 +1,14 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.api.http.assets.{SignedExchangeRequest, SignedExchangeRequestV2}
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.util._
-import com.amurplatform.it.sync._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.transaction.assets.IssueTransactionV1
-import com.amurplatform.transaction.assets.exchange._
-import com.amurplatform.transaction.assets.exchange.OrderJson._
-import com.amurplatform.utils.{Base58, NTP}
+import com.wavesplatform.api.http.assets.{SignedExchangeRequest, SignedExchangeRequestV2}
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.util._
+import com.wavesplatform.it.sync._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.transaction.assets.exchange._
+import com.wavesplatform.transaction.assets.exchange.OrderJson._
+import com.wavesplatform.utils.{Base58, NTP}
 import play.api.libs.json._
 
 class ExchangeTransactionSuite extends BaseTransactionSuite {
@@ -37,7 +37,7 @@ class ExchangeTransactionSuite extends BaseTransactionSuite {
           quantity = someAssetAmount,
           decimals = 2,
           reissuable = true,
-          fee = 1.amur,
+          fee = 1.waves,
           timestamp = System.currentTimeMillis()
         )
         .right
@@ -54,7 +54,7 @@ class ExchangeTransactionSuite extends BaseTransactionSuite {
       val sellPrice           = 2 * Order.PriceConstant
       val buyAmount           = 1
       val sellAmount          = 1
-      val assetPair           = AssetPair.createAssetPair("AMUR", assetId).get
+      val assetPair           = AssetPair.createAssetPair("WAVES", assetId).get
       val buy                 = Order.buy(buyer, matcher, assetPair, buyPrice, buyAmount, time, expirationTimestamp, matcherFee, o1ver)
       val sell                = Order.sell(seller, matcher, assetPair, sellPrice, sellAmount, time, expirationTimestamp, matcherFee, o2ver)
 

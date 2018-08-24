@@ -1,12 +1,12 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats._
 import cats.implicits._
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.state._
-import com.amurplatform.transaction.ValidationError
-import com.amurplatform.transaction.ValidationError.{GenericError, OrderValidationError}
-import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.state._
+import com.wavesplatform.transaction.ValidationError
+import com.wavesplatform.transaction.ValidationError.{GenericError, OrderValidationError}
+import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
 
 import scala.util.Right
 
@@ -46,13 +46,13 @@ object ExchangeTransactionDiff {
       sellAmountAssetChange <- t.sellOrder.getSpendAmount(t.price, t.amount).liftValidationError(tx).map(-_)
     } yield {
 
-      def amurPortfolio(amt: Long) = Portfolio(amt, LeaseBalance.empty, Map.empty)
+      def wavesPortfolio(amt: Long) = Portfolio(amt, LeaseBalance.empty, Map.empty)
 
       val feeDiff = Monoid.combineAll(
         Seq(
-          Map(matcher -> amurPortfolio(t.buyMatcherFee + t.sellMatcherFee - t.fee)),
-          Map(buyer   -> amurPortfolio(-t.buyMatcherFee)),
-          Map(seller  -> amurPortfolio(-t.sellMatcherFee))
+          Map(matcher -> wavesPortfolio(t.buyMatcherFee + t.sellMatcherFee - t.fee)),
+          Map(buyer   -> wavesPortfolio(-t.buyMatcherFee)),
+          Map(seller  -> wavesPortfolio(-t.sellMatcherFee))
         ))
 
       val priceDiff = t.buyOrder.assetPair.priceAsset match {

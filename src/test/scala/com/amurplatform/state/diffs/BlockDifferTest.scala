@@ -1,18 +1,18 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import java.util.concurrent.ThreadLocalRandom
 
-import com.amurplatform.BlockGen
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.block.Block
-import com.amurplatform.db.WithState
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.mining.MiningConstraint
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.state.{Blockchain, Diff, EitherExt2}
-import com.amurplatform.transaction.{GenesisTransaction, ValidationError}
+import com.wavesplatform.BlockGen
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.block.Block
+import com.wavesplatform.db.WithState
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.mining.MiningConstraint
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.state.{Blockchain, Diff, EitherExt2}
+import com.wavesplatform.transaction.{GenesisTransaction, ValidationError}
 import org.scalatest.{FreeSpecLike, Matchers}
-import com.amurplatform.crypto._
+import com.wavesplatform.crypto._
 
 class BlockDifferTest extends FreeSpecLike with Matchers with BlockGen with WithState {
 
@@ -153,7 +153,7 @@ class BlockDifferTest extends FreeSpecLike with Matchers with BlockGen with With
     val features: Set[Short] = Set[Short](2)
 
     val paymentTxs = (1 to numPayments).map { i =>
-      createAmurTransfer(
+      createWavesTransfer(
         from,
         to,
         amount = 10000,

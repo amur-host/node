@@ -1,6 +1,6 @@
-package com.amurplatform.lang.v1.evaluator.ctx
+package com.wavesplatform.lang.v1.evaluator.ctx
 
-import com.amurplatform.lang.v1.compiler.Types.{CASETYPEREF, FINAL, REAL, UNION}
+import com.wavesplatform.lang.v1.compiler.Types.{CASETYPEREF, FINAL, REAL, UNION}
 
 trait DefinedType {
   def name: String

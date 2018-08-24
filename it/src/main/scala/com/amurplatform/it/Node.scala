@@ -1,16 +1,16 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
 import java.net.{InetSocketAddress, URL}
 
 import com.typesafe.config.Config
-import com.amurplatform.it.util.GlobalTimer
-import com.amurplatform.settings.LocalSettings
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.utils.{Base58, LoggerFacade}
+import com.wavesplatform.it.util.GlobalTimer
+import com.wavesplatform.settings.WavesSettings
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.utils.{Base58, LoggerFacade}
 import org.asynchttpclient.Dsl.{config => clientConfig, _}
 import org.asynchttpclient._
 import org.slf4j.LoggerFactory
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
 
 import scala.concurrent.duration.FiniteDuration
 
@@ -18,7 +18,7 @@ abstract class Node(config: Config) extends AutoCloseable {
   lazy val log: LoggerFacade =
     LoggerFacade(LoggerFactory.getLogger(s"${getClass.getCanonicalName}.${this.name}"))
 
-  val settings: AmurSettings = AmurSettings.fromConfig(config)
+  val settings: WavesSettings = WavesSettings.fromConfig(config)
   val client: AsyncHttpClient = asyncHttpClient(
     clientConfig()
       .setKeepAlive(false)
@@ -44,7 +44,7 @@ object Node {
 
     def publicKeyStr = Base58.encode(n.publicKey.publicKey)
 
-    def fee(txTypeId: Byte, asset: String = "AMUR"): Long = n.settings.feesSettings.fees(txTypeId).find(_.asset == asset).get.fee
+    def fee(txTypeId: Byte, asset: String = "WAVES"): Long = n.settings.feesSettings.fees(txTypeId).find(_.asset == asset).get.fee
 
     def blockDelay: FiniteDuration = n.settings.blockchainSettings.genesisSettings.averageBlockDelay
   }

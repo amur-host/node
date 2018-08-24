@@ -1,19 +1,19 @@
-package com.amurplatform.matcher.market
+package com.wavesplatform.matcher.market
 
-import com.amurplatform.WithDB
-import com.amurplatform.matcher.model._
-import com.amurplatform.matcher.{MatcherSettings, MatcherTestData}
-import com.amurplatform.settings.{Constants, WalletSettings}
-import com.amurplatform.state.{Blockchain, ByteStr, EitherExt2, LeaseBalance, Portfolio}
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.WithDB
+import com.wavesplatform.matcher.model._
+import com.wavesplatform.matcher.{MatcherSettings, MatcherTestData}
+import com.wavesplatform.settings.{Constants, WalletSettings}
+import com.wavesplatform.state.{Blockchain, ByteStr, EitherExt2, LeaseBalance, Portfolio}
+import com.wavesplatform.utx.UtxPool
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.transaction.ValidationError
-import com.amurplatform.transaction.assets.IssueTransactionV1
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.transaction.ValidationError
+import com.wavesplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.wavesplatform.wallet.Wallet
 
 class OrderValidatorSpecification
     extends WordSpec
@@ -59,10 +59,10 @@ class OrderValidatorSpecification
   }
 
   val wbtc         = ByteStr("WBTC".getBytes)
-  val pairAmurBtc = AssetPair(None, Some(wbtc))
+  val pairWavesBtc = AssetPair(None, Some(wbtc))
 
   "OrderValidator" should {
-    "allows buy AMUR for BTC without balance for order fee" in {
+    "allows buy WAVES for BTC without balance for order fee" in {
       validateNewOrderTest(
         Portfolio(0,
                   LeaseBalance.empty,
@@ -71,7 +71,7 @@ class OrderValidatorSpecification
                   ))) shouldBe an[Right[_, _]]
     }
 
-    "does not allow buy AMUR for BTC when assets number is negative" in {
+    "does not allow buy WAVES for BTC when assets number is negative" in {
       validateNewOrderTest(
         Portfolio(0,
                   LeaseBalance.empty,
@@ -84,7 +84,7 @@ class OrderValidatorSpecification
   private def validateNewOrderTest(expectedPortfolio: Portfolio): Either[ValidationError.GenericError, Order] = {
     (ov.utxPool.portfolio _).when(*).returns(expectedPortfolio)
     val o = buy(
-      pair = pairAmurBtc,
+      pair = pairWavesBtc,
       price = 0.0022,
       amount = 100 * Constants.UnitsInWave,
       matcherFee = Some((0.003 * Constants.UnitsInWave).toLong)

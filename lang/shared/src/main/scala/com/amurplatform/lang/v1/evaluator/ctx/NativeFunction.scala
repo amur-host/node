@@ -1,10 +1,10 @@
-package com.amurplatform.lang.v1.evaluator.ctx
+package com.wavesplatform.lang.v1.evaluator.ctx
 
 import cats.data.EitherT
-import com.amurplatform.lang.TrampolinedExecResult
-import com.amurplatform.lang.v1.FunctionHeader
-import com.amurplatform.lang.v1.compiler.Terms.EXPR
-import com.amurplatform.lang.v1.compiler.Types._
+import com.wavesplatform.lang.TrampolinedExecResult
+import com.wavesplatform.lang.v1.FunctionHeader
+import com.wavesplatform.lang.v1.compiler.Terms.EXPR
+import com.wavesplatform.lang.v1.compiler.Types._
 import monix.eval.Coeval
 
 sealed trait BaseFunction {

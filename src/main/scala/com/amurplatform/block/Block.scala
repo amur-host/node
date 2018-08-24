@@ -1,21 +1,21 @@
-package com.amurplatform.block
+package com.wavesplatform.block
 
 import java.nio.ByteBuffer
 
 import cats._
 import com.google.common.primitives.{Bytes, Ints, Longs}
-import com.amurplatform.crypto
-import com.amurplatform.settings.GenesisSettings
-import com.amurplatform.state._
+import com.wavesplatform.crypto
+import com.wavesplatform.settings.GenesisSettings
+import com.wavesplatform.state._
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.amurplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.block.fields.FeaturesBlockField
-import com.amurplatform.consensus.nxt.{NxtConsensusBlockField, NxtLikeConsensusBlockData}
-import com.amurplatform.utils.ScorexLogging
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction._
-import com.amurplatform.crypto._
+import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.block.fields.FeaturesBlockField
+import com.wavesplatform.consensus.nxt.{NxtConsensusBlockField, NxtLikeConsensusBlockData}
+import com.wavesplatform.utils.ScorexLogging
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction._
+import com.wavesplatform.crypto._
 import scala.util.{Failure, Try}
 
 class BlockHeader(val timestamp: Long,

@@ -1,10 +1,10 @@
-package com.amurplatform.it.sync
+package com.wavesplatform.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it.api.State
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.util._
+import com.wavesplatform.it.api.State
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.util._
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
 
 import scala.concurrent.duration._
@@ -14,7 +14,7 @@ class MinerStateTestSuite extends FunSuite with CancelAfterFailure with NodesFro
 
   override protected def nodeConfigs: Seq[Config] = Configs
 
-  private val transferAmount = 1000.amur
+  private val transferAmount = 1000.waves
 
   private def miner               = nodes.head
   private def nodeWithZeroBalance = nodes.last
@@ -39,9 +39,9 @@ class MinerStateTestSuite extends FunSuite with CancelAfterFailure with NodesFro
 }
 
 object MinerStateTestSuite {
-  import com.amurplatform.it.NodeConfigs._
+  import com.wavesplatform.it.NodeConfigs._
   private val minerConfig = ConfigFactory.parseString(s"""
-    |amur {
+    |waves {
     |  synchronization.synchronization-timeout = 10s
     |  blockchain.custom.functionality {
     |    pre-activated-features.1 = 0
@@ -51,7 +51,7 @@ object MinerStateTestSuite {
     |}""".stripMargin)
 
   private val notMinerConfig = ConfigFactory.parseString(s"""
-    |amur {
+    |waves {
     |  synchronization.synchronization-timeout = 10s
     |  blockchain.custom.functionality {
     |    pre-activated-features.1 = 0

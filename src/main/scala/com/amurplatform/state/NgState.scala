@@ -1,13 +1,13 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import java.util.concurrent.TimeUnit
 
 import cats.kernel.Monoid
 import com.google.common.cache.CacheBuilder
-import com.amurplatform.utils.ScorexLogging
-import com.amurplatform.block.Block.BlockId
-import com.amurplatform.block.{Block, MicroBlock}
-import com.amurplatform.transaction.{DiscardedMicroBlocks, Transaction}
+import com.wavesplatform.utils.ScorexLogging
+import com.wavesplatform.block.Block.BlockId
+import com.wavesplatform.block.{Block, MicroBlock}
+import com.wavesplatform.transaction.{DiscardedMicroBlocks, Transaction}
 
 import scala.collection.mutable.{ListBuffer => MList, Map => MMap}
 

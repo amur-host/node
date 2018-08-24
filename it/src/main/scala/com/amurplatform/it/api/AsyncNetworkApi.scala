@@ -1,8 +1,8 @@
-package com.amurplatform.it.api
+package com.wavesplatform.it.api
 
-import com.amurplatform.it.Node
-import com.amurplatform.network.RawBytes
-import com.amurplatform.network.client.NetworkSender
+import com.wavesplatform.it.Node
+import com.wavesplatform.network.RawBytes
+import com.wavesplatform.network.client.NetworkSender
 
 import scala.concurrent.Future
 

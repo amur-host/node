@@ -1,17 +1,17 @@
-package com.amurplatform.state.diffs.smart.scenarios
+package com.wavesplatform.state.diffs.smart.scenarios
 
-import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.state._
-import com.amurplatform.state.diffs.smart.smartEnabledFS
-import com.amurplatform.state.diffs.{ENOUGH_AMT, assertDiffEi, produce}
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs.smart.smartEnabledFS
+import com.wavesplatform.state.diffs.{ENOUGH_AMT, assertDiffEi, produce}
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.transaction.transfer._
-import com.amurplatform.transaction.{GenesisTransaction, Proofs}
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.transaction.transfer._
+import com.wavesplatform.transaction.{GenesisTransaction, Proofs}
 
 class OneProofForNonScriptedAccountTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

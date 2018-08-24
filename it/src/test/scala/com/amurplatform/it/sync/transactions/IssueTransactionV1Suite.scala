@@ -1,14 +1,14 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.it.sync._
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.it.sync._
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 class IssueTransactionV1Suite extends BaseTransactionSuite with TableDrivenPropertyChecks {
 
-  test("asset issue changes issuer's asset balance; issuer's amur balance is decreased by fee") {
+  test("asset issue changes issuer's asset balance; issuer's waves balance is decreased by fee") {
     val assetName        = "myasset"
     val assetDescription = "my asset description"
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
@@ -39,10 +39,10 @@ class IssueTransactionV1Suite extends BaseTransactionSuite with TableDrivenPrope
     val assetName        = "myasset"
     val assetDescription = "my asset description"
     val eff1             = notMiner.accountBalances(firstAddress)._2
-    val bigAssetFee      = eff1 + 1.amur
+    val bigAssetFee      = eff1 + 1.waves
 
     assertBadRequestAndMessage(sender.issue(firstAddress, assetName, assetDescription, someAssetAmount, 2, reissuable = false, bigAssetFee),
-                               "negative amur balance")
+                               "negative waves balance")
   }
 
   val invalidAssetValue =

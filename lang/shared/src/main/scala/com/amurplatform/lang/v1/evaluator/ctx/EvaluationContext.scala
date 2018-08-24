@@ -1,7 +1,7 @@
-package com.amurplatform.lang.v1.evaluator.ctx
+package com.wavesplatform.lang.v1.evaluator.ctx
 
 import cats._
-import com.amurplatform.lang.v1.FunctionHeader
+import com.wavesplatform.lang.v1.FunctionHeader
 import shapeless.{Lens, lens}
 
 case class EvaluationContext(typeDefs: Map[String, DefinedType], letDefs: Map[String, LazyVal], functions: Map[FunctionHeader, BaseFunction])

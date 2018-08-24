@@ -1,7 +1,7 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import java.io.File
 
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.state.ByteStr
 
 case class WalletSettings(file: Option[File], password: String, seed: Option[ByteStr])

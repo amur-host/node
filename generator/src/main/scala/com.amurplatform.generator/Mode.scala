@@ -1,4 +1,4 @@
-package com.amurplatform.generator
+package com.wavesplatform.generator
 
 object Mode extends Enumeration {
   type Mode = Value

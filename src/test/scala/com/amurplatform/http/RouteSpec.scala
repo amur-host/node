@@ -1,4 +1,4 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import akka.http.scaladsl.testkit._
 import org.scalatest.{FreeSpec, Matchers}

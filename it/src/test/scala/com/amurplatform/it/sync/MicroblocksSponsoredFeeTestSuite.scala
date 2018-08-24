@@ -1,11 +1,11 @@
-package com.amurplatform.it.sync
+package com.wavesplatform.it.sync
 
 import com.typesafe.config.Config
-import com.amurplatform.it.NodeConfigs
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.state.Sponsorship
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.it.NodeConfigs
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.state.Sponsorship
+import com.wavesplatform.utils.ScorexLogging
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 class MicroblocksSponsoredFeeTestSuite extends FreeSpec with Matchers with CancelAfterFailure with NodesFromDocker with ScorexLogging {
@@ -64,8 +64,8 @@ class MicroblocksSponsoredFeeTestSuite extends FreeSpec with Matchers with Cance
   override def nodeConfigs: Seq[Config] =
     NodeConfigs.newBuilder
       .overrideBase(_.quorum(0))
-      .overrideBase(_.raw("amur.blockchain.custom.functionality.blocks-for-feature-activation=1"))
-      .overrideBase(_.raw("amur.blockchain.custom.functionality.feature-check-blocks-period=1"))
+      .overrideBase(_.raw("waves.blockchain.custom.functionality.blocks-for-feature-activation=1"))
+      .overrideBase(_.raw("waves.blockchain.custom.functionality.feature-check-blocks-period=1"))
       .withDefault(1)
       .withSpecial(2, _.nonMiner)
       .buildNonConflicting()

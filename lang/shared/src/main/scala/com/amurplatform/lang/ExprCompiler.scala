@@ -1,6 +1,6 @@
-package com.amurplatform.lang
+package com.wavesplatform.lang
 
-import com.amurplatform.lang.directives.Directive
+import com.wavesplatform.lang.directives.Directive
 
 trait ExprCompiler extends Versioned {
   def compile(input: String, directives: List[Directive]): Either[String, version.ExprT]

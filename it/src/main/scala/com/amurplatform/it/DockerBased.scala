@@ -1,4 +1,4 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
 import monix.eval.Coeval
 import org.scalatest.{BeforeAndAfterAll, Suite}

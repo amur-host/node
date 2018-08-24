@@ -1,8 +1,8 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
-import com.amurplatform.http.DebugMessage
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.http.DebugMessage
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.utils.ScorexLogging
 import org.scalatest.{Args, Status, Suite, SuiteMixin}
 
 import scala.concurrent.duration._

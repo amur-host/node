@@ -1,4 +1,4 @@
-package com.amurplatform.transaction.assets.exchange
+package com.wavesplatform.transaction.assets.exchange
 
 case class Validation(status: Boolean, labels: Set[String] = Set.empty) {
   def hasError(error: String): Boolean = !status && labels.contains(error)

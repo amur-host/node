@@ -1,4 +1,4 @@
-package com.amurplatform.api.http
+package com.wavesplatform.api.http
 
 import akka.http.scaladsl.model.{StatusCode, StatusCodes}
 import play.api.libs.json.JsError

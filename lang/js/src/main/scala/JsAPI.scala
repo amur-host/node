@@ -1,14 +1,14 @@
 import cats.kernel.Monoid
-import com.amurplatform.lang.Global
-import com.amurplatform.lang.v1.FunctionHeader.{Native, User}
-import com.amurplatform.lang.v1.Serde
-import com.amurplatform.lang.v1.compiler.CompilerV1
-import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.LocalContext
-import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.amurplatform.lang.v1.parser.{Expressions, Parser}
-import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.amurplatform.lang.v1.traits.{DataType, Environment}
+import com.wavesplatform.lang.Global
+import com.wavesplatform.lang.v1.FunctionHeader.{Native, User}
+import com.wavesplatform.lang.v1.Serde
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.wavesplatform.lang.v1.parser.{Expressions, Parser}
+import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com.wavesplatform.lang.v1.traits.{DataType, Environment}
 import fastparse.core.Parsed.{Failure, Success}
 import shapeless.{:+:, CNil}
 
@@ -47,7 +47,7 @@ object JsAPI {
   @JSExportTopLevel("compile")
   def compile(input: String): js.Dynamic = {
 
-    val amurContext = AmurContext.build(new Environment {
+    val wavesContext = WavesContext.build(new Environment {
       override def height: Int                                                                                     = ???
       override def networkByte: Byte                                                                               = ???
       override def inputEntity: Tx :+: Ord :+: CNil                                                                = ???
@@ -61,7 +61,7 @@ object JsAPI {
     //comment
     val cryptoContext = CryptoContext.build(Global)
 
-    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, amurContext)).compilerContext
+    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, wavesContext)).compilerContext
 
     def hash(m: Array[Byte]) = Global.keccak256(Global.blake2b256(m))
 

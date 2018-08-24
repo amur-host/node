@@ -1,10 +1,10 @@
-package com.amurplatform.metrics
+package com.wavesplatform.metrics
 
-import com.amurplatform.network.{HandshakeHandler, MicroBlockInv}
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.network.{HandshakeHandler, MicroBlockInv}
+import com.wavesplatform.state.ByteStr
 import io.netty.channel.Channel
 import org.influxdb.dto.Point
-import com.amurplatform.block.{Block, MicroBlock}
+import com.wavesplatform.block.{Block, MicroBlock}
 
 object BlockStats {
 

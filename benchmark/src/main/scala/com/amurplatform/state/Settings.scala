@@ -1,4 +1,4 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import com.typesafe.config.Config
 import net.ceedubs.ficus.Ficus._
@@ -19,6 +19,6 @@ case class Settings(networkConfigFile: String,
 object Settings {
   def fromConfig(config: Config): Settings = {
     implicit val _ = net.ceedubs.ficus.readers.namemappers.HyphenNameMapper
-    config.as[Settings]("amur.benchmark.state")
+    config.as[Settings]("waves.benchmark.state")
   }
 }

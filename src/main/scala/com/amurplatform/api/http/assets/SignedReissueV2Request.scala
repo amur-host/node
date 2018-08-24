@@ -1,12 +1,12 @@
-package com.amurplatform.api.http.assets
+package com.wavesplatform.api.http.assets
 
 import cats.implicits._
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com.amurplatform.account.{AddressScheme, PublicKeyAccount}
-import com.amurplatform.api.http.BroadcastRequest
-import com.amurplatform.transaction.assets.ReissueTransactionV2
-import com.amurplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
+import com.wavesplatform.account.{AddressScheme, PublicKeyAccount}
+import com.wavesplatform.api.http.BroadcastRequest
+import com.wavesplatform.transaction.assets.ReissueTransactionV2
+import com.wavesplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
 
 case class SignedReissueV2Request(@ApiModelProperty(value = "Base58 encoded Issuer public key", required = true)
                                   senderPublicKey: String,

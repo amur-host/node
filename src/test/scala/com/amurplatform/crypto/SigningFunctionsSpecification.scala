@@ -1,9 +1,9 @@
-package com.amurplatform.crypto
+package com.wavesplatform.crypto
 
-import com.amurplatform.crypto
+import com.wavesplatform.crypto
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.account.PrivateKeyAccount
+import com.wavesplatform.account.PrivateKeyAccount
 
 class SigningFunctionsSpecification extends PropSpec with PropertyChecks with Matchers {
 

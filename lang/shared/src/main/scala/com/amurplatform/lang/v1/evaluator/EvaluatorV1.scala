@@ -1,13 +1,13 @@
-package com.amurplatform.lang.v1.evaluator
+package com.wavesplatform.lang.v1.evaluator
 
 import cats.implicits._
-import com.amurplatform.lang.ScriptVersion.Versions.V1
-import com.amurplatform.lang.v1.FunctionHeader
-import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.lang.v1.evaluator.ctx.EvaluationContext.Lenses._
-import com.amurplatform.lang.v1.evaluator.ctx._
-import com.amurplatform.lang.v1.task.imports._
-import com.amurplatform.lang.{ExecutionError, ExprEvaluator}
+import com.wavesplatform.lang.ScriptVersion.Versions.V1
+import com.wavesplatform.lang.v1.FunctionHeader
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.lang.v1.evaluator.ctx.EvaluationContext.Lenses._
+import com.wavesplatform.lang.v1.evaluator.ctx._
+import com.wavesplatform.lang.v1.task.imports._
+import com.wavesplatform.lang.{ExecutionError, ExprEvaluator}
 
 object EvaluatorV1 extends ExprEvaluator {
 

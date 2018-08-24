@@ -1,15 +1,15 @@
-package com.amurplatform.history
+package com.wavesplatform.history
 
-import com.amurplatform.state._
-import com.amurplatform.state.diffs._
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs._
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.block.{Block, MicroBlock}
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.block.{Block, MicroBlock}
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.transfer._
 
 class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
     extends PropSpec
@@ -28,7 +28,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       case (gen, rest) =>
         val finalMinerBalances = rest.map {
           case (a @ (bmb: BlockAndMicroblockSequence, last: Block)) =>
-            withDomain(MicroblocksActivatedAt0AmurSettings) { d =>
+            withDomain(MicroblocksActivatedAt0WavesSettings) { d =>
               d.blockchainUpdater.processBlock(gen).explicitGet()
               bmb.foreach {
                 case (b, mbs) =>
@@ -51,9 +51,9 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       fee    <- smallFeeGen
       amt    <- smallFeeGen
       genesis: GenesisTransaction    = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
-      payment: TransferTransactionV1 = createAmurTransfer(master, master, amt, fee, ts).explicitGet()
+      payment: TransferTransactionV1 = createWavesTransfer(master, master, amt, fee, ts).explicitGet()
     } yield (miner, genesis, payment, ts)
-    scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
+    scenario(preconditionsAndPayments, MicroblocksActivatedAt0WavesSettings) {
       case (domain, (miner, genesis, payment, ts)) =>
         val genBlock       = buildBlockOfTxs(randomSig, Seq(genesis))
         val (base, micros) = chainBaseAndMicro(genBlock.uniqueId, Seq.empty, Seq(Seq(payment)), miner, 3, ts)
@@ -74,7 +74,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       to   <- Gen.oneOf(accs)
       fee  <- smallFeeGen
       amt  <- smallFeeGen
-    } yield createAmurTransfer(from, to, amt, fee, ts).explicitGet()
+    } yield createWavesTransfer(from, to, amt, fee, ts).explicitGet()
 
   def randomPayments(accs: Seq[PrivateKeyAccount], ts: Long, amt: Int): Gen[Seq[TransferTransactionV1]] =
     if (amt == 0)
@@ -85,7 +85,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
         t <- randomPayments(accs, ts + 1, amt - 1)
       } yield h +: t
 
-  val TOTAL_AMUR = ENOUGH_AMT
+  val TOTAL_WAVES = ENOUGH_AMT
 
   def accsAndGenesis(): Gen[(Seq[PrivateKeyAccount], PrivateKeyAccount, Block, Int)] =
     for {
@@ -95,10 +95,10 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       dave    <- accountGen
       miner   <- accountGen
       ts      <- positiveIntGen
-      genesis1: GenesisTransaction = GenesisTransaction.create(alice, TOTAL_AMUR / 4, ts).explicitGet()
-      genesis2: GenesisTransaction = GenesisTransaction.create(bob, TOTAL_AMUR / 4, ts + 1).explicitGet()
-      genesis3: GenesisTransaction = GenesisTransaction.create(charlie, TOTAL_AMUR / 4, ts + 2).explicitGet()
-      genesis4: GenesisTransaction = GenesisTransaction.create(dave, TOTAL_AMUR / 4, ts + 4).explicitGet()
+      genesis1: GenesisTransaction = GenesisTransaction.create(alice, TOTAL_WAVES / 4, ts).explicitGet()
+      genesis2: GenesisTransaction = GenesisTransaction.create(bob, TOTAL_WAVES / 4, ts + 1).explicitGet()
+      genesis3: GenesisTransaction = GenesisTransaction.create(charlie, TOTAL_WAVES / 4, ts + 2).explicitGet()
+      genesis4: GenesisTransaction = GenesisTransaction.create(dave, TOTAL_WAVES / 4, ts + 4).explicitGet()
     } yield
       (Seq(alice, bob, charlie, dave), miner, customBuildBlockOfTxs(randomSig, Seq(genesis1, genesis2, genesis3, genesis4), defaultSigner, 1, ts), ts)
 

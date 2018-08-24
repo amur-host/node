@@ -1,20 +1,20 @@
-package com.amurplatform
+package com.wavesplatform
 
 import java.security.SecureRandom
 
 import cats.kernel.Monoid
 import com.google.common.base.Throwables
-import com.amurplatform.account.AddressScheme
-import com.amurplatform.db.{Storage, VersionedStorage}
-import com.amurplatform.lang.Global
-import com.amurplatform.lang.v1.compiler.CompilerContext
-import com.amurplatform.lang.v1.compiler.CompilerContext._
-import com.amurplatform.lang.v1.compiler.Terms.TRUE
-import com.amurplatform.lang.v1.evaluator.ctx._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.LocalContext
-import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.amurplatform.lang.v1.{FunctionHeader, ScriptEstimator}
-import com.amurplatform.transaction.smart.{BlockchainContext, AmurEnvironment}
+import com.wavesplatform.account.AddressScheme
+import com.wavesplatform.db.{Storage, VersionedStorage}
+import com.wavesplatform.lang.Global
+import com.wavesplatform.lang.v1.compiler.CompilerContext
+import com.wavesplatform.lang.v1.compiler.CompilerContext._
+import com.wavesplatform.lang.v1.compiler.Terms.TRUE
+import com.wavesplatform.lang.v1.evaluator.ctx._
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.wavesplatform.lang.v1.{FunctionHeader, ScriptEstimator}
+import com.wavesplatform.transaction.smart.{BlockchainContext, WavesEnvironment}
 import monix.eval.Coeval
 import monix.execution.UncaughtExceptionReporter
 import org.joda.time.Duration
@@ -52,7 +52,7 @@ package object utils extends ScorexLogging {
   def forceStopApplication(reason: ApplicationStopReason = Default): Unit =
     new Thread(() => {
       System.exit(reason.code)
-    }, "amur-platform-shutdown-thread").start()
+    }, "waves-platform-shutdown-thread").start()
 
   def humanReadableSize(bytes: Long, si: Boolean = true): String = {
     val (baseValue, unitStrings) =
@@ -113,7 +113,7 @@ package object utils extends ScorexLogging {
     Monoid.combineAll(
       Seq(
         CryptoContext.compilerContext(Global),
-        AmurContext.build(new AmurEnvironment(dummyNetworkByte, Coeval(???), Coeval(???), null)).compilerContext,
+        WavesContext.build(new WavesEnvironment(dummyNetworkByte, Coeval(???), Coeval(???), null)).compilerContext,
         PureContext.compilerContext
       ))
 

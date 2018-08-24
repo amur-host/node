@@ -1,11 +1,11 @@
-package com.amurplatform.matcher.api
+package com.wavesplatform.matcher.api
 
-import com.amurplatform.account.Address
-import com.amurplatform.database.{DBExt, RW}
-import com.amurplatform.matcher.MatcherKeys
-import com.amurplatform.matcher.model.OrderInfo
-import com.amurplatform.transaction.AssetId
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.wavesplatform.account.Address
+import com.wavesplatform.database.{DBExt, RW}
+import com.wavesplatform.matcher.MatcherKeys
+import com.wavesplatform.matcher.model.OrderInfo
+import com.wavesplatform.transaction.AssetId
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
 import org.iq80.leveldb.DB
 
 object DBUtils {

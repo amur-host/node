@@ -1,14 +1,14 @@
-package com.amurplatform.history
+package com.wavesplatform.history
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.state._
-import com.amurplatform.state.diffs._
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.transaction.GenesisTransaction
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.transaction.GenesisTransaction
+import com.wavesplatform.transaction.transfer._
 
 class BlockchainUpdaterGeneratorFeeSameBlockTest
     extends PropSpec
@@ -25,13 +25,13 @@ class BlockchainUpdaterGeneratorFeeSameBlockTest
     fee       <- smallFeeGen
     ts        <- positiveIntGen
     genesis: GenesisTransaction = GenesisTransaction.create(sender, ENOUGH_AMT, ts).explicitGet()
-    payment: TransferTransactionV1 <- amurTransferGeneratorP(sender, recipient)
-    generatorPaymentOnFee: TransferTransactionV1 = createAmurTransfer(defaultSigner, recipient, payment.fee, fee, ts + 1).explicitGet()
+    payment: TransferTransactionV1 <- wavesTransferGeneratorP(sender, recipient)
+    generatorPaymentOnFee: TransferTransactionV1 = createWavesTransfer(defaultSigner, recipient, payment.fee, fee, ts + 1).explicitGet()
   } yield (genesis, payment, generatorPaymentOnFee)
 
   property("block generator can spend fee after transaction before applyMinerFeeWithTransactionAfter") {
     assume(BlockchainFeatures.implemented.contains(BlockchainFeatures.SmartAccounts.id))
-    scenario(preconditionsAndPayments, DefaultAmurSettings) {
+    scenario(preconditionsAndPayments, DefaultWavesSettings) {
       case (domain, (genesis, somePayment, generatorPaymentOnFee)) =>
         val blocks = chainBlocks(Seq(Seq(genesis), Seq(generatorPaymentOnFee, somePayment)))
         all(blocks.map(block => domain.blockchainUpdater.processBlock(block))) shouldBe 'right
@@ -39,7 +39,7 @@ class BlockchainUpdaterGeneratorFeeSameBlockTest
   }
 
   property("block generator can't spend fee after transaction after applyMinerFeeWithTransactionAfter") {
-    scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
+    scenario(preconditionsAndPayments, MicroblocksActivatedAt0WavesSettings) {
       case (domain, (genesis, somePayment, generatorPaymentOnFee)) =>
         val blocks = chainBlocks(Seq(Seq(genesis), Seq(generatorPaymentOnFee, somePayment)))
         blocks.init.foreach(block => domain.blockchainUpdater.processBlock(block).explicitGet())

@@ -1,11 +1,11 @@
-package com.amurplatform.transaction.assets.exchange
+package com.wavesplatform.transaction.assets.exchange
 
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.state.ByteStr
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{JsObject, Json}
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.assets.exchange.Order.assetIdBytes
-import com.amurplatform.transaction.assets.exchange.Validation.booleanOperators
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.assets.exchange.Order.assetIdBytes
+import com.wavesplatform.transaction.assets.exchange.Validation.booleanOperators
 
 import scala.util.{Success, Try}
 
@@ -34,12 +34,12 @@ case class AssetPair(@ApiModelProperty(dataType = "java.lang.String") amountAsse
 }
 
 object AssetPair {
-  val AmurName = "AMUR"
+  val WavesName = "WAVES"
 
-  def assetIdStr(aid: Option[AssetId]): String = aid.fold(AmurName)(_.base58)
+  def assetIdStr(aid: Option[AssetId]): String = aid.fold(WavesName)(_.base58)
 
   def extractAssetId(a: String): Try[Option[AssetId]] = a match {
-    case `AmurName` => Success(None)
+    case `WavesName` => Success(None)
     case other       => ByteStr.decodeBase58(other).map(Option(_))
   }
 

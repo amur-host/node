@@ -1,4 +1,4 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
 import java.util.concurrent.CancellationException
 

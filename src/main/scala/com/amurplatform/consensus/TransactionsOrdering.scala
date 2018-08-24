@@ -1,9 +1,9 @@
-package com.amurplatform.consensus
+package com.wavesplatform.consensus
 
-import com.amurplatform.transaction.Transaction
+import com.wavesplatform.transaction.Transaction
 
 object TransactionsOrdering {
-  trait AmurOrdering extends Ordering[Transaction] {
+  trait WavesOrdering extends Ordering[Transaction] {
     def txTimestampOrder(ts: Long): Long
     private def orderBy(t: Transaction): (Long, Long, String) = {
       val byFee       = if (t.assetFee._1.nonEmpty) 0 else -t.assetFee._2
@@ -17,12 +17,12 @@ object TransactionsOrdering {
     }
   }
 
-  object InBlock extends AmurOrdering {
+  object InBlock extends WavesOrdering {
     // sorting from network start
     override def txTimestampOrder(ts: Long): Long = -ts
   }
 
-  object InUTXPool extends AmurOrdering {
+  object InUTXPool extends WavesOrdering {
     override def txTimestampOrder(ts: Long): Long = ts
   }
 }

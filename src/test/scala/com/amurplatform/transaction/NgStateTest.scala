@@ -1,13 +1,13 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
-import com.amurplatform.history._
-import com.amurplatform.state.diffs._
-import com.amurplatform.state.{Diff, EitherExt2, NgState}
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.history._
+import com.wavesplatform.state.diffs._
+import com.wavesplatform.state.{Diff, EitherExt2, NgState}
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.transaction.transfer._
 
 class NgStateTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 
@@ -17,7 +17,7 @@ class NgStateTest extends PropSpec with PropertyChecks with Matchers with Transa
       recipient <- accountGen
       ts        <- positiveIntGen
       genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
-      payments: Seq[TransferTransactionV1] <- Gen.listOfN(amt, amurTransferGeneratorP(master, recipient))
+      payments: Seq[TransferTransactionV1] <- Gen.listOfN(amt, wavesTransferGeneratorP(master, recipient))
     } yield (genesis, payments)
 
   property("can forge correctly signed blocks") {

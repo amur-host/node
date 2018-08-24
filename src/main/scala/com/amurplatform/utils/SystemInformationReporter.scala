@@ -1,4 +1,4 @@
-package com.amurplatform.utils
+package com.wavesplatform.utils
 
 import com.typesafe.config.{Config, ConfigFactory, ConfigRenderOptions}
 
@@ -7,14 +7,14 @@ object SystemInformationReporter extends ScorexLogging {
     val resolved = config.resolve()
     val configForLogs = {
       val orig = Seq(
-        "amur",
+        "waves",
         "metrics"
       ).foldLeft(ConfigFactory.empty()) { case (r, path) => r.withFallback(resolved.withOnlyPath(path)) }
 
       Seq(
-        "amur.custom.genesis",
-        "amur.wallet",
-        "amur.rest-api.api-key-hash",
+        "waves.custom.genesis",
+        "waves.wallet",
+        "waves.rest-api.api-key-hash",
         "metrics.influx-db",
       ).foldLeft(orig)(_.withoutPath(_))
     }

@@ -1,16 +1,16 @@
-package com.amurplatform.lang.v1
+package com.wavesplatform.lang.v1
 
 import java.util.concurrent.TimeUnit
 
 import cats.kernel.Monoid
-import com.amurplatform.lang.Global
-import com.amurplatform.lang.v1.FunctionHeader.Native
-import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.lang.v1.evaluator.EvaluatorV1
-import com.amurplatform.lang.v1.evaluator.FunctionIds.{FROMBASE58, TOBASE58, SIGVERIFY}
-import com.amurplatform.lang.v1.evaluator.ctx.EvaluationContext
-import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.amurplatform.utils.Base58
+import com.wavesplatform.lang.Global
+import com.wavesplatform.lang.v1.FunctionHeader.Native
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
+import com.wavesplatform.lang.v1.evaluator.FunctionIds.{FROMBASE58, TOBASE58, SIGVERIFY}
+import com.wavesplatform.lang.v1.evaluator.ctx.EvaluationContext
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.wavesplatform.utils.Base58
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole
 import scodec.bits.ByteVector

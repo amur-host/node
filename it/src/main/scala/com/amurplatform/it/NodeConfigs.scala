@@ -1,4 +1,4 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
 import com.typesafe.config.{Config, ConfigFactory}
 
@@ -62,9 +62,9 @@ object NodeConfigs {
 
   object Templates {
     def raw(x: String): String = x
-    def quorum(n: Int): String = s"amur.miner.quorum = $n"
+    def quorum(n: Int): String = s"waves.miner.quorum = $n"
 
-    val nonMiner: String = "amur.miner.enable = no"
+    val nonMiner: String = "waves.miner.enable = no"
   }
 
 }

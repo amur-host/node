@@ -1,21 +1,21 @@
-package com.amurplatform
+package com.wavesplatform
 
 import java.io._
 
 import com.google.common.primitives.Ints
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.account.{Address, AddressScheme}
-import com.amurplatform.block.Block
-import com.amurplatform.consensus.PoSSelector
-import com.amurplatform.db.openDB
-import com.amurplatform.history.{CheckpointServiceImpl, StorageFactory}
-import com.amurplatform.mining.MultiDimensionalMiningConstraint
-import com.amurplatform.settings.{AmurSettings, loadConfig}
-import com.amurplatform.state.ByteStr
-import com.amurplatform.state.appender.BlockAppender
-import com.amurplatform.transaction.Transaction
-import com.amurplatform.utils._
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.account.{Address, AddressScheme}
+import com.wavesplatform.block.Block
+import com.wavesplatform.consensus.PoSSelector
+import com.wavesplatform.db.openDB
+import com.wavesplatform.history.{CheckpointServiceImpl, StorageFactory}
+import com.wavesplatform.mining.MultiDimensionalMiningConstraint
+import com.wavesplatform.settings.{WavesSettings, loadConfig}
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.state.appender.BlockAppender
+import com.wavesplatform.transaction.Transaction
+import com.wavesplatform.utils._
+import com.wavesplatform.utx.UtxPool
 import monix.execution.Scheduler
 import org.slf4j.bridge.SLF4JBridgeHandler
 import scala.concurrent.Await
@@ -28,9 +28,9 @@ object Importer extends ScorexLogging {
     SLF4JBridgeHandler.removeHandlersForRootLogger()
     SLF4JBridgeHandler.install()
 
-    val configFilename = Try(args(0)).toOption.getOrElse("amur-testnet.conf")
+    val configFilename = Try(args(0)).toOption.getOrElse("waves-testnet.conf")
     val config         = loadConfig(ConfigFactory.parseFile(new File(configFilename)))
-    val settings       = AmurSettings.fromConfig(config)
+    val settings       = WavesSettings.fromConfig(config)
     AddressScheme.current = new AddressScheme {
       override val chainId: Byte = settings.blockchainSettings.addressSchemeCharacter.toByte
     }

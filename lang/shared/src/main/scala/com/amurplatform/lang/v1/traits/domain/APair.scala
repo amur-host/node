@@ -1,4 +1,4 @@
-package com.amurplatform.lang.v1.traits.domain
+package com.wavesplatform.lang.v1.traits.domain
 
 import scodec.bits.ByteVector
 

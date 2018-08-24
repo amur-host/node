@@ -1,15 +1,15 @@
-package com.amurplatform.features.api
+package com.wavesplatform.features.api
 
 import akka.http.scaladsl.server.Route
-import com.amurplatform.features.FeatureProvider._
-import com.amurplatform.features.{BlockchainFeatureStatus, BlockchainFeatures}
-import com.amurplatform.settings.{FeaturesSettings, FunctionalitySettings, RestAPISettings}
-import com.amurplatform.state.Blockchain
+import com.wavesplatform.features.FeatureProvider._
+import com.wavesplatform.features.{BlockchainFeatureStatus, BlockchainFeatures}
+import com.wavesplatform.settings.{FeaturesSettings, FunctionalitySettings, RestAPISettings}
+import com.wavesplatform.state.Blockchain
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.Json
-import com.amurplatform.api.http.{ApiRoute, CommonApiFunctions}
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.api.http.{ApiRoute, CommonApiFunctions}
+import com.wavesplatform.utils.ScorexLogging
 
 @Path("/activation")
 @Api(value = "activation")

@@ -1,12 +1,12 @@
-package com.amurplatform
+package com.wavesplatform
 
-import com.amurplatform.utils.base58Length
-import com.amurplatform.block.{Block, MicroBlock}
+import com.wavesplatform.utils.base58Length
+import com.wavesplatform.block.{Block, MicroBlock}
 
 package object transaction {
 
-  type AssetId = com.amurplatform.state.ByteStr
-  val AssetIdLength: Int       = com.amurplatform.crypto.DigestSize
+  type AssetId = com.wavesplatform.state.ByteStr
+  val AssetIdLength: Int       = com.wavesplatform.crypto.DigestSize
   val AssetIdStringLength: Int = base58Length(AssetIdLength)
   type DiscardedTransactions = Seq[Transaction]
   type DiscardedBlocks       = Seq[Block]

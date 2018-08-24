@@ -1,9 +1,9 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.nio.charset.StandardCharsets
 
 import com.google.common.primitives.{Ints, Longs}
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.{NoShrink, TransactionGen}
 import io.netty.buffer.Unpooled
 import io.netty.channel.embedded.EmbeddedChannel
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
@@ -28,7 +28,7 @@ class HandshakeDecoderSpec extends FreeSpec with Matchers with MockFactory with 
     )
 
     val origHandshake = new Handshake(
-      applicationName = "amurI",
+      applicationName = "wavesI",
       applicationVersion = (1, 2, 3),
       nodeName = "test",
       nodeNonce = 4,

@@ -1,4 +1,4 @@
-package com.amurplatform.db
+package com.wavesplatform.db
 
 import java.nio.charset.StandardCharsets
 

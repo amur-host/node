@@ -1,4 +1,4 @@
-package com.amurplatform.discovery.routers
+package com.wavesplatform.discovery.routers
 
 import akka.actor.ActorRef
 import akka.routing.{Routee, SmallestMailboxRoutingLogic}

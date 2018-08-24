@@ -1,20 +1,20 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.net.{InetAddress, InetSocketAddress}
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.settings.NetworkSettings
+import com.wavesplatform.settings.NetworkSettings
 import net.ceedubs.ficus.Ficus._
 import org.scalatest.{FeatureSpec, GivenWhenThen}
 
 class BlacklistSpecification extends FeatureSpec with GivenWhenThen {
-  private val config = ConfigFactory.parseString("""amur.network {
+  private val config = ConfigFactory.parseString("""waves.network {
       |  known-peers = []
       |  file = null
       |  black-list-residence-time: 1s
       |}""".stripMargin).withFallback(ConfigFactory.load()).resolve()
 
-  private val networkSettings = config.as[NetworkSettings]("amur.network")
+  private val networkSettings = config.as[NetworkSettings]("waves.network")
 
   info("As a Peer")
   info("I want to blacklist other peers for certain time")

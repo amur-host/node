@@ -1,27 +1,27 @@
-package com.amurplatform.matcher.market
+package com.wavesplatform.matcher.market
 
 import java.util.concurrent.ConcurrentHashMap
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.persistence.inmemory.extension.{InMemoryJournalStorage, InMemorySnapshotStorage, StorageExtension}
 import akka.testkit.{ImplicitSender, TestActorRef, TestKit, TestProbe}
-import com.amurplatform.OrderOps._
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.matcher.MatcherTestData
-import com.amurplatform.matcher.fixtures.RestartableActor
-import com.amurplatform.matcher.fixtures.RestartableActor.RestartActor
-import com.amurplatform.matcher.market.OrderBookActor._
-import com.amurplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
-import com.amurplatform.matcher.model.Events.Event
-import com.amurplatform.matcher.model.{BuyLimitOrder, LimitOrder, OrderBook, SellLimitOrder}
-import com.amurplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings, WalletSettings}
-import com.amurplatform.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.assets.IssueTransactionV1
-import com.amurplatform.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
-import com.amurplatform.utils.{NTP, ScorexLogging}
-import com.amurplatform.utx.UtxPool
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.OrderOps._
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.matcher.MatcherTestData
+import com.wavesplatform.matcher.fixtures.RestartableActor
+import com.wavesplatform.matcher.fixtures.RestartableActor.RestartActor
+import com.wavesplatform.matcher.market.OrderBookActor._
+import com.wavesplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
+import com.wavesplatform.matcher.model.Events.Event
+import com.wavesplatform.matcher.model.{BuyLimitOrder, LimitOrder, OrderBook, SellLimitOrder}
+import com.wavesplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings, WalletSettings}
+import com.wavesplatform.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
+import com.wavesplatform.utils.{NTP, ScorexLogging}
+import com.wavesplatform.utx.UtxPool
+import com.wavesplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest._
@@ -45,7 +45,7 @@ class OrderBookActorSpecification
 
   var eventsProbe = TestProbe()
 
-  val pair                   = AssetPair(Some(ByteStr("BTC".getBytes)), Some(ByteStr("AMUR".getBytes)))
+  val pair                   = AssetPair(Some(ByteStr("BTC".getBytes)), Some(ByteStr("WAVES".getBytes)))
   val blockchain: Blockchain = stub[Blockchain]
   val hugeAmount             = Long.MaxValue / 2
   (blockchain.portfolio _)
@@ -55,7 +55,7 @@ class OrderBookActorSpecification
                 LeaseBalance.empty,
                 Map(
                   ByteStr("BTC".getBytes)   -> hugeAmount,
-                  ByteStr("AMUR".getBytes) -> hugeAmount
+                  ByteStr("WAVES".getBytes) -> hugeAmount
                 )))
   val issueTransaction: IssueTransactionV1 = IssueTransactionV1
     .selfSigned(PrivateKeyAccount("123".getBytes), "MinerReward".getBytes, Array.empty, 10000000000L, 8.toByte, true, 100000L, 10000L)
@@ -414,7 +414,7 @@ class OrderBookActorSpecification
     }
 
     "buy small amount of pricey asset" in {
-      val p = AssetPair(Some(ByteStr("AMUR".getBytes)), Some(ByteStr("USD".getBytes)))
+      val p = AssetPair(Some(ByteStr("WAVES".getBytes)), Some(ByteStr("USD".getBytes)))
       val b = rawBuy(p, 280, 700000L)
       val s = rawSell(p, 280, 30000000000L)
       actor ! s

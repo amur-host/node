@@ -1,14 +1,14 @@
-package com.amurplatform.generator
+package com.wavesplatform.generator
 import cats.Show
-import com.amurplatform.crypto
-import com.amurplatform.generator.utils.Gen
-import com.amurplatform.state._
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.Script
-import com.amurplatform.transaction.transfer.TransferTransactionV2
-import com.amurplatform.transaction.{Proofs, Transaction}
-import com.amurplatform.it.util._
+import com.wavesplatform.crypto
+import com.wavesplatform.generator.utils.Gen
+import com.wavesplatform.state._
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.Script
+import com.wavesplatform.transaction.transfer.TransferTransactionV2
+import com.wavesplatform.transaction.{Proofs, Transaction}
+import com.wavesplatform.it.util._
 import scala.util.Random
 
 class MultisigTransactionGenerator(settings: MultisigTransactionGenerator.Settings, val accounts: Seq[PrivateKeyAccount])
@@ -23,8 +23,8 @@ class MultisigTransactionGenerator(settings: MultisigTransactionGenerator.Settin
     val bank   = accounts.head
     val owners = Seq(createAccount(), accounts(1), createAccount(), accounts(2), createAccount(), accounts(3), createAccount(), createAccount())
 
-    val enoughFee               = 0.005.amur
-    val totalAmountOnNewAccount = 1.amur
+    val enoughFee               = 0.005.waves
+    val totalAmountOnNewAccount = 1.waves
 
     val script: Script = Gen.multiSigScript(owners, 3)
 

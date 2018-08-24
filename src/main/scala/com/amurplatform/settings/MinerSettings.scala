@@ -1,7 +1,7 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.typesafe.config.Config
-import com.amurplatform.mining.Miner
+import com.wavesplatform.mining.Miner
 
 import scala.concurrent.duration.FiniteDuration
 
@@ -17,7 +17,7 @@ case class MinerSettings(enable: Boolean,
 }
 
 object MinerSettings {
-  val configPath = "amur.miner"
+  val configPath = "waves.miner"
   def fromConfig(c: Config): MinerSettings = {
     import net.ceedubs.ficus.Ficus._
 

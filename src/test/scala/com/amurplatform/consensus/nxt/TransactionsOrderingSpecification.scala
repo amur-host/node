@@ -1,10 +1,10 @@
-package com.amurplatform.consensus.nxt
+package com.wavesplatform.consensus.nxt
 
-import com.amurplatform.state.{ByteStr, EitherExt2}
+import com.wavesplatform.state.{ByteStr, EitherExt2}
 import org.scalatest.{Assertions, Matchers, PropSpec}
-import com.amurplatform.account.{Address, PrivateKeyAccount}
-import com.amurplatform.consensus.TransactionsOrdering
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.{Address, PrivateKeyAccount}
+import com.wavesplatform.consensus.TransactionsOrdering
+import com.wavesplatform.transaction.transfer._
 
 import scala.util.Random
 

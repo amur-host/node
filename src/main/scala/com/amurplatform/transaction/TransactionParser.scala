@@ -1,4 +1,4 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
 import scala.reflect.ClassTag
 import scala.util.Try

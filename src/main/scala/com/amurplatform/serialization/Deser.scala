@@ -1,4 +1,4 @@
-package com.amurplatform.serialization
+package com.wavesplatform.serialization
 
 import com.google.common.primitives.{Bytes, Shorts}
 

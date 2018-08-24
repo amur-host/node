@@ -1,4 +1,4 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import play.api.libs.json.{Format, Json}
 

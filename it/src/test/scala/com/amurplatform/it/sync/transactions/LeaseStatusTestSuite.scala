@@ -1,12 +1,12 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.Json
-import com.amurplatform.it.sync._
-import com.amurplatform.transaction.lease.LeaseTransaction.Status.{Active, Canceled}
+import com.wavesplatform.it.sync._
+import com.wavesplatform.transaction.lease.LeaseTransaction.Status.{Active, Canceled}
 
 class LeaseStatusTestSuite extends BaseTransactionSuite with CancelAfterFailure {
   import LeaseStatusTestSuite._
@@ -37,9 +37,9 @@ class LeaseStatusTestSuite extends BaseTransactionSuite with CancelAfterFailure 
 
 object LeaseStatusTestSuite {
   private val blockGenerationOffset = "10000ms"
-  import com.amurplatform.it.NodeConfigs.Default
+  import com.wavesplatform.it.NodeConfigs.Default
 
-  private val minerConfig = ConfigFactory.parseString(s"""amur {
+  private val minerConfig = ConfigFactory.parseString(s"""waves {
        |   miner{
        |      enable = yes
        |      minimal-block-generation-offset = $blockGenerationOffset
@@ -50,7 +50,7 @@ object LeaseStatusTestSuite {
        |}
      """.stripMargin)
 
-  private val notMinerConfig = ConfigFactory.parseString(s"""amur {
+  private val notMinerConfig = ConfigFactory.parseString(s"""waves {
        |   miner.enable = no
        |   miner.minimal-block-generation-offset = $blockGenerationOffset
        |}

@@ -1,12 +1,12 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats.implicits._
-import com.amurplatform.state._
-import com.amurplatform.account.Address
-import com.amurplatform.transaction.ValidationError
-import com.amurplatform.transaction.ValidationError.{GenericError, Validation}
-import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.state._
+import com.wavesplatform.account.Address
+import com.wavesplatform.transaction.ValidationError
+import com.wavesplatform.transaction.ValidationError.{GenericError, Validation}
+import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.wavesplatform.transaction.transfer._
 
 object MassTransferTransactionDiff {
 

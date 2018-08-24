@@ -1,16 +1,16 @@
-package com.amurplatform.history
+package com.wavesplatform.history
 
-import com.amurplatform.database.{Keys, LevelDBWriter, RW}
-import com.amurplatform.settings.LocalSettings
-import com.amurplatform.state.{BlockchainUpdaterImpl, NG}
-import com.amurplatform.transaction.BlockchainUpdater
-import com.amurplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
+import com.wavesplatform.database.{Keys, LevelDBWriter, RW}
+import com.wavesplatform.settings.WavesSettings
+import com.wavesplatform.state.{BlockchainUpdaterImpl, NG}
+import com.wavesplatform.transaction.BlockchainUpdater
+import com.wavesplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
 import org.iq80.leveldb.DB
 
 object StorageFactory extends ScorexLogging {
   private val StorageVersion = 1
 
-  def apply(settings: AmurSettings, db: DB, time: Time): BlockchainUpdater with NG = {
+  def apply(settings: WavesSettings, db: DB, time: Time): BlockchainUpdater with NG = {
     checkVersion(db)
     val levelDBWriter = new LevelDBWriter(db, settings.blockchainSettings.functionalitySettings, settings.maxCacheSize)
     new BlockchainUpdaterImpl(levelDBWriter, settings, time)

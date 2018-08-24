@@ -1,15 +1,15 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.matcher.ValidationMatcher
-import com.amurplatform.state.ByteStr
-import com.amurplatform.state.diffs._
-import com.amurplatform.transaction.assets.exchange._
-import com.amurplatform.utils.NTP
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.matcher.ValidationMatcher
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.state.diffs._
+import com.wavesplatform.transaction.assets.exchange._
+import com.wavesplatform.utils.NTP
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.OrderOps._
-import com.amurplatform.transaction.smart.Verifier
+import com.wavesplatform.OrderOps._
+import com.wavesplatform.transaction.smart.Verifier
 
 class OrderSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen with ValidationMatcher {
 

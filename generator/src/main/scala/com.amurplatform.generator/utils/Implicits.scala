@@ -1,4 +1,4 @@
-package com.amurplatform.generator.utils
+package com.wavesplatform.generator.utils
 
 import java.util.concurrent.ThreadLocalRandom
 

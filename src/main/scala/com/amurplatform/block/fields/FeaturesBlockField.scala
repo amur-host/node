@@ -1,9 +1,9 @@
-package com.amurplatform.block.fields
+package com.wavesplatform.block.fields
 
 import java.nio.ByteBuffer
 
 import play.api.libs.json._
-import com.amurplatform.block.BlockField
+import com.wavesplatform.block.BlockField
 
 case class FeaturesBlockField(version: Byte, override val value: Set[Short]) extends BlockField[Set[Short]] {
   override val name = "features"

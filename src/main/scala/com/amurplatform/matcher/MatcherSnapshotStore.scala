@@ -1,4 +1,4 @@
-package com.amurplatform.matcher
+package com.wavesplatform.matcher
 
 import java.io._
 import java.net.{URLDecoder, URLEncoder}
@@ -11,9 +11,9 @@ import akka.serialization.SerializationExtension
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.{Bytes, Ints}
 import com.typesafe.config.Config
-import com.amurplatform.database._
-import com.amurplatform.db.openDB
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.database._
+import com.wavesplatform.db.openDB
+import com.wavesplatform.utils.ScorexLogging
 import org.iq80.leveldb.ReadOptions
 
 import scala.concurrent.Future

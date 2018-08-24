@@ -1,9 +1,9 @@
-package com.amurplatform.it.async
+package com.wavesplatform.it.async
 
 import com.typesafe.config.Config
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.{NodeConfigs, TransferSending, WaitForHeight2}
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.{NodeConfigs, TransferSending, WaitForHeight2}
 import org.scalatest._
 
 import scala.concurrent.Await.result

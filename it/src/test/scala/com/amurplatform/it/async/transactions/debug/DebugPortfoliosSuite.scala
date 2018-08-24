@@ -1,8 +1,8 @@
-package com.amurplatform.it.async.transactions.debug
+package com.wavesplatform.it.async.transactions.debug
 
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
@@ -15,13 +15,13 @@ class DebugPortfoliosSuite extends BaseTransactionSuite {
     val f = for {
       (portfolioBefore, utxSizeBefore) <- sender.debugPortfoliosFor(firstAddress, considerUnspent = true).zip(sender.utxSize)
 
-      _ <- sender.transfer(firstAddress, secondAddress, 5.amur, fee = 5.amur)
-      _ <- sender.transfer(secondAddress, firstAddress, 7.amur, 5.amur)
+      _ <- sender.transfer(firstAddress, secondAddress, 5.waves, fee = 5.waves)
+      _ <- sender.transfer(secondAddress, firstAddress, 7.waves, 5.waves)
       _ <- sender.waitForUtxIncreased(utxSizeBefore)
 
       portfolioAfter <- sender.debugPortfoliosFor(firstAddress, considerUnspent = true)
     } yield {
-      val expectedBalance = portfolioBefore.balance - 10.amur // withdraw + fee
+      val expectedBalance = portfolioBefore.balance - 10.waves // withdraw + fee
       assert(portfolioAfter.balance == expectedBalance)
     }
 
@@ -41,7 +41,7 @@ class DebugPortfoliosSuite extends BaseTransactionSuite {
     val f = for {
       (portfolioBefore, utxSizeBefore) <- sender.debugPortfoliosFor(firstAddress, considerUnspent = false).zip(sender.utxSize)
 
-      _ <- sender.transfer(firstAddress, secondAddress, 5.amur, fee = 5.amur)
+      _ <- sender.transfer(firstAddress, secondAddress, 5.waves, fee = 5.waves)
       _ <- sender.waitForUtxIncreased(utxSizeBefore)
 
       portfolioAfter <- sender.debugPortfoliosFor(firstAddress, considerUnspent = false)

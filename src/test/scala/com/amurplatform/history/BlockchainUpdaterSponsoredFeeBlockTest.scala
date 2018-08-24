@@ -1,18 +1,18 @@
-package com.amurplatform.history
+package com.wavesplatform.history
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.settings.{BlockchainSettings, AmurSettings}
-import com.amurplatform.state._
-import com.amurplatform.state.diffs._
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.settings.{BlockchainSettings, WavesSettings}
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.transaction.GenesisTransaction
-import com.amurplatform.transaction.assets.{IssueTransaction, SponsorFeeTransaction}
-import com.amurplatform.transaction.transfer._
-import com.amurplatform.crypto._
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.transaction.GenesisTransaction
+import com.wavesplatform.transaction.assets.{IssueTransaction, SponsorFeeTransaction}
+import com.wavesplatform.transaction.transfer._
+import com.wavesplatform.crypto._
 
 class BlockchainUpdaterSponsoredFeeBlockTest
     extends PropSpec
@@ -36,21 +36,21 @@ class BlockchainUpdaterSponsoredFeeBlockTest
 
     master                      <- accountGen
     ts                          <- timestampGen
-    transferAssetAmurFee       <- smallFeeGen
+    transferAssetWavesFee       <- smallFeeGen
     sponsor                     <- accountGen
     alice                       <- accountGen
     bob                         <- accountGen
     (feeAsset, sponsorTx, _, _) <- sponsorFeeCancelSponsorFeeGen(alice)
-    amurFee                    = Sponsorship.toAmur(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
+    wavesFee                    = Sponsorship.toWaves(sponsorTx.minSponsoredAssetFee.get, sponsorTx.minSponsoredAssetFee.get)
     genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
     masterToAlice: TransferTransactionV1 = TransferTransactionV1
       .selfSigned(None,
                   master,
                   alice,
-                  feeAsset.fee + sponsorTx.fee + transferAssetAmurFee + amurFee,
+                  feeAsset.fee + sponsorTx.fee + transferAssetWavesFee + wavesFee,
                   ts + 1,
                   None,
-                  transferAssetAmurFee,
+                  transferAssetWavesFee,
                   Array.emptyByteArray)
       .right
       .get
@@ -62,7 +62,7 @@ class BlockchainUpdaterSponsoredFeeBlockTest
         feeAsset.quantity / 2,
         ts + 2,
         None,
-        transferAssetAmurFee,
+        transferAssetWavesFee,
         Array.emptyByteArray
       )
       .right
@@ -101,10 +101,10 @@ class BlockchainUpdaterSponsoredFeeBlockTest
             blocksForFeatureActivation = 1,
             preActivatedFeatures = Map(BlockchainFeatures.FeeSponsorship.id -> 0, BlockchainFeatures.NG.id -> 0)))
 
-  val SponsoredActivatedAt0AmurSettings: AmurSettings = settings.copy(blockchainSettings = SponsoredFeeActivatedAt0BlockchainSettings)
+  val SponsoredActivatedAt0WavesSettings: WavesSettings = settings.copy(blockchainSettings = SponsoredFeeActivatedAt0BlockchainSettings)
 
-  property("not enough amur to sponsor sponsored tx") {
-    scenario(sponsorPreconditions, SponsoredActivatedAt0AmurSettings) {
+  property("not enough waves to sponsor sponsored tx") {
+    scenario(sponsorPreconditions, SponsoredActivatedAt0WavesSettings) {
       case (domain, (genesis, masterToAlice, feeAsset, sponsor, aliceToBob, bobToMaster, bobToMaster2)) =>
         val (block0, microBlocks) = chainBaseAndMicro(randomSig, genesis, Seq(masterToAlice, feeAsset, sponsor).map(Seq(_)))
         val block1 = customBuildBlockOfTxs(microBlocks.last.totalResBlockSig,
@@ -123,7 +123,7 @@ class BlockchainUpdaterSponsoredFeeBlockTest
         domain.blockchainUpdater.processBlock(block1).explicitGet()
         domain.blockchainUpdater.processBlock(block2).explicitGet()
         domain.blockchainUpdater.processBlock(block3).explicitGet()
-        domain.blockchainUpdater.processBlock(block4) should produce("negative amur balance" /*"unavailable funds"*/ )
+        domain.blockchainUpdater.processBlock(block4) should produce("negative waves balance" /*"unavailable funds"*/ )
 
     }
   }

@@ -1,21 +1,21 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import java.io.File
 import java.nio.file.Files
 
-import com.amurplatform.TransactionGenBase
-import com.amurplatform.database.LevelDBWriter
-import com.amurplatform.db.LevelDBFactory
-import com.amurplatform.mining.MiningConstraint
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.state.diffs.BlockDiffer
+import com.wavesplatform.TransactionGenBase
+import com.wavesplatform.database.LevelDBWriter
+import com.wavesplatform.db.LevelDBFactory
+import com.wavesplatform.mining.MiningConstraint
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.state.diffs.BlockDiffer
 import org.iq80.leveldb.{DB, Options}
 import org.openjdk.jmh.annotations.{Setup, TearDown}
 import org.scalacheck.Gen
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.block.Block
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.transaction.{GenesisTransaction, Transaction}
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.block.Block
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.transaction.{GenesisTransaction, Transaction}
 
 trait BaseState extends TransactionGenBase {
   import BaseState._
@@ -55,7 +55,7 @@ trait BaseState extends TransactionGenBase {
   private val initGen: Gen[(PrivateKeyAccount, Block)] = for {
     rich <- accountGen
   } yield {
-    val genesisTx = GenesisTransaction.create(rich, amur(100000000L), System.currentTimeMillis() - 10000).explicitGet()
+    val genesisTx = GenesisTransaction.create(rich, waves(100000000L), System.currentTimeMillis() - 10000).explicitGet()
     (rich, TestBlock.create(time = genesisTx.timestamp, Seq(genesisTx)))
   }
 

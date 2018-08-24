@@ -1,15 +1,15 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
-import com.amurplatform.settings.TestFunctionalitySettings
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.settings.TestFunctionalitySettings
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.transaction.GenesisTransaction
-import com.amurplatform.transaction.lease.LeaseTransaction
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.transaction.GenesisTransaction
+import com.wavesplatform.transaction.lease.LeaseTransaction
+import com.wavesplatform.transaction.transfer._
 
 class BalanceDiffValidationTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 
@@ -23,14 +23,14 @@ class BalanceDiffValidationTest extends PropSpec with PropertyChecks with Matche
       gen2: GenesisTransaction = GenesisTransaction.create(master2, Long.MaxValue - 1, ts).explicitGet()
       fee    <- smallFeeGen
       amount <- Gen.choose(Long.MaxValue / 2, Long.MaxValue - fee - 1)
-      transfer1 = createAmurTransfer(master, recipient, amount, fee, ts).explicitGet()
-      transfer2 = createAmurTransfer(master2, recipient, amount, fee, ts).explicitGet()
+      transfer1 = createWavesTransfer(master, recipient, amount, fee, ts).explicitGet()
+      transfer2 = createWavesTransfer(master2, recipient, amount, fee, ts).explicitGet()
     } yield (gen1, gen2, transfer1, transfer2)
 
     forAll(preconditionsAndPayment) {
       case (gen1, gen2, transfer1, transfer2) =>
         assertDiffEi(Seq(TestBlock.create(Seq(gen1, gen2, transfer1))), TestBlock.create(Seq(transfer2))) { blockDiffEi =>
-          blockDiffEi should produce("negative amur balance")
+          blockDiffEi should produce("negative waves balance")
         }
     }
   }
@@ -66,11 +66,11 @@ class BalanceDiffValidationTest extends PropSpec with PropertyChecks with Matche
     amt    <- positiveLongGen
     fee    <- smallFeeGen
     genesis: GenesisTransaction                   = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
-    masterTransfersToAlice: TransferTransactionV1 = createAmurTransfer(master, alice, amt, fee, ts).explicitGet()
+    masterTransfersToAlice: TransferTransactionV1 = createWavesTransfer(master, alice, amt, fee, ts).explicitGet()
     (aliceLeasesToBob, _)    <- leaseAndCancelGeneratorP(alice, bob, alice) suchThat (_._1.amount < amt)
     (masterLeasesToAlice, _) <- leaseAndCancelGeneratorP(master, alice, master) suchThat (_._1.amount > aliceLeasesToBob.amount)
     transferAmt              <- Gen.choose(amt - fee - aliceLeasesToBob.amount, amt - fee)
-    aliceTransfersMoreThanOwnsMinusLeaseOut = createAmurTransfer(alice, cooper, transferAmt, fee, ts).explicitGet()
+    aliceTransfersMoreThanOwnsMinusLeaseOut = createWavesTransfer(alice, cooper, transferAmt, fee, ts).explicitGet()
 
   } yield (genesis, masterTransfersToAlice, aliceLeasesToBob, masterLeasesToAlice, aliceTransfersMoreThanOwnsMinusLeaseOut)
 

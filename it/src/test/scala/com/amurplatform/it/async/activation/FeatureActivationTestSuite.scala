@@ -1,10 +1,10 @@
-package com.amurplatform.it.async.activation
+package com.wavesplatform.it.async.activation
 
 import com.typesafe.config.Config
-import com.amurplatform.features.api.NodeFeatureStatus
-import com.amurplatform.features.{BlockchainFeatureStatus, BlockchainFeatures}
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.{NodeConfigs, ReportingTestName}
+import com.wavesplatform.features.api.NodeFeatureStatus
+import com.wavesplatform.features.{BlockchainFeatureStatus, BlockchainFeatures}
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.{NodeConfigs, ReportingTestName}
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -27,7 +27,7 @@ class FeatureActivationTestSuite
 
   override protected def nodeConfigs: Seq[Config] = {
     NodeConfigs.newBuilder
-      .overrideBase(_.raw(s"""amur {
+      .overrideBase(_.raw(s"""waves {
                                |  blockchain.custom.functionality {
                                |    pre-activated-features = null
                                |    feature-check-blocks-period = $votingInterval

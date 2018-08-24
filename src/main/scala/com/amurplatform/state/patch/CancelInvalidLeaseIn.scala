@@ -1,7 +1,7 @@
-package com.amurplatform.state.patch
+package com.wavesplatform.state.patch
 
-import com.amurplatform.state.{Diff, _}
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.state.{Diff, _}
+import com.wavesplatform.utils.ScorexLogging
 
 object CancelInvalidLeaseIn extends ScorexLogging {
   def apply(blockchain: Blockchain): Diff = {

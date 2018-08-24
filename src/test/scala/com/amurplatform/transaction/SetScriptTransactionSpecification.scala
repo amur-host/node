@@ -1,13 +1,13 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.state._
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.state._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.transaction.smart.SetScriptTransaction
 
 class SetScriptTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

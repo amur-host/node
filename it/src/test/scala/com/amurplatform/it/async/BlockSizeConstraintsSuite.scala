@@ -1,9 +1,9 @@
-package com.amurplatform.it.async
+package com.wavesplatform.it.async
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.{NodeConfigs, TransferSending}
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.{NodeConfigs, TransferSending}
 import org.scalatest._
 
 import scala.concurrent.Await.result
@@ -51,7 +51,7 @@ object BlockSizeConstraintsSuite {
                                                              |  request-timeout = 60s
                                                              |}
                                                              |
-                                                             |amur {
+                                                             |waves {
                                                              |  network.enable-peers-exchange = no
                                                              |
                                                              |  miner {

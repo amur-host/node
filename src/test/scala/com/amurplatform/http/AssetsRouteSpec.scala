@@ -1,21 +1,21 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import akka.http.scaladsl.model.StatusCodes
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.http.ApiMarshallers._
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.state.{Blockchain, Diff}
-import com.amurplatform.utx.UtxPool
-import com.amurplatform.{RequestGen, TestTime}
+import com.wavesplatform.http.ApiMarshallers._
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.state.{Blockchain, Diff}
+import com.wavesplatform.utx.UtxPool
+import com.wavesplatform.{RequestGen, TestTime}
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.concurrent.Eventually
 import play.api.libs.json.Writes
-import com.amurplatform.account.Address
-import com.amurplatform.api.http.assets.{AssetsApiRoute, TransferV1Request, TransferV2Request}
-import com.amurplatform.transaction.Transaction
-import com.amurplatform.transaction.transfer._
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.Address
+import com.wavesplatform.api.http.assets.{AssetsApiRoute, TransferV1Request, TransferV2Request}
+import com.wavesplatform.transaction.Transaction
+import com.wavesplatform.transaction.transfer._
+import com.wavesplatform.wallet.Wallet
 
 class AssetsRouteSpec extends RouteSpec("/assets") with RequestGen with PathMockFactory with Eventually {
 
@@ -42,8 +42,8 @@ class AssetsRouteSpec extends RouteSpec("/assets") with RequestGen with PathMock
       val req = TransferV1Request(
         assetId = None,
         feeAssetId = None,
-        amount = 1 * Amur,
-        fee = Amur / 3,
+        amount = 1 * Waves,
+        fee = Waves / 3,
         sender = senderPrivateKey.address,
         attachment = Some("attachment"),
         recipient = receiverPrivateKey.address,
@@ -60,9 +60,9 @@ class AssetsRouteSpec extends RouteSpec("/assets") with RequestGen with PathMock
       val req = TransferV2Request(
         version = 2,
         assetId = None,
-        amount = 1 * Amur,
+        amount = 1 * Waves,
         feeAssetId = None,
-        fee = Amur / 3,
+        fee = Waves / 3,
         sender = senderPrivateKey.address,
         attachment = None,
         recipient = receiverPrivateKey.address,

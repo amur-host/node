@@ -1,23 +1,23 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.api.UnexpectedStatusCodeException
-import com.amurplatform.it.sync.{calcDataFee, minFee}
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
-import com.amurplatform.utils.Base58
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.api.UnexpectedStatusCodeException
+import com.wavesplatform.it.sync.{calcDataFee, minFee}
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
+import com.wavesplatform.utils.Base58
 import org.scalatest.{Assertion, Assertions}
 import play.api.libs.json._
-import com.amurplatform.api.http.SignedDataRequest
-import com.amurplatform.transaction.DataTransaction
+import com.wavesplatform.api.http.SignedDataRequest
+import com.wavesplatform.transaction.DataTransaction
 
 import scala.concurrent.duration._
 import scala.util.{Failure, Random, Try}
 
 class DataTransactionSuite extends BaseTransactionSuite {
 
-  test("sender's amur balance is decreased by fee.") {
+  test("sender's waves balance is decreased by fee.") {
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
     val entry            = IntegerDataEntry("int", 0xcafebabe)
     val data             = List(entry)
@@ -27,15 +27,15 @@ class DataTransactionSuite extends BaseTransactionSuite {
     notMiner.assertBalances(firstAddress, balance1 - transferFee, eff1 - transferFee)
   }
 
-  test("cannot transact without having enough amur") {
+  test("cannot transact without having enough waves") {
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
 
     val data = List(BooleanDataEntry("bool", false))
-    assertBadRequestAndResponse(sender.putData(firstAddress, data, balance1 + 1), "negative amur balance")
+    assertBadRequestAndResponse(sender.putData(firstAddress, data, balance1 + 1), "negative waves balance")
     nodes.waitForHeightArise()
     notMiner.assertBalances(firstAddress, balance1, eff1)
 
-    val leaseAmount = 1.amur
+    val leaseAmount = 1.waves
     val leaseId     = sender.lease(firstAddress, secondAddress, leaseAmount, minFee).id
     nodes.waitForHeightAriseAndTxPresent(leaseId)
 

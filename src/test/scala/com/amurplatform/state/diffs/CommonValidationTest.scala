@@ -1,22 +1,22 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
-import com.amurplatform.db.WithState
-import com.amurplatform.features.{BlockchainFeature, BlockchainFeatures}
-import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.mining.MiningConstraint
-import com.amurplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.db.WithState
+import com.wavesplatform.features.{BlockchainFeature, BlockchainFeatures}
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.mining.MiningConstraint
+import com.wavesplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings}
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertion, Matchers, PropSpec}
-import com.amurplatform.account.AddressScheme
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.transaction.assets.{IssueTransactionV1, IssueTransactionV2, SponsorFeeTransaction}
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.transaction.transfer._
-import com.amurplatform.transaction.{GenesisTransaction, Transaction, ValidationError}
+import com.wavesplatform.account.AddressScheme
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.transaction.assets.{IssueTransactionV1, IssueTransactionV2, SponsorFeeTransaction}
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.transaction.transfer._
+import com.wavesplatform.transaction.{GenesisTransaction, Transaction, ValidationError}
 
 class CommonValidationTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with WithState with NoShrink {
 
@@ -26,7 +26,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
       recipient <- otherAccountGen(candidate = master)
       ts        <- positiveIntGen
       genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
-      transfer: TransferTransactionV1 <- amurTransferGeneratorP(master, recipient)
+      transfer: TransferTransactionV1 <- wavesTransferGeneratorP(master, recipient)
     } yield (genesis, transfer)
 
     forAll(preconditionsAndPayment) {
@@ -82,7 +82,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
   }
 
   property("checkFee for smart tokens fails if the fee is in tokens") {
-    smartTokensCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions with smart tokens require Amur as fee"))
+    smartTokensCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions with smart tokens require Waves as fee"))
   }
 
   private def smartAccountCheckFeeTest(feeInAssets: Boolean, feeAmount: Long)(f: Either[ValidationError, Unit] => Assertion): Unit = {
@@ -104,7 +104,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
   }
 
   property("checkFee for smart accounts fails if the fee is in tokens") {
-    smartAccountCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions from scripted accounts require Amur as fee"))
+    smartAccountCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions from scripted accounts require Waves as fee"))
   }
 
   property("checkFee sponsored + smart tokens + smart accounts sunny") {
@@ -157,7 +157,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
             .selfSigned(richAcc, "test".getBytes(), "desc".getBytes(), Long.MaxValue, 2, reissuable = false, Constants.UnitsInWave, ts)
             .explicitGet()
 
-      val transferAmurTx = TransferTransactionV1
+      val transferWavesTx = TransferTransactionV1
         .selfSigned(None, richAcc, recipientAcc, 10 * Constants.UnitsInWave, ts, None, 1 * Constants.UnitsInWave, Array.emptyByteArray)
         .explicitGet()
 
@@ -202,7 +202,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
         )
         .explicitGet()
 
-      (TestBlock.create(Vector[Transaction](genesisTx, issueTx, transferAmurTx, transferAssetTx) ++ sponsorTx ++ setScriptTx), transferBackTx)
+      (TestBlock.create(Vector[Transaction](genesisTx, issueTx, transferWavesTx, transferAssetTx) ++ sponsorTx ++ setScriptTx), transferBackTx)
     }
 
   private def createSettings(preActivatedFeatures: (BlockchainFeature, Int)*): FunctionalitySettings =

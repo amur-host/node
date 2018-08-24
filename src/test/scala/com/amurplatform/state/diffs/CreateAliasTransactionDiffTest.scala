@@ -1,17 +1,17 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats._
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.state._
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.state._
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.settings.TestFunctionalitySettings
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.transaction.assets.IssueTransaction
-import com.amurplatform.transaction.{CreateAliasTransaction, CreateAliasTransactionV1, GenesisTransaction}
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.settings.TestFunctionalitySettings
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.transaction.assets.IssueTransaction
+import com.wavesplatform.transaction.{CreateAliasTransaction, CreateAliasTransactionV1, GenesisTransaction}
 
 class CreateAliasTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 
@@ -35,7 +35,7 @@ class CreateAliasTransactionDiffTest extends PropSpec with PropertyChecks with M
     anotherAliasTx           <- createAliasGen(master, alias2, fee + 3, ts)
   } yield (genesis, aliasTx, sameAliasTx, sameAliasOtherSenderTx, anotherAliasTx)
 
-  property("can create and resolve aliases preserving amur invariant") {
+  property("can create and resolve aliases preserving waves invariant") {
     forAll(preconditionsAndAliasCreations) {
       case (gen, aliasTx, _, _, anotherAliasTx) =>
         assertDiffAndState(Seq(TestBlock.create(Seq(gen, aliasTx))), TestBlock.create(Seq(anotherAliasTx)), fs) {

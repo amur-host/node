@@ -1,10 +1,10 @@
-package com.amurplatform
+package com.wavesplatform
 
 import java.io.File
 import java.net.{InetSocketAddress, URI}
 
 import com.typesafe.config.{Config, ConfigException, ConfigFactory, ConfigValueType}
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.state.ByteStr
 import net.ceedubs.ficus.readers.namemappers.HyphenNameMapper
 import net.ceedubs.ficus.readers.{NameMapper, ValueReader}
 

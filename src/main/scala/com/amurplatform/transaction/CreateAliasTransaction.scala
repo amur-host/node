@@ -1,11 +1,11 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.amurplatform.account.{Alias, PublicKeyAccount}
-import com.amurplatform.serialization.Deser
+import com.wavesplatform.account.{Alias, PublicKeyAccount}
+import com.wavesplatform.serialization.Deser
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.amurplatform.crypto._
+import com.wavesplatform.crypto._
 
 import scala.util.{Failure, Success, Try}
 

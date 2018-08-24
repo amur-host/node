@@ -1,10 +1,10 @@
-package com.amurplatform.lang
+package com.wavesplatform.lang
 
-import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.amurplatform.lang.v1.traits.{DataType, Environment}
+import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com.wavesplatform.lang.v1.traits.{DataType, Environment}
 import shapeless.{:+:, CNil}
 
-object AmurContext {
+object WavesContext {
   val env = new Environment {
     override def height: Int                                         = impl.Environment.height
     override def networkByte: Byte                                   = impl.Environment.networkByte

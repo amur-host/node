@@ -1,19 +1,19 @@
-package com.amurplatform.it.sync.smartcontract
+package com.wavesplatform.it.sync.smartcontract
 
-import com.amurplatform.account.AddressScheme
-import com.amurplatform.crypto
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.sync.{minFee, transferAmount}
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.lang.v1.compiler.CompilerV1
-import com.amurplatform.lang.v1.parser.Parser
-import com.amurplatform.state._
-import com.amurplatform.transaction.Proofs
-import com.amurplatform.transaction.lease.{LeaseCancelTransactionV2, LeaseTransactionV2}
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.utils.dummyCompilerContext
+import com.wavesplatform.account.AddressScheme
+import com.wavesplatform.crypto
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.sync.{minFee, transferAmount}
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.parser.Parser
+import com.wavesplatform.state._
+import com.wavesplatform.transaction.Proofs
+import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV2, LeaseTransactionV2}
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.utils.dummyCompilerContext
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.JsNumber
 
@@ -64,7 +64,7 @@ class LeaseSmartContractsTestSuite extends BaseTransactionSuite with CancelAfter
           2,
           acc0,
           transferAmount,
-          minFee + 0.2.amur,
+          minFee + 0.2.waves,
           System.currentTimeMillis(),
           acc2,
           Proofs.empty
@@ -83,8 +83,8 @@ class LeaseSmartContractsTestSuite extends BaseTransactionSuite with CancelAfter
     nodes.waitForHeightAriseAndTxPresent(leasingId)
 
     notMiner.assertBalances(firstAddress,
-                            balance1 + 10 * transferAmount - (2 * minFee + 0.2.amur),
-                            eff1 + 9 * transferAmount - (2 * minFee + 0.2.amur))
+                            balance1 + 10 * transferAmount - (2 * minFee + 0.2.waves),
+                            eff1 + 9 * transferAmount - (2 * minFee + 0.2.waves))
     notMiner.assertBalances(thirdAddress, balance2, eff2 + transferAmount)
 
     val unsignedCancelLeasing =
@@ -94,7 +94,7 @@ class LeaseSmartContractsTestSuite extends BaseTransactionSuite with CancelAfter
           chainId = AddressScheme.current.chainId,
           sender = acc0,
           leaseId = ByteStr.decodeBase58(leasingId).get,
-          fee = minFee + 0.2.amur,
+          fee = minFee + 0.2.waves,
           timestamp = System.currentTimeMillis(),
           proofs = Proofs.empty
         )
@@ -112,8 +112,8 @@ class LeaseSmartContractsTestSuite extends BaseTransactionSuite with CancelAfter
     nodes.waitForHeightAriseAndTxPresent(leasingCancelId)
 
     notMiner.assertBalances(firstAddress,
-                            balance1 + 10 * transferAmount - (3 * minFee + 2 * 0.2.amur),
-                            eff1 + 10 * transferAmount - (3 * minFee + 2 * 0.2.amur))
+                            balance1 + 10 * transferAmount - (3 * minFee + 2 * 0.2.waves),
+                            eff1 + 10 * transferAmount - (3 * minFee + 2 * 0.2.waves))
     notMiner.assertBalances(thirdAddress, balance2, eff2)
 
   }

@@ -1,16 +1,16 @@
-package com.amurplatform.matcher.model
+package com.wavesplatform.matcher.model
 
-import com.amurplatform.NoShrink
-import com.amurplatform.matcher.MatcherTestData
-import com.amurplatform.matcher.market.MatcherActor.OrderBookCreated
-import com.amurplatform.matcher.market.OrderBookActor.Snapshot
-import com.amurplatform.matcher.model.EventSerializers._
-import com.amurplatform.matcher.model.MatcherModel.{Level, Price}
+import com.wavesplatform.NoShrink
+import com.wavesplatform.matcher.MatcherTestData
+import com.wavesplatform.matcher.market.MatcherActor.OrderBookCreated
+import com.wavesplatform.matcher.market.OrderBookActor.Snapshot
+import com.wavesplatform.matcher.model.EventSerializers._
+import com.wavesplatform.matcher.model.MatcherModel.{Level, Price}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 import play.api.libs.json.Json
-import com.amurplatform.transaction.assets.exchange.AssetPair
+import com.wavesplatform.transaction.assets.exchange.AssetPair
 
 import scala.collection.immutable.TreeMap
 

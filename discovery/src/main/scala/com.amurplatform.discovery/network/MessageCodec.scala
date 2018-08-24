@@ -1,8 +1,8 @@
-package com.amurplatform.discovery.network
+package com.wavesplatform.discovery.network
 
 import java.util
 
-import com.amurplatform.network.{
+import com.wavesplatform.network.{
   BasicMessagesRepo,
   BlockForged,
   BlockSpec,
@@ -30,7 +30,7 @@ import com.amurplatform.network.{
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.MessageToMessageCodec
-import com.amurplatform.network.message.MessageSpec
+import com.wavesplatform.network.message.MessageSpec
 import scorex.utils.ScorexLogging
 
 import scala.util.{Failure, Success}

@@ -1,12 +1,12 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
 import com.google.common.primitives.{Bytes, Ints, Longs}
-import com.amurplatform.crypto
-import com.amurplatform.state.{ByteStr, _}
+import com.wavesplatform.crypto
+import com.wavesplatform.state.{ByteStr, _}
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.amurplatform.account.Address
-import com.amurplatform.transaction.TransactionParsers._
+import com.wavesplatform.account.Address
+import com.wavesplatform.transaction.TransactionParsers._
 
 import scala.util.{Failure, Success, Try}
 
@@ -82,7 +82,7 @@ object GenesisTransaction extends TransactionParserFor[GenesisTransaction] with 
 
   def create(recipient: Address, amount: Long, timestamp: Long): Either[ValidationError, GenesisTransaction] = {
     if (amount < 0) {
-      Left(ValidationError.NegativeAmount(amount, "amur"))
+      Left(ValidationError.NegativeAmount(amount, "waves"))
     } else {
       val signature = ByteStr(GenesisTransaction.generateSignature(recipient, amount, timestamp))
       Right(GenesisTransaction(recipient, amount, timestamp, signature))

@@ -1,22 +1,22 @@
-package com.amurplatform.api.http.leasing
+package com.wavesplatform.api.http.leasing
 
 import akka.http.scaladsl.server.Route
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.state.Blockchain
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.state.Blockchain
+import com.wavesplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.JsNumber
-import com.amurplatform.account.Address
-import com.amurplatform.api.http._
-import com.amurplatform.api.http.leasing.LeaseCancelV1Request.leaseCancelRequestFormat
-import com.amurplatform.api.http.leasing.LeaseV1Request.leaseCancelRequestFormat
-import com.amurplatform.http.BroadcastRoute
-import com.amurplatform.utils.Time
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.Address
+import com.wavesplatform.api.http._
+import com.wavesplatform.api.http.leasing.LeaseCancelV1Request.leaseCancelRequestFormat
+import com.wavesplatform.api.http.leasing.LeaseV1Request.leaseCancelRequestFormat
+import com.wavesplatform.http.BroadcastRoute
+import com.wavesplatform.utils.Time
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
+import com.wavesplatform.wallet.Wallet
 
 @Path("/leasing")
 @Api(value = "/leasing")
@@ -37,7 +37,7 @@ case class LeaseApiRoute(settings: RestAPISettings, wallet: Wallet, blockchain: 
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.leasing.LeaseV1Request",
+        dataType = "com.wavesplatform.api.http.leasing.LeaseV1Request",
         defaultValue =
           "{\n\t\"amount\": 100000000,\n\t\"recipient\": \"3NBsppTVpai9jq6agi9wXXrWhaMPPig48Aw\",\n\t\"sender\": \"3Mx2afTZ2KbRrLNbytyzTtXukZvqEB8SkW7\",\n\t\"fee\": 100000\n}"
       )
@@ -54,7 +54,7 @@ case class LeaseApiRoute(settings: RestAPISettings, wallet: Wallet, blockchain: 
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.leasing.LeaseCancelV1Request",
+        dataType = "com.wavesplatform.api.http.leasing.LeaseCancelV1Request",
         defaultValue =
           "{\n\t\"sender\": \"3Myss6gmMckKYtka3cKCM563TBJofnxvfD7\",\n\t\"txId\": \"ABMZDPY4MyQz7kKNAevw5P9eNmRErMutJoV9UNeCtqRV\",\n\t\"fee\": 10000000\n}"
       )

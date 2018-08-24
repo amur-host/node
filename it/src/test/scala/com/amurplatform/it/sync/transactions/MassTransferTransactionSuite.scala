@@ -1,18 +1,18 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.sync._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.utils.Base58
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.sync._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.utils.Base58
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json._
-import com.amurplatform.account.Alias
-import com.amurplatform.api.http.assets.{MassTransferRequest, SignedMassTransferRequest}
-import com.amurplatform.transaction.transfer.MassTransferTransaction.{MaxTransferCount, Transfer}
-import com.amurplatform.transaction.transfer.TransferTransaction.MaxAttachmentSize
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.Alias
+import com.wavesplatform.api.http.assets.{MassTransferRequest, SignedMassTransferRequest}
+import com.wavesplatform.transaction.transfer.MassTransferTransaction.{MaxTransferCount, Transfer}
+import com.wavesplatform.transaction.transfer.TransferTransaction.MaxAttachmentSize
+import com.wavesplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.Random
@@ -21,7 +21,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
 
   private def fakeSignature = Base58.encode(Array.fill(64)(Random.nextInt.toByte))
 
-  test("asset mass transfer changes asset balances and sender's.amur balance is decreased by fee.") {
+  test("asset mass transfer changes asset balances and sender's.waves balance is decreased by fee.") {
 
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
     val (balance2, eff2) = notMiner.accountBalances(secondAddress)
@@ -40,7 +40,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
     notMiner.assertAssetBalance(secondAddress, assetId, transferAmount)
   }
 
-  test("amur mass transfer changes amur balances") {
+  test("waves mass transfer changes waves balances") {
 
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
     val (balance2, eff2) = notMiner.accountBalances(secondAddress)
@@ -58,12 +58,12 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
     notMiner.assertBalances(thirdAddress, balance3 + 2 * transferAmount, eff3 + 2 * transferAmount)
   }
 
-  test("can not make mass transfer without having enough amur") {
+  test("can not make mass transfer without having enough waves") {
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
     val (balance2, eff2) = notMiner.accountBalances(secondAddress)
     val transfers        = List(Transfer(secondAddress, balance1 / 2), Transfer(thirdAddress, balance1 / 2))
 
-    assertBadRequestAndResponse(sender.massTransfer(firstAddress, transfers, calcMassTransferFee(transfers.size)), "negative amur balance")
+    assertBadRequestAndResponse(sender.massTransfer(firstAddress, transfers, calcMassTransferFee(transfers.size)), "negative waves balance")
 
     nodes.waitForHeightArise()
     notMiner.assertBalances(firstAddress, balance1, eff1)
@@ -90,14 +90,14 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
     val leaseTxId = sender.lease(firstAddress, secondAddress, leasingAmount, minFee).id
     nodes.waitForHeightAriseAndTxPresent(leaseTxId)
 
-    assertBadRequestAndResponse(sender.massTransfer(firstAddress, transfers, calcMassTransferFee(transfers.size)), "negative amur balance")
+    assertBadRequestAndResponse(sender.massTransfer(firstAddress, transfers, calcMassTransferFee(transfers.size)), "negative waves balance")
     nodes.waitForHeightArise()
     notMiner.assertBalances(firstAddress, balance1 - minFee, eff1 - leasingAmount - minFee)
     notMiner.assertBalances(secondAddress, balance2, eff2 + leasingAmount)
   }
 
   test("invalid transfer should not be in UTX or blockchain") {
-    import com.amurplatform.transaction.transfer._
+    import com.wavesplatform.transaction.transfer._
 
     def request(version: Byte = MassTransferTransaction.version,
                 transfers: List[Transfer] = List(Transfer(secondAddress, transferAmount)),
@@ -224,7 +224,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
   test("reporting MassTransfer transactions") {
     implicit val mtFormat: Format[MassTransferRequest] = Json.format[MassTransferRequest]
 
-    val transfers = List(Transfer(firstAddress, 5.amur), Transfer(secondAddress, 2.amur), Transfer(thirdAddress, 3.amur))
+    val transfers = List(Transfer(firstAddress, 5.waves), Transfer(secondAddress, 2.waves), Transfer(thirdAddress, 3.waves))
     val txId      = sender.massTransfer(firstAddress, transfers, 300000).id
     nodes.waitForHeightAriseAndTxPresent(txId)
 
@@ -241,7 +241,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
       .head
     assert(txSender.as[MassTransferRequest].transfers.size == 3)
     assert((txSender \ "transferCount").as[Int] == 3)
-    assert((txSender \ "totalAmount").as[Long] == 10.amur)
+    assert((txSender \ "totalAmount").as[Long] == 10.waves)
     val transfersAfterTrans = txSender.as[MassTransferRequest].transfers
     assert(transfers.equals(transfersAfterTrans))
 
@@ -258,7 +258,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
 
     assert(txRecipient.as[MassTransferRequest].transfers.size == 1)
     assert((txRecipient \ "transferCount").as[Int] == 3)
-    assert((txRecipient \ "totalAmount").as[Long] == 10.amur)
+    assert((txRecipient \ "totalAmount").as[Long] == 10.waves)
     val transferToSecond = txRecipient.as[MassTransferRequest].transfers.head
     assert(transfers contains transferToSecond)
   }
@@ -269,7 +269,7 @@ class MassTransferTransactionSuite extends BaseTransactionSuite with CancelAfter
     createAliasTxs.foreach(sender.waitForTransaction(_))
 
     val transfers = aliases.map { alias =>
-      Transfer(Alias.buildWithCurrentNetworkByte(alias).explicitGet().stringRepr, 2.amur)
+      Transfer(Alias.buildWithCurrentNetworkByte(alias).explicitGet().stringRepr, 2.waves)
     }
     val txId = sender.massTransfer(firstAddress, transfers, 300000).id
     nodes.waitForHeightAriseAndTxPresent(txId)

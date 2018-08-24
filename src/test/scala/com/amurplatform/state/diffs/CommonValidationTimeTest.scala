@@ -1,9 +1,9 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
-import com.amurplatform.db.WithState
-import com.amurplatform.settings.TestFunctionalitySettings
-import com.amurplatform.state._
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.db.WithState
+import com.wavesplatform.settings.TestFunctionalitySettings
+import com.wavesplatform.state._
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
@@ -19,7 +19,7 @@ class CommonValidationTimeTest extends PropSpec with PropertyChecks with Matcher
       recipient   <- accountGen
       amount      <- positiveLongGen
       fee         <- smallFeeGen
-      transfer1 = createAmurTransfer(master, recipient, amount, fee, prevBlockTs - CommonValidation.MaxTimePrevBlockOverTransactionDiff.toMillis - 1)
+      transfer1 = createWavesTransfer(master, recipient, amount, fee, prevBlockTs - CommonValidation.MaxTimePrevBlockOverTransactionDiff.toMillis - 1)
         .explicitGet()
     } yield (prevBlockTs, blockTs, height, transfer1)) {
       case (prevBlockTs, blockTs, height, transfer1) =>
@@ -38,7 +38,7 @@ class CommonValidationTimeTest extends PropSpec with PropertyChecks with Matcher
       recipient   <- accountGen
       amount      <- positiveLongGen
       fee         <- smallFeeGen
-      transfer1 = createAmurTransfer(master, recipient, amount, fee, blockTs + CommonValidation.MaxTimeTransactionOverBlockDiff.toMillis + 1)
+      transfer1 = createWavesTransfer(master, recipient, amount, fee, blockTs + CommonValidation.MaxTimeTransactionOverBlockDiff.toMillis + 1)
         .explicitGet()
     } yield (prevBlockTs, blockTs, height, transfer1)) {
       case (prevBlockTs, blockTs, height, transfer1) =>

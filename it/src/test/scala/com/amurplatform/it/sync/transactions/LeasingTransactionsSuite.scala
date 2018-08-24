@@ -1,15 +1,15 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.Json
-import com.amurplatform.it.sync._
+import com.wavesplatform.it.sync._
 
 class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFailure {
 
-  test("leasing amur decreases lessor's eff.b. and increases lessee's eff.b.; lessor pays fee") {
+  test("leasing waves decreases lessor's eff.b. and increases lessee's eff.b.; lessor pays fee") {
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
     val (balance2, eff2) = notMiner.accountBalances(secondAddress)
 
@@ -26,14 +26,14 @@ class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFail
     val (balance2, eff2) = notMiner.accountBalances(secondAddress)
 
     //secondAddress effective balance more than general balance
-    assertBadRequestAndResponse(sender.lease(secondAddress, firstAddress, balance2 + 1.amur, minFee), "Reason: Cannot lease more than own")
+    assertBadRequestAndResponse(sender.lease(secondAddress, firstAddress, balance2 + 1.waves, minFee), "Reason: Cannot lease more than own")
     nodes.waitForHeightArise()
 
     notMiner.assertBalances(firstAddress, balance1, eff1)
     notMiner.assertBalances(secondAddress, balance2, eff2)
   }
 
-  test("can not make leasing without having enough amur for fee") {
+  test("can not make leasing without having enough waves for fee") {
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
     val (balance2, eff2) = notMiner.accountBalances(secondAddress)
 
@@ -45,7 +45,7 @@ class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFail
   }
 
   test("lease cancellation reverts eff.b. changes; lessor pays fee for both lease and cancellation") {
-    import com.amurplatform.transaction.lease.LeaseTransaction.Status._
+    import com.wavesplatform.transaction.lease.LeaseTransaction.Status._
 
     def getStatus(txId: String): String = {
       val r = sender.get(s"/transactions/info/$txId")
@@ -117,9 +117,9 @@ class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFail
     assertBadRequestAndResponse(sender.cancelLease(thirdAddress, createdLeaseTxId, minFee), "LeaseTransaction was leased by other sender")
   }
 
-  test("can not make leasing without having enough your amur to self") {
+  test("can not make leasing without having enough your waves to self") {
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
-    assertBadRequestAndResponse(sender.lease(firstAddress, firstAddress, balance1 + 1.amur, minFee), "Transaction to yourself")
+    assertBadRequestAndResponse(sender.lease(firstAddress, firstAddress, balance1 + 1.waves, minFee), "Transaction to yourself")
     nodes.waitForHeightArise()
 
     notMiner.assertBalances(firstAddress, balance1, eff1)

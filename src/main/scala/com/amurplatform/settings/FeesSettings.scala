@@ -1,9 +1,9 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.google.common.base.CaseFormat
 import com.typesafe.config.Config
 import net.ceedubs.ficus.Ficus._
-import com.amurplatform.transaction.TransactionParsers
+import com.wavesplatform.transaction.TransactionParsers
 
 import scala.collection.JavaConverters._
 
@@ -11,7 +11,7 @@ case class FeeSettings(asset: String, fee: Long)
 case class FeesSettings(fees: Map[Int, Seq[FeeSettings]])
 
 object FeesSettings {
-  val configPath: String = "amur.fees"
+  val configPath: String = "waves.fees"
 
   def fromConfig(config: Config): FeesSettings = {
     val fees: Map[Int, Seq[FeeSettings]] = config

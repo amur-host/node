@@ -1,14 +1,14 @@
-package com.amurplatform.matcher.model
+package com.wavesplatform.matcher.model
 
 import com.google.common.base.Charsets
-import com.amurplatform.WithDB
-import com.amurplatform.account.{Address, PrivateKeyAccount}
-import com.amurplatform.matcher.MatcherTestData
-import com.amurplatform.matcher.api.DBUtils
-import com.amurplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.AssetId
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.wavesplatform.WithDB
+import com.wavesplatform.account.{Address, PrivateKeyAccount}
+import com.wavesplatform.matcher.MatcherTestData
+import com.wavesplatform.matcher.api.DBUtils
+import com.wavesplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.AssetId
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 
@@ -84,7 +84,7 @@ class OrderHistorySpecification
     activeOrderIds(ord.senderPublicKey, Set(pair.amountAsset)).map(ByteStr(_)) shouldBe Seq(ord.id()).map(ByteStr(_))
   }
 
-  property("New buy AMUR order added") {
+  property("New buy WAVES order added") {
     val pair = AssetPair(None, mkAssetId("BTC"))
     val ord  = buy(pair, 0.008, 1000, matcherFee = Some(3000))
     val lo   = LimitOrder(ord)
@@ -97,7 +97,7 @@ class OrderHistorySpecification
       info shouldBe OrderInfo(ord.amount, 0, canceled = false, Some(lo.minAmountOfAmountAsset), ord.matcherFee, Some(0L))
     }
 
-    withClue("reserved assets considering amount of received AMUR") {
+    withClue("reserved assets considering amount of received WAVES") {
       oh.openVolume(ord.senderPublicKey, pair.amountAsset) shouldBe 2000L
       oh.openVolume(ord.senderPublicKey, pair.priceAsset) shouldBe 8L
     }
@@ -105,7 +105,7 @@ class OrderHistorySpecification
     activeOrderIds(ord.senderPublicKey, Set(pair.priceAsset)).map(ByteStr(_)) shouldBe Seq(ord.id()).map(ByteStr(_))
   }
 
-  property("New sell AMUR order added") {
+  property("New sell WAVES order added") {
     val pair = AssetPair(None, mkAssetId("BTC"))
     val ord  = sell(pair, 0.0008, 10000)
     val lo   = LimitOrder(ord)
@@ -118,7 +118,7 @@ class OrderHistorySpecification
     activeOrderIds(ord.senderPublicKey, Set(pair.amountAsset)).map(ByteStr(_)) shouldBe Seq(ord.id()).map(ByteStr(_))
   }
 
-  property("Should not reserve fee, if seller receives more AMUR than total fee in sell order") {
+  property("Should not reserve fee, if seller receives more WAVES than total fee in sell order") {
     val pair = AssetPair(mkAssetId("BTC"), None)
     val ord  = sell(pair, 0.01, 100000, matcherFee = Some(1000L))
 
@@ -130,7 +130,7 @@ class OrderHistorySpecification
     oh.openVolume(ord.senderPublicKey, pair.priceAsset) shouldBe 0L
   }
 
-  property("Should not reserve fee, if buyer receives more AMUR than total fee in buy order") {
+  property("Should not reserve fee, if buyer receives more WAVES than total fee in buy order") {
     val pair = AssetPair(None, mkAssetId("BTC"))
     val ord  = buy(pair, 0.0007, 100000, matcherFee = Some(1000L))
 
@@ -181,7 +181,7 @@ class OrderHistorySpecification
     oh.orderInfo(submitted.id()).status shouldBe LimitOrder.PartiallyFilled(100)
   }
 
-  property("Buy AMUR order filled exactly") {
+  property("Buy WAVES order filled exactly") {
     val pair      = AssetPair(None, mkAssetId("BTC"))
     val counter   = buy(pair, 0.0008, 100000, matcherFee = Some(2000L))
     val submitted = sell(pair, 0.0007, 100000, matcherFee = Some(1000L))
@@ -210,7 +210,7 @@ class OrderHistorySpecification
     }
   }
 
-  property("Buy AMUR order filled with remainder") {
+  property("Buy WAVES order filled with remainder") {
     val pair      = AssetPair(None, mkAssetId("BTC"))
     val counter   = sell(pair, 0.00000238, 840340L, matcherFee = Some(300000L))
     val submitted = buy(pair, 0.00000238, 425532L, matcherFee = Some(300000L))
@@ -271,7 +271,7 @@ class OrderHistorySpecification
     }
   }
 
-  property("Sell AMUR order - filled, buy order - partial") {
+  property("Sell WAVES order - filled, buy order - partial") {
     val pair      = AssetPair(None, mkAssetId("BTC"))
     val counter   = sell(pair, 0.0008, 100000000, matcherFee = Some(2000L))
     val submitted = buy(pair, 0.00085, 120000000, matcherFee = Some(1000L))
@@ -312,7 +312,7 @@ class OrderHistorySpecification
     }
   }
 
-  property("Buy AMUR order - filled with 2 steps, sell order - partial") {
+  property("Buy WAVES order - filled with 2 steps, sell order - partial") {
     val pair       = AssetPair(None, mkAssetId("BTC"))
     val counter    = buy(pair, 0.0008, 100000000, matcherFee = Some(300001L))
     val submitted1 = sell(pair, 0.00075, 50000000, matcherFee = Some(300001L))
@@ -491,7 +491,7 @@ class OrderHistorySpecification
     val submittedInfo = oh.orderInfo(submitted.id())
     submittedInfo.status shouldBe LimitOrder.Filled(100000000)
 
-    oh.openVolume(pk, pair.amountAsset) shouldBe 0 // We receive 210000000 >> 300000 AMUR
+    oh.openVolume(pk, pair.amountAsset) shouldBe 0 // We receive 210000000 >> 300000 WAVES
 
     val counterLo             = LimitOrder(counter)
     val expectedPriceReserved = counterLo.getSpendAmount - counterInfo.totalSpend(counterLo)

@@ -1,4 +1,4 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._

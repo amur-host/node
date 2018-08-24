@@ -1,10 +1,10 @@
-package com.amurplatform.it.sync.network
+package com.wavesplatform.it.sync.network
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it.NodeConfigs.Default
-import com.amurplatform.it.ReportingTestName
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.NodeConfigs.Default
+import com.wavesplatform.it.ReportingTestName
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
 import org.scalatest.{FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -12,7 +12,7 @@ import scala.concurrent.duration._
 class DetectBrokenConnectionsTestSuite extends FreeSpec with Matchers with ReportingTestName with NodesFromDocker {
 
   override protected def nodeConfigs: Seq[Config] = {
-    val highPriorityConfig = ConfigFactory.parseString("amur.network.break-idle-connections-timeout = 20s")
+    val highPriorityConfig = ConfigFactory.parseString("waves.network.break-idle-connections-timeout = 20s")
     Default.take(2).map(highPriorityConfig.withFallback)
   }
 

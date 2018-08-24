@@ -1,18 +1,18 @@
-package com.amurplatform.it.sync.smartcontract
+package com.wavesplatform.it.sync.smartcontract
 
-import com.amurplatform.crypto
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.sync.{minFee, transferAmount}
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.lang.v1.compiler.CompilerV1
-import com.amurplatform.lang.v1.parser.Parser
-import com.amurplatform.state._
-import com.amurplatform.transaction.Proofs
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.transaction.transfer._
-import com.amurplatform.utils.dummyCompilerContext
+import com.wavesplatform.crypto
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.sync.{minFee, transferAmount}
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.parser.Parser
+import com.wavesplatform.state._
+import com.wavesplatform.transaction.Proofs
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.transaction.transfer._
+import com.wavesplatform.utils.dummyCompilerContext
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.{JsNumber, Json}
 
@@ -24,7 +24,7 @@ class SetScriptTransactionSuite extends BaseTransactionSuite with CancelAfterFai
   private val acc2 = pkByAddress(thirdAddress)
   private val acc3 = pkByAddress(fourthAddress)
 
-  test("setup acc0 with 1 amur") {
+  test("setup acc0 with 1 waves") {
     val tx =
       TransferTransactionV2
         .selfSigned(
@@ -32,7 +32,7 @@ class SetScriptTransactionSuite extends BaseTransactionSuite with CancelAfterFai
           assetId = None,
           sender = sender.privateKey,
           recipient = acc0,
-          amount = 3 * transferAmount + 3 * (0.00001.amur + 0.00002.amur), // Script fee
+          amount = 3 * transferAmount + 3 * (0.00001.waves + 0.00002.waves), // Script fee
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
           feeAmount = minFee,
@@ -97,7 +97,7 @@ class SetScriptTransactionSuite extends BaseTransactionSuite with CancelAfterFai
           amount = transferAmount,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = minFee + 0.00001.amur + 0.00002.amur,
+          feeAmount = minFee + 0.00001.waves + 0.00002.waves,
           attachment = Array.emptyByteArray
         )
         .explicitGet()
@@ -115,7 +115,7 @@ class SetScriptTransactionSuite extends BaseTransactionSuite with CancelAfterFai
           amount = transferAmount,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = minFee + 0.004.amur,
+          feeAmount = minFee + 0.004.waves,
           attachment = Array.emptyByteArray,
           proofs = Proofs.empty
         )
@@ -137,7 +137,7 @@ class SetScriptTransactionSuite extends BaseTransactionSuite with CancelAfterFai
         version = SetScriptTransaction.supportedVersions.head,
         sender = acc0,
         script = None,
-        fee = minFee + 0.004.amur,
+        fee = minFee + 0.004.waves,
         timestamp = System.currentTimeMillis(),
         proofs = Proofs.empty
       )
@@ -164,7 +164,7 @@ class SetScriptTransactionSuite extends BaseTransactionSuite with CancelAfterFai
           amount = transferAmount,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = minFee + 0.004.amur,
+          feeAmount = minFee + 0.004.waves,
           attachment = Array.emptyByteArray
         )
         .explicitGet()

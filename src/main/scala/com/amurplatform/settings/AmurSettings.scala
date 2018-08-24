@@ -1,12 +1,12 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.typesafe.config.Config
-import com.amurplatform.matcher.MatcherSettings
-import com.amurplatform.metrics.Metrics
+import com.wavesplatform.matcher.MatcherSettings
+import com.wavesplatform.metrics.Metrics
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 
-case class AmurSettings(directory: String,
+case class WavesSettings(directory: String,
                          dataDirectory: String,
                          maxCacheSize: Int,
                          networkSettings: NetworkSettings,
@@ -22,18 +22,18 @@ case class AmurSettings(directory: String,
                          featuresSettings: FeaturesSettings,
                          metrics: Metrics.Settings)
 
-object AmurSettings {
+object WavesSettings {
 
   import NetworkSettings.networkSettingsValueReader
 
-  val configPath: String = "amur"
+  val configPath: String = "waves"
 
-  def fromConfig(config: Config): AmurSettings = {
+  def fromConfig(config: Config): WavesSettings = {
     val directory               = config.as[String](s"$configPath.directory")
     val dataDirectory           = config.as[String](s"$configPath.data-directory")
     val maxCacheSize            = config.as[Int](s"$configPath.max-cache-size")
-    val networkSettings         = config.as[NetworkSettings]("amur.network")
-    val walletSettings          = config.as[WalletSettings]("amur.wallet")
+    val networkSettings         = config.as[NetworkSettings]("waves.network")
+    val walletSettings          = config.as[WalletSettings]("waves.wallet")
     val blockchainSettings      = BlockchainSettings.fromConfig(config)
     val checkpointsSettings     = CheckpointsSettings.fromConfig(config)
     val feesSettings            = FeesSettings.fromConfig(config)
@@ -41,11 +41,11 @@ object AmurSettings {
     val minerSettings           = MinerSettings.fromConfig(config)
     val restAPISettings         = RestAPISettings.fromConfig(config)
     val synchronizationSettings = SynchronizationSettings.fromConfig(config)
-    val utxSettings             = config.as[UtxSettings]("amur.utx")
-    val featuresSettings        = config.as[FeaturesSettings]("amur.features")
+    val utxSettings             = config.as[UtxSettings]("waves.utx")
+    val featuresSettings        = config.as[FeaturesSettings]("waves.features")
     val metrics                 = config.as[Metrics.Settings]("metrics")
 
-    AmurSettings(
+    WavesSettings(
       directory,
       dataDirectory,
       maxCacheSize,

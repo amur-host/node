@@ -1,16 +1,16 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.state.{ByteStr, EitherExt2}
-import com.amurplatform.transaction.ValidationError.OrderValidationError
-import com.amurplatform.transaction.assets.exchange.{Order, _}
-import com.amurplatform.utils.{Base58, NTP}
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.state.{ByteStr, EitherExt2}
+import com.wavesplatform.transaction.ValidationError.OrderValidationError
+import com.wavesplatform.transaction.assets.exchange.{Order, _}
+import com.wavesplatform.utils.{Base58, NTP}
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com.amurplatform.OrderOps._
+import com.wavesplatform.OrderOps._
 
 class ExchangeTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 
@@ -219,7 +219,7 @@ class ExchangeTransactionSpecification extends PropSpec with PropertyChecks with
     val buy = OrderV1(
       PublicKeyAccount.fromBase58String("BqeJY8CP3PeUDaByz57iRekVUGtLxoow4XxPvXfHynaZ").explicitGet(),
       PublicKeyAccount.fromBase58String("Fvk5DXmfyWVZqQVBowUBMwYtRAHDtdyZNNeRrwSjt6KP").explicitGet(),
-      AssetPair.createAssetPair("AMUR", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
+      AssetPair.createAssetPair("WAVES", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
       OrderType.BUY,
       6000000000L,
       2,
@@ -232,7 +232,7 @@ class ExchangeTransactionSpecification extends PropSpec with PropertyChecks with
     val sell = OrderV1(
       PublicKeyAccount.fromBase58String("7E9Za8v8aT6EyU1sX91CVK7tWUeAetnNYDxzKZsyjyKV").explicitGet(),
       PublicKeyAccount.fromBase58String("Fvk5DXmfyWVZqQVBowUBMwYtRAHDtdyZNNeRrwSjt6KP").explicitGet(),
-      AssetPair.createAssetPair("AMUR", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
+      AssetPair.createAssetPair("WAVES", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
       OrderType.SELL,
       5000000000L,
       3,
@@ -312,7 +312,7 @@ class ExchangeTransactionSpecification extends PropSpec with PropertyChecks with
     val buy = OrderV2(
       PublicKeyAccount.fromBase58String("BqeJY8CP3PeUDaByz57iRekVUGtLxoow4XxPvXfHynaZ").explicitGet(),
       PublicKeyAccount.fromBase58String("Fvk5DXmfyWVZqQVBowUBMwYtRAHDtdyZNNeRrwSjt6KP").explicitGet(),
-      AssetPair.createAssetPair("AMUR", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
+      AssetPair.createAssetPair("WAVES", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
       OrderType.BUY,
       6000000000L,
       2,
@@ -325,7 +325,7 @@ class ExchangeTransactionSpecification extends PropSpec with PropertyChecks with
     val sell = OrderV1(
       PublicKeyAccount.fromBase58String("7E9Za8v8aT6EyU1sX91CVK7tWUeAetnNYDxzKZsyjyKV").explicitGet(),
       PublicKeyAccount.fromBase58String("Fvk5DXmfyWVZqQVBowUBMwYtRAHDtdyZNNeRrwSjt6KP").explicitGet(),
-      AssetPair.createAssetPair("AMUR", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
+      AssetPair.createAssetPair("WAVES", "9ZDWzK53XT5bixkmMwTJi2YzgxCqn5dUajXFcT2HcFDy").get,
       OrderType.SELL,
       5000000000L,
       3,

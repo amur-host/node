@@ -1,21 +1,21 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.net.{InetAddress, InetSocketAddress}
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.settings.{NetworkSettings, loadConfig}
+import com.wavesplatform.settings.{NetworkSettings, loadConfig}
 import net.ceedubs.ficus.Ficus._
 import org.scalatest.{FeatureSpec, GivenWhenThen, ParallelTestExecution}
 
 class BlacklistParallelSpecification extends FeatureSpec with GivenWhenThen with ParallelTestExecution {
 
-  private val config = loadConfig(ConfigFactory.parseString("""amur.network {
+  private val config = loadConfig(ConfigFactory.parseString("""waves.network {
       |  known-peers = []
       |  file = null
       |  black-list-residence-time: 1s
       |}""".stripMargin))
 
-  private val networkSettings = config.as[NetworkSettings]("amur.network")
+  private val networkSettings = config.as[NetworkSettings]("waves.network")
 
   info("As a Peer")
   info("I want to blacklist other peers for certain time")

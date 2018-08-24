@@ -1,4 +1,4 @@
-package com.amurplatform.discovery.collections
+package com.wavesplatform.discovery.collections
 
 class Pool[T] {
   private val queue = scala.collection.mutable.Queue.empty[T]

@@ -1,13 +1,13 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.features.FeatureProvider._
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.account.{Address, Alias, PublicKeyAccount}
-import com.amurplatform.transaction.smart.script.Script
-import com.amurplatform.transaction.{AssetId, Transaction}
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.features.FeatureProvider._
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.account.{Address, Alias, PublicKeyAccount}
+import com.wavesplatform.transaction.smart.script.Script
+import com.wavesplatform.transaction.{AssetId, Transaction}
 
 case class LeaseBalance(in: Long, out: Long)
 
@@ -98,16 +98,16 @@ object Sponsorship {
       .map(h => h + fs.activationWindowSize(h))
       .getOrElse(Int.MaxValue)
 
-  def toAmur(assetFee: Long, sponsorship: Long): Long = {
-    val local = (BigDecimal(assetFee) * BigDecimal(Sponsorship.FeeUnit)) / BigDecimal(sponsorship)
-    if (amur > Long.MaxValue) {
+  def toWaves(assetFee: Long, sponsorship: Long): Long = {
+    val waves = (BigDecimal(assetFee) * BigDecimal(Sponsorship.FeeUnit)) / BigDecimal(sponsorship)
+    if (waves > Long.MaxValue) {
       throw new java.lang.ArithmeticException("Overflow")
     }
-    amur.toLong
+    waves.toLong
   }
 
-  def fromAmur(amurFee: Long, sponsorship: Long): Long = {
-    val assetFee = (BigDecimal(amurFee) / BigDecimal(Sponsorship.FeeUnit)) * BigDecimal(sponsorship)
+  def fromWaves(wavesFee: Long, sponsorship: Long): Long = {
+    val assetFee = (BigDecimal(wavesFee) / BigDecimal(Sponsorship.FeeUnit)) * BigDecimal(sponsorship)
     if (assetFee > Long.MaxValue) {
       throw new java.lang.ArithmeticException("Overflow")
     }

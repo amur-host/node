@@ -1,12 +1,12 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.util._
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.util._
 import org.scalatest._
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.utils.ScorexLogging
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.utils.ScorexLogging
+import com.wavesplatform.transaction.transfer._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future.traverse
@@ -37,7 +37,7 @@ trait IntegrationSuiteWithThreeAddresses
   abstract protected override def beforeAll(): Unit = {
     super.beforeAll()
 
-    val defaultBalance: Long = 100.amur
+    val defaultBalance: Long = 100.waves
 
     def dumpBalances(node: Node, accounts: Seq[String], label: String): Future[Unit] = {
       Future

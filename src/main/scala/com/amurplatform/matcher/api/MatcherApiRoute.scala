@@ -1,4 +1,4 @@
-package com.amurplatform.matcher.api
+package com.wavesplatform.matcher.api
 
 import java.util.concurrent.Executors
 
@@ -8,23 +8,23 @@ import akka.http.scaladsl.server.{Directive1, Route}
 import akka.pattern.ask
 import akka.util.Timeout
 import com.google.common.primitives.Longs
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.api.http._
-import com.amurplatform.crypto
-import com.amurplatform.matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse}
-import com.amurplatform.matcher.market.MatcherTransactionWriter.GetTransactionsByOrder
-import com.amurplatform.matcher.market.OrderBookActor._
-import com.amurplatform.matcher.market.OrderHistoryActor._
-import com.amurplatform.matcher.model.MatcherModel.{Level, Price}
-import com.amurplatform.matcher.model.{LevelAgg, LimitOrder, OrderBook, OrderInfo}
-import com.amurplatform.matcher.{AssetPairBuilder, MatcherSettings}
-import com.amurplatform.metrics.TimerExt
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.assets.exchange.OrderJson._
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.amurplatform.utils.{Base58, NTP, ScorexLogging}
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.api.http._
+import com.wavesplatform.crypto
+import com.wavesplatform.matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse}
+import com.wavesplatform.matcher.market.MatcherTransactionWriter.GetTransactionsByOrder
+import com.wavesplatform.matcher.market.OrderBookActor._
+import com.wavesplatform.matcher.market.OrderHistoryActor._
+import com.wavesplatform.matcher.model.MatcherModel.{Level, Price}
+import com.wavesplatform.matcher.model.{LevelAgg, LimitOrder, OrderBook, OrderInfo}
+import com.wavesplatform.matcher.{AssetPairBuilder, MatcherSettings}
+import com.wavesplatform.metrics.TimerExt
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.assets.exchange.OrderJson._
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.wavesplatform.utils.{Base58, NTP, ScorexLogging}
+import com.wavesplatform.wallet.Wallet
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import kamon.Kamon
@@ -100,8 +100,8 @@ case class MatcherApiRoute(wallet: Wallet,
   @ApiOperation(value = "Get Order Book for a given Asset Pair", notes = "Get Order Book for a given Asset Pair", httpMethod = "GET")
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
       new ApiImplicitParam(name = "depth",
                            value = "Limit the number of bid/ask records returned",
                            required = false,
@@ -120,8 +120,8 @@ case class MatcherApiRoute(wallet: Wallet,
   @ApiOperation(value = "Get Market Status", notes = "Get current market data such as last trade, best bid and ask", httpMethod = "GET")
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path")
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path")
     ))
   def marketStatus: Route = (path("orderbook" / AssetPairPM / "status") & get) { p =>
     withAssetPair(p, redirectToInverse = true) { pair =>
@@ -144,7 +144,7 @@ case class MatcherApiRoute(wallet: Wallet,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.transaction.assets.exchange.Order"
+        dataType = "com.wavesplatform.transaction.assets.exchange.Order"
       )
     ))
   def place: Route = path("orderbook") {
@@ -172,7 +172,7 @@ case class MatcherApiRoute(wallet: Wallet,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.matcher.api.CancelOrderRequest"
+        dataType = "com.wavesplatform.matcher.api.CancelOrderRequest"
       )
     ))
   def cancelAll: Route = (path("orderbook" / "cancel") & post) {
@@ -215,14 +215,14 @@ case class MatcherApiRoute(wallet: Wallet,
   )
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
       new ApiImplicitParam(
         name = "body",
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.matcher.api.CancelOrderRequest"
+        dataType = "com.wavesplatform.matcher.api.CancelOrderRequest"
       )
     ))
   def cancel: Route = (path("orderbook" / AssetPairPM / "cancel") & post) { p =>
@@ -268,14 +268,14 @@ case class MatcherApiRoute(wallet: Wallet,
   )
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
       new ApiImplicitParam(
         name = "body",
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.matcher.api.CancelOrderRequest"
+        dataType = "com.wavesplatform.matcher.api.CancelOrderRequest"
       )
     ))
   def historyDelete: Route = (path("orderbook" / AssetPairPM / "delete") & post) { p =>
@@ -296,8 +296,8 @@ case class MatcherApiRoute(wallet: Wallet,
                 httpMethod = "GET")
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
       new ApiImplicitParam(name = "publicKey", value = "Public Key", required = true, dataType = "string", paramType = "path"),
       new ApiImplicitParam(name = "Timestamp", value = "Timestamp", required = true, dataType = "integer", paramType = "header"),
       new ApiImplicitParam(name = "Signature",
@@ -408,8 +408,8 @@ case class MatcherApiRoute(wallet: Wallet,
   @ApiOperation(value = "Tradable balance for Asset Pair", notes = "Get Tradable balance for the given Asset Pair", httpMethod = "GET")
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
       new ApiImplicitParam(name = "address", value = "Account Address", required = true, dataType = "string", paramType = "path")
     ))
   def getTradableBalance: Route = (path("orderbook" / AssetPairPM / "tradableBalance" / AddressPM) & get) { (pair, address) =>
@@ -448,8 +448,8 @@ case class MatcherApiRoute(wallet: Wallet,
   @ApiOperation(value = "Order Status", notes = "Get Order status for a given Asset Pair during the last 30 days", httpMethod = "GET")
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
       new ApiImplicitParam(name = "orderId", value = "Order Id", required = true, dataType = "string", paramType = "path")
     ))
   def orderStatus: Route = (path("orderbook" / AssetPairPM / ByteStrPM) & get) { (p, orderId) =>
@@ -475,8 +475,8 @@ case class MatcherApiRoute(wallet: Wallet,
   @ApiOperation(value = "Remove Order Book for a given Asset Pair", notes = "Remove Order Book for a given Asset Pair", httpMethod = "DELETE")
   @ApiImplicitParams(
     Array(
-      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path"),
-      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'AMUR'", dataType = "string", paramType = "path")
+      new ApiImplicitParam(name = "amountAsset", value = "Amount Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path"),
+      new ApiImplicitParam(name = "priceAsset", value = "Price Asset Id in Pair, or 'WAVES'", dataType = "string", paramType = "path")
     ))
   def orderBookDelete: Route = (path("orderbook" / AssetPairPM) & delete & withAuth) { p =>
     withAssetPair(p) { pair =>

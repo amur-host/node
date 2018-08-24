@@ -1,4 +1,4 @@
-package com.amurplatform.discovery
+package com.wavesplatform.discovery
 
 import java.net.InetSocketAddress
 

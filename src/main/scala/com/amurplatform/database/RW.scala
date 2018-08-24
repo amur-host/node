@@ -1,4 +1,4 @@
-package com.amurplatform.database
+package com.wavesplatform.database
 
 import org.iq80.leveldb.{DB, DBIterator, ReadOptions}
 

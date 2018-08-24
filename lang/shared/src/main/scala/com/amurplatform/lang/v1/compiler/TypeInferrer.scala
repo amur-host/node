@@ -1,8 +1,8 @@
-package com.amurplatform.lang.v1.compiler
+package com.wavesplatform.lang.v1.compiler
 
-import com.amurplatform.lang.v1.compiler.Types._
-import com.amurplatform.lang._
-import com.amurplatform.lang.v1.evaluator.ctx.DefinedType
+import com.wavesplatform.lang.v1.compiler.Types._
+import com.wavesplatform.lang._
+import com.wavesplatform.lang.v1.evaluator.ctx.DefinedType
 
 object TypeInferrer {
 

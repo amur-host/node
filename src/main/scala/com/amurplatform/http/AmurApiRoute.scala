@@ -1,25 +1,25 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import akka.http.scaladsl.server.{Directive, Route}
-import com.amurplatform.api.http.assets.TransferV1Request
-import com.amurplatform.api.http.{ApiRoute, DiscontinuedApi}
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.transaction.TransactionFactory
-import com.amurplatform.utils.Time
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.api.http.assets.TransferV1Request
+import com.wavesplatform.api.http.{ApiRoute, DiscontinuedApi}
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.transaction.TransactionFactory
+import com.wavesplatform.utils.Time
+import com.wavesplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.wallet.Wallet
 
-@Path("/amur")
-@Api(value = "amur")
+@Path("/waves")
+@Api(value = "waves")
 @Deprecated
-case class AmurApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool, allChannels: ChannelGroup, time: Time)
+case class WavesApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool, allChannels: ChannelGroup, time: Time)
     extends ApiRoute
     with BroadcastRoute {
 
-  override lazy val route = pathPrefix("amur") {
+  override lazy val route = pathPrefix("waves") {
     externalPayment ~ signPayment ~ broadcastSignedPayment ~ payment ~ createdSignedPayment
   }
 
@@ -39,7 +39,7 @@ case class AmurApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.assets.TransferV1Request",
+        dataType = "com.wavesplatform.api.http.assets.TransferV1Request",
         defaultValue = "{\n\t\"amount\":400,\n\t\"fee\":1,\n\t\"sender\":\"senderId\",\n\t\"recipient\":\"recipientId\"\n}"
       )
     ))

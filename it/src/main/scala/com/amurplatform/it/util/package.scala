@@ -1,6 +1,6 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
-import com.amurplatform.settings.Constants
+import com.wavesplatform.settings.Constants
 import io.netty.util.Timer
 
 import scala.concurrent.duration.FiniteDuration
@@ -23,6 +23,6 @@ package object util {
       f.flatMap(v => if (cond(v)) Future.successful(v) else schedule(retryUntil(f, cond, retryInterval), retryInterval))
   }
   implicit class DoubleExt(val d: Double) extends AnyVal {
-    def amur: Long = (d * Constants.UnitsInWave).toLong
+    def waves: Long = (d * Constants.UnitsInWave).toLong
   }
 }

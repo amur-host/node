@@ -1,12 +1,12 @@
-package com.amurplatform.discovery.actors
+package com.wavesplatform.discovery.actors
 
 import java.net.InetSocketAddress
 
 import akka.actor.SupervisorStrategy.Resume
 import akka.actor.{Actor, ActorRef, ActorSystem, OneForOneStrategy, Props, SupervisorStrategy}
 import akka.routing.{ActorRefRoutee, Router}
-import com.amurplatform.discovery.collections.{ExpirationSet, Pool}
-import com.amurplatform.discovery.routers.SmallestMailboxWithThresholdRoutingLogic
+import com.wavesplatform.discovery.collections.{ExpirationSet, Pool}
+import com.wavesplatform.discovery.routers.SmallestMailboxWithThresholdRoutingLogic
 import play.api.libs.json._
 
 class MainActor(chainId: Char, workersCount: Int) extends Actor {

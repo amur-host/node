@@ -1,8 +1,8 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.net.{InetAddress, InetSocketAddress}
 
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.utils.ScorexLogging
 import io.netty.channel.Channel
 
 trait PeerDatabase extends AutoCloseable {

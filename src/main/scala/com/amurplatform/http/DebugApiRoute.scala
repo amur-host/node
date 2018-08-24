@@ -1,4 +1,4 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import java.net.{InetAddress, InetSocketAddress, URI}
 import java.util.concurrent.ConcurrentMap
@@ -8,21 +8,21 @@ import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
 import com.typesafe.config.{ConfigObject, ConfigRenderOptions}
-import com.amurplatform.account.Address
-import com.amurplatform.api.http._
-import com.amurplatform.block.Block
-import com.amurplatform.block.Block.BlockId
-import com.amurplatform.crypto
-import com.amurplatform.mining.{Miner, MinerDebugInfo}
-import com.amurplatform.network.{LocalScoreChanged, PeerDatabase, PeerInfo, _}
-import com.amurplatform.settings.LocalSettings
-import com.amurplatform.state.diffs.TransactionDiffer
-import com.amurplatform.state.{Blockchain, ByteStr, LeaseBalance, NG, Portfolio}
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.smart.Verifier
-import com.amurplatform.utils.{Base58, NTP, ScorexLogging}
-import com.amurplatform.utx.UtxPool
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.Address
+import com.wavesplatform.api.http._
+import com.wavesplatform.block.Block
+import com.wavesplatform.block.Block.BlockId
+import com.wavesplatform.crypto
+import com.wavesplatform.mining.{Miner, MinerDebugInfo}
+import com.wavesplatform.network.{LocalScoreChanged, PeerDatabase, PeerInfo, _}
+import com.wavesplatform.settings.WavesSettings
+import com.wavesplatform.state.diffs.TransactionDiffer
+import com.wavesplatform.state.{Blockchain, ByteStr, LeaseBalance, NG, Portfolio}
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.smart.Verifier
+import com.wavesplatform.utils.{Base58, NTP, ScorexLogging}
+import com.wavesplatform.utx.UtxPool
+import com.wavesplatform.wallet.Wallet
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
@@ -35,7 +35,7 @@ import scala.util.{Failure, Success}
 
 @Path("/debug")
 @Api(value = "/debug")
-case class DebugApiRoute(ws: AmurSettings,
+case class DebugApiRoute(ws: WavesSettings,
                          blockchain: Blockchain,
                          wallet: Wallet,
                          ng: NG,
@@ -57,11 +57,11 @@ case class DebugApiRoute(ws: AmurSettings,
 
   private lazy val configStr             = configRoot.render(ConfigRenderOptions.concise().setJson(true).setFormatted(true))
   private lazy val fullConfig: JsValue   = Json.parse(configStr)
-  private lazy val amurConfig: JsObject = Json.obj("amur" -> (fullConfig \ "amur").get)
+  private lazy val wavesConfig: JsObject = Json.obj("waves" -> (fullConfig \ "waves").get)
 
   override val settings = ws.restAPISettings
   override lazy val route: Route = pathPrefix("debug") {
-    blocks ~ state ~ info ~ stateAmur ~ rollback ~ rollbackTo ~ blacklist ~ portfolios ~ minerInfo ~ historyInfo ~ configInfo ~ print ~ validate
+    blocks ~ state ~ info ~ stateWaves ~ rollback ~ rollbackTo ~ blacklist ~ portfolios ~ minerInfo ~ historyInfo ~ configInfo ~ print ~ validate
   }
 
   @Path("/blocks/{howMany}")
@@ -92,7 +92,7 @@ case class DebugApiRoute(ws: AmurSettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.http.DebugMessage",
+        dataType = "com.wavesplatform.http.DebugMessage",
         defaultValue = "{\n\t\"message\": \"foo\"\n}"
       )
     ))
@@ -143,17 +143,17 @@ case class DebugApiRoute(ws: AmurSettings,
   @ApiOperation(value = "State", notes = "Get current state", httpMethod = "GET")
   @ApiResponses(Array(new ApiResponse(code = 200, message = "Json state")))
   def state: Route = (path("state") & get & withAuth) {
-    complete(ng.amurDistribution(ng.height).map { case (a, b) => a.stringRepr -> b })
+    complete(ng.wavesDistribution(ng.height).map { case (a, b) => a.stringRepr -> b })
   }
 
-  @Path("/stateAmur/{height}")
+  @Path("/stateWaves/{height}")
   @ApiOperation(value = "State at block", notes = "Get state at specified height", httpMethod = "GET")
   @ApiImplicitParams(
     Array(
       new ApiImplicitParam(name = "height", value = "height", required = true, dataType = "integer", paramType = "path")
     ))
-  def stateAmur: Route = (path("stateAmur" / IntNumber) & get & withAuth) { height =>
-    complete(ng.amurDistribution(height).map { case (a, b) => a.stringRepr -> b })
+  def stateWaves: Route = (path("stateWaves" / IntNumber) & get & withAuth) { height =>
+    complete(ng.wavesDistribution(height).map { case (a, b) => a.stringRepr -> b })
   }
 
   private def rollbackToBlock(blockId: ByteStr, returnTransactionsToUtx: Boolean): Future[ToResponseMarshallable] = {
@@ -182,7 +182,7 @@ case class DebugApiRoute(ws: AmurSettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.http.RollbackParams",
+        dataType = "com.wavesplatform.http.RollbackParams",
         defaultValue = "{\n\t\"rollbackTo\": 3,\n\t\"returnTransactionsToUTX\": false\n}"
       )
     ))
@@ -266,7 +266,7 @@ case class DebugApiRoute(ws: AmurSettings,
       new ApiResponse(code = 200, message = "Json state")
     ))
   def configInfo: Route = (path("configInfo") & get & parameter('full.as[Boolean]) & withAuth) { full =>
-    complete(if (full) fullConfig else amurConfig)
+    complete(if (full) fullConfig else wavesConfig)
   }
 
   @Path("/rollback-to/{signature}")

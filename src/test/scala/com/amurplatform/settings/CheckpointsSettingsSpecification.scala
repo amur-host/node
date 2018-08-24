@@ -1,13 +1,13 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.state.ByteStr
 import org.scalatest.{FlatSpec, Matchers}
 
 class CheckpointsSettingsSpecification extends FlatSpec with Matchers {
   "CheckpointsSettings" should "read values" in {
     val config   = ConfigFactory.parseString("""
-        |amur {
+        |waves {
         |  checkpoints {
         |    public-key: "BASE58PUBKEY"
         |  }

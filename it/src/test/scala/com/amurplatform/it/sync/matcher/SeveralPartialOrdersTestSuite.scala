@@ -1,20 +1,20 @@
-package com.amurplatform.it.sync.matcher
+package com.wavesplatform.it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.api.http.assets.SignedIssueV1Request
-import com.amurplatform.it.ReportingTestName
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.api.SyncMatcherHttpApi._
-import com.amurplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
-import com.amurplatform.it.sync.matcherFee
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.util._
-import com.amurplatform.transaction.AssetId
-import com.amurplatform.transaction.assets.IssueTransactionV1
-import com.amurplatform.transaction.assets.exchange.OrderType.BUY
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.amurplatform.utils.Base58
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.api.http.assets.SignedIssueV1Request
+import com.wavesplatform.it.ReportingTestName
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.api.SyncMatcherHttpApi._
+import com.wavesplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
+import com.wavesplatform.it.sync.matcherFee
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.util._
+import com.wavesplatform.transaction.AssetId
+import com.wavesplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.transaction.assets.exchange.OrderType.BUY
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.wavesplatform.utils.Base58
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -42,33 +42,33 @@ class SeveralPartialOrdersTestSuite
   matcherNode.signedIssue(createSignedIssueRequest(IssueUsdTx))
   nodes.waitForHeightArise()
 
-  "Alice and Bob trade AMUR-USD" - {
+  "Alice and Bob trade WAVES-USD" - {
     nodes.waitForHeightArise()
-    val bobAmurBalanceBefore = matcherNode.accountBalances(bobNode.address)._1
+    val bobWavesBalanceBefore = matcherNode.accountBalances(bobNode.address)._1
 
     val price           = 238
     val buyOrderAmount  = 425532L
     val sellOrderAmount = 840340L
 
-    "place usd-amur order" in {
-      // Alice wants to sell USD for Amur
+    "place usd-waves order" in {
+      // Alice wants to sell USD for Waves
 
-      val bobOrder   = matcherNode.prepareOrder(bobNode, amurUsdPair, OrderType.SELL, price, sellOrderAmount)
+      val bobOrder   = matcherNode.prepareOrder(bobNode, wavesUsdPair, OrderType.SELL, price, sellOrderAmount)
       val bobOrderId = matcherNode.placeOrder(bobOrder).message.id
-      matcherNode.waitOrderStatus(amurUsdPair, bobOrderId, "Accepted", 1.minute)
-      matcherNode.reservedBalance(bobNode)("AMUR") shouldBe sellOrderAmount + matcherFee
-      matcherNode.tradableBalance(bobNode, amurUsdPair)("AMUR") shouldBe bobAmurBalanceBefore - (sellOrderAmount + matcherFee)
+      matcherNode.waitOrderStatus(wavesUsdPair, bobOrderId, "Accepted", 1.minute)
+      matcherNode.reservedBalance(bobNode)("WAVES") shouldBe sellOrderAmount + matcherFee
+      matcherNode.tradableBalance(bobNode, wavesUsdPair)("WAVES") shouldBe bobWavesBalanceBefore - (sellOrderAmount + matcherFee)
 
-      val aliceOrder   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, price, buyOrderAmount)
+      val aliceOrder   = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, price, buyOrderAmount)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
-      matcherNode.waitOrderStatus(amurUsdPair, aliceOrderId, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrderId, "Filled", 1.minute)
 
-      val aliceOrder2   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, price, buyOrderAmount)
+      val aliceOrder2   = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, price, buyOrderAmount)
       val aliceOrder2Id = matcherNode.placeOrder(aliceOrder2).message.id
-      matcherNode.waitOrderStatus(amurUsdPair, aliceOrder2Id, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrder2Id, "Filled", 1.minute)
 
       // Bob wants to buy some USD
-      matcherNode.waitOrderStatus(amurUsdPair, bobOrderId, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(wavesUsdPair, bobOrderId, "Filled", 1.minute)
 
       // Each side get fair amount of assets
       val exchangeTx = matcherNode.transactionsByOrder(bobOrder.idStr()).headOption.getOrElse(fail("Expected an exchange transaction"))
@@ -94,14 +94,14 @@ class SeveralPartialOrdersTestSuite
 object SeveralPartialOrdersTestSuite {
 
   import ConfigFactory._
-  import com.amurplatform.it.NodeConfigs._
+  import com.wavesplatform.it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   private val Decimals: Byte   = 2
 
-  private val minerDisabled = parseString("amur.miner.enable = no")
+  private val minerDisabled = parseString("waves.miner.enable = no")
   private val matcherConfig = parseString(s"""
-                                             |amur.matcher {
+                                             |waves.matcher {
                                              |  enable = yes
                                              |  account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
                                              |  bind-address = "0.0.0.0"
@@ -125,7 +125,7 @@ object SeveralPartialOrdersTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.amur,
+      fee = 1.waves,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -133,14 +133,14 @@ object SeveralPartialOrdersTestSuite {
 
   val UsdId: AssetId = IssueUsdTx.id()
 
-  val amurUsdPair = AssetPair(
+  val wavesUsdPair = AssetPair(
     amountAsset = None,
     priceAsset = Some(UsdId)
   )
 
   private val updatedMatcherConfig = parseString(s"""
-                                                    |amur.matcher {
-                                                    |  price-assets = [ "$UsdId", "AMUR"]
+                                                    |waves.matcher {
+                                                    |  price-assets = [ "$UsdId", "WAVES"]
                                                     |}
      """.stripMargin)
 

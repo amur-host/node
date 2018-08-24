@@ -1,6 +1,6 @@
-package com.amurplatform.generator.cli
+package com.wavesplatform.generator.cli
 
-import com.amurplatform.generator.Mode
+import com.wavesplatform.generator.Mode
 import scopt.Read
 
 import scala.concurrent.duration.FiniteDuration

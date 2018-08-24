@@ -1,12 +1,12 @@
-package com.amurplatform.matcher
+package com.wavesplatform.matcher
 
 import com.google.common.base.Charsets
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.settings.loadConfig
-import com.amurplatform.state.diffs.produce
-import com.amurplatform.state.{AssetDescription, Blockchain, ByteStr}
-import com.amurplatform.transaction.assets.exchange.AssetPair
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.settings.loadConfig
+import com.wavesplatform.state.diffs.produce
+import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr}
+import com.wavesplatform.transaction.assets.exchange.AssetPair
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.TableDrivenPropertyChecks._
 import org.scalatest.{FreeSpec, Matchers}
@@ -16,7 +16,7 @@ class AssetPairBuilderSpec extends FreeSpec with Matchers with MockFactory {
 
   private def b(v: String) = ByteStr.decodeBase58(v).get
 
-  private val AMUR  = "AMUR"
+  private val WAVES  = "WAVES"
   private val WUSD   = ByteStr.decodeBase58("HyFJ3rrq5m7FxdkWtQXkZrDat1F7LjVVGfpSkUuEXQHj").get
   private val WBTC   = ByteStr.decodeBase58("Fmg13HEHJHuZYbtJq8Da8wifJENq8uBxDuWoP9pVe2Qe").get
   private val WEUR   = ByteStr.decodeBase58("2xnE3EdpqXtFgCP156qt1AbyjpqdZ5jGjWo3CwTawcux").get
@@ -34,7 +34,7 @@ class AssetPairBuilderSpec extends FreeSpec with Matchers with MockFactory {
       b("8LQW8f7P5d5PZM7GtZEBgaqRPGSzS3DfPuiXrURJ4AJS"),
     )
 
-  private val priceAssets = ConfigFactory.parseString(s"""amur.matcher {
+  private val priceAssets = ConfigFactory.parseString(s"""waves.matcher {
        |  blacklisted-assets = [$Asset3]
        |  blacklisted-names = ["name$$"]
        |  price-assets = [${predefinedPriceAssets.mkString(",")}]
@@ -46,12 +46,12 @@ class AssetPairBuilderSpec extends FreeSpec with Matchers with MockFactory {
 
   private val pairs = Table(
     ("amount", "price", "result"),
-    (AMUR, WUSD.base58, Right(())),
-    (WUSD.base58, AMUR, Left("Pair should be reverse")),
+    (WAVES, WUSD.base58, Right(())),
+    (WUSD.base58, WAVES, Left("Pair should be reverse")),
     (WBTC.base58, WEUR.base58, Left("Pair should be reverse")),
     (WEUR.base58, WBTC.base58, Right(())),
-    (Asset1.base58, AMUR, Right(())),
-    (AMUR, Asset1.base58, Left("Pair should be reverse")),
+    (Asset1.base58, WAVES, Right(())),
+    (WAVES, Asset1.base58, Left("Pair should be reverse")),
     (Asset2.base58, Asset1.base58, Right(())),
     (Asset1.base58, Asset2.base58, Left("Pair should be reverse")),
     (Asset1.base58, WBTC.base58, Right(())),

@@ -1,15 +1,15 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
-import com.amurplatform.Version
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.Version
+import com.wavesplatform.utils.ScorexLogging
 
 /**
   * System constants here.
   */
 object Constants extends ScorexLogging {
-  val ApplicationName = "amur"
-  val AgentName       = s"Amur v${Version.VersionString}"
+  val ApplicationName = "waves"
+  val AgentName       = s"Waves v${Version.VersionString}"
 
   val UnitsInWave = 100000000L
-  val TotalAmur  = 100000000L
+  val TotalWaves  = 100000000L
 }

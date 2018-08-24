@@ -1,12 +1,12 @@
-package com.amurplatform.transaction.assets.exchange
+package com.wavesplatform.transaction.assets.exchange
 
 import play.api.libs.json._
 
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.Proofs
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.utils.Base58
-import com.amurplatform.crypto.SignatureLength
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.Proofs
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.utils.Base58
+import com.wavesplatform.crypto.SignatureLength
 
 import scala.util.{Failure, Success}
 

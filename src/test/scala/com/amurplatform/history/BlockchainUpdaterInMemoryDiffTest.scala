@@ -1,14 +1,14 @@
-package com.amurplatform.history
+package com.wavesplatform.history
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.state._
-import com.amurplatform.state.diffs._
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.transfer._
 
 class BlockchainUpdaterInMemoryDiffTest
     extends PropSpec
@@ -21,8 +21,8 @@ class BlockchainUpdaterInMemoryDiffTest
     recipient <- accountGen
     ts        <- positiveIntGen
     genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
-    payment: TransferTransactionV1  <- amurTransferGeneratorP(master, recipient)
-    payment2: TransferTransactionV1 <- amurTransferGeneratorP(master, recipient)
+    payment: TransferTransactionV1  <- wavesTransferGeneratorP(master, recipient)
+    payment2: TransferTransactionV1 <- wavesTransferGeneratorP(master, recipient)
   } yield (genesis, payment, payment2)
 
   property("compaction with liquid block doesn't make liquid block affect state once") {

@@ -1,13 +1,13 @@
-package com.amurplatform.api.http.assets
+package com.wavesplatform.api.http.assets
 
 import cats.implicits._
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, Json, Reads, Writes}
-import com.amurplatform.account.{AddressScheme, PublicKeyAccount}
-import com.amurplatform.api.http.BroadcastRequest
-import com.amurplatform.transaction.assets.BurnTransactionV2
-import com.amurplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
+import com.wavesplatform.account.{AddressScheme, PublicKeyAccount}
+import com.wavesplatform.api.http.BroadcastRequest
+import com.wavesplatform.transaction.assets.BurnTransactionV2
+import com.wavesplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
 
 case class SignedBurnV2Request(@ApiModelProperty(value = "BurnTransaction format version", required = true)
                                version: Byte,

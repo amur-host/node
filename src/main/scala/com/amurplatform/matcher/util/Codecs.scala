@@ -1,9 +1,9 @@
-package com.amurplatform.matcher.util
+package com.wavesplatform.matcher.util
 
 import java.nio.ByteBuffer
 
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.AssetId
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.AssetId
 
 object Codecs {
   def len(assetId: Option[AssetId]): Int = assetId.fold(1)(1 + _.arr.length)

@@ -1,10 +1,10 @@
-package com.amurplatform.discovery.network
+package com.wavesplatform.discovery.network
 
 import java.util
 
-import com.amurplatform.Version
-import com.amurplatform.network.Handshake
-import com.amurplatform.settings.Constants
+import com.wavesplatform.Version
+import com.wavesplatform.network.Handshake
+import com.wavesplatform.settings.Constants
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.ReplayingDecoder

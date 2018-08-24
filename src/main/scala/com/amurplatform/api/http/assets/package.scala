@@ -1,4 +1,4 @@
-package com.amurplatform.api.http
+package com.wavesplatform.api.http
 
 import play.api.libs.json._
 import shapeless.{:+:, CNil, Coproduct}

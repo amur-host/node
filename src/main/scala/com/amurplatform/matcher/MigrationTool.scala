@@ -1,4 +1,4 @@
-package com.amurplatform.matcher
+package com.wavesplatform.matcher
 
 import java.io.File
 import java.util.{HashMap => JHashMap}
@@ -6,17 +6,17 @@ import java.util.{HashMap => JHashMap}
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.Shorts
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.account.{Address, AddressScheme}
-import com.amurplatform.crypto.DigestSize
-import com.amurplatform.database.DBExt
-import com.amurplatform.db.openDB
-import com.amurplatform.matcher.api.DBUtils
-import com.amurplatform.matcher.model.{LimitOrder, OrderInfo}
-import com.amurplatform.settings.{AmurSettings, loadConfig}
-import com.amurplatform.state.{ByteStr, EitherExt2}
-import com.amurplatform.transaction.AssetId
-import com.amurplatform.transaction.assets.exchange.AssetPair
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.account.{Address, AddressScheme}
+import com.wavesplatform.crypto.DigestSize
+import com.wavesplatform.database.DBExt
+import com.wavesplatform.db.openDB
+import com.wavesplatform.matcher.api.DBUtils
+import com.wavesplatform.matcher.model.{LimitOrder, OrderInfo}
+import com.wavesplatform.settings.{WavesSettings, loadConfig}
+import com.wavesplatform.state.{ByteStr, EitherExt2}
+import com.wavesplatform.transaction.AssetId
+import com.wavesplatform.transaction.assets.exchange.AssetPair
+import com.wavesplatform.utils.ScorexLogging
 import org.iq80.leveldb.DB
 
 import scala.collection.JavaConverters._
@@ -187,7 +187,7 @@ object MigrationTool extends ScorexLogging {
     log.info(s"OK, engine start")
 
     val userConfig = args.headOption.fold(ConfigFactory.empty())(f => ConfigFactory.parseFile(new File(f)))
-    val settings   = AmurSettings.fromConfig(loadConfig(userConfig))
+    val settings   = WavesSettings.fromConfig(loadConfig(userConfig))
     val db         = openDB(settings.matcherSettings.dataDir)
 
     AddressScheme.current = new AddressScheme {

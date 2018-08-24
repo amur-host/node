@@ -1,8 +1,8 @@
-package com.amurplatform.account
+package com.wavesplatform.account
 
-import com.amurplatform.state.ByteStr
-import com.amurplatform.serialization.Deser
-import com.amurplatform.transaction.ValidationError
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.serialization.Deser
+import com.wavesplatform.transaction.ValidationError
 
 trait AddressOrAlias {
   def stringRepr: String

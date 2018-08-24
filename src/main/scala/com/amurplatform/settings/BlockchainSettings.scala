@@ -1,7 +1,7 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.typesafe.config.Config
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.state.ByteStr
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.EnumerationReader._
@@ -83,7 +83,7 @@ object FunctionalitySettings {
     doubleFeaturesPeriodsAfterHeight = Int.MaxValue
   )
 
-  val configPath = "amur.blockchain.custom.functionality"
+  val configPath = "waves.blockchain.custom.functionality"
 }
 
 case class GenesisTransactionSettings(recipient: String, amount: Long)
@@ -100,10 +100,10 @@ object GenesisSettings {
   val MAINNET = GenesisSettings(
     1460678400000L,
     1465742577614L,
-    Constants.UnitsInWave * Constants.TotalAmur,
+    Constants.UnitsInWave * Constants.TotalWaves,
     ByteStr.decodeBase58("FSH8eAAzZNqnG8xgTZtz5xuLqXySsXgAjmFEC25hXMbEufiGjqWPnGCZFt6gLiVLJny16ipxRNAkkzjjhqTjBE2").toOption,
     List(
-      GenesisTransactionSettings("3PAWwWa6GbwcJaFzwqXQN5KQm7H96Y7SHTQ", Constants.UnitsInWave * Constants.TotalAmur - 5 * Constants.UnitsInWave),
+      GenesisTransactionSettings("3PAWwWa6GbwcJaFzwqXQN5KQm7H96Y7SHTQ", Constants.UnitsInWave * Constants.TotalWaves - 5 * Constants.UnitsInWave),
       GenesisTransactionSettings("3P8JdJGYc7vaLu4UXUZc1iRLdzrkGtdCyJM", Constants.UnitsInWave),
       GenesisTransactionSettings("3PAGPDPqnGkyhcihyjMHe9v36Y4hkAh9yDy", Constants.UnitsInWave),
       GenesisTransactionSettings("3P9o3ZYwtHkaU1KxsKkFjJqJKS3dLHLC9oF", Constants.UnitsInWave),
@@ -117,15 +117,15 @@ object GenesisSettings {
   val TESTNET = GenesisSettings(
     1460678400000L,
     1478000000000L,
-    Constants.UnitsInWave * Constants.TotalAmur,
+    Constants.UnitsInWave * Constants.TotalWaves,
     ByteStr.decodeBase58("5uqnLK3Z9eiot6FyYBfwUnbyid3abicQbAZjz38GQ1Q8XigQMxTK4C1zNkqS1SVw7FqSidbZKxWAKLVoEsp4nNqa").toOption,
     List(
-      GenesisTransactionSettings("3My3KZgFQ3CrVHgz6vGRt8687sH4oAA1qp8", (Constants.UnitsInWave * Constants.TotalAmur * 0.04).toLong),
-      GenesisTransactionSettings("3NBVqYXrapgJP9atQccdBPAgJPwHDKkh6A8", (Constants.UnitsInWave * Constants.TotalAmur * 0.02).toLong),
-      GenesisTransactionSettings("3N5GRqzDBhjVXnCn44baHcz2GoZy5qLxtTh", (Constants.UnitsInWave * Constants.TotalAmur * 0.02).toLong),
-      GenesisTransactionSettings("3NCBMxgdghg4tUhEEffSXy11L6hUi6fcBpd", (Constants.UnitsInWave * Constants.TotalAmur * 0.02).toLong),
+      GenesisTransactionSettings("3My3KZgFQ3CrVHgz6vGRt8687sH4oAA1qp8", (Constants.UnitsInWave * Constants.TotalWaves * 0.04).toLong),
+      GenesisTransactionSettings("3NBVqYXrapgJP9atQccdBPAgJPwHDKkh6A8", (Constants.UnitsInWave * Constants.TotalWaves * 0.02).toLong),
+      GenesisTransactionSettings("3N5GRqzDBhjVXnCn44baHcz2GoZy5qLxtTh", (Constants.UnitsInWave * Constants.TotalWaves * 0.02).toLong),
+      GenesisTransactionSettings("3NCBMxgdghg4tUhEEffSXy11L6hUi6fcBpd", (Constants.UnitsInWave * Constants.TotalWaves * 0.02).toLong),
       GenesisTransactionSettings("3N18z4B8kyyQ96PhN5eyhCAbg4j49CgwZJx",
-                                 (Constants.UnitsInWave * Constants.TotalAmur - Constants.UnitsInWave * Constants.TotalAmur * 0.1).toLong)
+                                 (Constants.UnitsInWave * Constants.TotalWaves - Constants.UnitsInWave * Constants.TotalWaves * 0.1).toLong)
     ),
     153722867L,
     60.seconds
@@ -141,7 +141,7 @@ object BlockchainType extends Enumeration {
 }
 
 object BlockchainSettings {
-  val configPath: String = "amur.blockchain"
+  val configPath: String = "waves.blockchain"
 
   def fromConfig(config: Config): BlockchainSettings = {
     val blockchainType = config.as[BlockchainType.Value](s"$configPath.type")
@@ -152,8 +152,8 @@ object BlockchainSettings {
         ('W', FunctionalitySettings.MAINNET, GenesisSettings.MAINNET)
       case BlockchainType.CUSTOM =>
         val addressSchemeCharacter = config.as[String](s"$configPath.custom.address-scheme-character").charAt(0)
-        val functionalitySettings  = config.as[FunctionalitySettings]("amur.blockchain.custom.functionality")
-        val genesisSettings        = config.as[GenesisSettings]("amur.blockchain.custom.genesis")
+        val functionalitySettings  = config.as[FunctionalitySettings]("waves.blockchain.custom.functionality")
+        val genesisSettings        = config.as[GenesisSettings]("waves.blockchain.custom.genesis")
         (addressSchemeCharacter, functionalitySettings, genesisSettings)
     }
 

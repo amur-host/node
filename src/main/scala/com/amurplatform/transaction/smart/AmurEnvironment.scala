@@ -1,17 +1,17 @@
-package com.amurplatform.transaction.smart
+package com.wavesplatform.transaction.smart
 
-import com.amurplatform.account.AddressOrAlias
-import com.amurplatform.lang.v1.traits._
-import com.amurplatform.lang.v1.traits.domain.Recipient._
-import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.amurplatform.state._
-import com.amurplatform.transaction.Transaction
-import com.amurplatform.transaction.assets.exchange.Order
+import com.wavesplatform.account.AddressOrAlias
+import com.wavesplatform.lang.v1.traits._
+import com.wavesplatform.lang.v1.traits.domain.Recipient._
+import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com.wavesplatform.state._
+import com.wavesplatform.transaction.Transaction
+import com.wavesplatform.transaction.assets.exchange.Order
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 import shapeless._
 
-class AmurEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h: Coeval[Int], blockchain: Blockchain) extends Environment {
+class WavesEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h: Coeval[Int], blockchain: Blockchain) extends Environment {
   override def height: Int = h()
 
   override def inputEntity: Tx :+: Ord :+: CNil = {
@@ -29,11 +29,11 @@ class AmurEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h
     for {
       address <- recipient match {
         case Address(bytes) =>
-          com.amurplatform.account.Address
+          com.wavesplatform.account.Address
             .fromBytes(bytes.toArray)
             .toOption
         case Alias(name) =>
-          com.amurplatform.account.Alias
+          com.wavesplatform.account.Alias
             .buildWithCurrentNetworkByte(name)
             .flatMap(blockchain.resolveAlias)
             .toOption
@@ -52,7 +52,7 @@ class AmurEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h
   }
   override def resolveAlias(name: String): Either[String, Recipient.Address] =
     blockchain
-      .resolveAlias(com.amurplatform.account.Alias.buildWithCurrentNetworkByte(name).explicitGet())
+      .resolveAlias(com.wavesplatform.account.Alias.buildWithCurrentNetworkByte(name).explicitGet())
       .left
       .map(_.toString)
       .right
@@ -64,7 +64,7 @@ class AmurEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], h
     (for {
       aoa <- addressOrAlias match {
         case Address(bytes) => AddressOrAlias.fromBytes(bytes.toArray, position = 0).map(_._1)
-        case Alias(name)    => com.amurplatform.account.Alias.buildWithCurrentNetworkByte(name)
+        case Alias(name)    => com.wavesplatform.account.Alias.buildWithCurrentNetworkByte(name)
       }
       address <- blockchain.resolveAlias(aoa)
       balance = blockchain.balance(address, maybeAssetId.map(ByteStr(_)))

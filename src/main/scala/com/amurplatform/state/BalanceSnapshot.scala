@@ -1,4 +1,4 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 case class BalanceSnapshot(height: Int, regularBalance: Long, leaseIn: Long, leaseOut: Long) {
   lazy val effectiveBalance = regularBalance + leaseIn - leaseOut

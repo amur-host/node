@@ -1,15 +1,15 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
-import com.amurplatform.TestWallet
-import com.amurplatform.settings.AmurSettings
-import com.amurplatform.api.http.ApiKeyNotValid
+import com.wavesplatform.TestWallet
+import com.wavesplatform.settings.WavesSettings
+import com.wavesplatform.api.http.ApiKeyNotValid
 
 class DebugApiRouteSpec extends RouteSpec("/debug") with RestAPISettingsHelper with TestWallet {
   private val sampleConfig  = com.typesafe.config.ConfigFactory.load()
-  private val amurSettings = AmurSettings.fromConfig(sampleConfig)
+  private val wavesSettings = WavesSettings.fromConfig(sampleConfig)
   private val configObject  = sampleConfig.root()
   private val route =
-    DebugApiRoute(amurSettings, null, null, null, null, null, null, null, null, null, null, null, null, null, configObject).route
+    DebugApiRoute(wavesSettings, null, null, null, null, null, null, null, null, null, null, null, null, null, configObject).route
 
   routePath("/configInfo") - {
     "requires api-key header" in {

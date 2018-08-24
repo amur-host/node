@@ -1,4 +1,4 @@
-package com.amurplatform.lang.impl
+package com.wavesplatform.lang.impl
 
 import scala.scalajs.js.annotation.JSGlobalScope
 import scala.scalajs.js.typedarray.ArrayBuffer

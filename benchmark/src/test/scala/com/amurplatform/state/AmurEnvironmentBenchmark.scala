@@ -1,19 +1,19 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import java.io.File
 import java.util.concurrent.{ThreadLocalRandom, TimeUnit}
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.account.{AddressOrAlias, AddressScheme, Alias}
-import com.amurplatform.database.LevelDBWriter
-import com.amurplatform.db.LevelDBFactory
-import com.amurplatform.lang.v1.traits.Environment
-import com.amurplatform.lang.v1.traits.domain.Recipient
-import com.amurplatform.settings.{AmurSettings, loadConfig}
-import com.amurplatform.state.LocalEnvironmentBenchmark._
-import com.amurplatform.state.bench.DataTestData
-import com.amurplatform.transaction.smart.LocalEnvironment
-import com.amurplatform.utils.Base58
+import com.wavesplatform.account.{AddressOrAlias, AddressScheme, Alias}
+import com.wavesplatform.database.LevelDBWriter
+import com.wavesplatform.db.LevelDBFactory
+import com.wavesplatform.lang.v1.traits.Environment
+import com.wavesplatform.lang.v1.traits.domain.Recipient
+import com.wavesplatform.settings.{WavesSettings, loadConfig}
+import com.wavesplatform.state.WavesEnvironmentBenchmark._
+import com.wavesplatform.state.bench.DataTestData
+import com.wavesplatform.transaction.smart.WavesEnvironment
+import com.wavesplatform.utils.Base58
 import monix.eval.Coeval
 import org.iq80.leveldb.{DB, Options}
 import org.openjdk.jmh.annotations._
@@ -25,7 +25,7 @@ import scala.io.Codec
 /**
   * Tests over real database. How to test:
   * 1. Download a database
-  * 2. Import it: https://github.com/amurplatform/Amur/wiki/Export-and-import-of-the-blockchain#import-blocks-from-the-binary-file
+  * 2. Import it: https://github.com/wavesplatform/Waves/wiki/Export-and-import-of-the-blockchain#import-blocks-from-the-binary-file
   * 3. Run ExtractInfo to collect queries for tests
   * 4. Make Caches.MaxSize = 1
   * 5. Run this test
@@ -36,7 +36,7 @@ import scala.io.Codec
 @Fork(1)
 @Warmup(iterations = 10)
 @Measurement(iterations = 10)
-class AmurEnvironmentBenchmark {
+class WavesEnvironmentBenchmark {
 
   @Benchmark
   def resolveAddress_test(st: ResolveAddressSt, bh: Blackhole): Unit = {
@@ -54,7 +54,7 @@ class AmurEnvironmentBenchmark {
   }
 
   @Benchmark
-  def accountBalanceOf_amur_test(st: AccountBalanceOfAmurSt, bh: Blackhole): Unit = {
+  def accountBalanceOf_waves_test(st: AccountBalanceOfWavesSt, bh: Blackhole): Unit = {
     bh.consume(st.environment.accountBalanceOf(Recipient.Address(ByteVector(st.accounts.random)), None))
   }
 
@@ -71,7 +71,7 @@ class AmurEnvironmentBenchmark {
 
 }
 
-object AmurEnvironmentBenchmark {
+object WavesEnvironmentBenchmark {
 
   @State(Scope.Benchmark)
   class ResolveAddressSt extends BaseSt {
@@ -87,12 +87,12 @@ object AmurEnvironmentBenchmark {
   class TransactionHeightByIdSt extends TransactionByIdSt
 
   @State(Scope.Benchmark)
-  class AccountBalanceOfAmurSt extends BaseSt {
+  class AccountBalanceOfWavesSt extends BaseSt {
     val accounts: Vector[Array[Byte]] = load("accounts", benchSettings.accountsFile)(x => AddressOrAlias.fromString(x).explicitGet().bytes.arr)
   }
 
   @State(Scope.Benchmark)
-  class AccountBalanceOfAssetSt extends AccountBalanceOfAmurSt {
+  class AccountBalanceOfAssetSt extends AccountBalanceOfWavesSt {
     val assets: Vector[Array[Byte]] = load("assets", benchSettings.assetsFile)(x => Base58.decode(x).get)
   }
 
@@ -106,24 +106,24 @@ object AmurEnvironmentBenchmark {
   @State(Scope.Benchmark)
   class BaseSt {
     protected val benchSettings: Settings = Settings.fromConfig(ConfigFactory.load())
-    private val amurSettings: AmurSettings = {
+    private val wavesSettings: WavesSettings = {
       val config = loadConfig(ConfigFactory.parseFile(new File(benchSettings.networkConfigFile)))
-      AmurSettings.fromConfig(config)
+      WavesSettings.fromConfig(config)
     }
 
     AddressScheme.current = new AddressScheme {
-      override val chainId: Byte = amurSettings.blockchainSettings.addressSchemeCharacter.toByte
+      override val chainId: Byte = wavesSettings.blockchainSettings.addressSchemeCharacter.toByte
     }
 
     private val db: DB = {
-      val dir = new File(amurSettings.dataDirectory)
-      if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${amurSettings.dataDirectory}'")
+      val dir = new File(wavesSettings.dataDirectory)
+      if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${wavesSettings.dataDirectory}'")
       LevelDBFactory.factory.open(dir, new Options)
     }
 
     val environment: Environment = {
-      val state = new LevelDBWriter(db, amurSettings.blockchainSettings.functionalitySettings)
-      new AmurEnvironment(
+      val state = new LevelDBWriter(db, wavesSettings.blockchainSettings.functionalitySettings)
+      new WavesEnvironment(
         AddressScheme.current.chainId,
         Coeval.raiseError(new NotImplementedError("tx is not implemented")),
         Coeval(state.height),

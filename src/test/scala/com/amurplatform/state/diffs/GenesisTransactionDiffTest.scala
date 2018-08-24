@@ -1,12 +1,12 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats._
-import com.amurplatform.state._
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.state._
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.lagonaki.mocks.TestBlock
 
 class GenesisTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
   def nelMax[T](g: Gen[T], max: Int = 10): Gen[List[T]] = Gen.choose(1, max).flatMap(Gen.listOfN(_, g))
@@ -17,7 +17,7 @@ class GenesisTransactionDiffTest extends PropSpec with PropertyChecks with Match
     }
   }
 
-  property("Diff establishes Amur invariant") {
+  property("Diff establishes Waves invariant") {
     forAll(nelMax(genesisGen)) { gtxs =>
       assertDiffAndState(Seq.empty, TestBlock.create(gtxs)) { (blockDiff, _) =>
         val totalPortfolioDiff: Portfolio = Monoid.combineAll(blockDiff.portfolios.values)

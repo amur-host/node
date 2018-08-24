@@ -1,4 +1,4 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import scala.concurrent.duration.FiniteDuration
 

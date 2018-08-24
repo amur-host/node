@@ -1,13 +1,13 @@
-package com.amurplatform.state.diffs.smart
+package com.wavesplatform.state.diffs.smart
 
-import com.amurplatform.lang.v1.compiler.CompilerV1
-import com.amurplatform.lang.v1.evaluator.EvaluatorV1
-import com.amurplatform.lang.v1.parser.Parser
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.smart.BlockchainContext
-import com.amurplatform.transaction.transfer.TransferTransaction
-import com.amurplatform.transaction.{DataTransaction, Transaction}
-import com.amurplatform.utils.dummyCompilerContext
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
+import com.wavesplatform.lang.v1.parser.Parser
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.smart.BlockchainContext
+import com.wavesplatform.transaction.transfer.TransferTransaction
+import com.wavesplatform.transaction.{DataTransaction, Transaction}
+import com.wavesplatform.utils.dummyCompilerContext
 import fastparse.core.Parsed.Success
 import monix.eval.Coeval
 import shapeless.Coproduct
@@ -47,9 +47,9 @@ package object predef {
        |   case d: TransferTransaction => d.recipient == Address(base58'${t.recipient.bytes.base58}')
        |   case _ => false
        | }
-       |
+       |   
        | let basic = longAll && sumString && sumByteVector && eqUnion
-       |
+       | 
        | # 2) ne
        | let nePrim = 1000 != 999 && "ha" +"ha" != "ha-ha" && tx.bodyBytes != base64'hahaha'
        | let neDataEntryAndGetElement = match tx {
@@ -92,7 +92,7 @@ package object predef {
        |
        | let pure = basic && ne && gteLong && getListSize && unary && frAction && bytesOps && strOps
        |
-       | # Amur context
+       | # Waves context
        | let txById = match tx {
        |     case d: DataTransaction => true
        |     case d: TransferTransaction =>
@@ -138,9 +138,9 @@ package object predef {
        |   case _ => false
        | }
        |
-       | let balances = assetBalance(tx.sender, unit) > 0 && amurBalance(tx.sender) != 0
+       | let balances = assetBalance(tx.sender, unit) > 0 && wavesBalance(tx.sender) != 0
        |
-       | let local = txById && entries && balances && aFromPK && aFromStrOrRecip && height > 0
+       | let waves = txById && entries && balances && aFromPK && aFromStrOrRecip && height > 0
        |
        | # Crypto context
        | let bks = blake2b256(base58'') != base58'' && keccak256(base58'') != base58'' && sha256(base58'') != base58''
@@ -150,7 +150,7 @@ package object predef {
        |
        | let crypto = bks && sig && str58 && str64
        |
-       | pure && amur && crypto
+       | pure && waves && crypto
     """.stripMargin
 
 }

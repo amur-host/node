@@ -1,18 +1,18 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import akka.http.scaladsl.model.StatusCodes
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.http.ApiMarshallers._
-import com.amurplatform.lang.v1.compiler.Terms.TRUE
-import com.amurplatform.settings.{TestFunctionalitySettings, WalletSettings}
-import com.amurplatform.state.{AssetDescription, Blockchain, ByteStr}
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.utils.Base58
-import com.amurplatform.utx.UtxPool
-import com.amurplatform.wallet.Wallet
-import com.amurplatform.{BlockGen, NoShrink, TestTime, TransactionGen}
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.http.ApiMarshallers._
+import com.wavesplatform.lang.v1.compiler.Terms.TRUE
+import com.wavesplatform.settings.{TestFunctionalitySettings, WalletSettings}
+import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr}
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.utils.Base58
+import com.wavesplatform.utx.UtxPool
+import com.wavesplatform.wallet.Wallet
+import com.wavesplatform.{BlockGen, NoShrink, TestTime, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen._
 import org.scalamock.scalatest.MockFactory
@@ -39,7 +39,7 @@ class TransactionsRouteSpec
   private val route       = TransactionsApiRoute(restAPISettings, TestFunctionalitySettings.Stub, wallet, blockchain, utx, allChannels, new TestTime).route
 
   routePath("/calculateFee") - {
-    "transfer with Amur fee" - {
+    "transfer with Waves fee" - {
       "TransferTransaction" in {
         val sender: PublicKeyAccount = accountGen.sample.get
         val transferTx = Json.obj(

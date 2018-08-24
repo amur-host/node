@@ -1,6 +1,6 @@
-package com.amurplatform.lang.v1.compiler
+package com.wavesplatform.lang.v1.compiler
 
-import com.amurplatform.lang.v1.FunctionHeader
+import com.wavesplatform.lang.v1.FunctionHeader
 import scodec.bits.ByteVector
 
 object Terms {

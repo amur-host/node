@@ -1,12 +1,12 @@
-package com.amurplatform.it.async
+package com.wavesplatform.it.async
 
 import java.util.concurrent.TimeoutException
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it._
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.util._
+import com.wavesplatform.it._
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.util._
 import org.scalatest._
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -23,7 +23,7 @@ class WideStateGenerationSuite extends FreeSpec with WaitForHeight2 with Matcher
         |  request-timeout = 60s
         |}
         |
-        |amur {
+        |waves {
         |  network.traffic-logger {
         |    ignore-tx-messages = [1, 2, 23, 25]
         |    ignore-rx-messages = [1, 2, 25]

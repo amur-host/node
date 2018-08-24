@@ -1,8 +1,8 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
-import com.amurplatform.block.Block
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.crypto._
+import com.wavesplatform.block.Block
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.crypto._
 
 trait HistoryTest {
   val genesisBlock: Block = TestBlock.withReference(ByteStr(Array.fill(SignatureLength)(0: Byte)))

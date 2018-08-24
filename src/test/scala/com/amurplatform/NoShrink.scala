@@ -1,4 +1,4 @@
-package com.amurplatform
+package com.wavesplatform
 
 import org.scalacheck.Shrink
 

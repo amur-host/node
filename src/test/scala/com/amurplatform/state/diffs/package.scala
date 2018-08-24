@@ -1,12 +1,12 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import cats.Monoid
-import com.amurplatform.block.Block
-import com.amurplatform.db.WithState
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.mining.MiningConstraint
-import com.amurplatform.settings.{FunctionalitySettings, TestFunctionalitySettings => TFS}
-import com.amurplatform.transaction.{Transaction, ValidationError}
+import com.wavesplatform.block.Block
+import com.wavesplatform.db.WithState
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.mining.MiningConstraint
+import com.wavesplatform.settings.{FunctionalitySettings, TestFunctionalitySettings => TFS}
+import com.wavesplatform.transaction.{Transaction, ValidationError}
 import org.scalatest.Matchers
 
 package object diffs extends WithState with Matchers {

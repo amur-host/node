@@ -1,13 +1,13 @@
-package com.amurplatform.transaction.lease
+package com.wavesplatform.transaction.lease
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.amurplatform.crypto
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.crypto
+import com.wavesplatform.state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
-import com.amurplatform.crypto.KeyLength
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
+import com.wavesplatform.crypto.KeyLength
 
 trait LeaseCancelTransaction extends ProvenTransaction with VersionedTransaction {
   def chainByte: Option[Byte]

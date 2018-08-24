@@ -1,10 +1,10 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
 import org.scalatest.prop.TableDrivenPropertyChecks
-import com.amurplatform.it.sync._
+import com.wavesplatform.it.sync._
 
 import scala.util.Random
 
@@ -97,7 +97,7 @@ class AliasTransactionSuite extends BaseTransactionSuite with TableDrivenPropert
     val aliasFee  = calcAliasFee(thirdAddress, thirdAddressAlias)
     val aliasFull = fullAliasByAddress(thirdAddress, thirdAddressAlias)
     //lease maximum value, to pass next thirdAddress
-    val leasingAmount = balance1 - minFee - 0.5.amur
+    val leasingAmount = balance1 - minFee - 0.5.waves
 
     val leasingTx = sender.lease(firstAddress, aliasFull, leasingAmount, minFee).id
     nodes.waitForHeightAriseAndTxPresent(leasingTx)
@@ -111,7 +111,7 @@ class AliasTransactionSuite extends BaseTransactionSuite with TableDrivenPropert
   test("Not able to create alias when insufficient funds") {
     val balance = notMiner.accountBalances(firstAddress)._1
     val alias   = randomAlias()
-    assertBadRequestAndMessage(sender.createAlias(firstAddress, alias, balance + minFee), "State check failed. Reason: negative amur balance")
+    assertBadRequestAndMessage(sender.createAlias(firstAddress, alias, balance + minFee), "State check failed. Reason: negative waves balance")
   }
 
   private def calcAliasFee(address: String, alias: String): Long = {

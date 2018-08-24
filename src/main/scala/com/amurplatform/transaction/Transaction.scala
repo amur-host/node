@@ -1,8 +1,8 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
-import com.amurplatform.state._
+import com.wavesplatform.state._
 import monix.eval.Coeval
-import com.amurplatform.serialization.{BytesSerializable, JsonSerializable}
+import com.wavesplatform.serialization.{BytesSerializable, JsonSerializable}
 
 trait Transaction extends BytesSerializable with JsonSerializable {
   val id: Coeval[ByteStr]

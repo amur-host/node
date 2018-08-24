@@ -1,11 +1,11 @@
-package com.amurplatform.api.http
+package com.wavesplatform.api.http
 
 import cats.implicits._
-import com.amurplatform.state.DataEntry
+import com.wavesplatform.state.DataEntry
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.Json
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.transaction.{DataTransaction, Proofs, ValidationError}
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.transaction.{DataTransaction, Proofs, ValidationError}
 
 object DataRequest {
   implicit val unsignedDataRequestReads = Json.reads[DataRequest]

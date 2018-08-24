@@ -1,4 +1,4 @@
-package com.amurplatform
+package com.wavesplatform
 
 import cats.data.EitherT
 import monix.eval.Coeval

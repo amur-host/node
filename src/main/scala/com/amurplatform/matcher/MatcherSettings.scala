@@ -1,4 +1,4 @@
-package com.amurplatform.matcher
+package com.wavesplatform.matcher
 
 import java.io.File
 
@@ -32,7 +32,7 @@ case class MatcherSettings(enable: Boolean,
 object MatcherSettings {
 
   implicit val chosenCase: NameMapper = net.ceedubs.ficus.readers.namemappers.implicits.hyphenCase
-  val configPath: String              = "amur.matcher"
+  val configPath: String              = "waves.matcher"
 
   def fromConfig(config: Config): MatcherSettings = {
     val enabled              = config.as[Boolean](s"$configPath.enable")

@@ -1,18 +1,18 @@
-package com.amurplatform.it.sync.matcher
+package com.wavesplatform.it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.api.http.assets.SignedIssueV1Request
-import com.amurplatform.it.ReportingTestName
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.api.SyncMatcherHttpApi._
-import com.amurplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.util._
-import com.amurplatform.transaction.AssetId
-import com.amurplatform.transaction.assets.IssueTransactionV1
-import com.amurplatform.transaction.assets.exchange.{AssetPair, OrderType}
-import com.amurplatform.utils.Base58
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.api.http.assets.SignedIssueV1Request
+import com.wavesplatform.it.ReportingTestName
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.api.SyncMatcherHttpApi._
+import com.wavesplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.util._
+import com.wavesplatform.transaction.AssetId
+import com.wavesplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, OrderType}
+import com.wavesplatform.utils.Base58
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -43,16 +43,16 @@ class RoundingIssuesTestSuite
     val aliceBalanceBefore = matcherNode.accountBalances(aliceNode.address)._1
     val bobBalanceBefore   = matcherNode.accountBalances(bobNode.address)._1
 
-    val counter   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, 238, 3100000000L)
+    val counter   = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, 238, 3100000000L)
     val counterId = matcherNode.placeOrder(counter).message.id
 
-    val submitted   = matcherNode.prepareOrder(bobNode, amurUsdPair, OrderType.SELL, 235, 425532L)
+    val submitted   = matcherNode.prepareOrder(bobNode, wavesUsdPair, OrderType.SELL, 235, 425532L)
     val submittedId = matcherNode.placeOrder(submitted).message.id
 
-    matcherNode.waitOrderStatusAndAmount(amurUsdPair, submittedId, "Filled", Some(420169L), 1.minute)
-    matcherNode.waitOrderStatusAndAmount(amurUsdPair, counterId, "PartiallyFilled", Some(420169L), 1.minute)
+    matcherNode.waitOrderStatusAndAmount(wavesUsdPair, submittedId, "Filled", Some(420169L), 1.minute)
+    matcherNode.waitOrderStatusAndAmount(wavesUsdPair, counterId, "PartiallyFilled", Some(420169L), 1.minute)
 
-    matcherNode.cancelOrder(aliceNode, amurUsdPair, Some(counterId))
+    matcherNode.cancelOrder(aliceNode, wavesUsdPair, Some(counterId))
     val tx = matcherNode.transactionsByOrder(counterId).head
 
     matcherNode.waitForTransaction(tx.id)
@@ -75,14 +75,14 @@ class RoundingIssuesTestSuite
 object RoundingIssuesTestSuite {
 
   import ConfigFactory._
-  import com.amurplatform.it.NodeConfigs._
+  import com.wavesplatform.it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   private val Decimals: Byte   = 2
 
-  private val minerDisabled = parseString("amur.miner.enable = no")
+  private val minerDisabled = parseString("waves.miner.enable = no")
   private val matcherConfig = parseString(s"""
-                                             |amur.matcher {
+                                             |waves.matcher {
                                              |  enable = yes
                                              |  account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
                                              |  bind-address = "0.0.0.0"
@@ -106,7 +106,7 @@ object RoundingIssuesTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.amur,
+      fee = 1.waves,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -114,14 +114,14 @@ object RoundingIssuesTestSuite {
 
   val UsdId: AssetId = IssueUsdTx.id()
 
-  val amurUsdPair = AssetPair(
+  val wavesUsdPair = AssetPair(
     amountAsset = None,
     priceAsset = Some(UsdId)
   )
 
   private val updatedMatcherConfig = parseString(s"""
-                                                    |amur.matcher {
-                                                    |  price-assets = [ "$UsdId", "AMUR"]
+                                                    |waves.matcher {
+                                                    |  price-assets = [ "$UsdId", "WAVES"]
                                                     |}
      """.stripMargin)
 

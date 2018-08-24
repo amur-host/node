@@ -1,4 +1,4 @@
-package com.amurplatform
+package com.wavesplatform
 
 import java.io.File
 import java.security.Security
@@ -10,29 +10,29 @@ import akka.http.scaladsl.Http.ServerBinding
 import akka.stream.ActorMaterializer
 import cats.instances.all._
 import com.typesafe.config._
-import com.amurplatform.account.AddressScheme
-import com.amurplatform.actor.RootActorSystem
-import com.amurplatform.api.http._
-import com.amurplatform.api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
-import com.amurplatform.api.http.assets.{AssetsApiRoute, AssetsBroadcastApiRoute}
-import com.amurplatform.api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
-import com.amurplatform.consensus.PoSSelector
-import com.amurplatform.consensus.nxt.api.http.NxtConsensusApiRoute
-import com.amurplatform.db.openDB
-import com.amurplatform.features.api.ActivationApiRoute
-import com.amurplatform.history.{CheckpointServiceImpl, StorageFactory}
-import com.amurplatform.http.{DebugApiRoute, NodeApiRoute, AmurApiRoute}
-import com.amurplatform.matcher.Matcher
-import com.amurplatform.metrics.Metrics
-import com.amurplatform.mining.{Miner, MinerImpl}
-import com.amurplatform.network.RxExtensionLoader.RxExtensionLoaderShutdownHook
-import com.amurplatform.network._
-import com.amurplatform.settings._
-import com.amurplatform.state.appender.{BlockAppender, CheckpointAppender, ExtensionAppender, MicroblockAppender}
-import com.amurplatform.transaction._
-import com.amurplatform.utils.{NTP, ScorexLogging, SystemInformationReporter, Time, forceStopApplication}
-import com.amurplatform.utx.{MatcherUtxPool, UtxPool, UtxPoolImpl}
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.AddressScheme
+import com.wavesplatform.actor.RootActorSystem
+import com.wavesplatform.api.http._
+import com.wavesplatform.api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
+import com.wavesplatform.api.http.assets.{AssetsApiRoute, AssetsBroadcastApiRoute}
+import com.wavesplatform.api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
+import com.wavesplatform.consensus.PoSSelector
+import com.wavesplatform.consensus.nxt.api.http.NxtConsensusApiRoute
+import com.wavesplatform.db.openDB
+import com.wavesplatform.features.api.ActivationApiRoute
+import com.wavesplatform.history.{CheckpointServiceImpl, StorageFactory}
+import com.wavesplatform.http.{DebugApiRoute, NodeApiRoute, WavesApiRoute}
+import com.wavesplatform.matcher.Matcher
+import com.wavesplatform.metrics.Metrics
+import com.wavesplatform.mining.{Miner, MinerImpl}
+import com.wavesplatform.network.RxExtensionLoader.RxExtensionLoaderShutdownHook
+import com.wavesplatform.network._
+import com.wavesplatform.settings._
+import com.wavesplatform.state.appender.{BlockAppender, CheckpointAppender, ExtensionAppender, MicroblockAppender}
+import com.wavesplatform.transaction._
+import com.wavesplatform.utils.{NTP, ScorexLogging, SystemInformationReporter, Time, forceStopApplication}
+import com.wavesplatform.utx.{MatcherUtxPool, UtxPool, UtxPoolImpl}
+import com.wavesplatform.wallet.Wallet
 import io.netty.channel.Channel
 import io.netty.channel.group.DefaultChannelGroup
 import io.netty.util.concurrent.GlobalEventExecutor
@@ -52,7 +52,7 @@ import scala.concurrent.duration._
 import scala.reflect.runtime.universe._
 import scala.util.Try
 
-class Application(val actorSystem: ActorSystem, val settings: AmurSettings, configRoot: ConfigObject) extends ScorexLogging {
+class Application(val actorSystem: ActorSystem, val settings: WavesSettings, configRoot: ConfigObject) extends ScorexLogging {
 
   import monix.execution.Scheduler.Implicits.{global => scheduler}
 
@@ -262,7 +262,7 @@ class Application(val actorSystem: ActorSystem, val settings: AmurSettings, conf
           scoreStatsReporter,
           configRoot
         ),
-        AmurApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time),
+        WavesApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time),
         AssetsApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, blockchainUpdater, time),
         ActivationApiRoute(settings.restAPISettings, settings.blockchainSettings.functionalitySettings, settings.featuresSettings, blockchainUpdater),
         AssetsBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels),
@@ -283,7 +283,7 @@ class Application(val actorSystem: ActorSystem, val settings: AmurSettings, conf
         typeOf[PeersApiRoute],
         typeOf[AddressApiRoute],
         typeOf[DebugApiRoute],
-        typeOf[AmurApiRoute],
+        typeOf[WavesApiRoute],
         typeOf[AssetsApiRoute],
         typeOf[ActivationApiRoute],
         typeOf[AssetsBroadcastApiRoute],
@@ -381,10 +381,10 @@ object Application extends ScorexLogging {
       // application config needs to be resolved wrt both system properties *and* user-supplied config.
       case Some(file) =>
         val cfg = ConfigFactory.parseFile(file)
-        if (!cfg.hasPath("amur")) {
+        if (!cfg.hasPath("waves")) {
           log.error("Malformed configuration file was provided! Aborting!")
           log.error("Please, read following article about configuration file format:")
-          log.error("https://github.com/amurplatform/Amur/wiki/Amur-Node-configuration-file")
+          log.error("https://github.com/wavesplatform/Waves/wiki/Waves-Node-configuration-file")
           forceStopApplication()
         }
         loadConfig(cfg)
@@ -413,13 +413,13 @@ object Application extends ScorexLogging {
     val config = readConfig(args.headOption)
 
     // DO NOT LOG BEFORE THIS LINE, THIS PROPERTY IS USED IN logback.xml
-    System.setProperty("amur.directory", config.getString("amur.directory"))
+    System.setProperty("waves.directory", config.getString("waves.directory"))
     log.info("Starting...")
     sys.addShutdownHook {
       SystemInformationReporter.report(config)
     }
 
-    val settings = AmurSettings.fromConfig(config)
+    val settings = WavesSettings.fromConfig(config)
     if (config.getBoolean("kamon.enable")) {
       log.info("Aggregated metrics are enabled")
       Kamon.reconfigure(config)
@@ -429,7 +429,7 @@ object Application extends ScorexLogging {
 
     val isMetricsStarted = Metrics.start(settings.metrics)
 
-    RootActorSystem.start("amurplatform", config) { actorSystem =>
+    RootActorSystem.start("wavesplatform", config) { actorSystem =>
       import actorSystem.dispatcher
       isMetricsStarted.foreach { started =>
         if (started) {

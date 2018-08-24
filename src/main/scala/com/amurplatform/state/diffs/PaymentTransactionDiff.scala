@@ -1,11 +1,11 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats.implicits._
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
-import com.amurplatform.account.Address
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction.{PaymentTransaction, ValidationError}
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
+import com.wavesplatform.account.Address
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction.{PaymentTransaction, ValidationError}
 
 import scala.util.{Left, Right}
 

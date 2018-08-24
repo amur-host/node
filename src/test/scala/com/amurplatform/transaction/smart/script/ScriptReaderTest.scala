@@ -1,10 +1,10 @@
-package com.amurplatform.transaction.smart.script
+package com.wavesplatform.transaction.smart.script
 
-import com.amurplatform.crypto
-import com.amurplatform.lang.ScriptVersion.Versions.V1
-import com.amurplatform.lang.v1.Serde
-import com.amurplatform.lang.v1.compiler.Terms.TRUE
-import com.amurplatform.state.diffs.produce
+import com.wavesplatform.crypto
+import com.wavesplatform.lang.ScriptVersion.Versions.V1
+import com.wavesplatform.lang.v1.Serde
+import com.wavesplatform.lang.v1.compiler.Terms.TRUE
+import com.wavesplatform.state.diffs.produce
 import org.scalatest.{FreeSpec, Matchers}
 
 class ScriptReaderTest extends FreeSpec with Matchers {

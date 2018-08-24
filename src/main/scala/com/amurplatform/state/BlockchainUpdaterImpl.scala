@@ -1,34 +1,34 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import cats.implicits._
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.features.FeatureProvider._
-import com.amurplatform.metrics.{Instrumented, TxsInBlockchainStats}
-import com.amurplatform.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
-import com.amurplatform.settings.LocalSettings
-import com.amurplatform.state.diffs.BlockDiffer
-import com.amurplatform.state.reader.{CompositeBlockchain, LeaseDetails}
-import com.amurplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.features.FeatureProvider._
+import com.wavesplatform.metrics.{Instrumented, TxsInBlockchainStats}
+import com.wavesplatform.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
+import com.wavesplatform.settings.WavesSettings
+import com.wavesplatform.state.diffs.BlockDiffer
+import com.wavesplatform.state.reader.{CompositeBlockchain, LeaseDetails}
+import com.wavesplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.reactive.Observable
 import monix.reactive.subjects.ConcurrentSubject
-import com.amurplatform.account.{Address, Alias}
-import com.amurplatform.block.Block.BlockId
-import com.amurplatform.block.{Block, BlockHeader, MicroBlock}
-import com.amurplatform.transaction.Transaction.Type
-import com.amurplatform.transaction.ValidationError.{BlockAppendError, GenericError, MicroBlockAppendError}
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.lease._
-import com.amurplatform.transaction.smart.script.Script
+import com.wavesplatform.account.{Address, Alias}
+import com.wavesplatform.block.Block.BlockId
+import com.wavesplatform.block.{Block, BlockHeader, MicroBlock}
+import com.wavesplatform.transaction.Transaction.Type
+import com.wavesplatform.transaction.ValidationError.{BlockAppendError, GenericError, MicroBlockAppendError}
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.lease._
+import com.wavesplatform.transaction.smart.script.Script
 
-class BlockchainUpdaterImpl(blockchain: Blockchain, settings: AmurSettings, time: Time)
+class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, time: Time)
     extends BlockchainUpdater
     with NG
     with ScorexLogging
     with Instrumented {
 
-  import com.amurplatform.state.BlockchainUpdaterImpl._
+  import com.wavesplatform.state.BlockchainUpdaterImpl._
   import settings.blockchainSettings.functionalitySettings
 
   private lazy val maxBlockReadinessAge = settings.minerSettings.intervalAfterLastBlockThenGenerationIsAllowed.toMillis
@@ -435,7 +435,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: AmurSettings, time
     ngState.fold(blockchain.filledVolumeAndFee(orderId))(
       _.bestLiquidDiff.orderFills.get(orderId).orEmpty.combine(blockchain.filledVolumeAndFee(orderId)))
 
-  /** Retrieves Amur balance snapshot in the [from, to] range (inclusive) */
+  /** Retrieves Waves balance snapshot in the [from, to] range (inclusive) */
   override def balanceSnapshots(address: Address, from: Int, to: Int): Seq[BalanceSnapshot] =
     if (to <= blockchain.height || ngState.isEmpty) {
       blockchain.balanceSnapshots(address, from, to)
@@ -479,8 +479,8 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: AmurSettings, time
   override def assetDistribution(assetId: AssetId): Map[Address, Long] =
     blockchain.assetDistribution(assetId) ++ changedBalances(_.assets.getOrElse(assetId, 0L) != 0, portfolio(_).assets.getOrElse(assetId, 0L))
 
-  override def amurDistribution(height: Int): Map[Address, Long] = ngState.fold(blockchain.amurDistribution(height)) { ng =>
-    val innerDistribution = blockchain.amurDistribution(height)
+  override def wavesDistribution(height: Int): Map[Address, Long] = ngState.fold(blockchain.wavesDistribution(height)) { ng =>
+    val innerDistribution = blockchain.wavesDistribution(height)
     if (height < this.height) innerDistribution
     else {
       innerDistribution ++ changedBalances(_.balance != 0, portfolio(_).balance)
@@ -501,7 +501,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: AmurSettings, time
 
   /** Builds a new portfolio map by applying a partial function to all portfolios on which the function is defined.
     *
-    * @note Portfolios passed to `pf` only contain Amur and Leasing balances to improve performance */
+    * @note Portfolios passed to `pf` only contain Waves and Leasing balances to improve performance */
   override def collectLposPortfolios[A](pf: PartialFunction[(Address, Portfolio), A]): Map[Address, A] =
     ngState.fold(blockchain.collectLposPortfolios(pf)) { ng =>
       val b = Map.newBuilder[Address, A]

@@ -1,7 +1,7 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import play.api.libs.json._
-import com.amurplatform.utils.{Base58, Base64}
+import com.wavesplatform.utils.{Base58, Base64}
 
 import scala.util.Try
 

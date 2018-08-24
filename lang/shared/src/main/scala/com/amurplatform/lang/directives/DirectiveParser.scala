@@ -1,4 +1,4 @@
-package com.amurplatform.lang.directives
+package com.wavesplatform.lang.directives
 
 import fastparse.WhitespaceApi
 import fastparse.core.Parsed.Success

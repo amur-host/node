@@ -1,4 +1,4 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.typesafe.config.Config
 import net.ceedubs.ficus.Ficus._
@@ -6,7 +6,7 @@ import net.ceedubs.ficus.Ficus._
 case class RestAPISettings(enable: Boolean, bindAddress: String, port: Int, apiKeyHash: String, cors: Boolean, apiKeyDifferentHost: Boolean)
 
 object RestAPISettings {
-  val configPath: String = "amur.rest-api"
+  val configPath: String = "waves.rest-api"
 
   def fromConfig(config: Config): RestAPISettings = {
     RestAPISettings(

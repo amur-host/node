@@ -1,16 +1,16 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import java.time.Instant
 
 import akka.http.scaladsl.server.Route
-import com.amurplatform.Shutdownable
-import com.amurplatform.settings.{Constants, RestAPISettings}
-import com.amurplatform.state.Blockchain
+import com.wavesplatform.Shutdownable
+import com.wavesplatform.settings.{Constants, RestAPISettings}
+import com.wavesplatform.state.Blockchain
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.Json
-import com.amurplatform.api.http.{ApiRoute, CommonApiFunctions}
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.api.http.{ApiRoute, CommonApiFunctions}
+import com.wavesplatform.utils.ScorexLogging
 
 @Path("/node")
 @Api(value = "node")
@@ -24,10 +24,10 @@ case class NodeApiRoute(settings: RestAPISettings, blockchain: Blockchain, appli
   }
 
   @Path("/version")
-  @ApiOperation(value = "Version", notes = "Get Amur node version", httpMethod = "GET")
+  @ApiOperation(value = "Version", notes = "Get Waves node version", httpMethod = "GET")
   @ApiResponses(
     Array(
-      new ApiResponse(code = 200, message = "Json Amur node version")
+      new ApiResponse(code = 200, message = "Json Waves node version")
     ))
   def version: Route = (get & path("version")) {
     complete(Json.obj("version" -> Constants.AgentName))

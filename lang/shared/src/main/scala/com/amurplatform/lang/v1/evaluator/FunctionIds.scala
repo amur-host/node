@@ -1,4 +1,4 @@
-package com.amurplatform.lang.v1.evaluator
+package com.wavesplatform.lang.v1.evaluator
 
 object FunctionIds {
 
@@ -44,7 +44,7 @@ object FunctionIds {
   val TOBASE64: Short   = 602
   val FROMBASE64: Short = 603
 
-  // Amur
+  // Waves
   val GETTRANSACTIONBYID: Short    = 1000
   val TRANSACTIONHEIGHTBYID: Short = 1001
   val ACCOUNTASSETBALANCE: Short   = 1003

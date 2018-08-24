@@ -1,15 +1,15 @@
-package com.amurplatform.database
+package com.wavesplatform.database
 
 import java.util
 
 import cats.syntax.monoid._
 import com.google.common.cache.{CacheBuilder, CacheLoader, LoadingCache}
-import com.amurplatform.state._
-import com.amurplatform.account.{Address, Alias}
-import com.amurplatform.block.Block
-import com.amurplatform.transaction.smart.script.Script
-import com.amurplatform.transaction.Transaction
-import com.amurplatform.transaction.AssetId
+import com.wavesplatform.state._
+import com.wavesplatform.account.{Address, Alias}
+import com.wavesplatform.block.Block
+import com.wavesplatform.transaction.smart.script.Script
+import com.wavesplatform.transaction.Transaction
+import com.wavesplatform.transaction.AssetId
 
 import scala.collection.JavaConverters._
 
@@ -93,7 +93,7 @@ trait Caches extends Blockchain {
 
   protected def doAppend(block: Block,
                          addresses: Map[Address, BigInt],
-                         amurBalances: Map[BigInt, Long],
+                         wavesBalances: Map[BigInt, Long],
                          assetBalances: Map[BigInt, Map[ByteStr, Long]],
                          leaseBalances: Map[BigInt, LeaseBalance],
                          leaseStates: Map[ByteStr, Boolean],
@@ -125,7 +125,7 @@ trait Caches extends Blockchain {
 
     lastAddressId += newAddressIds.size
 
-    val amurBalances = Map.newBuilder[BigInt, Long]
+    val wavesBalances = Map.newBuilder[BigInt, Long]
     val assetBalances = Map.newBuilder[BigInt, Map[ByteStr, Long]]
     val leaseBalances = Map.newBuilder[BigInt, LeaseBalance]
     val newPortfolios = Map.newBuilder[Address, Portfolio]
@@ -133,7 +133,7 @@ trait Caches extends Blockchain {
     for ((address, portfolioDiff) <- diff.portfolios) {
       val newPortfolio = portfolioCache.get(address).combine(portfolioDiff)
       if (portfolioDiff.balance != 0) {
-        amurBalances += addressId(address) -> newPortfolio.balance
+        wavesBalances += addressId(address) -> newPortfolio.balance
       }
 
       if (portfolioDiff.lease != LeaseBalance.empty) {
@@ -163,7 +163,7 @@ trait Caches extends Blockchain {
     doAppend(
       block,
       newAddressIds,
-      amurBalances.result(),
+      wavesBalances.result(),
       assetBalances.result(),
       leaseBalances.result(),
       diff.leaseState,

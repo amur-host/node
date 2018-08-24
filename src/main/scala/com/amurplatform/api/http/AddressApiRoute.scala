@@ -1,26 +1,26 @@
-package com.amurplatform.api.http
+package com.wavesplatform.api.http
 
 import java.nio.charset.StandardCharsets
 
 import javax.ws.rs.Path
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.server.Route
-import com.amurplatform.consensus.GeneratingBalanceProvider
-import com.amurplatform.crypto
-import com.amurplatform.settings.{FunctionalitySettings, RestAPISettings}
-import com.amurplatform.state.Blockchain
-import com.amurplatform.state.diffs.CommonValidation
-import com.amurplatform.utils.{Base58, Time}
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.consensus.GeneratingBalanceProvider
+import com.wavesplatform.crypto
+import com.wavesplatform.settings.{FunctionalitySettings, RestAPISettings}
+import com.wavesplatform.state.Blockchain
+import com.wavesplatform.state.diffs.CommonValidation
+import com.wavesplatform.utils.{Base58, Time}
+import com.wavesplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import play.api.libs.json._
-import com.amurplatform.account.{Address, PublicKeyAccount}
-import com.amurplatform.http.BroadcastRoute
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction.smart.script.ScriptCompiler
-import com.amurplatform.transaction.{TransactionFactory, ValidationError}
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.{Address, PublicKeyAccount}
+import com.wavesplatform.http.BroadcastRoute
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import com.wavesplatform.transaction.{TransactionFactory, ValidationError}
+import com.wavesplatform.wallet.Wallet
 
 import scala.util.{Failure, Success, Try}
 
@@ -127,7 +127,7 @@ case class AddressApiRoute(settings: RestAPISettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.SignedMessage",
+        dataType = "com.wavesplatform.api.http.SignedMessage",
         defaultValue =
           "{\n\t\"message\":\"Base58-encoded message\",\n\t\"signature\":\"Base58-encoded signature\",\n\t\"publickey\":\"Base58-encoded public key\"\n}"
       )
@@ -148,7 +148,7 @@ case class AddressApiRoute(settings: RestAPISettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.SignedMessage",
+        dataType = "com.wavesplatform.api.http.SignedMessage",
         defaultValue =
           "{\n\t\"message\":\"Plain message\",\n\t\"signature\":\"Base58-encoded signature\",\n\t\"publickey\":\"Base58-encoded public key\"\n}"
       )
@@ -260,7 +260,7 @@ case class AddressApiRoute(settings: RestAPISettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.DataRequest",
+        dataType = "com.wavesplatform.api.http.DataRequest",
         defaultValue = "{\n\t\"version\": 1,\n\t\"sender\": \"3Mx2afTZ2KbRrLNbytyzTtXukZvqEB8SkW7\",\n\t\"fee\": 100000,\n\t\"data\": {}\n}"
       )
     ))

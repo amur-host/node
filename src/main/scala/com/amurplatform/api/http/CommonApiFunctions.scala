@@ -1,9 +1,9 @@
-package com.amurplatform.api.http
+package com.wavesplatform.api.http
 
 import akka.http.scaladsl.server.Directive1
-import com.amurplatform.state.{Blockchain, ByteStr}
-import com.amurplatform.block.Block
-import com.amurplatform.transaction.TransactionParsers
+import com.wavesplatform.state.{Blockchain, ByteStr}
+import com.wavesplatform.block.Block
+import com.wavesplatform.transaction.TransactionParsers
 
 trait CommonApiFunctions { this: ApiRoute =>
   protected[api] def withBlock(blockchain: Blockchain, encodedSignature: String): Directive1[Block] =

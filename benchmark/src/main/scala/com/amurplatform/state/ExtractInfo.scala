@@ -1,21 +1,21 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import java.io.{File, PrintWriter}
 import java.util.concurrent.ThreadLocalRandom
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.database.LevelDBWriter
-import com.amurplatform.db.LevelDBFactory
-import com.amurplatform.lang.v1.traits.DataType
-import com.amurplatform.settings.{AmurSettings, loadConfig}
-import com.amurplatform.state.bench.DataTestData
+import com.wavesplatform.database.LevelDBWriter
+import com.wavesplatform.db.LevelDBFactory
+import com.wavesplatform.lang.v1.traits.DataType
+import com.wavesplatform.settings.{WavesSettings, loadConfig}
+import com.wavesplatform.state.bench.DataTestData
 import org.iq80.leveldb.{DB, Options}
 import scodec.bits.{BitVector, ByteVector}
-import com.amurplatform.account.AddressScheme
-import com.amurplatform.utils.ScorexLogging
-import com.amurplatform.block.Block
-import com.amurplatform.transaction.assets.IssueTransaction
-import com.amurplatform.transaction.{Authorized, CreateAliasTransactionV1, DataTransaction, Transaction}
+import com.wavesplatform.account.AddressScheme
+import com.wavesplatform.utils.ScorexLogging
+import com.wavesplatform.block.Block
+import com.wavesplatform.transaction.assets.IssueTransaction
+import com.wavesplatform.transaction.{Authorized, CreateAliasTransactionV1, DataTransaction, Transaction}
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
@@ -33,23 +33,23 @@ object ExtractInfo extends App with ScorexLogging {
   }
 
   val benchSettings = Settings.fromConfig(ConfigFactory.load())
-  val amurSettings = {
+  val wavesSettings = {
     val config = loadConfig(ConfigFactory.parseFile(new File(args.head)))
-    AmurSettings.fromConfig(config)
+    WavesSettings.fromConfig(config)
   }
 
   AddressScheme.current = new AddressScheme {
-    override val chainId: Byte = amurSettings.blockchainSettings.addressSchemeCharacter.toByte
+    override val chainId: Byte = wavesSettings.blockchainSettings.addressSchemeCharacter.toByte
   }
 
   val db: DB = {
-    val dir = new File(amurSettings.dataDirectory)
-    if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${amurSettings.dataDirectory}'")
+    val dir = new File(wavesSettings.dataDirectory)
+    if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${wavesSettings.dataDirectory}'")
     LevelDBFactory.factory.open(dir, new Options)
   }
 
   try {
-    val state = new LevelDBWriter(db, amurSettings.blockchainSettings.functionalitySettings)
+    val state = new LevelDBWriter(db, wavesSettings.blockchainSettings.functionalitySettings)
 
     def nonEmptyBlockHeights(from: Int): Iterator[Integer] =
       for {

@@ -1,12 +1,12 @@
-package com.amurplatform.it.async
+package com.wavesplatform.it.async
 
 import com.typesafe.config.Config
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.api._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.util._
-import com.amurplatform.it.{Node, NodeConfigs, ReportingTestName}
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.api._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.util._
+import com.wavesplatform.it.{Node, NodeConfigs, ReportingTestName}
+import com.wavesplatform.utils.ScorexLogging
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -47,7 +47,7 @@ class BlockHeadersTestSuite
       Future
         .sequence {
           (1 to n).map { _ =>
-            notMiner.transfer(notMiner.address, firstAddress, (1 + Random.nextInt(10)).amur, fee)
+            notMiner.transfer(notMiner.address, firstAddress, (1 + Random.nextInt(10)).waves, fee)
           }
         }
         .map(_ => ())
@@ -71,7 +71,7 @@ class BlockHeadersTestSuite
   "blockAt content should be equal to blockHeaderAt, except transactions info" in {
     val f = for {
       baseHeight    <- traverse(nodes)(_.height).map(_.max)
-      _             <- txRequestsGen(30, 2.amur)
+      _             <- txRequestsGen(30, 2.waves)
       _             <- traverse(nodes)(_.waitForHeight(baseHeight + 3))
       blocks        <- traverse(nodes)(_.blockAt(baseHeight + 1))
       blocksHeaders <- traverse(nodes)(_.blockHeadersAt(baseHeight + 1))
@@ -84,7 +84,7 @@ class BlockHeadersTestSuite
   "lastBlock content should be equal to lastBlockHeader, except transactions info" in {
     val f = for {
       baseHeight             <- traverse(nodes)(_.height).map(_.max)
-      _                      <- txRequestsGen(30, 2.amur)
+      _                      <- txRequestsGen(30, 2.waves)
       _                      <- traverse(nodes)(_.waitForHeight(baseHeight + 1))
       blocksAndBlocksHeaders <- traverse(nodes)(b => (b.lastBlock zip b.lastBlockHeaders))
     } yield {
@@ -97,7 +97,7 @@ class BlockHeadersTestSuite
   "blockSeq content should be equal to blockHeaderSeq, except transactions info" in {
     val f = for {
       baseHeight   <- traverse(nodes)(_.height).map(_.max)
-      _            <- txRequestsGen(30, 2.amur)
+      _            <- txRequestsGen(30, 2.waves)
       _            <- nodes.waitForSameBlockHeadesAt(baseHeight + 3)
       blocks       <- nodes.head.blockSeq(baseHeight + 1, baseHeight + 3)
       blockHeaders <- nodes.head.blockHeadersSeq(baseHeight + 1, baseHeight + 3)

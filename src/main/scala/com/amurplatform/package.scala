@@ -1,13 +1,13 @@
 package com
 
-import com.amurplatform.block.Block
-import com.amurplatform.settings.LocalSettings
-import com.amurplatform.state.{ByteStr, NG}
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction.{BlockchainUpdater, ValidationError}
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.block.Block
+import com.wavesplatform.settings.WavesSettings
+import com.wavesplatform.state.{ByteStr, NG}
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction.{BlockchainUpdater, ValidationError}
+import com.wavesplatform.utils.ScorexLogging
 
-package object amurplatform extends ScorexLogging {
+package object wavesplatform extends ScorexLogging {
   private def checkOrAppend(block: Block, blockchainUpdater: BlockchainUpdater with NG): Either[ValidationError, Unit] = {
     if (blockchainUpdater.isEmpty) {
       blockchainUpdater.processBlock(block).right.map { _ =>
@@ -21,11 +21,11 @@ package object amurplatform extends ScorexLogging {
     }
   }
 
-  def checkGenesis(settings: AmurSettings, blockchainUpdater: BlockchainUpdater with NG): Unit = {
+  def checkGenesis(settings: WavesSettings, blockchainUpdater: BlockchainUpdater with NG): Unit = {
     Block.genesis(settings.blockchainSettings.genesisSettings).flatMap(b => checkOrAppend(b, blockchainUpdater)).left.foreach { e =>
       log.error("INCORRECT NODE CONFIGURATION!!! NODE STOPPED BECAUSE OF THE FOLLOWING ERROR:")
       log.error(e.toString)
-      com.amurplatform.utils.forceStopApplication()
+      com.wavesplatform.utils.forceStopApplication()
     }
   }
 }

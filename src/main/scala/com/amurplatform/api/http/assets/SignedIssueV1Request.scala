@@ -1,13 +1,13 @@
-package com.amurplatform.api.http.assets
+package com.wavesplatform.api.http.assets
 
 import com.google.common.base.Charsets
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.{Format, Json}
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.api.http.BroadcastRequest
-import com.amurplatform.transaction.TransactionParsers.SignatureStringLength
-import com.amurplatform.transaction.ValidationError
-import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.api.http.BroadcastRequest
+import com.wavesplatform.transaction.TransactionParsers.SignatureStringLength
+import com.wavesplatform.transaction.ValidationError
+import com.wavesplatform.transaction.assets.IssueTransactionV1
 
 object SignedIssueV1Request {
   implicit val assetIssueRequestReads: Format[SignedIssueV1Request] = Json.format

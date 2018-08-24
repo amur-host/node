@@ -1,8 +1,8 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.util.concurrent.ConcurrentHashMap
 
-import com.amurplatform.{TransactionGen, Version}
+import com.wavesplatform.{TransactionGen, Version}
 import io.netty.buffer.{ByteBuf, Unpooled}
 import io.netty.channel.Channel
 import io.netty.channel.embedded.EmbeddedChannel
@@ -16,7 +16,7 @@ import scala.util.Random
 class ClientSpec extends FreeSpec with Matchers with MockFactory with TransactionGen {
 
   private val clientHandshake = new Handshake(
-    applicationName = "amurI",
+    applicationName = "wavesI",
     applicationVersion = Version.VersionTuple,
     nodeName = "test",
     nodeNonce = Random.nextInt(),

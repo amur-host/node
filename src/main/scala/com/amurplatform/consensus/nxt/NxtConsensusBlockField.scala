@@ -1,8 +1,8 @@
-package com.amurplatform.consensus.nxt
+package com.wavesplatform.consensus.nxt
 
 import com.google.common.primitives.{Bytes, Longs}
 import play.api.libs.json.{JsObject, Json}
-import com.amurplatform.block.BlockField
+import com.wavesplatform.block.BlockField
 
 case class NxtConsensusBlockField(override val value: NxtLikeConsensusBlockData) extends BlockField[NxtLikeConsensusBlockData] {
 

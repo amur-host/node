@@ -1,25 +1,25 @@
-package com.amurplatform.database
+package com.wavesplatform.database
 
 import cats.kernel.Monoid
 import com.google.common.cache.CacheBuilder
-import com.amurplatform.database.patch.DisableHijackedAliases
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.state._
-import com.amurplatform.state.reader.LeaseDetails
+import com.wavesplatform.database.patch.DisableHijackedAliases
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.state._
+import com.wavesplatform.state.reader.LeaseDetails
 import org.iq80.leveldb.{DB, ReadOptions}
-import com.amurplatform.account.{Address, Alias}
-import com.amurplatform.utils.ScorexLogging
-import com.amurplatform.block.{Block, BlockHeader}
-import com.amurplatform.transaction.Transaction.Type
-import com.amurplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.assets._
-import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
-import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.Script
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.{Address, Alias}
+import com.wavesplatform.utils.ScorexLogging
+import com.wavesplatform.block.{Block, BlockHeader}
+import com.wavesplatform.transaction.Transaction.Type
+import com.wavesplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.assets._
+import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
+import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.Script
+import com.wavesplatform.transaction.transfer._
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
@@ -41,7 +41,7 @@ object LevelDBWriter {
 
   /** {{{([15, 12, 3], [12, 5]) => [(15, 12), (12, 12), (3, 12), (3, 5)]}}}
     *
-    * @param wbh AMUR balance history
+    * @param wbh WAVES balance history
     * @param lbh Lease balance history
     */
   private[database] def merge(wbh: Seq[Int], lbh: Seq[Int]): Seq[(Int, Int)] = {
@@ -144,13 +144,13 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
     addressId(address).fold(0L) { addressId =>
       mayBeAssetId match {
         case Some(assetId) => db.fromHistory(Keys.assetBalanceHistory(addressId, assetId), Keys.assetBalance(addressId, assetId)).getOrElse(0L)
-        case None          => db.fromHistory(Keys.amurBalanceHistory(addressId), Keys.amurBalance(addressId)).getOrElse(0L)
+        case None          => db.fromHistory(Keys.wavesBalanceHistory(addressId), Keys.wavesBalance(addressId)).getOrElse(0L)
       }
     }
   }
 
   private def loadLposPortfolio(db: ReadOnlyDB, addressId: BigInt) = Portfolio(
-    db.fromHistory(Keys.amurBalanceHistory(addressId), Keys.amurBalance(addressId)).getOrElse(0L),
+    db.fromHistory(Keys.wavesBalanceHistory(addressId), Keys.wavesBalance(addressId)).getOrElse(0L),
     db.fromHistory(Keys.leaseBalanceHistory(addressId), Keys.leaseBalance(addressId)).getOrElse(LeaseBalance.empty),
     Map.empty
   )
@@ -194,7 +194,7 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
   override protected def doAppend(block: Block,
                                   newAddresses: Map[Address, BigInt],
-                                  amurBalances: Map[BigInt, Long],
+                                  wavesBalances: Map[BigInt, Long],
                                   assetBalances: Map[BigInt, Map[ByteStr, Long]],
                                   leaseBalances: Map[BigInt, LeaseBalance],
                                   leaseStates: Map[ByteStr, Boolean],
@@ -221,24 +221,24 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
     val threshold = height - 2000
 
-    val newAddressesForLocal = ArrayBuffer.empty[BigInt]
-    val updatedBalanceAddresses = for ((addressId, balance) <- amurBalances) yield {
-      val kwbh = Keys.amurBalanceHistory(addressId)
+    val newAddressesForWaves = ArrayBuffer.empty[BigInt]
+    val updatedBalanceAddresses = for ((addressId, balance) <- wavesBalances) yield {
+      val kwbh = Keys.wavesBalanceHistory(addressId)
       val wbh  = rw.get(kwbh)
       if (wbh.isEmpty) {
-        newAddressesForAmur += addressId
+        newAddressesForWaves += addressId
       }
-      rw.put(Keys.amurBalance(addressId)(height), balance)
-      expiredKeys ++= updateHistory(rw, wbh, kwbh, threshold, Keys.amurBalance(addressId))
+      rw.put(Keys.wavesBalance(addressId)(height), balance)
+      expiredKeys ++= updateHistory(rw, wbh, kwbh, threshold, Keys.wavesBalance(addressId))
       addressId
     }
 
     val changedAddresses = (addressTransactions.keys ++ updatedBalanceAddresses)
 
-    if (newAddressesForAmur.nonEmpty) {
-      val newSeqNr = rw.get(Keys.addressesForAmurSeqNr) + 1
-      rw.put(Keys.addressesForAmurSeqNr, newSeqNr)
-      rw.put(Keys.addressesForAmur(newSeqNr), newAddressesForAmur)
+    if (newAddressesForWaves.nonEmpty) {
+      val newSeqNr = rw.get(Keys.addressesForWavesSeqNr) + 1
+      rw.put(Keys.addressesForWavesSeqNr, newSeqNr)
+      rw.put(Keys.addressesForWaves(newSeqNr), newAddressesForWaves)
     }
 
     for ((addressId, leaseBalance) <- leaseBalances) {
@@ -382,8 +382,8 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
               rw.filterHistory(Keys.assetBalanceHistory(addressId, assetId), currentHeight)
             }
 
-            rw.delete(Keys.amurBalance(addressId)(currentHeight))
-            rw.filterHistory(Keys.amurBalanceHistory(addressId), currentHeight)
+            rw.delete(Keys.wavesBalance(addressId)(currentHeight))
+            rw.filterHistory(Keys.wavesBalanceHistory(addressId), currentHeight)
 
             rw.delete(Keys.leaseBalance(addressId)(currentHeight))
             rw.filterHistory(Keys.leaseBalanceHistory(addressId), currentHeight)
@@ -556,11 +556,11 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
   override def balanceSnapshots(address: Address, from: Int, to: Int): Seq[BalanceSnapshot] = readOnly { db =>
     db.get(Keys.addressId(address)).fold(Seq(BalanceSnapshot(1, 0, 0, 0))) { addressId =>
-      val wbh = slice(db.get(Keys.amurBalanceHistory(addressId)), from, to)
+      val wbh = slice(db.get(Keys.wavesBalanceHistory(addressId)), from, to)
       val lbh = slice(db.get(Keys.leaseBalanceHistory(addressId)), from, to)
       for {
         (wh, lh) <- merge(wbh, lbh)
-        wb = balanceAtHeightCache.get((wh, addressId), () => db.get(Keys.amurBalance(addressId)(wh)))
+        wb = balanceAtHeightCache.get((wh, addressId), () => db.get(Keys.wavesBalance(addressId)(wh)))
         lb = leaseBalanceAtHeightCache.get((lh, addressId), () => db.get(Keys.leaseBalance(addressId)(lh)))
       } yield BalanceSnapshot(wh.max(lh), wb, lb.in, lb.out)
     }
@@ -640,13 +640,13 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
     } yield db.get(Keys.idToAddress(addressId)) -> balance).toMap.seq
   }
 
-  override def amurDistribution(height: Int): Map[Address, Long] = readOnly { db =>
+  override def wavesDistribution(height: Int): Map[Address, Long] = readOnly { db =>
     (for {
-      seqNr     <- (1 to db.get(Keys.addressesForAmurSeqNr)).par
-      addressId <- db.get(Keys.addressesForAmur(seqNr)).par
-      history = db.get(Keys.amurBalanceHistory(addressId))
+      seqNr     <- (1 to db.get(Keys.addressesForWavesSeqNr)).par
+      addressId <- db.get(Keys.addressesForWaves(seqNr)).par
+      history = db.get(Keys.wavesBalanceHistory(addressId))
       actualHeight <- history.partition(_ > height)._2.headOption
-      balance = db.get(Keys.amurBalance(addressId)(actualHeight))
+      balance = db.get(Keys.wavesBalance(addressId)(actualHeight))
       if balance > 0
     } yield db.get(Keys.idToAddress(addressId)) -> balance).toMap.seq
   }

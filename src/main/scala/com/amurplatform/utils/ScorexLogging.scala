@@ -1,4 +1,4 @@
-package com.amurplatform.utils
+package com.wavesplatform.utils
 
 import com.google.common.util.concurrent.UncheckedExecutionException
 import monix.eval.Task

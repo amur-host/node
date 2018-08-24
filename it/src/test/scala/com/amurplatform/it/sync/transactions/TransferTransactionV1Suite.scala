@@ -1,23 +1,23 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.it.TransferSending
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.sync._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.utils.Base58
+import com.wavesplatform.it.TransferSending
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.sync._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.utils.Base58
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json._
-import com.amurplatform.account.AddressOrAlias
-import com.amurplatform.api.http.assets.SignedTransferV1Request
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.AddressOrAlias
+import com.wavesplatform.api.http.assets.SignedTransferV1Request
+import com.wavesplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 
 class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSending with CancelAfterFailure {
 
-  test("asset transfer changes sender's and recipient's asset balance; issuer's.amur balance is decreased by fee") {
+  test("asset transfer changes sender's and recipient's asset balance; issuer's.waves balance is decreased by fee") {
     val (firstBalance, firstEffBalance)   = notMiner.accountBalances(firstAddress)
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
@@ -37,7 +37,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSendi
     notMiner.assertAssetBalance(secondAddress, issuedAssetId, someAssetAmount)
   }
 
-  test("amur transfer changes amur balances and eff.b.") {
+  test("waves transfer changes waves balances and eff.b.") {
     val (firstBalance, firstEffBalance)   = notMiner.accountBalances(firstAddress)
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
@@ -49,7 +49,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSendi
     notMiner.assertBalances(secondAddress, secondBalance + transferAmount, secondEffBalance + transferAmount)
   }
 
-  test("invalid signed amur transfer should not be in UTX or blockchain") {
+  test("invalid signed waves transfer should not be in UTX or blockchain") {
     def invalidTx(timestamp: Long = System.currentTimeMillis, fee: Long = 100000) =
       TransferTransactionV1
         .selfSigned(None, sender.privateKey, AddressOrAlias.fromString(sender.address).explicitGet(), 1, timestamp, None, fee, Array.emptyByteArray)
@@ -101,7 +101,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSendi
   test("can not make transfer without having enough balance") {
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
-    assertBadRequestAndResponse(sender.transfer(secondAddress, firstAddress, secondBalance + 1.amur, minFee),
+    assertBadRequestAndResponse(sender.transfer(secondAddress, firstAddress, secondBalance + 1.waves, minFee),
                                 "Attempt to transfer unavailable funds")
     notMiner.assertBalances(secondAddress, secondBalance, secondEffBalance)
   }

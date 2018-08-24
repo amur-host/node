@@ -1,17 +1,17 @@
-package com.amurplatform.it
+package com.wavesplatform.it
 
 import java.util.concurrent.ThreadLocalRandom
 
 import com.typesafe.config.Config
-import com.amurplatform.it.TransferSending.Req
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.api.Transaction
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.utils.{Base58, ScorexLogging}
+import com.wavesplatform.it.TransferSending.Req
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.api.Transaction
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.utils.{Base58, ScorexLogging}
 import org.scalatest.Suite
-import com.amurplatform.account.{Address, AddressOrAlias, AddressScheme, PrivateKeyAccount}
-import com.amurplatform.api.http.assets.SignedTransferV1Request
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.{Address, AddressOrAlias, AddressScheme, PrivateKeyAccount}
+import com.wavesplatform.api.http.assets.SignedTransferV1Request
+import com.wavesplatform.transaction.transfer._
 
 import scala.concurrent.Future
 import scala.util.Random

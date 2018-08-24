@@ -1,9 +1,9 @@
-package com.amurplatform.it.async
+package com.wavesplatform.it.async
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.{NodeConfigs, TransferSending}
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.{NodeConfigs, TransferSending}
 import org.scalatest._
 
 import scala.concurrent.Await.result
@@ -40,7 +40,7 @@ class MicroblocksGenerationSuite extends FreeSpec with Matchers with TransferSen
 object MicroblocksGenerationSuite {
   private val txsInMicroBlock = 200
   private val maxTxs          = 2000
-  private val ConfigOverrides = ConfigFactory.parseString(s"""amur {
+  private val ConfigOverrides = ConfigFactory.parseString(s"""waves {
                                                              |    miner {
                                                              |      quorum = 0
                                                              |      minimal-block-generation-offset = 1m

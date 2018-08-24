@@ -1,4 +1,4 @@
-package com.amurplatform.utils
+package com.wavesplatform.utils
 
 sealed abstract class ApplicationStopReason(val code: Int)
 case object Default            extends ApplicationStopReason(1)

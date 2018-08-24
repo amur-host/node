@@ -1,9 +1,9 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.net.InetAddress
 
-import com.amurplatform.settings.UPnPSettings
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.settings.UPnPSettings
+import com.wavesplatform.utils.ScorexLogging
 import org.bitlet.weupnp.{GatewayDevice, GatewayDiscover}
 
 import scala.collection.JavaConverters._

@@ -1,14 +1,14 @@
-package com.amurplatform.history
+package com.wavesplatform.history
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.state.diffs._
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.transfer._
 
 class BlockchainUpdaterBlockOnlyTest extends PropSpec with PropertyChecks with DomainScenarioDrivenPropertyCheck with Matchers with TransactionGen {
 
@@ -18,7 +18,7 @@ class BlockchainUpdaterBlockOnlyTest extends PropSpec with PropertyChecks with D
       recipient <- accountGen
       ts        <- positiveIntGen
       genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
-      payments <- Gen.listOfN(paymentsAmt, amurTransferGeneratorP(master, recipient))
+      payments <- Gen.listOfN(paymentsAmt, wavesTransferGeneratorP(master, recipient))
     } yield (genesis, payments)
 
   property("can apply valid blocks") {

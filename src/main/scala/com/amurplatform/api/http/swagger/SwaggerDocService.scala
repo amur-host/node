@@ -1,11 +1,11 @@
-package com.amurplatform.api.http.swagger
+package com.wavesplatform.api.http.swagger
 
 import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import com.github.swagger.akka.model.{Info, License}
 import com.github.swagger.akka.{HasActorSystem, SwaggerHttpService}
-import com.amurplatform.Version
-import com.amurplatform.settings.RestAPISettings
+import com.wavesplatform.Version
+import com.wavesplatform.settings.RestAPISettings
 import io.swagger.models.{Scheme, Swagger}
 
 import scala.reflect.runtime.universe.Type
@@ -16,12 +16,12 @@ class SwaggerDocService(val actorSystem: ActorSystem, val materializer: ActorMat
 
   override val host: String = settings.bindAddress + ":" + settings.port
   override val info: Info = Info(
-    "The Web Interface to the Amur Full Node API",
+    "The Web Interface to the Waves Full Node API",
     Version.VersionString,
-    "Amur Full Node",
+    "Waves Full Node",
     "License: Apache License, Version 2.0",
     None,
-    Some(License("Apache License, Version 2.0", "https://github.com/amurplatform/Amur/blob/master/LICENSE"))
+    Some(License("Apache License, Version 2.0", "https://github.com/wavesplatform/Waves/blob/master/LICENSE"))
   )
 
   //Let swagger-ui determine the host and port

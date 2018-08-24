@@ -1,10 +1,10 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.util
 import java.util.concurrent.{ConcurrentMap, TimeUnit}
 
-import com.amurplatform.network.Handshake.InvalidHandshakeException
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.network.Handshake.InvalidHandshakeException
+import com.wavesplatform.utils.ScorexLogging
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel._

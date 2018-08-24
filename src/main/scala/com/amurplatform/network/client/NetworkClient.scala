@@ -1,12 +1,12 @@
-package com.amurplatform.network.client
+package com.wavesplatform.network.client
 
 import java.io.IOException
 import java.net.InetSocketAddress
 
-import com.amurplatform.Version
-import com.amurplatform.network.Handshake
-import com.amurplatform.settings._
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.Version
+import com.wavesplatform.network.Handshake
+import com.wavesplatform.settings._
+import com.wavesplatform.utils.ScorexLogging
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel._
 import io.netty.channel.group.ChannelGroup

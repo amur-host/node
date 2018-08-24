@@ -1,11 +1,11 @@
-package com.amurplatform.transaction.lease
+package com.wavesplatform.transaction.lease
 
 import com.google.common.primitives.{Bytes, Longs}
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.amurplatform.account.{Address, AddressOrAlias, PublicKeyAccount}
-import com.amurplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
-import com.amurplatform.crypto._
+import com.wavesplatform.account.{Address, AddressOrAlias, PublicKeyAccount}
+import com.wavesplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
+import com.wavesplatform.crypto._
 import scala.util.Try
 
 trait LeaseTransaction extends ProvenTransaction with VersionedTransaction {
@@ -36,7 +36,7 @@ object LeaseTransaction {
 
   def validateLeaseParams(amount: Long, fee: Long, recipient: AddressOrAlias, sender: PublicKeyAccount) =
     if (amount <= 0) {
-      Left(ValidationError.NegativeAmount(amount, "amur"))
+      Left(ValidationError.NegativeAmount(amount, "waves"))
     } else if (Try(Math.addExact(amount, fee)).isFailure) {
       Left(ValidationError.OverflowError)
     } else if (fee <= 0) {

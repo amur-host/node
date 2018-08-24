@@ -1,6 +1,6 @@
-package com.amurplatform.features.api
+package com.wavesplatform.features.api
 
-import com.amurplatform.features.BlockchainFeatureStatus
+import com.wavesplatform.features.BlockchainFeatureStatus
 
 case class FeatureActivationStatus(id: Short,
                                    description: String,

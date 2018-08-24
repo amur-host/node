@@ -1,20 +1,20 @@
-package com.amurplatform.state.diffs.smart.scenarios
+package com.wavesplatform.state.diffs.smart.scenarios
 
-import com.amurplatform.lang.v1.compiler.CompilerV1
-import com.amurplatform.lang.v1.parser.Parser
-import com.amurplatform.state.diffs.smart._
-import com.amurplatform.state._
-import com.amurplatform.state.diffs.{assertDiffAndState, assertDiffEi, produce}
-import com.amurplatform.utils.dummyCompilerContext
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.parser.Parser
+import com.wavesplatform.state.diffs.smart._
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs.{assertDiffAndState, assertDiffEi, produce}
+import com.wavesplatform.utils.dummyCompilerContext
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.transaction.GenesisTransaction
-import com.amurplatform.transaction.lease.LeaseTransaction
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.transaction.GenesisTransaction
+import com.wavesplatform.transaction.lease.LeaseTransaction
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.transfer._
 
 class TransactionFieldAccessTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

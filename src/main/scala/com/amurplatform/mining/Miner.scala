@@ -1,29 +1,29 @@
-package com.amurplatform.mining
+package com.wavesplatform.mining
 
 import cats.data.EitherT
 import cats.implicits._
-import com.amurplatform.consensus.{GeneratingBalanceProvider, PoSSelector}
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.features.FeatureProvider._
-import com.amurplatform.metrics.{BlockStats, HistogramExt, Instrumented}
-import com.amurplatform.network._
-import com.amurplatform.settings.{FunctionalitySettings, AmurSettings}
-import com.amurplatform.state._
-import com.amurplatform.state.appender.{BlockAppender, MicroblockAppender}
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.consensus.{GeneratingBalanceProvider, PoSSelector}
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.features.FeatureProvider._
+import com.wavesplatform.metrics.{BlockStats, HistogramExt, Instrumented}
+import com.wavesplatform.network._
+import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings}
+import com.wavesplatform.state._
+import com.wavesplatform.state.appender.{BlockAppender, MicroblockAppender}
+import com.wavesplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.eval.Task
 import monix.execution.cancelables.{CompositeCancelable, SerialCancelable}
 import monix.execution.schedulers.SchedulerService
-import com.amurplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.block.Block._
-import com.amurplatform.block.{Block, MicroBlock}
-import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.amurplatform.utils.{ScorexLogging, Time}
-import com.amurplatform.transaction._
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.block.Block._
+import com.wavesplatform.block.{Block, MicroBlock}
+import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.wavesplatform.utils.{ScorexLogging, Time}
+import com.wavesplatform.transaction._
+import com.wavesplatform.wallet.Wallet
 
 import scala.collection.mutable.{Map => MMap}
 import scala.concurrent.Await
@@ -56,7 +56,7 @@ object MinerDebugInfo {
 class MinerImpl(allChannels: ChannelGroup,
                 blockchainUpdater: BlockchainUpdater with NG,
                 checkpoint: CheckpointService,
-                settings: AmurSettings,
+                settings: WavesSettings,
                 timeService: Time,
                 utx: UtxPool,
                 wallet: Wallet,

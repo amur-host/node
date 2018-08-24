@@ -1,7 +1,7 @@
-package com.amurplatform.matcher.model
+package com.wavesplatform.matcher.model
 
-import com.amurplatform.matcher.model.MatcherModel.{Level, Price}
-import com.amurplatform.state.ByteStr
+import com.wavesplatform.matcher.model.MatcherModel.{Level, Price}
+import com.wavesplatform.state.ByteStr
 
 import scala.collection.immutable.TreeMap
 

@@ -1,11 +1,11 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
-import com.amurplatform.account.{Address, Alias}
-import com.amurplatform.block.{Block, BlockHeader}
-import com.amurplatform.state.reader.LeaseDetails
-import com.amurplatform.transaction.lease.LeaseTransaction
-import com.amurplatform.transaction.smart.script.Script
-import com.amurplatform.transaction.{AssetId, Transaction, ValidationError}
+import com.wavesplatform.account.{Address, Alias}
+import com.wavesplatform.block.{Block, BlockHeader}
+import com.wavesplatform.state.reader.LeaseDetails
+import com.wavesplatform.transaction.lease.LeaseTransaction
+import com.wavesplatform.transaction.smart.script.Script
+import com.wavesplatform.transaction.{AssetId, Transaction, ValidationError}
 
 trait Blockchain {
   def height: Int
@@ -53,7 +53,7 @@ trait Blockchain {
 
   def filledVolumeAndFee(orderId: ByteStr): VolumeAndFee
 
-  /** Retrieves Amur balance snapshot in the [from, to] range (inclusive) */
+  /** Retrieves Waves balance snapshot in the [from, to] range (inclusive) */
   def balanceSnapshots(address: Address, from: Int, to: Int): Seq[BalanceSnapshot]
 
   def accountScript(address: Address): Option[Script]
@@ -65,13 +65,13 @@ trait Blockchain {
   def balance(address: Address, mayBeAssetId: Option[AssetId]): Long
 
   def assetDistribution(assetId: ByteStr): Map[Address, Long]
-  def amurDistribution(height: Int): Map[Address, Long]
+  def wavesDistribution(height: Int): Map[Address, Long]
 
   // the following methods are used exclusively by patches
   def allActiveLeases: Set[LeaseTransaction]
 
   /** Builds a new portfolio map by applying a partial function to all portfolios on which the function is defined.
-    * @note Portfolios passed to `pf` only contain Amur and Leasing balances to improve performance */
+    * @note Portfolios passed to `pf` only contain Waves and Leasing balances to improve performance */
   def collectLposPortfolios[A](pf: PartialFunction[(Address, Portfolio), A]): Map[Address, A]
 
   def append(diff: Diff, block: Block): Unit

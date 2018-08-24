@@ -1,26 +1,26 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import akka.http.scaladsl.model.StatusCodes
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.RequestGen
-import com.amurplatform.http.ApiMarshallers._
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.state.Diff
-import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
-import com.amurplatform.utx.{UtxBatchOps, UtxPool}
+import com.wavesplatform.RequestGen
+import com.wavesplatform.http.ApiMarshallers._
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.state.Diff
+import com.wavesplatform.state.diffs.TransactionDiffer.TransactionValidationError
+import com.wavesplatform.utx.{UtxBatchOps, UtxPool}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen._
 import org.scalacheck.{Gen => G}
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.{JsObject, JsValue, Json, Writes}
-import com.amurplatform.api.http._
-import com.amurplatform.api.http.assets._
-import com.amurplatform.utils.Base58
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction.transfer._
-import com.amurplatform.transaction.{Proofs, Transaction, ValidationError}
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.api.http._
+import com.wavesplatform.api.http.assets._
+import com.wavesplatform.utils.Base58
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction.transfer._
+import com.wavesplatform.transaction.{Proofs, Transaction, ValidationError}
+import com.wavesplatform.wallet.Wallet
 import shapeless.Coproduct
 
 class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with RequestGen with PathMockFactory with PropertyChecks {
@@ -119,7 +119,7 @@ class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with Requ
       def posting[A: Writes](v: A): RouteTestResult = Post(routePath("transfer"), v) ~> route
 
       forAll(nonPositiveLong) { q =>
-        posting(tr.copy(amount = q)) should produce(NegativeAmount(s"$q of amur"))
+        posting(tr.copy(amount = q)) should produce(NegativeAmount(s"$q of waves"))
       }
       forAll(invalidBase58) { pk =>
         posting(tr.copy(senderPublicKey = pk)) should produce(InvalidAddress)
@@ -168,10 +168,10 @@ class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with Requ
           assetId = None,
           sender = senderPrivateKey,
           recipient = receiverPrivateKey.toAddress,
-          amount = 1 * Amur,
+          amount = 1 * Waves,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = Amur / 3,
+          feeAmount = Waves / 3,
           attachment = Array.emptyByteArray
         )
         .right
@@ -184,10 +184,10 @@ class AssetsBroadcastRouteSpec extends RouteSpec("/assets/broadcast/") with Requ
           assetId = None,
           sender = senderPrivateKey,
           recipient = receiverPrivateKey.toAddress,
-          amount = 1 * Amur,
+          amount = 1 * Waves,
           timestamp = System.currentTimeMillis(),
           feeAssetId = None,
-          feeAmount = Amur / 3,
+          feeAmount = Waves / 3,
           attachment = Array.emptyByteArray,
           version = 2,
           proofs = Proofs(Seq.empty)

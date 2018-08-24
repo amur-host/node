@@ -1,16 +1,16 @@
-package com.amurplatform.it.sync
+package com.wavesplatform.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it.NodeConfigs.Default
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.state.{EitherExt2, Sponsorship}
-import com.amurplatform.utils.Base58
+import com.wavesplatform.it.NodeConfigs.Default
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.state.{EitherExt2, Sponsorship}
+import com.wavesplatform.utils.Base58
 import org.scalatest.CancelAfterFailure
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.api.http.assets.SignedIssueV1Request
-import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.api.http.assets.SignedIssueV1Request
+import com.wavesplatform.transaction.assets.IssueTransactionV1
 
 class CustomFeeTransactionSuite extends BaseTransactionSuite with CancelAfterFailure {
 
@@ -19,7 +19,7 @@ class CustomFeeTransactionSuite extends BaseTransactionSuite with CancelAfterFai
   override protected def nodeConfigs: Seq[Config] = Configs
 
   private val transferFee = 100000
-  private val assetFee    = 1.amur
+  private val assetFee    = 1.waves
   private val assetToken  = 100
 
   test("make transfer with sponsored asset") {
@@ -55,7 +55,7 @@ class CustomFeeTransactionSuite extends BaseTransactionSuite with CancelAfterFai
     val sponsoredId = sender.transfer(senderAddress, secondAddress, 1, transferFee, Some(issuedAssetId), Some(issuedAssetId)).id
     nodes.waitForHeightAriseAndTxPresent(sponsoredId)
 
-    val sponsorship = Sponsorship.toAmur(transferFee, assetToken)
+    val sponsorship = Sponsorship.toWaves(transferFee, assetToken)
     notMiner.assertBalances(senderAddress, balance1 - fees - sponsorship, eff1 - fees - sponsorship)
     notMiner.assertBalances(secondAddress, balance2, eff2)
     notMiner.assertBalances(minerAddress, balance3 + fees + sponsorship, balance3 + fees + sponsorship)
@@ -83,7 +83,7 @@ object CustomFeeTransactionSuite {
       quantity = defaultAssetQuantity,
       decimals = 2,
       reissuable = false,
-      fee = 1.amur,
+      fee = 1.waves,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -92,14 +92,14 @@ object CustomFeeTransactionSuite {
   val assetId = assetTx.id()
 
   private val minerConfig = ConfigFactory.parseString(s"""
-      | amur.fees.transfer.$assetId = 100000
-      | amur.blockchain.custom.functionality {
+      | waves.fees.transfer.$assetId = 100000
+      | waves.blockchain.custom.functionality {
       |   feature-check-blocks-period = $featureCheckBlocksPeriod
       |   blocks-for-feature-activation = $featureCheckBlocksPeriod
       |   pre-activated-features = { 7 = 0 }
       |}""".stripMargin)
 
-  private val notMinerConfig = ConfigFactory.parseString("amur.miner.enable=no").withFallback(minerConfig)
+  private val notMinerConfig = ConfigFactory.parseString("waves.miner.enable=no").withFallback(minerConfig)
 
   val Configs: Seq[Config] = Seq(
     minerConfig.withFallback(Default.head),

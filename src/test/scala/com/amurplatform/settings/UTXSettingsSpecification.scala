@@ -1,4 +1,4 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.typesafe.config.ConfigFactory
 import net.ceedubs.ficus.Ficus._
@@ -9,7 +9,7 @@ import scala.concurrent.duration._
 
 class UTXSettingsSpecification extends FlatSpec with Matchers {
   "UTXSettings" should "read values" in {
-    val config   = ConfigFactory.parseString("""amur {
+    val config   = ConfigFactory.parseString("""waves {
         |  utx {
         |    max-size = 100
         |    max-transaction-age = 100m
@@ -18,7 +18,7 @@ class UTXSettingsSpecification extends FlatSpec with Matchers {
         |    allow-blacklisted-transfer-to = ["b"]
         |  }
         |}""".stripMargin).resolve()
-    val settings = config.as[UtxSettings]("amur.utx")
+    val settings = config.as[UtxSettings]("waves.utx")
     settings.maxSize should be(100)
     settings.maxTransactionAge shouldBe 100.minutes
     settings.cleanupInterval shouldBe 10.minutes

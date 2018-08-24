@@ -1,19 +1,19 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
 import java.util.concurrent.TimeUnit
 
-import com.amurplatform.lang.v1.compiler.CompilerV1
-import com.amurplatform.lang.v1.parser.Parser
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.state.StateSyntheticBenchmark._
-import com.amurplatform.utils.dummyCompilerContext
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.parser.Parser
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.state.StateSyntheticBenchmark._
+import com.wavesplatform.utils.dummyCompilerContext
 import org.openjdk.jmh.annotations._
 import org.scalacheck.Gen
-import com.amurplatform.account.PrivateKeyAccount
-import com.amurplatform.transaction.Transaction
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.PrivateKeyAccount
+import com.wavesplatform.transaction.Transaction
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.transaction.transfer._
 
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 @BenchmarkMode(Array(Mode.AverageTime))
@@ -37,7 +37,7 @@ object StateSyntheticBenchmark {
   class St extends BaseState {
     protected override def txGenP(sender: PrivateKeyAccount, ts: Long): Gen[Transaction] =
       for {
-        amount    <- Gen.choose(1, amur(1))
+        amount    <- Gen.choose(1, waves(1))
         recipient <- accountGen
       } yield TransferTransactionV1.selfSigned(None, sender, recipient, amount, ts, None, 100000, Array.emptyByteArray).explicitGet()
   }
@@ -52,7 +52,7 @@ object StateSyntheticBenchmark {
     protected override def txGenP(sender: PrivateKeyAccount, ts: Long): Gen[Transaction] =
       for {
         recipient: PrivateKeyAccount <- accountGen
-        amount                       <- Gen.choose(1, amur(1))
+        amount                       <- Gen.choose(1, waves(1))
       } yield
         TransferTransactionV2
           .selfSigned(

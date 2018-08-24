@@ -1,9 +1,9 @@
-package com.amurplatform.network.client
+package com.wavesplatform.network.client
 
 import java.io.IOException
 
-import com.amurplatform.network._
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.network._
+import com.wavesplatform.utils.ScorexLogging
 import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.{LengthFieldBasedFrameDecoder, LengthFieldPrepender}

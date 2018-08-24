@@ -1,20 +1,20 @@
-package com.amurplatform.lang.v1.evaluator.ctx.impl.amur
+package com.wavesplatform.lang.v1.evaluator.ctx.impl.waves
 
 import cats.data.EitherT
 import cats.implicits._
-import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.lang.v1.compiler.Types.{BYTEVECTOR, LONG, STRING, _}
-import com.amurplatform.lang.v1.evaluator.FunctionIds._
-import com.amurplatform.lang.v1.evaluator.ctx._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext.fromOption
-import com.amurplatform.lang.v1.evaluator.ctx.impl.{EnvironmentFunctions, PureContext}
-import com.amurplatform.lang.v1.traits._
-import com.amurplatform.lang.v1.traits.domain.Recipient
-import com.amurplatform.lang.v1.{CTX, FunctionHeader}
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.lang.v1.compiler.Types.{BYTEVECTOR, LONG, STRING, _}
+import com.wavesplatform.lang.v1.evaluator.FunctionIds._
+import com.wavesplatform.lang.v1.evaluator.ctx._
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext.fromOption
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.{EnvironmentFunctions, PureContext}
+import com.wavesplatform.lang.v1.traits._
+import com.wavesplatform.lang.v1.traits.domain.Recipient
+import com.wavesplatform.lang.v1.{CTX, FunctionHeader}
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 
-object AmurContext {
+object WavesContext {
 
   import Bindings._
   import Types._
@@ -223,7 +223,7 @@ object AmurContext {
     val heightCoeval: Coeval[Either[String, Long]] = Coeval.evalOnce(Right(env.height))
 
     val txByIdF: BaseFunction = {
-      val returnType = com.amurplatform.lang.v1.compiler.Types.UNION.create(com.amurplatform.lang.v1.compiler.Types.UNIT +: anyTransactionType.l)
+      val returnType = com.wavesplatform.lang.v1.compiler.Types.UNION.create(com.wavesplatform.lang.v1.compiler.Types.UNIT +: anyTransactionType.l)
       NativeFunction("transactionById", 100, GETTRANSACTIONBYID, returnType, "id" -> BYTEVECTOR) {
         case (id: ByteVector) :: Nil =>
           val maybeDomainTx = env.transactionById(id.toArray).map(transactionObject)
@@ -246,7 +246,7 @@ object AmurContext {
         case _ => ???
       }
 
-    val amurBalanceF: UserFunction = UserFunction("amurBalance", LONG, "addressOrAlias" -> addressOrAliasType) {
+    val wavesBalanceF: UserFunction = UserFunction("wavesBalance", LONG, "addressOrAlias" -> addressOrAliasType) {
       case aoa :: Nil => FUNCTION_CALL(assetBalanceF.header, List(aoa, REF("unit")))
       case _          => ???
     }
@@ -257,7 +257,7 @@ object AmurContext {
     }
 
     val vars: Map[String, (FINAL, LazyVal)] = Map(
-      ("height", (com.amurplatform.lang.v1.compiler.Types.LONG, LazyVal(EitherT(heightCoeval)))),
+      ("height", (com.wavesplatform.lang.v1.compiler.Types.LONG, LazyVal(EitherT(heightCoeval)))),
       ("tx", (scriptInputType, LazyVal(EitherT(inputEntityCoeval))))
     )
 
@@ -280,9 +280,9 @@ object AmurContext {
       addressFromStringF,
       addressFromRecipientF,
       assetBalanceF,
-      amurBalanceF
+      wavesBalanceF
     )
 
-    CTX(Types.amurTypes, vars, functions)
+    CTX(Types.wavesTypes, vars, functions)
   }
 }

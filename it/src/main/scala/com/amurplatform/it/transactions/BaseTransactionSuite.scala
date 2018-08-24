@@ -1,9 +1,9 @@
-package com.amurplatform.it.transactions
+package com.wavesplatform.it.transactions
 
 import java.io.File
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it._
+import com.wavesplatform.it._
 import monix.eval.Coeval
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 
@@ -30,7 +30,7 @@ abstract class BaseTransactionSuite
 
   // protected because https://github.com/sbt/zinc/issues/292
   protected val theNodes: Coeval[Seq[Node]] = Coeval.evalOnce {
-    Option(System.getProperty("amur.it.config.file")) match {
+    Option(System.getProperty("waves.it.config.file")) match {
       case None => dockerNodes()
       case Some(filePath) =>
         val defaultConfig = ConfigFactory.load()

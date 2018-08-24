@@ -1,10 +1,10 @@
-package com.amurplatform.lang
+package com.wavesplatform.lang
 
-import com.amurplatform.lang.v1.compiler.Types._
+import com.wavesplatform.lang.v1.compiler.Types._
 import org.scalatest.{FreeSpec, Matchers}
 import Common._
-import com.amurplatform.lang.v1.compiler.TypeInferrer
-import com.amurplatform.lang.v1.evaluator.ctx.CaseType
+import com.wavesplatform.lang.v1.compiler.TypeInferrer
+import com.wavesplatform.lang.v1.evaluator.ctx.CaseType
 
 class TypeInferrerTest extends FreeSpec with Matchers {
 

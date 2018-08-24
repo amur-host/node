@@ -1,4 +1,4 @@
-package com.amurplatform.metrics
+package com.wavesplatform.metrics
 
 import org.influxdb.dto.Point
 

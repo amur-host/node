@@ -1,14 +1,14 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.settings.Constants
-import com.amurplatform.state.diffs._
-import com.amurplatform.state.{ByteStr, EitherExt2}
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.settings.Constants
+import com.wavesplatform.state.diffs._
+import com.wavesplatform.state.{ByteStr, EitherExt2}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
 
 class SponsorFeeTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

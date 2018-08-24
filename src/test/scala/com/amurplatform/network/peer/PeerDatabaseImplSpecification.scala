@@ -1,30 +1,30 @@
-package com.amurplatform.network.peer
+package com.wavesplatform.network.peer
 
 import java.io.File
 import java.net.InetSocketAddress
 import java.nio.file.Files
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.network.PeerDatabaseImpl
-import com.amurplatform.settings.NetworkSettings
+import com.wavesplatform.network.PeerDatabaseImpl
+import com.wavesplatform.settings.NetworkSettings
 import net.ceedubs.ficus.Ficus._
 import org.scalatest.{Matchers, path}
 
 class PeerDatabaseImplSpecification extends path.FreeSpecLike with Matchers {
 
-  private val config1   = ConfigFactory.parseString("""amur.network {
+  private val config1   = ConfigFactory.parseString("""waves.network {
       |  file = null
       |  known-peers = []
       |  peers-data-residence-time: 2s
       |}""".stripMargin).withFallback(ConfigFactory.load()).resolve()
-  private val settings1 = config1.as[NetworkSettings]("amur.network")
+  private val settings1 = config1.as[NetworkSettings]("waves.network")
 
-  private val config2   = ConfigFactory.parseString("""amur.network {
+  private val config2   = ConfigFactory.parseString("""waves.network {
       |  file = null
       |  known-peers = []
       |  peers-data-residence-time: 10s
       |}""".stripMargin).withFallback(ConfigFactory.load()).resolve()
-  private val settings2 = config2.as[NetworkSettings]("amur.network")
+  private val settings2 = config2.as[NetworkSettings]("waves.network")
 
   val database  = new PeerDatabaseImpl(settings1)
   val database2 = new PeerDatabaseImpl(settings2)
@@ -110,38 +110,38 @@ class PeerDatabaseImplSpecification extends path.FreeSpecLike with Matchers {
 
     "if blacklisting is disabled" - {
       "should clear blacklist at start" in {
-        val databaseFile = Files.createTempFile("amur-tests", "PeerDatabaseImplSpecification-blacklisting-clear").toAbsolutePath.toString
+        val databaseFile = Files.createTempFile("waves-tests", "PeerDatabaseImplSpecification-blacklisting-clear").toAbsolutePath.toString
         val path         = if (File.separatorChar == '\\') databaseFile.replace('\\', '/') else databaseFile
-        val prevConfig   = ConfigFactory.parseString(s"""amur.network {
+        val prevConfig   = ConfigFactory.parseString(s"""waves.network {
              |  file = "$path"
              |  known-peers = []
              |  peers-data-residence-time: 100s
              |}""".stripMargin).withFallback(ConfigFactory.load()).resolve()
-        val prevSettings = prevConfig.as[NetworkSettings]("amur.network")
+        val prevSettings = prevConfig.as[NetworkSettings]("waves.network")
         val prevDatabase = new PeerDatabaseImpl(prevSettings)
         prevDatabase.blacklist(address1, "I don't like it")
         prevDatabase.close()
 
-        val config   = ConfigFactory.parseString(s"""amur.network {
+        val config   = ConfigFactory.parseString(s"""waves.network {
              |  file = "$path"
              |  known-peers = []
              |  peers-data-residence-time: 100s
              |  enable-blacklisting = no
              |}""".stripMargin).withFallback(ConfigFactory.load()).resolve()
-        val settings = config.as[NetworkSettings]("amur.network")
+        val settings = config.as[NetworkSettings]("waves.network")
         val database = new PeerDatabaseImpl(settings)
 
         database.blacklistedHosts shouldBe empty
       }
 
       "should not add nodes to the blacklist" in {
-        val config   = ConfigFactory.parseString(s"""amur.network {
+        val config   = ConfigFactory.parseString(s"""waves.network {
              |  file = null
              |  known-peers = []
              |  peers-data-residence-time: 100s
              |  enable-blacklisting = no
              |}""".stripMargin).withFallback(ConfigFactory.load()).resolve()
-        val settings = config.as[NetworkSettings]("amur.network")
+        val settings = config.as[NetworkSettings]("waves.network")
         val database = new PeerDatabaseImpl(settings)
         database.blacklist(address1, "I don't like it")
 

@@ -1,6 +1,6 @@
-package com.amurplatform.generator
+package com.wavesplatform.generator
 
-import com.amurplatform.transaction.Transaction
+import com.wavesplatform.transaction.Transaction
 
 trait TransactionGenerator extends Iterator[Iterator[Transaction]] {
   override val hasNext = true

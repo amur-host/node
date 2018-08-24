@@ -1,20 +1,20 @@
-package com.amurplatform.generator
+package com.wavesplatform.generator
 
 import java.util.concurrent.Executors
 
 import cats.implicits.showInterpolator
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.generator.cli.ScoptImplicits
-import com.amurplatform.generator.config.FicusImplicits
-import com.amurplatform.network.client.NetworkSender
-import com.amurplatform.settings.inetSocketAddressReader
+import com.wavesplatform.generator.cli.ScoptImplicits
+import com.wavesplatform.generator.config.FicusImplicits
+import com.wavesplatform.network.client.NetworkSender
+import com.wavesplatform.settings.inetSocketAddressReader
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.{EnumerationReader, NameMapper}
 import org.slf4j.LoggerFactory
 import scopt.OptionParser
-import com.amurplatform.account.AddressScheme
-import com.amurplatform.utils.LoggerFacade
+import com.wavesplatform.account.AddressScheme
+import com.wavesplatform.utils.LoggerFacade
 
 import scala.concurrent._
 import scala.concurrent.duration._
@@ -27,7 +27,7 @@ object TransactionsGeneratorApp extends App with ScoptImplicits with FicusImplic
   val log = LoggerFacade(LoggerFactory.getLogger("generator"))
 
   val parser = new OptionParser[GeneratorSettings]("generator") {
-    head("TransactionsGenerator - Amur load testing transactions generator")
+    head("TransactionsGenerator - Waves load testing transactions generator")
     opt[Int]('i', "iterations").valueName("<iterations>").text("number of iterations").action { (v, c) =>
       c.copy(worker = c.worker.copy(iterations = v))
     }

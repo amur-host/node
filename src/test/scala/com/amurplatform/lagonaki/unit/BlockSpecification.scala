@@ -1,17 +1,17 @@
-package com.amurplatform.lagonaki.unit
+package com.wavesplatform.lagonaki.unit
 
-import com.amurplatform.metrics.Instrumented
-import com.amurplatform.state._
-import com.amurplatform.state.diffs.produce
-import com.amurplatform.{NoShrink, TransactionGen, crypto}
+import com.wavesplatform.metrics.Instrumented
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs.produce
+import com.wavesplatform.{NoShrink, TransactionGen, crypto}
 import org.scalacheck.Arbitrary.arbitrary
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.block.Block
-import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.block.Block
+import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.transfer._
 
 class BlockSpecification extends PropSpec with PropertyChecks with TransactionGen with Matchers with NoShrink {
 
@@ -25,9 +25,9 @@ class BlockSpecification extends PropSpec with PropertyChecks with TransactionGe
     assetId = Some(ByteStr(assetBytes))
     sender                    <- accountGen
     recipient                 <- accountGen
-    paymentTransaction        <- amurTransferGeneratorP(time, sender, recipient)
+    paymentTransaction        <- wavesTransferGeneratorP(time, sender, recipient)
     transferTrancation        <- transferGeneratorP(1 + time, sender, recipient, assetId, None)
-    anotherPaymentTransaction <- amurTransferGeneratorP(2 + time, sender, recipient)
+    anotherPaymentTransaction <- wavesTransferGeneratorP(2 + time, sender, recipient)
     transactionData = Seq(paymentTransaction, transferTrancation, anotherPaymentTransaction)
   } yield (baseTarget, reference, ByteStr(generationSignature), recipient, transactionData)
 
@@ -40,7 +40,7 @@ class BlockSpecification extends PropSpec with PropertyChecks with TransactionGe
       assetId = Some(ByteStr(assetBytes))
       sender                                    <- accountGen
       recipient                                 <- accountGen
-      paymentTransaction: TransferTransactionV1 <- amurTransferGeneratorP(time, sender, recipient)
+      paymentTransaction: TransferTransactionV1 <- wavesTransferGeneratorP(time, sender, recipient)
     } yield
       Block
         .buildAndSign(3,

@@ -15,7 +15,7 @@ val versionSource = Def.task {
   // In case of not updating the version nodes build from headless sources will fail to connect to newer versions
   val FallbackVersion = (0, 14, 0)
 
-  val versionFile      = (sourceManaged in Compile).value / "com" / "amurplatform" / "Version.scala"
+  val versionFile      = (sourceManaged in Compile).value / "com" / "wavesplatform" / "Version.scala"
   val versionExtractor = """(\d+)\.(\d+)\.(\d+).*""".r
   val (major, minor, patch) = version.value match {
     case versionExtractor(ma, mi, pa) => (ma.toInt, mi.toInt, pa.toInt)
@@ -23,7 +23,7 @@ val versionSource = Def.task {
   }
   IO.write(
     versionFile,
-    s"""package com.amurplatform
+    s"""package com.wavesplatform
        |
        |object Version {
        |  val VersionString = "${version.value}"
@@ -35,7 +35,7 @@ val versionSource = Def.task {
 }
 val network = SettingKey[Network]("network")
 network := { Network(sys.props.get("network")) }
-name := "amur"
+name := "waves"
 normalizedName := s"${name.value}${network.value.packageSuffix}"
 
 git.useGitDescribe := true
@@ -45,7 +45,7 @@ logBuffered := false
 inThisBuild(
   Seq(
     scalaVersion := "2.12.6",
-    organization := "com.amurplatform",
+    organization := "com.wavesplatform",
     crossPaths := false,
     scalacOptions ++= Seq("-feature", "-deprecation", "-language:higherKinds", "-language:implicitConversions", "-Ywarn-unused:-implicits", "-Xlint")
   ))
@@ -83,7 +83,7 @@ val aopMerge: MergeStrategy = new MergeStrategy {
 inTask(assembly)(
   Seq(
     test := {},
-    assemblyJarName := s"amur-all-${version.value}.jar",
+    assemblyJarName := s"waves-all-${version.value}.jar",
     assemblyMergeStrategy := {
       case PathList("META-INF", "io.netty.versions.properties") => MergeStrategy.concat
       case PathList("META-INF", "aop.xml")                      => aopMerge
@@ -93,7 +93,7 @@ inTask(assembly)(
 
 inConfig(Compile)(
   Seq(
-    mainClass := Some("com.amurplatform.Application"),
+    mainClass := Some("com.wavesplatform.Application"),
     publishArtifact in packageDoc := false,
     publishArtifact in packageSrc := false,
     sourceGenerators += versionSource
@@ -109,19 +109,19 @@ inConfig(Test)(
 
 inConfig(Linux)(
   Seq(
-    maintainer := "amurplatform.com",
-    packageSummary := "Amur node",
-    packageDescription := "Amur node"
+    maintainer := "wavesplatform.com",
+    packageSummary := "Waves node",
+    packageDescription := "Waves node"
   ))
 
-bashScriptExtraDefines += s"""addJava "-Damur.directory=/var/lib/${normalizedName.value}""""
+bashScriptExtraDefines += s"""addJava "-Dwaves.directory=/var/lib/${normalizedName.value}""""
 
 val linuxScriptPattern = "bin/(.+)".r
 val batScriptPattern   = "bin/([^.]+)\\.bat".r
 
 inConfig(Universal)(
   Seq(
-    mappings += (baseDirectory.value / s"amur-${network.value}.conf" -> "doc/amur.conf.sample"),
+    mappings += (baseDirectory.value / s"waves-${network.value}.conf" -> "doc/waves.conf.sample"),
     mappings := {
       val scriptSuffix = network.value.packageSuffix
       mappings.value.map {

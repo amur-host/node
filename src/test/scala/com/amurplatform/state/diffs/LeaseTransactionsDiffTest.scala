@@ -1,17 +1,17 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats._
-import com.amurplatform.state._
-import com.amurplatform.{NoShrink, TransactionGen}
+import com.wavesplatform.state._
+import com.wavesplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.account.Address
-import com.amurplatform.settings.TestFunctionalitySettings
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.transaction.GenesisTransaction
-import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.Address
+import com.wavesplatform.settings.TestFunctionalitySettings
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.transaction.GenesisTransaction
+import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.wavesplatform.transaction.transfer._
 
 class LeaseTransactionsDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 
@@ -21,7 +21,7 @@ class LeaseTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
 
   def total(l: LeaseBalance): Long = l.in - l.out
 
-  property("can lease/cancel lease preserving amur invariant") {
+  property("can lease/cancel lease preserving waves invariant") {
 
     val sunnyDayLeaseLeaseCancel: Gen[(GenesisTransaction, LeaseTransaction, LeaseCancelTransaction)] = for {
       master    <- accountGen
@@ -62,7 +62,7 @@ class LeaseTransactionsDiffTest extends PropSpec with PropertyChecks with Matche
     fee2             <- smallFeeGen
     unlease2         <- createLeaseCancel(master, lease.id(), fee2, ts + 1)
     // ensure recipient has enough effective balance
-    payment <- amurTransferGeneratorP(master, recpient) suchThat (_.amount > lease.amount)
+    payment <- wavesTransferGeneratorP(master, recpient) suchThat (_.amount > lease.amount)
   } yield (genesis, payment, lease, unlease, unlease2)
 
   property("cannot cancel lease twice after allowMultipleLeaseCancelTransactionUntilTimestamp") {

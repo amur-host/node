@@ -1,25 +1,25 @@
-package com.amurplatform.it.sync.transactions
+package com.wavesplatform.it.sync.transactions
 
-import com.amurplatform.crypto
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.sync.someAssetAmount
-import com.amurplatform.it.transactions.BaseTransactionSuite
-import com.amurplatform.it.util._
-import com.amurplatform.state._
+import com.wavesplatform.crypto
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.sync.someAssetAmount
+import com.wavesplatform.it.transactions.BaseTransactionSuite
+import com.wavesplatform.it.util._
+import com.wavesplatform.state._
 import org.asynchttpclient.util.HttpConstants
 import play.api.libs.json._
-import com.amurplatform.account.PublicKeyAccount
-import com.amurplatform.api.http.assets.SignedTransferV1Request
-import com.amurplatform.utils.{Base58, NTP}
-import com.amurplatform.transaction.assets.exchange._
-import com.amurplatform.it.sync._
-import com.amurplatform.transaction.transfer.MassTransferTransaction.Transfer
+import com.wavesplatform.account.PublicKeyAccount
+import com.wavesplatform.api.http.assets.SignedTransferV1Request
+import com.wavesplatform.utils.{Base58, NTP}
+import com.wavesplatform.transaction.assets.exchange._
+import com.wavesplatform.it.sync._
+import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
 
 import scala.util.Random
 
 class SignAndBroadcastApiSuite extends BaseTransactionSuite {
   test("height should always be reported for transactions") {
-    val txId = sender.transfer(firstAddress, secondAddress, 1.amur, fee = 1.amur).id
+    val txId = sender.transfer(firstAddress, secondAddress, 1.waves, fee = 1.waves).id
     nodes.waitForHeightAriseAndTxPresent(txId)
 
     val jsv1               = Json.parse((sender.get(s"/transactions/info/$txId")).getResponseBody)
@@ -98,7 +98,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
       val issueId = signBroadcastAndCalcFee(
         Json.obj("type"        -> 3,
                  "name"        -> "Gigacoin",
-                 "quantity"    -> 100.amur,
+                 "quantity"    -> 100.waves,
                  "description" -> "Gigacoin",
                  "sender"      -> firstAddress,
                  "decimals"    -> 8,
@@ -108,7 +108,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
       )
 
       signBroadcastAndCalcFee(
-        Json.obj("type" -> 5, "quantity" -> 200.amur, "assetId" -> issueId, "sender" -> firstAddress, "reissuable" -> false),
+        Json.obj("type" -> 5, "quantity" -> 200.waves, "assetId" -> issueId, "sender" -> firstAddress, "reissuable" -> false),
         usesProofs = isProof,
         version = v
       )
@@ -117,7 +117,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
                               usesProofs = isProof,
                               version = v)
 
-      signBroadcastAndCalcFee(Json.obj("type" -> 6, "quantity" -> 100.amur, "assetId" -> issueId, "sender" -> firstAddress),
+      signBroadcastAndCalcFee(Json.obj("type" -> 6, "quantity" -> 100.waves, "assetId" -> issueId, "sender" -> firstAddress),
                               usesProofs = isProof,
                               version = v)
 
@@ -127,7 +127,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
           "sender"     -> firstAddress,
           "recipient"  -> secondAddress,
           "assetId"    -> issueId,
-          "amount"     -> 1.amur,
+          "amount"     -> 1.waves,
           "attachment" -> Base58.encode("asset transfer".getBytes)
         ),
         usesProofs = isProof,
@@ -142,7 +142,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
         Json.obj("type"       -> 4,
                  "sender"     -> firstAddress,
                  "recipient"  -> secondAddress,
-                 "amount"     -> 1.amur,
+                 "amount"     -> 1.waves,
                  "attachment" -> Base58.encode("falafel".getBytes)),
         usesProofs = Option(v).nonEmpty,
         version = v
@@ -156,7 +156,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
         "type"       -> 11,
         "version"    -> 1,
         "sender"     -> firstAddress,
-        "transfers"  -> Json.toJson(Seq(Transfer(secondAddress, 1.amur), Transfer(thirdAddress, 2.amur))),
+        "transfers"  -> Json.toJson(Seq(Transfer(secondAddress, 1.waves), Transfer(thirdAddress, 2.waves))),
         "attachment" -> Base58.encode("masspay".getBytes)
       ),
       usesProofs = true
@@ -167,7 +167,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
     for (v <- supportedVersions) {
       val isProof = Option(v).nonEmpty
       val leaseId =
-        signBroadcastAndCalcFee(Json.obj("type" -> 8, "sender" -> firstAddress, "amount" -> 1.amur, "recipient" -> secondAddress),
+        signBroadcastAndCalcFee(Json.obj("type" -> 8, "sender" -> firstAddress, "amount" -> 1.waves, "recipient" -> secondAddress),
                                 usesProofs = isProof,
                                 version = v)
 
@@ -220,7 +220,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
         Json.obj(
           "type"        -> 3,
           "name"        -> "Sponsored Coin",
-          "quantity"    -> 100.amur,
+          "quantity"    -> 100.waves,
           "description" -> "Sponsored Coin",
           "sender"      -> firstAddress,
           "decimals"    -> 2,
@@ -260,7 +260,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
       "sender"    -> firstAddress,
       "recipient" -> secondAddress,
       "fee"       -> 100000,
-      "amount"    -> 1.amur
+      "amount"    -> 1.waves
     )
 
     val signedRequestResponse = sender.postJsonWithApiKey(s"/transactions/sign/$thirdAddress", json)
@@ -270,7 +270,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
     assert(PublicKeyAccount.fromBase58String(signedRequest.senderPublicKey).explicitGet().address == firstAddress)
     assert(signedRequest.recipient == secondAddress)
     assert(signedRequest.fee == 100000)
-    assert(signedRequest.amount == 1.amur)
+    assert(signedRequest.amount == 1.waves)
     val signature  = Base58.decode((signedRequestJson \ "signature").as[String]).get
     val tx         = signedRequest.toTx.explicitGet()
     val privateKey = pkByAddress(thirdAddress)
@@ -308,7 +308,7 @@ class SignAndBroadcastApiSuite extends BaseTransactionSuite {
       val mf                  = 300000L
       val buyAmount           = 2
       val sellAmount          = 3
-      val assetPair           = AssetPair.createAssetPair("AMUR", issueTx).get
+      val assetPair           = AssetPair.createAssetPair("WAVES", issueTx).get
       val buy                 = Order.buy(buyer, matcher, assetPair, buyPrice, buyAmount, time, expirationTimestamp, mf, o1ver)
       val sell                = Order.sell(seller, matcher, assetPair, sellPrice, sellAmount, time, expirationTimestamp, mf, o2ver)
 

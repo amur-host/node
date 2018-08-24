@@ -1,6 +1,6 @@
-package com.amurplatform.consensus
+package com.wavesplatform.consensus
 
-import com.amurplatform.crypto
+import com.wavesplatform.crypto
 
 trait PoSCalculator {
   def calculateBaseTarget(targetBlockDelaySeconds: Long,

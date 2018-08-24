@@ -1,8 +1,8 @@
-package com.amurplatform.lang.v1
+package com.wavesplatform.lang.v1
 
 import java.util.concurrent.TimeUnit
 
-import com.amurplatform.lang.v1.LangSerdeBenchmark.St
+import com.wavesplatform.lang.v1.LangSerdeBenchmark.St
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole
 

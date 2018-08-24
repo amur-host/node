@@ -1,10 +1,10 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger
 
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelFuture, ChannelHandlerContext}
 import io.netty.handler.ipfilter.AbstractRemoteAddressFilter

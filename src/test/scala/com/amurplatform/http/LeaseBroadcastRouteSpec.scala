@@ -1,11 +1,11 @@
-package com.amurplatform.http
+package com.wavesplatform.http
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.RequestGen
-import com.amurplatform.http.ApiMarshallers._
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.RequestGen
+import com.wavesplatform.http.ApiMarshallers._
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.state.diffs.TransactionDiffer.TransactionValidationError
+import com.wavesplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen.posNum
 import org.scalacheck.{Gen => G}
@@ -13,11 +13,11 @@ import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json._
 import play.api.libs.json._
-import com.amurplatform.api.http._
-import com.amurplatform.api.http.leasing.LeaseBroadcastApiRoute
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction.Transaction
-import com.amurplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
+import com.wavesplatform.api.http._
+import com.wavesplatform.api.http.leasing.LeaseBroadcastApiRoute
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction.Transaction
+import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
 
 class LeaseBroadcastRouteSpec extends RouteSpec("/leasing/broadcast/") with RequestGen with PathMockFactory with PropertyChecks {
   private val settings    = RestAPISettings.fromConfig(ConfigFactory.load())
@@ -56,7 +56,7 @@ class LeaseBroadcastRouteSpec extends RouteSpec("/leasing/broadcast/") with Requ
       def posting[A: Writes](v: A): RouteTestResult = Post(routePath("lease"), v) ~> route
 
       forAll(nonPositiveLong) { q =>
-        posting(lease.copy(amount = q)) should produce(NegativeAmount(s"$q of amur"))
+        posting(lease.copy(amount = q)) should produce(NegativeAmount(s"$q of waves"))
       }
       forAll(invalidBase58) { pk =>
         posting(lease.copy(senderPublicKey = pk)) should produce(InvalidAddress)

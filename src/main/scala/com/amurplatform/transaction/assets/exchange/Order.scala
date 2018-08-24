@@ -1,13 +1,13 @@
-package com.amurplatform.transaction.assets.exchange
+package com.wavesplatform.transaction.assets.exchange
 
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.crypto
-import com.amurplatform.serialization.{BytesSerializable, JsonSerializable}
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.assets.exchange.Validation.booleanOperators
-import com.amurplatform.utils.Base58
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.crypto
+import com.wavesplatform.serialization.{BytesSerializable, JsonSerializable}
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.assets.exchange.Validation.booleanOperators
+import com.wavesplatform.utils.Base58
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}

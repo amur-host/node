@@ -1,13 +1,13 @@
-package com.amurplatform.it.sync.matcher
+package com.wavesplatform.it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.amurplatform.it._
-import com.amurplatform.it.api.SyncHttpApi._
-import com.amurplatform.it.api.SyncMatcherHttpApi._
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.util._
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.wavesplatform.it._
+import com.wavesplatform.it.api.SyncHttpApi._
+import com.wavesplatform.it.api.SyncMatcherHttpApi._
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.util._
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -34,7 +34,7 @@ class OrderExclusionTestSuite
     val aliceAsset =
       aliceNode.issue(aliceNode.address, "AliceCoin", "AliceCoin for matcher's tests", AssetQuantity, 0, reissuable = false, 100000000L).id
     nodes.waitForHeightAriseAndTxPresent(aliceAsset)
-    val aliceAmurPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
+    val aliceWavesPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
 
     // check assets's balances
     aliceNode.assertAssetBalance(aliceNode.address, aliceAsset, AssetQuantity)
@@ -43,26 +43,26 @@ class OrderExclusionTestSuite
     "sell order could be placed and status it's correct" in {
       // Alice places sell order
       val aliceOrder = matcherNode
-        .placeOrder(aliceNode, aliceAmurPair, OrderType.SELL, 2.amur * Order.PriceConstant, 500, 2: Byte, 70.seconds)
+        .placeOrder(aliceNode, aliceWavesPair, OrderType.SELL, 2.waves * Order.PriceConstant, 500, 2: Byte, 70.seconds)
 
       aliceOrder.status shouldBe "OrderAccepted"
 
       val orderId = aliceOrder.message.id
 
       // Alice checks that the order in order book
-      matcherNode.orderStatus(orderId, aliceAmurPair).status shouldBe "Accepted"
+      matcherNode.orderStatus(orderId, aliceWavesPair).status shouldBe "Accepted"
       matcherNode.fullOrderHistory(aliceNode).head.status shouldBe "Accepted"
 
       // Alice check that order is correct
-      val orders = matcherNode.orderBook(aliceAmurPair)
+      val orders = matcherNode.orderBook(aliceWavesPair)
       orders.asks.head.amount shouldBe 500
-      orders.asks.head.price shouldBe 2.amur * Order.PriceConstant
+      orders.asks.head.price shouldBe 2.waves * Order.PriceConstant
 
       // sell order should be in the aliceNode orderbook
       matcherNode.fullOrderHistory(aliceNode).head.status shouldBe "Accepted"
 
       //wait for expiration of order
-      matcherNode.waitOrderStatus(aliceAmurPair, orderId, "Cancelled", 2.minutes)
+      matcherNode.waitOrderStatus(aliceWavesPair, orderId, "Cancelled", 2.minutes)
       matcherNode.fullOrderHistory(aliceNode).head.status shouldBe "Cancelled"
     }
   }
@@ -75,7 +75,7 @@ object OrderExclusionTestSuite {
   import NodeConfigs.Default
 
   private val matcherConfig = ConfigFactory.parseString(s"""
-       |amur {
+       |waves {
        |  matcher {
        |    enable = yes
        |    account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
@@ -92,7 +92,7 @@ object OrderExclusionTestSuite {
        |}""".stripMargin)
 
   private val nonGeneratingPeersConfig = ConfigFactory.parseString(
-    """amur {
+    """waves {
       | matcher.order-cleanup-interval = 30s
       | miner.enable=no
       |}""".stripMargin
@@ -103,7 +103,7 @@ object OrderExclusionTestSuite {
   val MatcherFee: Long     = 300000
   val TransactionFee: Long = 300000
 
-  // val Amur: Long = 100000000L
+  // val Waves: Long = 100000000L
 
   private val Configs: Seq[Config] = {
     val notMatchingNodes = Random.shuffle(Default.init).take(3)

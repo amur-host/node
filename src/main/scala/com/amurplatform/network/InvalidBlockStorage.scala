@@ -1,9 +1,9 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
 import com.google.common.cache.CacheBuilder
-import com.amurplatform.network.InvalidBlockStorageImpl._
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.ValidationError
+import com.wavesplatform.network.InvalidBlockStorageImpl._
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.ValidationError
 
 import scala.concurrent.duration.FiniteDuration
 

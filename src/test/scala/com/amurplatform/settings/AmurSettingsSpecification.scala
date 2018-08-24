@@ -1,21 +1,21 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import java.io.File
 
 import com.typesafe.config.ConfigFactory
 import org.scalatest.{FlatSpec, Matchers}
 
-class AmurSettingsSpecification extends FlatSpec with Matchers {
+class WavesSettingsSpecification extends FlatSpec with Matchers {
   private val home = System.getProperty("user.home")
 
   private def config(configName: String) =
-    AmurSettings.fromConfig(ConfigFactory.parseFile(new File(s"amur-$configName.conf")).withFallback(ConfigFactory.load()))
+    WavesSettings.fromConfig(ConfigFactory.parseFile(new File(s"waves-$configName.conf")).withFallback(ConfigFactory.load()))
 
-  def testConfig(configName: String)(additionalChecks: AmurSettings => Unit = _ => ()) {
-    "AmurSettings" should s"read values from default config with $configName overrides" in {
+  def testConfig(configName: String)(additionalChecks: WavesSettings => Unit = _ => ()) {
+    "WavesSettings" should s"read values from default config with $configName overrides" in {
       val settings = config(configName)
 
-      settings.directory should be(home + "/amur")
+      settings.directory should be(home + "/waves")
       settings.networkSettings should not be null
       settings.walletSettings should not be null
       settings.blockchainSettings should not be null
@@ -34,13 +34,13 @@ class AmurSettingsSpecification extends FlatSpec with Matchers {
   testConfig("testnet")()
   testConfig("devnet")()
 
-  "AmurSettings" should "resolve folders correctly" in {
-    val config = loadConfig(ConfigFactory.parseString(s"""amur {
+  "WavesSettings" should "resolve folders correctly" in {
+    val config = loadConfig(ConfigFactory.parseString(s"""waves {
          |  directory = "/xxx"
          |  data-directory = "/xxx/data"
          |}""".stripMargin))
 
-    val settings = AmurSettings.fromConfig(config.resolve())
+    val settings = WavesSettings.fromConfig(config.resolve())
 
     settings.directory should be("/xxx")
     settings.dataDirectory should be("/xxx/data")

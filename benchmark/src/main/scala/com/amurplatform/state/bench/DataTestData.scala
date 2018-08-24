@@ -1,8 +1,8 @@
-package com.amurplatform.state.bench
+package com.wavesplatform.state.bench
 
 import java.nio.charset.StandardCharsets
 
-import com.amurplatform.lang.v1.traits.DataType
+import com.wavesplatform.lang.v1.traits.DataType
 import scodec._
 import scodec.bits._
 import scodec.codecs._

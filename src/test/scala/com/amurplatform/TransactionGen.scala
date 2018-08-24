@@ -1,30 +1,30 @@
-package com.amurplatform
+package com.wavesplatform
 
 import cats.syntax.semigroup._
-import com.amurplatform.lang.Global
-import com.amurplatform.lang.v1.compiler.CompilerV1
-import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.amurplatform.lang.v1.testing.ScriptGen
-import com.amurplatform.settings.Constants
-import com.amurplatform.state._
-import com.amurplatform.state.diffs.ENOUGH_AMT
+import com.wavesplatform.lang.Global
+import com.wavesplatform.lang.v1.compiler.CompilerV1
+import com.wavesplatform.lang.v1.compiler.Terms._
+import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.wavesplatform.lang.v1.testing.ScriptGen
+import com.wavesplatform.settings.Constants
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs.ENOUGH_AMT
 import org.scalacheck.Gen.{alphaLowerChar, alphaUpperChar, frequency, numChar}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.{BeforeAndAfterAll, Suite}
-import com.amurplatform.account.PublicKeyAccount._
-import com.amurplatform.account._
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.assets._
-import com.amurplatform.transaction.assets.exchange._
-import com.amurplatform.transaction.lease._
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.Script
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.account.PublicKeyAccount._
+import com.wavesplatform.account._
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.assets._
+import com.wavesplatform.transaction.assets.exchange._
+import com.wavesplatform.transaction.lease._
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.Script
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.wavesplatform.transaction.transfer._
 import MassTransferTransaction.MaxTransferCount
-import com.amurplatform.utils.TimeImpl
+import com.wavesplatform.utils.TimeImpl
 
 import scala.util.Random
 
@@ -37,7 +37,7 @@ trait TransactionGen extends BeforeAndAfterAll with TransactionGenBase with Scri
 
 trait TransactionGenBase extends ScriptGen {
 
-  protected def amur(n: Float): Long = (n * 100000000L).toLong
+  protected def waves(n: Float): Long = (n * 100000000L).toLong
 
   def byteArrayGen(length: Int): Gen[Array[Byte]] = Gen.containerOfN[Array, Byte](length, Arbitrary.arbitrary[Byte])
 
@@ -99,8 +99,8 @@ trait TransactionGenBase extends ScriptGen {
   val maxOrderTimeGen: Gen[Long] = Gen.choose(10000L, Order.MaxLiveTime).map(_ + time.correctedTime())
   val timestampGen: Gen[Long]    = Gen.choose(1, Long.MaxValue - 100)
 
-  val amurAssetGen: Gen[Option[ByteStr]] = Gen.const(None)
-  val assetIdGen: Gen[Option[ByteStr]]    = Gen.frequency((1, amurAssetGen), (10, Gen.option(bytes32gen.map(ByteStr(_)))))
+  val wavesAssetGen: Gen[Option[ByteStr]] = Gen.const(None)
+  val assetIdGen: Gen[Option[ByteStr]]    = Gen.frequency((1, wavesAssetGen), (10, Gen.option(bytes32gen.map(ByteStr(_)))))
 
   val assetPairGen = assetIdGen.flatMap {
     case None => bytes32gen.map(b => AssetPair(None, Some(ByteStr(b))))
@@ -259,10 +259,10 @@ trait TransactionGenBase extends ScriptGen {
       (_, _, _, amount, _, _, feeAmount, attachment) <- transferParamGen
     } yield TransferTransactionV1.selfSigned(assetId, sender, recipient, amount, timestamp, feeAssetId, feeAmount, attachment).explicitGet()
 
-  def amurTransferGeneratorP(sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
+  def wavesTransferGeneratorP(sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
     transferGeneratorP(sender, recipient, None, None)
 
-  def amurTransferGeneratorP(timestamp: Long, sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
+  def wavesTransferGeneratorP(timestamp: Long, sender: PrivateKeyAccount, recipient: AddressOrAlias): Gen[TransferTransactionV1] =
     transferGeneratorP(timestamp, sender, recipient, None, None)
 
   def massTransferGeneratorP(sender: PrivateKeyAccount, transfers: List[ParsedTransfer], assetId: Option[AssetId]): Gen[MassTransferTransaction] =
@@ -271,7 +271,7 @@ trait TransactionGenBase extends ScriptGen {
       (_, _, _, _, timestamp, _, feeAmount, attachment) <- transferParamGen
     } yield MassTransferTransaction.selfSigned(version, assetId, sender, transfers, timestamp, feeAmount, attachment).explicitGet()
 
-  def createAmurTransfer(sender: PrivateKeyAccount,
+  def createWavesTransfer(sender: PrivateKeyAccount,
                           recipient: Address,
                           amount: Long,
                           fee: Long,
@@ -302,11 +302,11 @@ trait TransactionGenBase extends ScriptGen {
     } yield TransferTransactionV2.create(version, None, sender, recipient, amt, timestamp, None, fee, Array.emptyByteArray, proofs).explicitGet())
       .label("VersionedTransferTransactionP")
 
-  val transferWithAmurFeeGen = for {
+  val transferWithWavesFeeGen = for {
     (assetId, sender, recipient, amount, timestamp, _, feeAmount, attachment) <- transferParamGen
   } yield TransferTransactionV1.selfSigned(assetId, sender, recipient, amount, timestamp, None, feeAmount, attachment).explicitGet()
 
-  val selfTransferWithAmurFeeGen: Gen[TransferTransactionV1] = for {
+  val selfTransferWithWavesFeeGen: Gen[TransferTransactionV1] = for {
     (assetId, sender, _, amount, timestamp, _, feeAmount, attachment) <- transferParamGen
   } yield TransferTransactionV1.selfSigned(assetId, sender, sender, amount, timestamp, None, feeAmount, attachment).explicitGet()
 

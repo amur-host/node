@@ -1,4 +1,4 @@
-package com.amurplatform.it.util
+package com.wavesplatform.it.util
 
 import io.netty.util.{HashedWheelTimer, Timer}
 

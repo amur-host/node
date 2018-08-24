@@ -1,4 +1,4 @@
-package com.amurplatform.lang.v1.compiler
+package com.wavesplatform.lang.v1.compiler
 
 object Types {
 

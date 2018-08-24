@@ -1,9 +1,9 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
 import monix.eval.{Coeval, Task}
 import monix.execution.Scheduler
 import monix.execution.schedulers.SchedulerService
-import com.amurplatform.transaction.ValidationError.InvalidSignature
+import com.wavesplatform.transaction.ValidationError.InvalidSignature
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration

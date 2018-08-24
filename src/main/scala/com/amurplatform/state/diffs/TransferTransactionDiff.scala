@@ -1,12 +1,12 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats.implicits._
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.state._
-import com.amurplatform.account.Address
-import com.amurplatform.transaction.ValidationError
-import com.amurplatform.transaction.ValidationError.GenericError
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.state._
+import com.wavesplatform.account.Address
+import com.wavesplatform.transaction.ValidationError
+import com.wavesplatform.transaction.ValidationError.GenericError
+import com.wavesplatform.transaction.transfer._
 
 import scala.util.Right
 
@@ -39,8 +39,8 @@ object TransferTransactionDiff {
                 .assetDescription(aid)
                 .collect {
                   case desc if desc.sponsorship > 0 =>
-                    val feeInLocal = Sponsorship.toAmur(tx.fee, desc.sponsorship)
-                    Map(desc.issuer.toAddress -> Portfolio(-feeInAmur, LeaseBalance.empty, Map(aid -> tx.fee)))
+                    val feeInWaves = Sponsorship.toWaves(tx.fee, desc.sponsorship)
+                    Map(desc.issuer.toAddress -> Portfolio(-feeInWaves, LeaseBalance.empty, Map(aid -> tx.fee)))
                 }
                 .getOrElse(Map.empty)
               senderPf.combine(sponsorPf)

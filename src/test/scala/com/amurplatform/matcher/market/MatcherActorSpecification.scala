@@ -1,4 +1,4 @@
-package com.amurplatform.matcher.market
+package com.wavesplatform.matcher.market
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicReference
@@ -7,24 +7,24 @@ import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.http.scaladsl.model.StatusCodes
 import akka.persistence.inmemory.extension.{InMemoryJournalStorage, StorageExtension}
 import akka.testkit.{ImplicitSender, TestActorRef, TestKit, TestProbe}
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.amurplatform.matcher.api.StatusCodeMatcherResponse
-import com.amurplatform.matcher.fixtures.RestartableActor
-import com.amurplatform.matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse, MarketData}
-import com.amurplatform.matcher.market.OrderBookActor._
-import com.amurplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
-import com.amurplatform.matcher.model.OrderBook
-import com.amurplatform.matcher.{AssetPairBuilder, MatcherTestData}
-import com.amurplatform.settings.{TestFunctionalitySettings, WalletSettings}
-import com.amurplatform.state.{AssetDescription, Blockchain, ByteStr, LeaseBalance, Portfolio}
-import com.amurplatform.transaction.AssetId
-import com.amurplatform.transaction.assets.IssueTransactionV1
-import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.amurplatform.transaction.smart.script.ScriptCompiler
-import com.amurplatform.utils.{NTP, ScorexLogging}
-import com.amurplatform.utx.UtxPool
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.matcher.api.StatusCodeMatcherResponse
+import com.wavesplatform.matcher.fixtures.RestartableActor
+import com.wavesplatform.matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse, MarketData}
+import com.wavesplatform.matcher.market.OrderBookActor._
+import com.wavesplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
+import com.wavesplatform.matcher.model.OrderBook
+import com.wavesplatform.matcher.{AssetPairBuilder, MatcherTestData}
+import com.wavesplatform.settings.{TestFunctionalitySettings, WalletSettings}
+import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr, LeaseBalance, Portfolio}
+import com.wavesplatform.transaction.AssetId
+import com.wavesplatform.transaction.assets.IssueTransactionV1
+import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import com.wavesplatform.utils.{NTP, ScorexLogging}
+import com.wavesplatform.utx.UtxPool
+import com.wavesplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, Matchers, WordSpecLike}
@@ -192,7 +192,7 @@ class MatcherActorSpecification
 
   "GetMarketsResponse" should {
     "serialize to json" in {
-      val amur  = "AMUR"
+      val waves  = "WAVES"
       val a1Name = "BITCOIN"
       val a1     = strToSomeAssetId(a1Name)
 
@@ -204,10 +204,10 @@ class MatcherActorSpecification
 
       val now = NTP.correctedTime()
       val json =
-        GetMarketsResponse(Array(), Seq(MarketData(pair1, a1Name, amur, now, None, None), MarketData(pair2, a1Name, a2Name, now, None, None))).json
+        GetMarketsResponse(Array(), Seq(MarketData(pair1, a1Name, waves, now, None, None), MarketData(pair2, a1Name, a2Name, now, None, None))).json
 
-      ((json \ "markets")(0) \ "priceAsset").as[String] shouldBe AssetPair.LocalName
-      ((json \ "markets")(0) \ "priceAssetName").as[String] shouldBe amur
+      ((json \ "markets")(0) \ "priceAsset").as[String] shouldBe AssetPair.WavesName
+      ((json \ "markets")(0) \ "priceAssetName").as[String] shouldBe waves
       ((json \ "markets")(0) \ "amountAsset").as[String] shouldBe a1.get.base58
       ((json \ "markets")(0) \ "amountAssetName").as[String] shouldBe a1Name
       ((json \ "markets")(0) \ "created").as[Long] shouldBe now

@@ -1,12 +1,12 @@
-package com.amurplatform.api.http.leasing
+package com.wavesplatform.api.http.leasing
 
 import cats.implicits._
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
-import com.amurplatform.api.http.BroadcastRequest
-import com.amurplatform.transaction.lease.LeaseTransactionV2
-import com.amurplatform.transaction.{Proofs, ValidationError}
+import com.wavesplatform.account.{AddressOrAlias, PublicKeyAccount}
+import com.wavesplatform.api.http.BroadcastRequest
+import com.wavesplatform.transaction.lease.LeaseTransactionV2
+import com.wavesplatform.transaction.{Proofs, ValidationError}
 
 case class SignedLeaseV2Request(@ApiModelProperty(required = true)
                                 version: Byte,

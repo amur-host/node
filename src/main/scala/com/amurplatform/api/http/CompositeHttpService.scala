@@ -1,4 +1,4 @@
-package com.amurplatform.api.http
+package com.wavesplatform.api.http
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.model.HttpMethods._
@@ -9,9 +9,9 @@ import akka.http.scaladsl.server.RouteResult.Complete
 import akka.http.scaladsl.server.directives.{DebuggingDirectives, LoggingMagnet}
 import akka.http.scaladsl.server.{Directive0, Route, RouteResult}
 import akka.stream.ActorMaterializer
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.api.http.swagger.SwaggerDocService
-import com.amurplatform.utils.ScorexLogging
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.api.http.swagger.SwaggerDocService
+import com.wavesplatform.utils.ScorexLogging
 
 import scala.reflect.runtime.universe.Type
 

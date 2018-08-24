@@ -1,8 +1,8 @@
-package com.amurplatform.settings
+package com.wavesplatform.settings
 
 import com.typesafe.config.ConfigFactory
-import com.amurplatform.network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
-import com.amurplatform.settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
+import com.wavesplatform.network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
+import com.wavesplatform.settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -10,7 +10,7 @@ import scala.concurrent.duration._
 class SynchronizationSettingsSpecification extends FlatSpec with Matchers {
   "SynchronizationSettings" should "read values" in {
     val config = ConfigFactory.parseString("""
-        |amur {
+        |waves {
         |  synchronization {
         |    max-rollback = 100
         |    max-chain-length = 101

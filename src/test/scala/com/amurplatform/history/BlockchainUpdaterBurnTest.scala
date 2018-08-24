@@ -1,20 +1,20 @@
-package com.amurplatform.history
+package com.wavesplatform.history
 
-import com.amurplatform.TransactionGen
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.settings.{BlockchainSettings, AmurSettings}
-import com.amurplatform.state._
-import com.amurplatform.state.diffs.{ENOUGH_AMT, produce}
+import com.wavesplatform.TransactionGen
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.settings.{BlockchainSettings, WavesSettings}
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs.{ENOUGH_AMT, produce}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.amurplatform.transaction.GenesisTransaction
-import com.amurplatform.transaction.assets.{BurnTransactionV1, IssueTransactionV1, ReissueTransactionV1}
-import com.amurplatform.transaction.transfer.TransferTransactionV1
+import com.wavesplatform.transaction.GenesisTransaction
+import com.wavesplatform.transaction.assets.{BurnTransactionV1, IssueTransactionV1, ReissueTransactionV1}
+import com.wavesplatform.transaction.transfer.TransferTransactionV1
 
 class BlockchainUpdaterBurnTest extends PropSpec with PropertyChecks with DomainScenarioDrivenPropertyCheck with Matchers with TransactionGen {
 
-  val Amur: Long = 100000000
+  val Waves: Long = 100000000
 
   type Setup =
     (Long, GenesisTransaction, TransferTransactionV1, IssueTransactionV1, BurnTransactionV1, ReissueTransactionV1)
@@ -22,16 +22,16 @@ class BlockchainUpdaterBurnTest extends PropSpec with PropertyChecks with Domain
   val preconditions: Gen[Setup] = for {
     master                                                   <- accountGen
     ts                                                       <- timestampGen
-    transferAssetAmurFee                                    <- smallFeeGen
+    transferAssetWavesFee                                    <- smallFeeGen
     alice                                                    <- accountGen
     (_, assetName, description, quantity, decimals, _, _, _) <- issueParamGen
     genesis: GenesisTransaction = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
     masterToAlice: TransferTransactionV1 = TransferTransactionV1
-      .selfSigned(None, master, alice, 3 * Amur, ts + 1, None, transferAssetAmurFee, Array.emptyByteArray)
+      .selfSigned(None, master, alice, 3 * Waves, ts + 1, None, transferAssetWavesFee, Array.emptyByteArray)
       .explicitGet()
-    issue: IssueTransactionV1     = IssueTransactionV1.selfSigned(alice, assetName, description, quantity, decimals, false, Amur, ts + 100).explicitGet()
-    burn: BurnTransactionV1       = BurnTransactionV1.selfSigned(alice, issue.assetId(), quantity / 2, Amur, ts + 200).explicitGet()
-    reissue: ReissueTransactionV1 = ReissueTransactionV1.selfSigned(alice, issue.assetId(), burn.quantity, true, Amur, ts + 300).explicitGet()
+    issue: IssueTransactionV1     = IssueTransactionV1.selfSigned(alice, assetName, description, quantity, decimals, false, Waves, ts + 100).explicitGet()
+    burn: BurnTransactionV1       = BurnTransactionV1.selfSigned(alice, issue.assetId(), quantity / 2, Waves, ts + 200).explicitGet()
+    reissue: ReissueTransactionV1 = ReissueTransactionV1.selfSigned(alice, issue.assetId(), burn.quantity, true, Waves, ts + 300).explicitGet()
   } yield (ts, genesis, masterToAlice, issue, burn, reissue)
 
   val localBlockchainSettings: BlockchainSettings = DefaultBlockchainSettings.copy(
@@ -41,10 +41,10 @@ class BlockchainUpdaterBurnTest extends PropSpec with PropertyChecks with Domain
         blocksForFeatureActivation = 1,
         preActivatedFeatures = Map(BlockchainFeatures.NG.id -> 0, BlockchainFeatures.DataTransaction.id -> 0)
       ))
-  val localAmurSettings: AmurSettings = settings.copy(blockchainSettings = localBlockchainSettings)
+  val localWavesSettings: WavesSettings = settings.copy(blockchainSettings = localBlockchainSettings)
 
   property("issue -> burn -> reissue in sequential blocks works correctly") {
-    scenario(preconditions, localAmurSettings) {
+    scenario(preconditions, localWavesSettings) {
       case (domain, (ts, genesis, masterToAlice, issue, burn, reissue)) =>
         val block0 = customBuildBlockOfTxs(randomSig, Seq(genesis), defaultSigner, 1, ts)
         val block1 = customBuildBlockOfTxs(block0.uniqueId, Seq(masterToAlice), defaultSigner, 1, ts + 150)
@@ -70,7 +70,7 @@ class BlockchainUpdaterBurnTest extends PropSpec with PropertyChecks with Domain
   }
 
   property("issue -> burn -> reissue in micro blocks works correctly") {
-    scenario(preconditions, localAmurSettings) {
+    scenario(preconditions, localWavesSettings) {
       case (domain, (ts, genesis, masterToAlice, issue, burn, reissue)) =>
         val block0 = customBuildBlockOfTxs(randomSig, Seq(genesis), defaultSigner, 1, ts)
         val block1 = customBuildBlockOfTxs(block0.uniqueId, Seq(masterToAlice), defaultSigner, 1, ts + 150)

@@ -1,10 +1,10 @@
-package com.amurplatform
+package com.wavesplatform
 
-import com.amurplatform.account.{Address, AddressOrAlias, Alias}
-import com.amurplatform.block.Block
-import com.amurplatform.transaction.ValidationError.{AliasDoesNotExist, GenericError}
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
+import com.wavesplatform.account.{Address, AddressOrAlias, Alias}
+import com.wavesplatform.block.Block
+import com.wavesplatform.transaction.ValidationError.{AliasDoesNotExist, GenericError}
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
 
 import scala.reflect.ClassTag
 import scala.util.Try

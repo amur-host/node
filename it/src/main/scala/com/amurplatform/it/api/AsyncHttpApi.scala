@@ -1,24 +1,24 @@
-package com.amurplatform.it.api
+package com.wavesplatform.it.api
 
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.util.concurrent.TimeoutException
 
-import com.amurplatform.api.http.PeersApiRoute.{ConnectReq, connectFormat}
-import com.amurplatform.api.http.alias.CreateAliasV1Request
-import com.amurplatform.api.http.assets._
-import com.amurplatform.api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
-import com.amurplatform.api.http.{AddressApiRoute, DataRequest}
-import com.amurplatform.features.api.ActivationStatus
-import com.amurplatform.http.DebugApiRoute._
-import com.amurplatform.http.DebugMessage._
-import com.amurplatform.http.{DebugMessage, RollbackParams, api_key}
-import com.amurplatform.it.Node
-import com.amurplatform.it.util.GlobalTimer.{instance => timer}
-import com.amurplatform.it.util._
-import com.amurplatform.state.{DataEntry, Portfolio}
-import com.amurplatform.transaction.transfer.MassTransferTransaction.Transfer
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.api.http.PeersApiRoute.{ConnectReq, connectFormat}
+import com.wavesplatform.api.http.alias.CreateAliasV1Request
+import com.wavesplatform.api.http.assets._
+import com.wavesplatform.api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
+import com.wavesplatform.api.http.{AddressApiRoute, DataRequest}
+import com.wavesplatform.features.api.ActivationStatus
+import com.wavesplatform.http.DebugApiRoute._
+import com.wavesplatform.http.DebugMessage._
+import com.wavesplatform.http.{DebugMessage, RollbackParams, api_key}
+import com.wavesplatform.it.Node
+import com.wavesplatform.it.util.GlobalTimer.{instance => timer}
+import com.wavesplatform.it.util._
+import com.wavesplatform.state.{DataEntry, Portfolio}
+import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
+import com.wavesplatform.transaction.transfer._
 import org.asynchttpclient.Dsl.{get => _get, post => _post}
 import org.asynchttpclient._
 import org.asynchttpclient.util.HttpConstants
@@ -191,7 +191,7 @@ object AsyncHttpApi extends Assertions {
       postJson("/assets/transfer", TransferV1Request(assetId, feeAssetId, amount, fee, sourceAddress, None, recipient)).as[Transaction]
 
     def payment(sourceAddress: String, recipient: String, amount: Long, fee: Long): Future[Transaction] =
-      postJson("/amur/payment", PaymentRequest(amount, fee, sourceAddress, recipient)).as[Transaction]
+      postJson("/waves/payment", PaymentRequest(amount, fee, sourceAddress, recipient)).as[Transaction]
 
     def lease(sourceAddress: String, recipient: String, amount: Long, fee: Long): Future[Transaction] =
       postJson("/leasing/lease", LeaseV1Request(sourceAddress, amount, fee, recipient)).as[Transaction]
@@ -451,7 +451,7 @@ object AsyncHttpApi extends Assertions {
         .toScala
     }
 
-    def debugStateAt(height: Long): Future[Map[String, Long]] = getWithApiKey(s"/debug/stateAmur/$height").as[Map[String, Long]]
+    def debugStateAt(height: Long): Future[Map[String, Long]] = getWithApiKey(s"/debug/stateWaves/$height").as[Map[String, Long]]
 
     def debugPortfoliosFor(address: String, considerUnspent: Boolean): Future[Portfolio] = {
       getWithApiKey(s"/debug/portfolios/$address?considerUnspent=$considerUnspent")

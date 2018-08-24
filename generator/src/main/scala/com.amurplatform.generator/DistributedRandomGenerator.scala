@@ -1,4 +1,4 @@
-package com.amurplatform.generator
+package com.wavesplatform.generator
 
 import scala.collection.immutable.TreeMap
 

@@ -1,21 +1,21 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
-import com.amurplatform.account.{Address, PrivateKeyAccount}
-import com.amurplatform.crypto.SignatureLength
-import com.amurplatform.db.WithState
-import com.amurplatform.features._
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.lang.v1.compiler.Terms.TRUE
-import com.amurplatform.settings.{TestFunctionalitySettings, AmurSettings}
-import com.amurplatform.state.reader.LeaseDetails
-import com.amurplatform.transaction.ValidationError.AliasDoesNotExist
-import com.amurplatform.transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
-import com.amurplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.transaction.transfer._
-import com.amurplatform.transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction}
-import com.amurplatform.{NoShrink, TestTime, TransactionGen, history}
+import com.wavesplatform.account.{Address, PrivateKeyAccount}
+import com.wavesplatform.crypto.SignatureLength
+import com.wavesplatform.db.WithState
+import com.wavesplatform.features._
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.lang.v1.compiler.Terms.TRUE
+import com.wavesplatform.settings.{TestFunctionalitySettings, WavesSettings}
+import com.wavesplatform.state.reader.LeaseDetails
+import com.wavesplatform.transaction.ValidationError.AliasDoesNotExist
+import com.wavesplatform.transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
+import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.transaction.transfer._
+import com.wavesplatform.transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction}
+import com.wavesplatform.{NoShrink, TestTime, TransactionGen, history}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
@@ -34,7 +34,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
     TransferTransactionV1.selfSigned(None, sender, recipient, amount, nextTs, None, 1, Array.empty[Byte]).explicitGet()
 
   private def randomOp(sender: PrivateKeyAccount, recipient: Address, amount: Long, op: Int) = {
-    import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+    import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
     op match {
       case 1 =>
         val lease = LeaseTransactionV1.selfSigned(sender, amount, 100000, nextTs, recipient).explicitGet()
@@ -74,7 +74,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
     "forget rollbacked transaction for querying" in forAll(accountGen, accountGen, Gen.nonEmptyListOf(Gen.choose(1, 10))) {
       case (sender, recipient, txCount) =>
         withDomain(createSettings(BlockchainFeatures.MassTransfer -> 0)) { d =>
-          d.appendBlock(genesisBlock(nextTs, sender, com.amurplatform.state.diffs.ENOUGH_AMT))
+          d.appendBlock(genesisBlock(nextTs, sender, com.wavesplatform.state.diffs.ENOUGH_AMT))
 
           val genesisSignature = d.lastBlockId
 
@@ -113,7 +113,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
         }
     }
 
-    "amur balances" in forAll(accountGen, positiveLongGen, accountGen, Gen.nonEmptyListOf(Gen.choose(1, 10))) {
+    "waves balances" in forAll(accountGen, positiveLongGen, accountGen, Gen.nonEmptyListOf(Gen.choose(1, 10))) {
       case (sender, initialBalance, recipient, txCount) =>
         withDomain() { d =>
           d.appendBlock(genesisBlock(nextTs, sender, initialBalance))
@@ -338,14 +338,14 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
         }
     }
 
-    def createSettings(preActivatedFeatures: (BlockchainFeature, Int)*): AmurSettings = {
+    def createSettings(preActivatedFeatures: (BlockchainFeature, Int)*): WavesSettings = {
       val tfs = TestFunctionalitySettings.Enabled.copy(
         preActivatedFeatures = preActivatedFeatures.map { case (k, v) => k.id -> v }(collection.breakOut),
         blocksForFeatureActivation = 1,
         featureCheckBlocksPeriod = 1
       )
 
-      history.DefaultAmurSettings.copy(blockchainSettings = history.DefaultAmurSettings.blockchainSettings.copy(functionalitySettings = tfs))
+      history.DefaultWavesSettings.copy(blockchainSettings = history.DefaultWavesSettings.blockchainSettings.copy(functionalitySettings = tfs))
     }
 
     "asset sponsorship" in forAll(for {

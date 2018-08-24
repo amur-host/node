@@ -1,18 +1,18 @@
-package com.amurplatform.state
+package com.wavesplatform.state
 
-import com.amurplatform.consensus.{GeneratingBalanceProvider, PoSSelector, TransactionsOrdering}
-import com.amurplatform.mining._
-import com.amurplatform.network._
-import com.amurplatform.settings.{FunctionalitySettings, AmurSettings}
-import com.amurplatform.utx.UtxPool
+import com.wavesplatform.consensus.{GeneratingBalanceProvider, PoSSelector, TransactionsOrdering}
+import com.wavesplatform.mining._
+import com.wavesplatform.network._
+import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings}
+import com.wavesplatform.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import monix.eval.Task
-import com.amurplatform.block.Block
-import com.amurplatform.transaction.ValidationError.{BlockAppendError, BlockFromFuture, GenericError}
-import com.amurplatform.transaction._
+import com.wavesplatform.block.Block
+import com.wavesplatform.transaction.ValidationError.{BlockAppendError, BlockFromFuture, GenericError}
+import com.wavesplatform.transaction._
 import cats.implicits._
-import com.amurplatform.utils.{ScorexLogging, Time}
+import com.wavesplatform.utils.{ScorexLogging, Time}
 
 import scala.util.{Left, Right}
 
@@ -53,7 +53,7 @@ package object appender extends ScorexLogging {
                                     utxStorage: UtxPool,
                                     pos: PoSSelector,
                                     time: Time,
-                                    settings: AmurSettings)(block: Block): Either[ValidationError, Option[Int]] =
+                                    settings: WavesSettings)(block: Block): Either[ValidationError, Option[Int]] =
     for {
       _ <- Either.cond(
         checkpoint.isBlockValid(block.signerData.signature, blockchainUpdater.height + 1),
@@ -87,7 +87,7 @@ package object appender extends ScorexLogging {
       maybeDiscardedTxs.map(_ => baseHeight)
     }
 
-  private def blockConsensusValidation(blockchain: Blockchain, settings: AmurSettings, pos: PoSSelector, currentTs: Long, block: Block)(
+  private def blockConsensusValidation(blockchain: Blockchain, settings: WavesSettings, pos: PoSSelector, currentTs: Long, block: Block)(
       genBalance: Int => Either[String, Long]): Either[ValidationError, Unit] = {
 
     val blockTime = block.timestamp

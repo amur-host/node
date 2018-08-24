@@ -1,12 +1,12 @@
-package com.amurplatform.it.async.activation
+package com.wavesplatform.it.async.activation
 
 import com.typesafe.config.Config
-import com.amurplatform.features.BlockchainFeatureStatus
-import com.amurplatform.features.api.{FeatureActivationStatus, NodeFeatureStatus}
-import com.amurplatform.it.api.AsyncHttpApi._
-import com.amurplatform.it.api.BlockHeaders
-import com.amurplatform.it.transactions.NodesFromDocker
-import com.amurplatform.it.{NodeConfigs, ReportingTestName}
+import com.wavesplatform.features.BlockchainFeatureStatus
+import com.wavesplatform.features.api.{FeatureActivationStatus, NodeFeatureStatus}
+import com.wavesplatform.it.api.AsyncHttpApi._
+import com.wavesplatform.it.api.BlockHeaders
+import com.wavesplatform.it.transactions.NodesFromDocker
+import com.wavesplatform.it.{NodeConfigs, ReportingTestName}
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.Await
@@ -30,7 +30,7 @@ class NotActivateFeatureTestSuite
     NodeConfigs.newBuilder
       .overrideBase(
         _.raw(
-          s"""amur {
+          s"""waves {
          |  blockchain {
          |    custom {
          |      functionality {

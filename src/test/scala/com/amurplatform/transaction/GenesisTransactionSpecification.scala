@@ -1,11 +1,11 @@
-package com.amurplatform.transaction
+package com.wavesplatform.transaction
 
-import com.amurplatform.state.EitherExt2
-import com.amurplatform.utils.Base58
+import com.wavesplatform.state.EitherExt2
+import com.wavesplatform.utils.Base58
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
 
 class GenesisTransactionSpecification extends PropSpec with PropertyChecks with Matchers {
 

@@ -1,6 +1,6 @@
-package com.amurplatform.lang.v1.traits
+package com.wavesplatform.lang.v1.traits
 
-import com.amurplatform.lang.v1.traits.domain._
+import com.wavesplatform.lang.v1.traits.domain._
 import shapeless._
 
 trait Environment {

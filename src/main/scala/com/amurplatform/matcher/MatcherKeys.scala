@@ -1,19 +1,19 @@
-package com.amurplatform.matcher
+package com.wavesplatform.matcher
 
 import java.nio.ByteBuffer
 
 import com.google.common.primitives.Longs
-import com.amurplatform.account.Address
-import com.amurplatform.database.Key
-import com.amurplatform.matcher.model.OrderInfo
-import com.amurplatform.state.ByteStr
-import com.amurplatform.transaction.AssetId
-import com.amurplatform.transaction.assets.exchange.{ExchangeTransaction, Order, OrderV1, OrderV2}
+import com.wavesplatform.account.Address
+import com.wavesplatform.database.Key
+import com.wavesplatform.matcher.model.OrderInfo
+import com.wavesplatform.state.ByteStr
+import com.wavesplatform.transaction.AssetId
+import com.wavesplatform.transaction.assets.exchange.{ExchangeTransaction, Order, OrderV1, OrderV2}
 
 import scala.util.Failure
 
 object MatcherKeys {
-  import com.amurplatform.database.KeyHelpers._
+  import com.wavesplatform.database.KeyHelpers._
 
   private def assetIdToBytes(assetId: Option[AssetId]): Array[Byte] = assetId.fold(Array.emptyByteArray)(_.arr)
 

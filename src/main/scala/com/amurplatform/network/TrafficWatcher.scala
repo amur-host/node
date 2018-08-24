@@ -1,6 +1,6 @@
-package com.amurplatform.network
+package com.wavesplatform.network
 
-import com.amurplatform.network.message.{Message => ScorexMessage}
+import com.wavesplatform.network.message.{Message => ScorexMessage}
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelDuplexHandler, ChannelHandlerContext, ChannelPromise}
 import kamon.Kamon

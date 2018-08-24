@@ -1,18 +1,18 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats._
-import com.amurplatform.features.FeatureProvider._
-import com.amurplatform.features.{BlockchainFeature, BlockchainFeatures}
-import com.amurplatform.settings.FunctionalitySettings
-import com.amurplatform.state._
-import com.amurplatform.account.Address
-import com.amurplatform.transaction.ValidationError._
-import com.amurplatform.transaction._
-import com.amurplatform.transaction.assets._
-import com.amurplatform.transaction.assets.exchange._
-import com.amurplatform.transaction.lease._
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.transfer._
+import com.wavesplatform.features.FeatureProvider._
+import com.wavesplatform.features.{BlockchainFeature, BlockchainFeatures}
+import com.wavesplatform.settings.FunctionalitySettings
+import com.wavesplatform.state._
+import com.wavesplatform.account.Address
+import com.wavesplatform.transaction.ValidationError._
+import com.wavesplatform.transaction._
+import com.wavesplatform.transaction.assets._
+import com.wavesplatform.transaction.assets.exchange._
+import com.wavesplatform.transaction.lease._
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.{Left, Right}
@@ -39,15 +39,15 @@ object CommonValidation {
         }
 
         val spendings       = Monoid.combine(amountDiff, feeDiff)
-        val oldAmurBalance = blockchain.portfolio(sender).balance
+        val oldWavesBalance = blockchain.portfolio(sender).balance
 
-        val newAmurBalance = oldAmurBalance + spendings.balance
-        if (newAmurBalance < 0) {
+        val newWavesBalance = oldWavesBalance + spendings.balance
+        if (newWavesBalance < 0) {
           Left(
             GenericError(
               "Attempt to transfer unavailable funds: Transaction application leads to " +
-                s"negative amur balance to (at least) temporary negative state, current balance equals $oldAmurBalance, " +
-                s"spends equals ${spendings.balance}, result is $newAmurBalance"))
+                s"negative waves balance to (at least) temporary negative state, current balance equals $oldWavesBalance, " +
+                s"spends equals ${spendings.balance}, result is $newWavesBalance"))
         } else if (spendings.assets.nonEmpty) {
           val oldAssetBalances = blockchain.portfolio(sender).assets
           val balanceError = spendings.assets.collectFirst {
@@ -168,12 +168,12 @@ object CommonValidation {
             case Some(assetId) =>
               for {
                 assetInfo <- blockchain.assetDescription(assetId).toRight(GenericError(s"Asset $assetId does not exist, cannot be used to pay fees"))
-                amurFee <- Either.cond(
+                wavesFee <- Either.cond(
                   assetInfo.sponsorship > 0,
                   feeInUnits * Sponsorship.FeeUnit,
                   GenericError(s"Asset $assetId is not sponsored, cannot be used to pay fees")
                 )
-              } yield (Some((assetId, assetInfo)), amurFee)
+              } yield (Some((assetId, assetInfo)), wavesFee)
           }
         } yield r
 
@@ -202,8 +202,8 @@ object CommonValidation {
       .flatMap(feeAfterSmartTokens)
       .flatMap(feeAfterSmartAccounts)
       .map {
-        case (Some((assetId, assetInfo)), amountInAmur) => (Some(assetId), Sponsorship.fromAmur(amountInAmur, assetInfo.sponsorship))
-        case (None, amountInAmur)                       => (None, amountInAmur)
+        case (Some((assetId, assetInfo)), amountInWaves) => (Some(assetId), Sponsorship.fromWaves(amountInWaves, assetInfo.sponsorship))
+        case (None, amountInWaves)                       => (None, amountInWaves)
       }
   }
 
@@ -219,12 +219,12 @@ object CommonValidation {
             case Some(x) =>
               for {
                 assetInfo <- blockchain.assetDescription(x).toRight(GenericError(s"Asset $x does not exist, cannot be used to pay fees"))
-                amurFee <- Either.cond(
+                wavesFee <- Either.cond(
                   assetInfo.sponsorship > 0,
-                  Sponsorship.toAmur(feeAmount, assetInfo.sponsorship),
+                  Sponsorship.toWaves(feeAmount, assetInfo.sponsorship),
                   GenericError(s"Asset $x is not sponsored, cannot be used to pay fees")
                 )
-              } yield amurFee
+              } yield wavesFee
           }
           minimumFee    = feeInUnits * Sponsorship.FeeUnit
           restFeeAmount = feeAmount - minimumFee
@@ -232,7 +232,7 @@ object CommonValidation {
             restFeeAmount >= 0,
             (),
             GenericError(
-              s"Fee in ${feeAssetId.fold("AMUR")(_.toString)} for ${tx.builder.classTag} does not exceed minimal value of $minimumFee AMUR: $feeAmount")
+              s"Fee in ${feeAssetId.fold("WAVES")(_.toString)} for ${tx.builder.classTag} does not exceed minimal value of $minimumFee WAVES: $feeAmount")
           )
         } yield (None, restFeeAmount)
       }
@@ -243,7 +243,7 @@ object CommonValidation {
       if (isSmartToken) {
         val (feeAssetId, feeAmount) = inputFee
         for {
-          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions with smart tokens require Amur as fee"))
+          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions with smart tokens require Waves as fee"))
           restFeeAmount = feeAmount - ScriptExtraFee
           _ <- Either.cond(
             restFeeAmount >= 0,
@@ -262,7 +262,7 @@ object CommonValidation {
       if (hasSmartAccountScript) {
         val (feeAssetId, feeAmount) = inputFee
         for {
-          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions from scripted accounts require Amur as fee"))
+          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions from scripted accounts require Waves as fee"))
           restFeeAmount = feeAmount - ScriptExtraFee
           _ <- Either.cond(
             restFeeAmount >= 0,

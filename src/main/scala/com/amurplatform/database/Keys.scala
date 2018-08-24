@@ -1,12 +1,12 @@
-package com.amurplatform.database
+package com.wavesplatform.database
 
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.{Ints, Longs}
-import com.amurplatform.account.{Address, Alias}
-import com.amurplatform.block.{Block, BlockHeader}
-import com.amurplatform.state._
-import com.amurplatform.transaction.Transaction
-import com.amurplatform.transaction.smart.script.{Script, ScriptReader}
+import com.wavesplatform.account.{Address, Alias}
+import com.wavesplatform.block.{Block, BlockHeader}
+import com.wavesplatform.state._
+import com.wavesplatform.transaction.Transaction
+import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
 
 object Keys {
   import KeyHelpers._
@@ -24,8 +24,8 @@ object Keys {
 
   def heightOf(blockId: ByteStr): Key[Option[Int]] = Key.opt[Int](hash(4, blockId), Ints.fromByteArray, Ints.toByteArray)
 
-  def amurBalanceHistory(addressId: BigInt): Key[Seq[Int]] = historyKey(5, addressId.toByteArray)
-  def amurBalance(addressId: BigInt)(height: Int): Key[Long] =
+  def wavesBalanceHistory(addressId: BigInt): Key[Seq[Int]] = historyKey(5, addressId.toByteArray)
+  def wavesBalance(addressId: BigInt)(height: Int): Key[Long] =
     Key(hAddr(6, height, addressId), Option(_).fold(0L)(Longs.fromByteArray), Longs.toByteArray)
 
   def assetList(addressId: BigInt): Key[Set[ByteStr]]                         = Key(addr(7, addressId), readTxIds(_).toSet, assets => writeTxIds(assets.toSeq))
@@ -81,8 +81,8 @@ object Keys {
   def sponsorshipHistory(assetId: ByteStr): Key[Seq[Int]]               = historyKey(35, assetId.arr)
   def sponsorship(assetId: ByteStr)(height: Int): Key[SponsorshipValue] = Key(hBytes(36, height, assetId.arr), readSponsorship, writeSponsorship)
 
-  val addressesForAmurSeqNr: Key[Int]                = intKey(37)
-  def addressesForAmur(seqNr: Int): Key[Seq[BigInt]] = Key(h(38, seqNr), readBigIntSeq, writeBigIntSeq)
+  val addressesForWavesSeqNr: Key[Int]                = intKey(37)
+  def addressesForWaves(seqNr: Int): Key[Seq[BigInt]] = Key(h(38, seqNr), readBigIntSeq, writeBigIntSeq)
 
   def addressesForAssetSeqNr(assetId: ByteStr): Key[Int]                = bytesSeqNr(39, assetId.arr)
   def addressesForAsset(assetId: ByteStr, seqNr: Int): Key[Seq[BigInt]] = Key(hBytes(40, seqNr, assetId.arr), readBigIntSeq, writeBigIntSeq)

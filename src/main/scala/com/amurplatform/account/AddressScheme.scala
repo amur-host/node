@@ -1,4 +1,4 @@
-package com.amurplatform.account
+package com.wavesplatform.account
 
 abstract class AddressScheme {
   val chainId: Byte

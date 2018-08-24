@@ -1,27 +1,27 @@
-package com.amurplatform.state.diffs
+package com.wavesplatform.state.diffs
 
 import cats.{Order => _, _}
-import com.amurplatform.OrderOps._
-import com.amurplatform.account.{AddressScheme, PrivateKeyAccount}
-import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.lagonaki.mocks.TestBlock
-import com.amurplatform.lang.directives.DirectiveParser
-import com.amurplatform.lang.v1.ScriptEstimator
-import com.amurplatform.lang.v1.compiler.Terms.TRUE
-import com.amurplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
-import com.amurplatform.settings.{Constants, TestFunctionalitySettings}
-import com.amurplatform.state._
-import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
-import com.amurplatform.transaction.ValidationError.AccountBalanceError
-import com.amurplatform.transaction.assets.exchange.{Order, _}
-import com.amurplatform.transaction.assets.{IssueTransaction, IssueTransactionV1, IssueTransactionV2}
-import com.amurplatform.transaction.smart.SetScriptTransaction
-import com.amurplatform.transaction.smart.script.v1.ScriptV1
-import com.amurplatform.transaction.smart.script.{Script, ScriptCompiler}
-import com.amurplatform.transaction.transfer.TransferTransaction
-import com.amurplatform.transaction.{GenesisTransaction, Proofs, Transaction, ValidationError}
-import com.amurplatform.utils.functionCosts
-import com.amurplatform.{NoShrink, TransactionGen, crypto}
+import com.wavesplatform.OrderOps._
+import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount}
+import com.wavesplatform.features.BlockchainFeatures
+import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.wavesplatform.lang.directives.DirectiveParser
+import com.wavesplatform.lang.v1.ScriptEstimator
+import com.wavesplatform.lang.v1.compiler.Terms.TRUE
+import com.wavesplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
+import com.wavesplatform.settings.{Constants, TestFunctionalitySettings}
+import com.wavesplatform.state._
+import com.wavesplatform.state.diffs.TransactionDiffer.TransactionValidationError
+import com.wavesplatform.transaction.ValidationError.AccountBalanceError
+import com.wavesplatform.transaction.assets.exchange.{Order, _}
+import com.wavesplatform.transaction.assets.{IssueTransaction, IssueTransactionV1, IssueTransactionV2}
+import com.wavesplatform.transaction.smart.SetScriptTransaction
+import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
+import com.wavesplatform.transaction.transfer.TransferTransaction
+import com.wavesplatform.transaction.{GenesisTransaction, Proofs, Transaction, ValidationError}
+import com.wavesplatform.utils.functionCosts
+import com.wavesplatform.{NoShrink, TransactionGen, crypto}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Inside, Matchers, PropSpec}
@@ -36,7 +36,7 @@ class ExchangeTransactionDiffTest extends PropSpec with PropertyChecks with Matc
     )
   )
 
-  property("preserves amur invariant, stores match info, rewards matcher") {
+  property("preserves waves invariant, stores match info, rewards matcher") {
 
     val preconditionsAndExchange: Gen[(GenesisTransaction, GenesisTransaction, IssueTransaction, IssueTransaction, ExchangeTransaction)] = for {
       buyer  <- accountGen
@@ -93,7 +93,7 @@ class ExchangeTransactionDiffTest extends PropSpec with PropertyChecks with Matc
     }
   }
 
-  property("buy amur without enough money for fee") {
+  property("buy waves without enough money for fee") {
     val preconditions: Gen[(GenesisTransaction, GenesisTransaction, IssueTransactionV1, ExchangeTransaction)] = for {
       buyer  <- accountGen
       seller <- accountGen
@@ -452,8 +452,8 @@ class ExchangeTransactionDiffTest extends PropSpec with PropertyChecks with Matc
       seller <- accountGen
       ts     <- timestampGen
       genesis = GenesisTransaction.create(master, Long.MaxValue, ts).explicitGet()
-      tr1     = createAmurTransfer(master, buyer.toAddress, Long.MaxValue / 3, enoughFee, ts + 1).explicitGet()
-      tr2     = createAmurTransfer(master, seller.toAddress, Long.MaxValue / 3, enoughFee, ts + 2).explicitGet()
+      tr1     = createWavesTransfer(master, buyer.toAddress, Long.MaxValue / 3, enoughFee, ts + 1).explicitGet()
+      tr2     = createWavesTransfer(master, seller.toAddress, Long.MaxValue / 3, enoughFee, ts + 2).explicitGet()
       asset1 = IssueTransactionV2
         .selfSigned(2: Byte, chainId, buyer, "Asset#1".getBytes, "".getBytes, 1000000, 8, false, None, enoughFee, ts + 3)
         .explicitGet()

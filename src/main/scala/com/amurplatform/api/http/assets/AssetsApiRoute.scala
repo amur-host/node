@@ -1,20 +1,20 @@
-package com.amurplatform.api.http.assets
+package com.wavesplatform.api.http.assets
 
 import akka.http.scaladsl.server.Route
 import com.google.common.base.Charsets
-import com.amurplatform.account.Address
-import com.amurplatform.api.http._
-import com.amurplatform.http.BroadcastRoute
-import com.amurplatform.settings.RestAPISettings
-import com.amurplatform.state.{Blockchain, ByteStr}
-import com.amurplatform.transaction.assets.IssueTransaction
-import com.amurplatform.transaction.assets.exchange.Order
-import com.amurplatform.transaction.assets.exchange.OrderJson._
-import com.amurplatform.transaction.smart.script.ScriptCompiler
-import com.amurplatform.transaction.{AssetIdStringLength, TransactionFactory}
-import com.amurplatform.utils.{Base58, Time}
-import com.amurplatform.utx.UtxPool
-import com.amurplatform.wallet.Wallet
+import com.wavesplatform.account.Address
+import com.wavesplatform.api.http._
+import com.wavesplatform.http.BroadcastRoute
+import com.wavesplatform.settings.RestAPISettings
+import com.wavesplatform.state.{Blockchain, ByteStr}
+import com.wavesplatform.transaction.assets.IssueTransaction
+import com.wavesplatform.transaction.assets.exchange.Order
+import com.wavesplatform.transaction.assets.exchange.OrderJson._
+import com.wavesplatform.transaction.smart.script.ScriptCompiler
+import com.wavesplatform.transaction.{AssetIdStringLength, TransactionFactory}
+import com.wavesplatform.utils.{Base58, Time}
+import com.wavesplatform.utx.UtxPool
+import com.wavesplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
@@ -60,7 +60,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
           case Success(byteArray) =>
             Json.toJson(blockchain.assetDistribution(ByteStr(byteArray)).map { case (a, b) => a.stringRepr -> b })
           case Failure(_) =>
-            ApiError.fromValidationError(com.amurplatform.transaction.ValidationError.GenericError("Must be base58-encoded assetId"))
+            ApiError.fromValidationError(com.wavesplatform.transaction.ValidationError.GenericError("Must be base58-encoded assetId"))
         }
       }
     }
@@ -100,7 +100,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.assets.TransferV2Request"
+        dataType = "com.wavesplatform.api.http.assets.TransferV2Request"
       )
     ))
   def transfer: Route =
@@ -129,7 +129,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.assets.MassTransferRequest"
+        dataType = "com.wavesplatform.api.http.assets.MassTransferRequest"
       )
     ))
   def massTransfer: Route =
@@ -144,7 +144,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.assets.IssueV1Request",
+        dataType = "com.wavesplatform.api.http.assets.IssueV1Request",
         example =
           "{\"sender\":\"string\",\"name\":\"str\",\"description\":\"string\",\"quantity\":100000,\"decimals\":7,\"reissuable\":false,\"fee\":100000000}"
       )
@@ -161,7 +161,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.assets.ReissueV1Request",
+        dataType = "com.wavesplatform.api.http.assets.ReissueV1Request",
         example = "{\"sender\":\"string\",\"assetId\":\"Base58\",\"quantity\":100000,\"reissuable\":false,\"fee\":1}"
       )
     ))
@@ -181,7 +181,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.assets.BurnV1Request",
+        dataType = "com.wavesplatform.api.http.assets.BurnV1Request",
         example = "{\"sender\":\"string\",\"assetId\":\"Base58\",\"quantity\":100,\"fee\":100000}"
       )
     ))
@@ -201,7 +201,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
         value = "Order Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.transaction.assets.exchange.Order"
+        dataType = "com.wavesplatform.transaction.assets.exchange.Order"
       )
     ))
   def signOrder: Route =
@@ -295,7 +295,7 @@ case class AssetsApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPoo
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.amurplatform.api.http.assets.SponsorFeeRequest",
+        dataType = "com.wavesplatform.api.http.assets.SponsorFeeRequest",
         defaultValue = "{\"sender\":\"string\",\"assetId\":\"Base58\",\"minSponsoredAssetFee\":100000000,\"fee\":100000000}"
       )
     ))
