@@ -1,9 +1,9 @@
-package com.wavesplatform.network.message
+package com.amurplatform.network.message
 
 import com.google.common.primitives.{Bytes, Ints}
-import com.wavesplatform.crypto
+import com.amurplatform.crypto
 import monix.eval.Coeval
-import com.wavesplatform.serialization.BytesSerializable
+import com.amurplatform.serialization.BytesSerializable
 
 import scala.util.{Success, Try}
 

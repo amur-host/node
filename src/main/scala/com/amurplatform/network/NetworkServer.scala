@@ -1,16 +1,16 @@
-package com.wavesplatform.network
+package com.amurplatform.network
 
 import java.net.{InetSocketAddress, NetworkInterface}
 import java.nio.channels.ClosedChannelException
 import java.util.concurrent.ConcurrentHashMap
 
-import com.wavesplatform.Version
-import com.wavesplatform.metrics.Metrics
-import com.wavesplatform.network.MessageObserver.Messages
-import com.wavesplatform.settings._
-import com.wavesplatform.state.NG
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.utx.UtxPool
+import com.amurplatform.Version
+import com.amurplatform.metrics.Metrics
+import com.amurplatform.network.MessageObserver.Messages
+import com.amurplatform.settings._
+import com.amurplatform.state.NG
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.utx.UtxPool
 import io.netty.bootstrap.{Bootstrap, ServerBootstrap}
 import io.netty.channel._
 import io.netty.channel.group.ChannelGroup
@@ -21,7 +21,7 @@ import io.netty.handler.codec.{LengthFieldBasedFrameDecoder, LengthFieldPrepende
 import io.netty.util.concurrent.DefaultThreadFactory
 import monix.reactive.Observable
 import org.influxdb.dto.Point
-import com.wavesplatform.transaction._
+import com.amurplatform.transaction._
 
 import scala.collection.JavaConverters._
 import scala.concurrent.duration._

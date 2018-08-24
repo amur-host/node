@@ -1,15 +1,15 @@
-package com.wavesplatform.database
+package com.amurplatform.database
 
 import java.util
 
 import cats.syntax.monoid._
 import com.google.common.cache.{CacheBuilder, CacheLoader, LoadingCache}
-import com.wavesplatform.state._
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.AssetId
+import com.amurplatform.state._
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.AssetId
 
 import scala.collection.JavaConverters._
 

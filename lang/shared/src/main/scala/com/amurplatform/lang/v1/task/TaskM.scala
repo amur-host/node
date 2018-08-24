@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1.task
+package com.amurplatform.lang.v1.task
 
 import cats.data.Kleisli
 import cats.implicits._

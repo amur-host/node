@@ -1,4 +1,4 @@
-package com.wavesplatform.lang
+package com.amurplatform.lang
 
 trait ExprEvaluator extends Versioned {
   def apply[T](ctx: version.CtxT, expr: version.ExprT): (version.CtxT, Either[ExecutionError, T])

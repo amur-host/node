@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction.lease
+package com.amurplatform.transaction.lease
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com.wavesplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction.ValidationError.UnsupportedVersion
-import com.wavesplatform.transaction._
+import com.amurplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.serialization.Deser
+import com.amurplatform.transaction.ValidationError.UnsupportedVersion
+import com.amurplatform.transaction._
 
 import scala.util.{Either, Failure, Success, Try}
 

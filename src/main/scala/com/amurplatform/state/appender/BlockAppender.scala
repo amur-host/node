@@ -1,22 +1,22 @@
-package com.wavesplatform.state.appender
+package com.amurplatform.state.appender
 
 import cats.data.EitherT
-import com.wavesplatform.consensus.PoSSelector
-import com.wavesplatform.metrics._
-import com.wavesplatform.mining.Miner
-import com.wavesplatform.network._
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.utils.{ScorexLogging, Time}
-import com.wavesplatform.utx.UtxPool
+import com.amurplatform.consensus.PoSSelector
+import com.amurplatform.metrics._
+import com.amurplatform.mining.Miner
+import com.amurplatform.network._
+import com.amurplatform.settings.WavesSettings
+import com.amurplatform.state.Blockchain
+import com.amurplatform.utils.{ScorexLogging, Time}
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import monix.eval.Task
 import monix.execution.Scheduler
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.ValidationError.{BlockAppendError, InvalidSignature}
-import com.wavesplatform.transaction.{BlockchainUpdater, CheckpointService, ValidationError}
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.ValidationError.{BlockAppendError, InvalidSignature}
+import com.amurplatform.transaction.{BlockchainUpdater, CheckpointService, ValidationError}
 
 import scala.util.Right
 

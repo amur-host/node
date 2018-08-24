@@ -1,4 +1,4 @@
-package com.wavesplatform.transaction
+package com.amurplatform.transaction
 import monix.eval.Coeval
 
 trait Proven extends Authorized {

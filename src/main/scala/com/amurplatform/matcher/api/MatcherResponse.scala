@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher.api
+package com.amurplatform.matcher.api
 
 import akka.http.scaladsl.model.{StatusCode, StatusCodes}
 import play.api.libs.json.{JsNull, JsValue, Json}

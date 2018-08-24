@@ -1,4 +1,4 @@
-package com.wavesplatform.http
+package com.amurplatform.http
 
 import java.net.{InetAddress, InetSocketAddress, URI}
 import java.util.concurrent.ConcurrentMap
@@ -8,21 +8,21 @@ import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.model.StatusCodes
 import akka.http.scaladsl.server.Route
 import com.typesafe.config.{ConfigObject, ConfigRenderOptions}
-import com.wavesplatform.account.Address
-import com.wavesplatform.api.http._
-import com.wavesplatform.block.Block
-import com.wavesplatform.block.Block.BlockId
-import com.wavesplatform.crypto
-import com.wavesplatform.mining.{Miner, MinerDebugInfo}
-import com.wavesplatform.network.{LocalScoreChanged, PeerDatabase, PeerInfo, _}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.diffs.TransactionDiffer
-import com.wavesplatform.state.{Blockchain, ByteStr, LeaseBalance, NG, Portfolio}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.smart.Verifier
-import com.wavesplatform.utils.{Base58, NTP, ScorexLogging}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com.amurplatform.account.Address
+import com.amurplatform.api.http._
+import com.amurplatform.block.Block
+import com.amurplatform.block.Block.BlockId
+import com.amurplatform.crypto
+import com.amurplatform.mining.{Miner, MinerDebugInfo}
+import com.amurplatform.network.{LocalScoreChanged, PeerDatabase, PeerInfo, _}
+import com.amurplatform.settings.WavesSettings
+import com.amurplatform.state.diffs.TransactionDiffer
+import com.amurplatform.state.{Blockchain, ByteStr, LeaseBalance, NG, Portfolio}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.smart.Verifier
+import com.amurplatform.utils.{Base58, NTP, ScorexLogging}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
@@ -92,7 +92,7 @@ case class DebugApiRoute(ws: WavesSettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.http.DebugMessage",
+        dataType = "com.amurplatform.http.DebugMessage",
         defaultValue = "{\n\t\"message\": \"foo\"\n}"
       )
     ))
@@ -182,7 +182,7 @@ case class DebugApiRoute(ws: WavesSettings,
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.http.RollbackParams",
+        dataType = "com.amurplatform.http.RollbackParams",
         defaultValue = "{\n\t\"rollbackTo\": 3,\n\t\"returnTransactionsToUTX\": false\n}"
       )
     ))

@@ -1,19 +1,19 @@
-package com.wavesplatform.state
+package com.amurplatform.state
 
 import java.io.File
 import java.util.concurrent.{ThreadLocalRandom, TimeUnit}
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{AddressOrAlias, AddressScheme, Alias}
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.db.LevelDBFactory
-import com.wavesplatform.lang.v1.traits.Environment
-import com.wavesplatform.lang.v1.traits.domain.Recipient
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.WavesEnvironmentBenchmark._
-import com.wavesplatform.state.bench.DataTestData
-import com.wavesplatform.transaction.smart.WavesEnvironment
-import com.wavesplatform.utils.Base58
+import com.amurplatform.account.{AddressOrAlias, AddressScheme, Alias}
+import com.amurplatform.database.LevelDBWriter
+import com.amurplatform.db.LevelDBFactory
+import com.amurplatform.lang.v1.traits.Environment
+import com.amurplatform.lang.v1.traits.domain.Recipient
+import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.state.WavesEnvironmentBenchmark._
+import com.amurplatform.state.bench.DataTestData
+import com.amurplatform.transaction.smart.WavesEnvironment
+import com.amurplatform.utils.Base58
 import monix.eval.Coeval
 import org.iq80.leveldb.{DB, Options}
 import org.openjdk.jmh.annotations._
@@ -22,14 +22,6 @@ import scodec.bits.{BitVector, ByteVector}
 
 import scala.io.Codec
 
-/**
-  * Tests over real database. How to test:
-  * 1. Download a database
-  * 2. Import it: https://github.com/wavesplatform/Waves/wiki/Export-and-import-of-the-blockchain#import-blocks-from-the-binary-file
-  * 3. Run ExtractInfo to collect queries for tests
-  * 4. Make Caches.MaxSize = 1
-  * 5. Run this test
-  */
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @BenchmarkMode(Array(Mode.AverageTime))
 @Threads(1)

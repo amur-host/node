@@ -1,7 +1,7 @@
-package com.wavesplatform.state
+package com.amurplatform.state
 
-import com.wavesplatform.block.Block.BlockId
-import com.wavesplatform.block.MicroBlock
+import com.amurplatform.block.Block.BlockId
+import com.amurplatform.block.MicroBlock
 
 trait NG extends Blockchain {
   def microBlock(id: ByteStr): Option[MicroBlock]

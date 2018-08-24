@@ -1,10 +1,10 @@
-package com.wavesplatform.generator
+package com.amurplatform.generator
 
 import cats.Show
-import com.wavesplatform.generator.WideTransactionGenerator.Settings
-import com.wavesplatform.generator.utils.Gen
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.Transaction
+import com.amurplatform.generator.WideTransactionGenerator.Settings
+import com.amurplatform.generator.utils.Gen
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.transaction.Transaction
 
 class WideTransactionGenerator(settings: Settings, accounts: Seq[PrivateKeyAccount]) extends TransactionGenerator {
   require(accounts.nonEmpty)

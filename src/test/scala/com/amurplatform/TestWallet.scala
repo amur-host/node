@@ -1,7 +1,7 @@
-package com.wavesplatform
+package com.amurplatform
 
-import com.wavesplatform.settings.WalletSettings
-import com.wavesplatform.wallet.Wallet
+import com.amurplatform.settings.WalletSettings
+import com.amurplatform.wallet.Wallet
 
 trait TestWallet {
   protected val testWallet = {

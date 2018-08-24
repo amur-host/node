@@ -1,9 +1,9 @@
-package com.wavesplatform.matcher.model
+package com.amurplatform.matcher.model
 
 import cats.instances.map._
 import cats.syntax.semigroup._
 import cats.{Monoid, Semigroup}
-import com.wavesplatform.transaction.AssetId
+import com.amurplatform.transaction.AssetId
 import play.api.libs.json.{Format, Json}
 
 import scala.util.Try

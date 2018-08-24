@@ -1,5 +1,5 @@
-package com.wavesplatform.transaction
+package com.amurplatform.transaction
 
-import com.wavesplatform.account.Address
+import com.amurplatform.account.Address
 
 case class AssetAcc(account: Address, assetId: Option[AssetId])

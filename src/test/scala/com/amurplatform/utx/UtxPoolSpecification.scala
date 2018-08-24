@@ -1,27 +1,27 @@
-package com.wavesplatform.utx
+package com.amurplatform.utx
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.block.Block
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.history.StorageFactory
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.v1.compiler.Terms.EXPR
-import com.wavesplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
-import com.wavesplatform.mining._
-import com.wavesplatform.settings._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.{ByteStr, EitherExt2, _}
-import com.wavesplatform.transaction.ValidationError.SenderIsBlacklisted
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{FeeCalculator, GenesisTransaction, Transaction}
-import com.wavesplatform.utils.Time
-import com.wavesplatform._
+import com.amurplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.block.Block
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.history.StorageFactory
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.lang.v1.compiler.Terms.EXPR
+import com.amurplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
+import com.amurplatform.mining._
+import com.amurplatform.settings._
+import com.amurplatform.state.diffs._
+import com.amurplatform.state.{ByteStr, EitherExt2, _}
+import com.amurplatform.transaction.ValidationError.SenderIsBlacklisted
+import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.transaction.{FeeCalculator, GenesisTransaction, Transaction}
+import com.amurplatform.utils.Time
+import com.amurplatform._
 import org.scalacheck.Gen
 import org.scalacheck.Gen._
 import org.scalamock.scalatest.MockFactory

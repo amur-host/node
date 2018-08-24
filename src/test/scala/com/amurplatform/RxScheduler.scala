@@ -1,15 +1,15 @@
-package com.wavesplatform
+package com.amurplatform
 
-import com.wavesplatform.state._
+import com.amurplatform.state._
 import monix.execution.schedulers.SchedulerService
 import monix.execution.{Ack, Scheduler}
 import monix.reactive.Observer
 import org.scalatest.{BeforeAndAfterAll, Suite}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.{Block, MicroBlock, SignerData}
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.crypto._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.block.{Block, MicroBlock, SignerData}
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.crypto._
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 

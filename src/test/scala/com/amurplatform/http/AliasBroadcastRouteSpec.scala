@@ -1,20 +1,20 @@
-package com.wavesplatform.http
+package com.amurplatform.http
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.RequestGen
-import com.wavesplatform.http.ApiMarshallers._
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.state.diffs.TransactionDiffer.TransactionValidationError
-import com.wavesplatform.utx.UtxPool
+import com.amurplatform.RequestGen
+import com.amurplatform.http.ApiMarshallers._
+import com.amurplatform.settings.RestAPISettings
+import com.amurplatform.state.diffs.TransactionDiffer.TransactionValidationError
+import com.amurplatform.utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json._
 import play.api.libs.json._
-import com.wavesplatform.api.http._
-import com.wavesplatform.api.http.alias.AliasBroadcastApiRoute
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.Transaction
+import com.amurplatform.api.http._
+import com.amurplatform.api.http.alias.AliasBroadcastApiRoute
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.Transaction
 
 class AliasBroadcastRouteSpec extends RouteSpec("/alias/broadcast/") with RequestGen with PathMockFactory with PropertyChecks {
   private val settings    = RestAPISettings.fromConfig(ConfigFactory.load())
@@ -39,7 +39,7 @@ class AliasBroadcastRouteSpec extends RouteSpec("/alias/broadcast/") with Reques
     val route = AliasBroadcastApiRoute(settings, utx, allChannels).route
 
     "create alias transaction" in forAll(createAliasReq) { req =>
-      import com.wavesplatform.api.http.alias.SignedCreateAliasV1Request.broadcastAliasV1RequestReadsFormat
+      import com.amurplatform.api.http.alias.SignedCreateAliasV1Request.broadcastAliasV1RequestReadsFormat
 
       def posting(v: JsValue): RouteTestResult = Post(routePath("create"), v) ~> route
 

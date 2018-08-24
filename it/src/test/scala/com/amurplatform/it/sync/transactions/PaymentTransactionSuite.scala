@@ -1,9 +1,9 @@
-package com.wavesplatform.it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.PaymentRequest
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.api.PaymentRequest
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
 import org.scalatest.prop.TableDrivenPropertyChecks
 
 class PaymentTransactionSuite extends BaseTransactionSuite with TableDrivenPropertyChecks {

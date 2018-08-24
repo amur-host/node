@@ -1,7 +1,7 @@
-package com.wavesplatform.lang
+package com.amurplatform.lang
 
-import com.wavesplatform.lang.directives.DirectiveKey.LANGUAGE_VERSION
-import com.wavesplatform.lang.directives.{Directive, DirectiveParser}
+import com.amurplatform.lang.directives.DirectiveKey.LANGUAGE_VERSION
+import com.amurplatform.lang.directives.{Directive, DirectiveParser}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

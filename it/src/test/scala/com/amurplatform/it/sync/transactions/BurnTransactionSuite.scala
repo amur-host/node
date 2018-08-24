@@ -1,10 +1,10 @@
-package com.wavesplatform.it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
 import cats.implicits._
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{issueAmount, issueFee}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.sync._
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync.{issueAmount, issueFee}
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.sync._
 
 class BurnTransactionSuite extends BaseTransactionSuite {
 

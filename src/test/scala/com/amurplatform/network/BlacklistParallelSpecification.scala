@@ -1,9 +1,9 @@
-package com.wavesplatform.network
+package com.amurplatform.network
 
 import java.net.{InetAddress, InetSocketAddress}
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.settings.{NetworkSettings, loadConfig}
+import com.amurplatform.settings.{NetworkSettings, loadConfig}
 import net.ceedubs.ficus.Ficus._
 import org.scalatest.{FeatureSpec, GivenWhenThen, ParallelTestExecution}
 

@@ -1,4 +1,4 @@
-package com.wavesplatform.features
+package com.amurplatform.features
 
 case class BlockchainFeature private (id: Short, description: String)
 

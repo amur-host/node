@@ -1,20 +1,20 @@
-package com.wavesplatform.generator
+package com.amurplatform.generator
 
 import java.util.concurrent.ThreadLocalRandom
 
 import cats.Show
-import com.wavesplatform.generator.NarrowTransactionGenerator.Settings
-import com.wavesplatform.state.DataEntry.{MaxValueSize, Type}
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, EitherExt2, IntegerDataEntry, StringDataEntry}
+import com.amurplatform.generator.NarrowTransactionGenerator.Settings
+import com.amurplatform.state.DataEntry.{MaxValueSize, Type}
+import com.amurplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, EitherExt2, IntegerDataEntry, StringDataEntry}
 import org.slf4j.LoggerFactory
-import com.wavesplatform.account.{Alias, PrivateKeyAccount}
-import com.wavesplatform.utils.LoggerFacade
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseCancelTransactionV1, LeaseTransactionV1}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
+import com.amurplatform.account.{Alias, PrivateKeyAccount}
+import com.amurplatform.utils.LoggerFacade
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseCancelTransactionV1, LeaseTransactionV1}
+import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.duration._
 import scala.util.Random

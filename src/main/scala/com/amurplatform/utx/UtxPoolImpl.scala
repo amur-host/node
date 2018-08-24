@@ -1,23 +1,23 @@
-package com.wavesplatform.utx
+package com.amurplatform.utx
 
 import java.time.Duration
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.ConcurrentHashMap
 
 import cats._
-import com.wavesplatform.account.Address
-import com.wavesplatform.consensus.TransactionsOrdering
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.mining.MultiDimensionalMiningConstraint
-import com.wavesplatform.settings.{FunctionalitySettings, UtxSettings}
-import com.wavesplatform.state.diffs.TransactionDiffer
-import com.wavesplatform.state.reader.CompositeBlockchain.composite
-import com.wavesplatform.state.{Blockchain, ByteStr, Diff, Portfolio}
-import com.wavesplatform.transaction.ValidationError.{GenericError, SenderIsBlacklisted}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.ReissueTransaction
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.{ScorexLogging, Time}
+import com.amurplatform.account.Address
+import com.amurplatform.consensus.TransactionsOrdering
+import com.amurplatform.metrics.Instrumented
+import com.amurplatform.mining.MultiDimensionalMiningConstraint
+import com.amurplatform.settings.{FunctionalitySettings, UtxSettings}
+import com.amurplatform.state.diffs.TransactionDiffer
+import com.amurplatform.state.reader.CompositeBlockchain.composite
+import com.amurplatform.state.{Blockchain, ByteStr, Diff, Portfolio}
+import com.amurplatform.transaction.ValidationError.{GenericError, SenderIsBlacklisted}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets.ReissueTransaction
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.utils.{ScorexLogging, Time}
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.eval.Task
@@ -35,7 +35,7 @@ class UtxPoolImpl(time: Time, blockchain: Blockchain, feeCalculator: FeeCalculat
     with UtxPool {
   outer =>
 
-  import com.wavesplatform.utx.UtxPoolImpl._
+  import com.amurplatform.utx.UtxPoolImpl._
 
   private implicit val scheduler: SchedulerService = Scheduler.singleThread("utx-pool-cleanup")
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.lang
+package com.amurplatform.lang
 
 import cats.data.EitherT
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Common.multiplierFunction
-import com.wavesplatform.lang.v1.CTX
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext
-import com.wavesplatform.lang.v1.evaluator.ctx.{CaseType, LazyVal, NativeFunction}
+import com.amurplatform.lang.Common.multiplierFunction
+import com.amurplatform.lang.v1.CTX
+import com.amurplatform.lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext
+import com.amurplatform.lang.v1.evaluator.ctx.{CaseType, LazyVal, NativeFunction}
 
 package object compiler {
 

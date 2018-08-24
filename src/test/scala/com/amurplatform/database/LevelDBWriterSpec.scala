@@ -1,20 +1,20 @@
-package com.wavesplatform.database
+package com.amurplatform.database
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.block.Block
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
-import com.wavesplatform.state.diffs.ENOUGH_AMT
-import com.wavesplatform.state.{BlockchainUpdaterImpl, EitherExt2}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.{TransferTransaction, TransferTransactionV1}
-import com.wavesplatform.transaction.{GenesisTransaction, Transaction}
-import com.wavesplatform.utils.{Time, TimeImpl}
-import com.wavesplatform.{RequestGen, WithDB}
+import com.amurplatform.account.{Address, PrivateKeyAccount}
+import com.amurplatform.block.Block
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.lang.v1.compiler.Terms
+import com.amurplatform.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
+import com.amurplatform.state.diffs.ENOUGH_AMT
+import com.amurplatform.state.{BlockchainUpdaterImpl, EitherExt2}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer.{TransferTransaction, TransferTransactionV1}
+import com.amurplatform.transaction.{GenesisTransaction, Transaction}
+import com.amurplatform.utils.{Time, TimeImpl}
+import com.amurplatform.{RequestGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.{FreeSpec, Matchers}
 

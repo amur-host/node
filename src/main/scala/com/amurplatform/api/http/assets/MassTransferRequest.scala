@@ -1,6 +1,6 @@
-package com.wavesplatform.api.http.assets
+package com.amurplatform.api.http.assets
 
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
+import com.amurplatform.transaction.transfer.MassTransferTransaction.Transfer
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.Json
 

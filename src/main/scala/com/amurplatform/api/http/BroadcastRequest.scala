@@ -1,8 +1,8 @@
-package com.wavesplatform.api.http
+package com.amurplatform.api.http
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.Validation
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.Validation
 
 trait BroadcastRequest {
   protected def parseBase58(v: String, error: String, maxLength: Int): Validation[ByteStr] =

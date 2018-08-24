@@ -1,4 +1,4 @@
-package com.wavesplatform.database
+package com.amurplatform.database
 
 trait Key[V] {
   def keyBytes: Array[Byte]

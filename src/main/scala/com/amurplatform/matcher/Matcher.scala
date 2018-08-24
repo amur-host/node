@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher
+package com.amurplatform.matcher
 
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
@@ -9,17 +9,17 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.Http.ServerBinding
 import akka.pattern.gracefulStop
 import akka.stream.ActorMaterializer
-import com.wavesplatform.api.http.CompositeHttpService
-import com.wavesplatform.db._
-import com.wavesplatform.matcher.api.MatcherApiRoute
-import com.wavesplatform.matcher.market.{MatcherActor, MatcherTransactionWriter, OrderHistoryActor}
-import com.wavesplatform.matcher.model.OrderBook
-import com.wavesplatform.settings.{BlockchainSettings, RestAPISettings}
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com.amurplatform.api.http.CompositeHttpService
+import com.amurplatform.db._
+import com.amurplatform.matcher.api.MatcherApiRoute
+import com.amurplatform.matcher.market.{MatcherActor, MatcherTransactionWriter, OrderHistoryActor}
+import com.amurplatform.matcher.model.OrderBook
+import com.amurplatform.settings.{BlockchainSettings, RestAPISettings}
+import com.amurplatform.state.Blockchain
+import com.amurplatform.transaction.assets.exchange.AssetPair
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 
 import scala.concurrent.Await

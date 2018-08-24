@@ -1,8 +1,8 @@
-package com.wavesplatform
+package com.amurplatform
 
 import java.io.File
 
-import com.wavesplatform.utils.ScorexLogging
+import com.amurplatform.utils.ScorexLogging
 import org.iq80.leveldb.{DB, Options}
 
 package object db extends ScorexLogging {

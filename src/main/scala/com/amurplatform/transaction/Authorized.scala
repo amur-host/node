@@ -1,6 +1,6 @@
-package com.wavesplatform.transaction
+package com.amurplatform.transaction
 
-import com.wavesplatform.account.PublicKeyAccount
+import com.amurplatform.account.PublicKeyAccount
 
 trait Authorized {
   val sender: PublicKeyAccount

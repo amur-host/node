@@ -1,12 +1,12 @@
-package com.wavesplatform.mining
+package com.amurplatform.mining
 
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com.amurplatform.state.Blockchain
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
-import com.wavesplatform.transaction.Transaction
+import com.amurplatform.transaction.Transaction
 
 class MultiDimensionalMiningConstraintSuite
     extends FreeSpec

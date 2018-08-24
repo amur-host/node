@@ -1,4 +1,4 @@
-package com.wavesplatform.utils
+package com.amurplatform.utils
 
 import java.net.{InetAddress, SocketTimeoutException}
 

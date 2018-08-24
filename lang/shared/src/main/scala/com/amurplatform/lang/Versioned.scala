@@ -1,4 +1,4 @@
-package com.wavesplatform.lang
+package com.amurplatform.lang
 
 trait Versioned {
   type V <: ScriptVersion

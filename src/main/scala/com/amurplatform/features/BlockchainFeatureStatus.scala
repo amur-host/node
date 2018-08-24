@@ -1,4 +1,4 @@
-package com.wavesplatform.features
+package com.amurplatform.features
 
 sealed trait BlockchainFeatureStatus
 

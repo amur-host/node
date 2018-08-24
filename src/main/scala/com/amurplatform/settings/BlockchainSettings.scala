@@ -1,7 +1,7 @@
-package com.wavesplatform.settings
+package com.amurplatform.settings
 
 import com.typesafe.config.Config
-import com.wavesplatform.state.ByteStr
+import com.amurplatform.state.ByteStr
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.EnumerationReader._

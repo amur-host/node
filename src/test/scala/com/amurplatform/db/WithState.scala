@@ -1,14 +1,14 @@
-package com.wavesplatform.db
+package com.amurplatform.db
 
 import java.nio.file.Files
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.TestHelpers
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.history.Domain
-import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings, loadConfig}
-import com.wavesplatform.state.{Blockchain, BlockchainUpdaterImpl}
-import com.wavesplatform.utils.{ScorexLogging, TimeImpl}
+import com.amurplatform.TestHelpers
+import com.amurplatform.database.LevelDBWriter
+import com.amurplatform.history.Domain
+import com.amurplatform.settings.{FunctionalitySettings, WavesSettings, loadConfig}
+import com.amurplatform.state.{Blockchain, BlockchainUpdaterImpl}
+import com.amurplatform.utils.{ScorexLogging, TimeImpl}
 
 trait WithState extends ScorexLogging {
   private def withState[A](fs: FunctionalitySettings)(f: Blockchain => A): A = {

@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package com.amurplatform.network
 
 import java.io.IOException
 
-import com.wavesplatform.utils.{ScorexLogging, forceStopApplication}
+import com.amurplatform.utils.{ScorexLogging, forceStopApplication}
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
 

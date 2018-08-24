@@ -1,6 +1,6 @@
-package com.wavesplatform.transaction
+package com.amurplatform.transaction
 
-import com.wavesplatform.transaction.assets.exchange.Order
+import com.amurplatform.transaction.assets.exchange.Order
 import shapeless._
 
 package object smart {

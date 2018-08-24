@@ -1,10 +1,10 @@
-package com.wavesplatform.transaction
+package com.amurplatform.transaction
 
-import com.wavesplatform.settings.{FeesSettings, FunctionalitySettings}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.FeeCalculator._
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.transfer._
+import com.amurplatform.settings.{FeesSettings, FunctionalitySettings}
+import com.amurplatform.state._
+import com.amurplatform.transaction.FeeCalculator._
+import com.amurplatform.transaction.ValidationError.GenericError
+import com.amurplatform.transaction.transfer._
 
 class FeeCalculator(settings: FeesSettings, blockchain: Blockchain) {
 

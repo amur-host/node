@@ -1,14 +1,14 @@
-package com.wavesplatform.matcher.model
+package com.amurplatform.matcher.model
 
 import com.google.common.base.Charsets
-import com.wavesplatform.WithDB
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.matcher.MatcherTestData
-import com.wavesplatform.matcher.api.DBUtils
-import com.wavesplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.WithDB
+import com.amurplatform.account.{Address, PrivateKeyAccount}
+import com.amurplatform.matcher.MatcherTestData
+import com.amurplatform.matcher.api.DBUtils
+import com.amurplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.AssetId
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 

@@ -1,8 +1,8 @@
-package com.wavesplatform.http
+package com.amurplatform.http
 
-import com.wavesplatform.TestWallet
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.api.http.ApiKeyNotValid
+import com.amurplatform.TestWallet
+import com.amurplatform.settings.WavesSettings
+import com.amurplatform.api.http.ApiKeyNotValid
 
 class DebugApiRouteSpec extends RouteSpec("/debug") with RestAPISettingsHelper with TestWallet {
   private val sampleConfig  = com.typesafe.config.ConfigFactory.load()

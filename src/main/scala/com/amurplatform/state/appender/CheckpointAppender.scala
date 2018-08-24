@@ -1,15 +1,15 @@
-package com.wavesplatform.state.appender
+package com.amurplatform.state.appender
 
-import com.wavesplatform.mining.Miner
-import com.wavesplatform.network.{BlockCheckpoint, Checkpoint, PeerDatabase, id}
-import com.wavesplatform.state.{Blockchain, ByteStr}
-import com.wavesplatform.utils.ScorexLogging
+import com.amurplatform.mining.Miner
+import com.amurplatform.network.{BlockCheckpoint, Checkpoint, PeerDatabase, id}
+import com.amurplatform.state.{Blockchain, ByteStr}
+import com.amurplatform.utils.ScorexLogging
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import monix.eval.Task
 import monix.execution.Scheduler
-import com.wavesplatform.transaction.{BlockchainUpdater, CheckpointService, ValidationError}
+import com.amurplatform.transaction.{BlockchainUpdater, CheckpointService, ValidationError}
 
 object CheckpointAppender extends ScorexLogging {
   def apply(checkpointService: CheckpointService,

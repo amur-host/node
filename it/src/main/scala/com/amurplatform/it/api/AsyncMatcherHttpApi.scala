@@ -1,14 +1,14 @@
-package com.wavesplatform.it.api
+package com.amurplatform.it.api
 
 import com.google.common.primitives.Longs
-import com.wavesplatform.crypto
-import com.wavesplatform.http.api_key
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.api.AsyncHttpApi.NodeAsyncHttpApi
-import com.wavesplatform.matcher.api.CancelOrderRequest
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.amurplatform.crypto
+import com.amurplatform.http.api_key
+import com.amurplatform.it.Node
+import com.amurplatform.it.api.AsyncHttpApi.NodeAsyncHttpApi
+import com.amurplatform.matcher.api.CancelOrderRequest
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction.Proofs
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
 import org.asynchttpclient.Dsl.{get => _get}
 import org.asynchttpclient.util.HttpConstants
 import org.asynchttpclient.{RequestBuilder, Response}

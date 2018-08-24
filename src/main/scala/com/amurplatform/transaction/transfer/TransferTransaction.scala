@@ -1,15 +1,15 @@
-package com.wavesplatform.transaction.transfer
+package com.amurplatform.transaction.transfer
 
 import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.account.{AddressOrAlias, PublicKeyAccount}
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.validation._
-import com.wavesplatform.utils.{Base58, base58Length}
+import com.amurplatform.account.{AddressOrAlias, PublicKeyAccount}
+import com.amurplatform.serialization.Deser
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.validation._
+import com.amurplatform.utils.{Base58, base58Length}
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.crypto._
+import com.amurplatform.crypto._
 
 trait TransferTransaction extends ProvenTransaction with VersionedTransaction {
   def assetId: Option[AssetId]

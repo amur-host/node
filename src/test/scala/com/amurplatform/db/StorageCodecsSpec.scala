@@ -1,7 +1,7 @@
-package com.wavesplatform.db
+package com.amurplatform.db
 
-import com.wavesplatform.network.{BlockCheckpoint, Checkpoint}
-import com.wavesplatform.state.EitherExt2
+import com.amurplatform.network.{BlockCheckpoint, Checkpoint}
+import com.amurplatform.state.EitherExt2
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
 

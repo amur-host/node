@@ -1,10 +1,10 @@
-package com.wavesplatform.it.sync.network
+package com.amurplatform.it.sync.network
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{issueAmount, issueFee, minFee}
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{ReportingTestName, WaitForHeight2}
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync.{issueAmount, issueFee, minFee}
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.{ReportingTestName, WaitForHeight2}
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.Await
@@ -77,7 +77,7 @@ class NetworkSeparationTestSuite
 }
 
 object NetworkSeparationTestSuite {
-  import com.wavesplatform.it.NodeConfigs._
+  import com.amurplatform.it.NodeConfigs._
   private val withFeatureConfig = ConfigFactory.parseString(s"""
                                                                 |waves {
                                                                 |  synchronization.synchronization-timeout = 10s

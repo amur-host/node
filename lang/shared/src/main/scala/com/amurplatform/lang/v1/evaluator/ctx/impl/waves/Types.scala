@@ -1,7 +1,7 @@
-package com.wavesplatform.lang.v1.evaluator.ctx.impl.waves
+package com.amurplatform.lang.v1.evaluator.ctx.impl.waves
 
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.evaluator.ctx.{CaseType, UnionType}
+import com.amurplatform.lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.evaluator.ctx.{CaseType, UnionType}
 
 object Types {
 

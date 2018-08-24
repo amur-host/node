@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1
+package com.amurplatform.lang.v1
 
 sealed trait FunctionHeader
 object FunctionHeader {

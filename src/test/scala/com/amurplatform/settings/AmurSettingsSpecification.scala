@@ -1,4 +1,4 @@
-package com.wavesplatform.settings
+package com.amurplatform.settings
 
 import java.io.File
 

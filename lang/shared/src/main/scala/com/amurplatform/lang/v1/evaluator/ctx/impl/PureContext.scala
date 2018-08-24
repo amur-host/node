@@ -1,16 +1,16 @@
-package com.wavesplatform.lang.v1.evaluator.ctx.impl
+package com.amurplatform.lang.v1.evaluator.ctx.impl
 
 import java.nio.charset.StandardCharsets
 
 import cats.data.EitherT
-import com.wavesplatform.lang.v1.CTX
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang.v1.compiler.{CompilerContext, Types}
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.parser.BinaryOperation
-import com.wavesplatform.lang.v1.parser.BinaryOperation._
+import com.amurplatform.lang.v1.CTX
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.compiler.Types._
+import com.amurplatform.lang.v1.compiler.{CompilerContext, Types}
+import com.amurplatform.lang.v1.evaluator.FunctionIds._
+import com.amurplatform.lang.v1.evaluator.ctx._
+import com.amurplatform.lang.v1.parser.BinaryOperation
+import com.amurplatform.lang.v1.parser.BinaryOperation._
 import scodec.bits.ByteVector
 
 import scala.util.Try

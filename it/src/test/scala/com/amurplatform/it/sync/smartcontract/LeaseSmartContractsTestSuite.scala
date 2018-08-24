@@ -1,19 +1,19 @@
-package com.wavesplatform.it.sync.smartcontract
+package com.amurplatform.it.sync.smartcontract
 
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.{minFee, transferAmount}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV2, LeaseTransactionV2}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.utils.dummyCompilerContext
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.crypto
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.sync.{minFee, transferAmount}
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.parser.Parser
+import com.amurplatform.state._
+import com.amurplatform.transaction.Proofs
+import com.amurplatform.transaction.lease.{LeaseCancelTransactionV2, LeaseTransactionV2}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.utils.dummyCompilerContext
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.JsNumber
 

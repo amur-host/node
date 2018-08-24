@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1.parser
+package com.amurplatform.lang.v1.parser
 
 import scodec.bits.ByteVector
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.transfer
+package com.amurplatform.transaction.transfer
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction._
+import com.amurplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.crypto
+import com.amurplatform.state.ByteStr
+import com.amurplatform.transaction._
 import monix.eval.Coeval
-import com.wavesplatform.crypto._
+import com.amurplatform.crypto._
 
 import scala.util.{Failure, Success, Try}
 

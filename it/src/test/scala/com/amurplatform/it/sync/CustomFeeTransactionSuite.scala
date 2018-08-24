@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync
+package com.amurplatform.it.sync
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it.NodeConfigs.Default
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.{EitherExt2, Sponsorship}
-import com.wavesplatform.utils.Base58
+import com.amurplatform.it.NodeConfigs.Default
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
+import com.amurplatform.state.{EitherExt2, Sponsorship}
+import com.amurplatform.utils.Base58
 import org.scalatest.CancelAfterFailure
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.api.http.assets.SignedIssueV1Request
-import com.wavesplatform.transaction.assets.IssueTransactionV1
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.api.http.assets.SignedIssueV1Request
+import com.amurplatform.transaction.assets.IssueTransactionV1
 
 class CustomFeeTransactionSuite extends BaseTransactionSuite with CancelAfterFailure {
 

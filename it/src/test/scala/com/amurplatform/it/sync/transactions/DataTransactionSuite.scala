@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync.transactions
+package com.amurplatform.it.sync.transactions
 
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.UnexpectedStatusCodeException
-import com.wavesplatform.it.sync.{calcDataFee, minFee}
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
-import com.wavesplatform.utils.Base58
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.api.UnexpectedStatusCodeException
+import com.amurplatform.it.sync.{calcDataFee, minFee}
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
+import com.amurplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry, StringDataEntry}
+import com.amurplatform.utils.Base58
 import org.scalatest.{Assertion, Assertions}
 import play.api.libs.json._
-import com.wavesplatform.api.http.SignedDataRequest
-import com.wavesplatform.transaction.DataTransaction
+import com.amurplatform.api.http.SignedDataRequest
+import com.amurplatform.transaction.DataTransaction
 
 import scala.concurrent.duration._
 import scala.util.{Failure, Random, Try}

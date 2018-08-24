@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.smart.script
+package com.amurplatform.transaction.smart.script
 
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.Versioned
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.state.ByteStr
+import com.amurplatform.lang.ScriptVersion.Versions.V1
+import com.amurplatform.lang.Versioned
+import com.amurplatform.lang.v1.compiler.Terms
+import com.amurplatform.state.ByteStr
 import monix.eval.Coeval
-import com.wavesplatform.utils.Base64
-import com.wavesplatform.transaction.ValidationError.ScriptParseError
+import com.amurplatform.utils.Base64
+import com.amurplatform.transaction.ValidationError.ScriptParseError
 
 trait Script extends Versioned {
   val expr: version.ExprT

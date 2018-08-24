@@ -1,19 +1,19 @@
-package com.wavesplatform.it.sync.matcher
+package com.amurplatform.it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.api.http.assets.SignedIssueV1Request
-import com.wavesplatform.it.ReportingTestName
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.OrderType.BUY
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.wavesplatform.utils.Base58
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.api.http.assets.SignedIssueV1Request
+import com.amurplatform.it.ReportingTestName
+import com.amurplatform.it.api.SyncHttpApi._
+import com.amurplatform.it.api.SyncMatcherHttpApi._
+import com.amurplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
+import com.amurplatform.it.transactions.NodesFromDocker
+import com.amurplatform.it.util._
+import com.amurplatform.transaction.AssetId
+import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.amurplatform.transaction.assets.exchange.OrderType.BUY
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com.amurplatform.utils.Base58
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -94,7 +94,7 @@ class CancelOrderTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll
 object CancelOrderTestSuite {
 
   import ConfigFactory._
-  import com.wavesplatform.it.NodeConfigs._
+  import com.amurplatform.it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   private val Decimals: Byte   = 2

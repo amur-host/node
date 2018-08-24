@@ -1,12 +1,12 @@
-package com.wavesplatform.state.diffs
+package com.amurplatform.state.diffs
 
 import cats._
 import cats.implicits._
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.{GenericError, OrderValidationError}
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.state._
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.{GenericError, OrderValidationError}
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
 
 import scala.util.Right
 

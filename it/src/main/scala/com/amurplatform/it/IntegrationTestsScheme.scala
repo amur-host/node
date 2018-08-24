@@ -1,6 +1,6 @@
-package com.wavesplatform.it
+package com.amurplatform.it
 
-import com.wavesplatform.account.AddressScheme
+import com.amurplatform.account.AddressScheme
 
 trait IntegrationTestsScheme {
   AddressScheme.current = new AddressScheme {

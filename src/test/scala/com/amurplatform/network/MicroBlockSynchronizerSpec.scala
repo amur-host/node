@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package com.amurplatform.network
 
-import com.wavesplatform.settings.SynchronizationSettings.MicroblockSynchronizerSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.{BlockGen, RxScheduler, TransactionGen}
+import com.amurplatform.settings.SynchronizationSettings.MicroblockSynchronizerSettings
+import com.amurplatform.state.ByteStr
+import com.amurplatform.{BlockGen, RxScheduler, TransactionGen}
 import io.netty.channel.Channel
 import io.netty.channel.embedded.EmbeddedChannel
 import monix.reactive.Observable

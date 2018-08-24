@@ -1,6 +1,6 @@
-package com.wavesplatform.db
+package com.amurplatform.db
 
-import com.wavesplatform.utils.ScorexLogging
+import com.amurplatform.utils.ScorexLogging
 import org.iq80.leveldb.DBFactory
 
 object LevelDBFactory extends ScorexLogging {

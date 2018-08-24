@@ -1,27 +1,27 @@
-package com.wavesplatform.matcher.market
+package com.amurplatform.matcher.market
 
 import java.util.concurrent.ConcurrentHashMap
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.persistence.inmemory.extension.{InMemoryJournalStorage, InMemorySnapshotStorage, StorageExtension}
 import akka.testkit.{ImplicitSender, TestActorRef, TestKit, TestProbe}
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.matcher.MatcherTestData
-import com.wavesplatform.matcher.fixtures.RestartableActor
-import com.wavesplatform.matcher.fixtures.RestartableActor.RestartActor
-import com.wavesplatform.matcher.market.OrderBookActor._
-import com.wavesplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
-import com.wavesplatform.matcher.model.Events.Event
-import com.wavesplatform.matcher.model.{BuyLimitOrder, LimitOrder, OrderBook, SellLimitOrder}
-import com.wavesplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings, WalletSettings}
-import com.wavesplatform.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
-import com.wavesplatform.utils.{NTP, ScorexLogging}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com.amurplatform.OrderOps._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.matcher.MatcherTestData
+import com.amurplatform.matcher.fixtures.RestartableActor
+import com.amurplatform.matcher.fixtures.RestartableActor.RestartActor
+import com.amurplatform.matcher.market.OrderBookActor._
+import com.amurplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
+import com.amurplatform.matcher.model.Events.Event
+import com.amurplatform.matcher.model.{BuyLimitOrder, LimitOrder, OrderBook, SellLimitOrder}
+import com.amurplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings, WalletSettings}
+import com.amurplatform.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.amurplatform.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
+import com.amurplatform.utils.{NTP, ScorexLogging}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest._

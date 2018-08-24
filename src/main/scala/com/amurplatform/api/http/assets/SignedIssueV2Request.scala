@@ -1,11 +1,11 @@
-package com.wavesplatform.api.http.assets
+package com.amurplatform.api.http.assets
 
 import cats.implicits._
 import com.google.common.base.Charsets
-import com.wavesplatform.account.{AddressScheme, PublicKeyAccount}
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.assets.IssueTransactionV2
-import com.wavesplatform.transaction.{Proofs, ValidationError}
+import com.amurplatform.account.{AddressScheme, PublicKeyAccount}
+import com.amurplatform.api.http.BroadcastRequest
+import com.amurplatform.transaction.assets.IssueTransactionV2
+import com.amurplatform.transaction.{Proofs, ValidationError}
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.{Format, Json}
 

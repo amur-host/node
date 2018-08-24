@@ -1,7 +1,7 @@
-package com.wavesplatform.lang.impl
+package com.amurplatform.lang.impl
 
-import com.wavesplatform.lang.v1.traits.DataType
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com.amurplatform.lang.v1.traits.DataType
+import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
 import shapeless.{:+:, CNil}
 
 import scala.scalajs.js.annotation.JSGlobalScope

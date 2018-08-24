@@ -1,10 +1,10 @@
-package com.wavesplatform.history
+package com.amurplatform.history
 
-import com.wavesplatform.database.{Keys, LevelDBWriter, RW}
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.{BlockchainUpdaterImpl, NG}
-import com.wavesplatform.transaction.BlockchainUpdater
-import com.wavesplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
+import com.amurplatform.database.{Keys, LevelDBWriter, RW}
+import com.amurplatform.settings.WavesSettings
+import com.amurplatform.state.{BlockchainUpdaterImpl, NG}
+import com.amurplatform.transaction.BlockchainUpdater
+import com.amurplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
 import org.iq80.leveldb.DB
 
 object StorageFactory extends ScorexLogging {

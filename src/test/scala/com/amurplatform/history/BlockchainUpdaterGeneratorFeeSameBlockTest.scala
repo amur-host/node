@@ -1,14 +1,14 @@
-package com.wavesplatform.history
+package com.amurplatform.history
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
+import com.amurplatform.TransactionGen
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.state._
+import com.amurplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.transfer._
+import com.amurplatform.transaction.GenesisTransaction
+import com.amurplatform.transaction.transfer._
 
 class BlockchainUpdaterGeneratorFeeSameBlockTest
     extends PropSpec

@@ -1,4 +1,4 @@
-package com.wavesplatform.network
+package com.amurplatform.network
 
 import java.util.concurrent.ConcurrentHashMap
 

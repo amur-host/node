@@ -1,6 +1,6 @@
-package com.wavesplatform.account
+package com.amurplatform.account
 
-import com.wavesplatform.state.EitherExt2
+import com.amurplatform.state.EitherExt2
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 

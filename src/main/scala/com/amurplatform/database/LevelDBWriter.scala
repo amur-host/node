@@ -1,25 +1,25 @@
-package com.wavesplatform.database
+package com.amurplatform.database
 
 import cats.kernel.Monoid
 import com.google.common.cache.CacheBuilder
-import com.wavesplatform.database.patch.DisableHijackedAliases
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.state.reader.LeaseDetails
+import com.amurplatform.database.patch.DisableHijackedAliases
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state._
+import com.amurplatform.state.reader.LeaseDetails
 import org.iq80.leveldb.{DB, ReadOptions}
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.transaction.Transaction.Type
-import com.wavesplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.transfer._
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.block.{Block, BlockHeader}
+import com.amurplatform.transaction.Transaction.Type
+import com.amurplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange.ExchangeTransaction
+import com.amurplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.transfer._
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer

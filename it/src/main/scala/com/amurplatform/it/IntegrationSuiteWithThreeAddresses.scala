@@ -1,12 +1,12 @@
-package com.wavesplatform.it
+package com.amurplatform.it
 
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.util._
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.util._
 import org.scalatest._
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.transaction.transfer._
+import com.amurplatform.account.PrivateKeyAccount
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.transaction.transfer._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future.traverse

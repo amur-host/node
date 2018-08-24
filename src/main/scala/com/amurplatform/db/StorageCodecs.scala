@@ -1,8 +1,8 @@
-package com.wavesplatform.db
+package com.amurplatform.db
 
 import com.google.common.primitives.Ints
-import com.wavesplatform.network.{BlockCheckpoint, Checkpoint}
-import com.wavesplatform.state.EitherExt2
+import com.amurplatform.network.{BlockCheckpoint, Checkpoint}
+import com.amurplatform.state.EitherExt2
 
 import scala.collection.generic.CanBuildFrom
 import scala.util.Try

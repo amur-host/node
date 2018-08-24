@@ -1,4 +1,4 @@
-package com.wavesplatform.utils
+package com.amurplatform.utils
 
 import com.typesafe.config.{Config, ConfigFactory, ConfigRenderOptions}
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.state.diffs
+package com.amurplatform.state.diffs
 
 import cats._
-import com.wavesplatform.state._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com.amurplatform.state._
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.lagonaki.mocks.TestBlock
+import com.amurplatform.lagonaki.mocks.TestBlock
 
 class GenesisTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
   def nelMax[T](g: Gen[T], max: Int = 10): Gen[List[T]] = Gen.choose(1, max).flatMap(Gen.listOfN(_, g))

@@ -1,7 +1,7 @@
-package com.wavesplatform.lang
+package com.amurplatform.lang
 
-import com.wavesplatform.lang.v1.BaseGlobal
+import com.amurplatform.lang.v1.BaseGlobal
 
 package object hacks {
-  private[lang] val Global: BaseGlobal = com.wavesplatform.lang.Global // Hack for IDEA
+  private[lang] val Global: BaseGlobal = com.amurplatform.lang.Global // Hack for IDEA
 }

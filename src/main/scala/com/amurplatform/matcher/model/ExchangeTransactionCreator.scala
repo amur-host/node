@@ -1,13 +1,13 @@
-package com.wavesplatform.matcher.model
+package com.amurplatform.matcher.model
 
-import com.wavesplatform.matcher.MatcherSettings
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.utils.{NTP, ScorexLogging}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.wallet.Wallet
+import com.amurplatform.matcher.MatcherSettings
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.Blockchain
+import com.amurplatform.utils.{NTP, ScorexLogging}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.wallet.Wallet
 
 trait ExchangeTransactionCreator extends ScorexLogging {
   val functionalitySettings: FunctionalitySettings

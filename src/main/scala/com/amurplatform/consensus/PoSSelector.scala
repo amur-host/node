@@ -1,14 +1,14 @@
-package com.wavesplatform.consensus
+package com.amurplatform.consensus
 
 import cats.implicits._
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.settings.BlockchainSettings
-import com.wavesplatform.state.{Blockchain, ByteStr, _}
-import com.wavesplatform.block.Block
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.GenericError
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.settings.BlockchainSettings
+import com.amurplatform.state.{Blockchain, ByteStr, _}
+import com.amurplatform.block.Block
+import com.amurplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.ValidationError.GenericError
 
 import scala.concurrent.duration.FiniteDuration
 

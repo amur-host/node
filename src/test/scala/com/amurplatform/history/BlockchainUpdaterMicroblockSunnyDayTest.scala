@@ -1,16 +1,16 @@
-package com.wavesplatform.history
+package com.amurplatform.history
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
+import com.amurplatform.TransactionGen
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.state._
+import com.amurplatform.state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.account.{Address, AddressOrAlias, PrivateKeyAccount}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.crypto._
+import com.amurplatform.account.{Address, AddressOrAlias, PrivateKeyAccount}
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.transfer._
+import com.amurplatform.crypto._
 
 class BlockchainUpdaterMicroblockSunnyDayTest
     extends PropSpec

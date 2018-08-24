@@ -1,13 +1,13 @@
-package com.wavesplatform.state
+package com.amurplatform.state
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.account.{Address, Alias, PublicKeyAccount}
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.{AssetId, Transaction}
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.features.FeatureProvider._
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.account.{Address, Alias, PublicKeyAccount}
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.{AssetId, Transaction}
 
 case class LeaseBalance(in: Long, out: Long)
 

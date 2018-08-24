@@ -1,8 +1,8 @@
-package com.wavesplatform.it.async.transactions.debug
+package com.amurplatform.it.async.transactions.debug
 
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.transactions.BaseTransactionSuite
+import com.amurplatform.it.util._
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}

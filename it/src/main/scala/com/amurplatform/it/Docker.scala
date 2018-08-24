@@ -1,4 +1,4 @@
-package com.wavesplatform.it
+package com.amurplatform.it
 
 import java.io.{FileOutputStream, IOException}
 import java.net.{InetAddress, InetSocketAddress, URL}
@@ -17,10 +17,10 @@ import com.spotify.docker.client.messages._
 import com.spotify.docker.client.{DefaultDockerClient, DockerClient}
 import com.typesafe.config.ConfigFactory._
 import com.typesafe.config.{Config, ConfigRenderOptions}
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.util.GlobalTimer.{instance => timer}
-import com.wavesplatform.settings._
-import com.wavesplatform.state.EitherExt2
+import com.amurplatform.it.api.AsyncHttpApi._
+import com.amurplatform.it.util.GlobalTimer.{instance => timer}
+import com.amurplatform.settings._
+import com.amurplatform.state.EitherExt2
 import monix.eval.Coeval
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
@@ -28,9 +28,9 @@ import org.apache.commons.compress.archivers.ArchiveStreamFactory
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry
 import org.apache.commons.io.IOUtils
 import org.asynchttpclient.Dsl._
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.Block
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.block.Block
 
 import scala.collection.JavaConverters._
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -257,7 +257,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
 
       val containerConfig = ContainerConfig
         .builder()
-        .image("com.wavesplatform/it:latest")
+        .image("com.amurplatform/it:latest")
         .exposedPorts(s"$ProfilerPort", restApiPort, networkPort, matcherApiPort)
         .networkingConfig(ContainerConfig.NetworkingConfig.create(Map(
           wavesNetwork.name() -> endpointConfigFor(nodeName)

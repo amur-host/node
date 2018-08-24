@@ -1,12 +1,12 @@
-package com.wavesplatform.database
+package com.amurplatform.database
 
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.{Ints, Longs}
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
+import com.amurplatform.account.{Address, Alias}
+import com.amurplatform.block.{Block, BlockHeader}
+import com.amurplatform.state._
+import com.amurplatform.transaction.Transaction
+import com.amurplatform.transaction.smart.script.{Script, ScriptReader}
 
 object Keys {
   import KeyHelpers._

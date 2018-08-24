@@ -1,11 +1,11 @@
-package com.wavesplatform.network
+package com.amurplatform.network
 
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelDuplexHandler, ChannelHandlerContext, ChannelPromise}
-import com.wavesplatform.block.Block
-import com.wavesplatform.network.message.{Message => ScorexMessage}
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.transaction.Transaction
+import com.amurplatform.block.Block
+import com.amurplatform.network.message.{Message => ScorexMessage}
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.transaction.Transaction
 
 @Sharable
 class TrafficLogger(settings: TrafficLogger.Settings) extends ChannelDuplexHandler with ScorexLogging {

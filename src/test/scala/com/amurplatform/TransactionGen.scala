@@ -1,30 +1,30 @@
-package com.wavesplatform
+package com.amurplatform
 
 import cats.syntax.semigroup._
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.testing.ScriptGen
-import com.wavesplatform.settings.Constants
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.ENOUGH_AMT
+import com.amurplatform.lang.Global
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.lang.v1.compiler.Terms._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com.amurplatform.lang.v1.testing.ScriptGen
+import com.amurplatform.settings.Constants
+import com.amurplatform.state._
+import com.amurplatform.state.diffs.ENOUGH_AMT
 import org.scalacheck.Gen.{alphaLowerChar, alphaUpperChar, frequency, numChar}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.{BeforeAndAfterAll, Suite}
-import com.wavesplatform.account.PublicKeyAccount._
-import com.wavesplatform.account._
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.lease._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
+import com.amurplatform.account.PublicKeyAccount._
+import com.amurplatform.account._
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets._
+import com.amurplatform.transaction.assets.exchange._
+import com.amurplatform.transaction.lease._
+import com.amurplatform.transaction.smart.SetScriptTransaction
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com.amurplatform.transaction.transfer._
 import MassTransferTransaction.MaxTransferCount
-import com.wavesplatform.utils.TimeImpl
+import com.amurplatform.utils.TimeImpl
 
 import scala.util.Random
 

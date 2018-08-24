@@ -1,11 +1,11 @@
-package com.wavesplatform.transaction.assets.exchange
+package com.amurplatform.transaction.assets.exchange
 
-import com.wavesplatform.state.ByteStr
+import com.amurplatform.state.ByteStr
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.exchange.Order.assetIdBytes
-import com.wavesplatform.transaction.assets.exchange.Validation.booleanOperators
+import com.amurplatform.transaction._
+import com.amurplatform.transaction.assets.exchange.Order.assetIdBytes
+import com.amurplatform.transaction.assets.exchange.Validation.booleanOperators
 
 import scala.util.{Success, Try}
 

@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction
+package com.amurplatform.transaction
 
-import com.wavesplatform.history._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.{Diff, EitherExt2, NgState}
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com.amurplatform.history._
+import com.amurplatform.state.diffs._
+import com.amurplatform.state.{Diff, EitherExt2, NgState}
+import com.amurplatform.{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.transaction.transfer._
+import com.amurplatform.transaction.transfer._
 
 class NgStateTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

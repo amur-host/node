@@ -1,15 +1,15 @@
-package com.wavesplatform.consensus.nxt.api.http
+package com.amurplatform.consensus.nxt.api.http
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.consensus.GeneratingBalanceProvider
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.{FunctionalitySettings, RestAPISettings}
-import com.wavesplatform.state.Blockchain
+import com.amurplatform.consensus.GeneratingBalanceProvider
+import com.amurplatform.features.BlockchainFeatures
+import com.amurplatform.settings.{FunctionalitySettings, RestAPISettings}
+import com.amurplatform.state.Blockchain
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.Json
-import com.wavesplatform.account.Address
-import com.wavesplatform.api.http.{ApiRoute, CommonApiFunctions, InvalidAddress}
+import com.amurplatform.account.Address
+import com.amurplatform.api.http.{ApiRoute, CommonApiFunctions, InvalidAddress}
 
 @Path("/consensus")
 @Api(value = "/consensus")

@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package com.amurplatform.network
 
 import java.net.InetSocketAddress
 
-import com.wavesplatform.utils.ScorexLogging
+import com.amurplatform.utils.ScorexLogging
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
 

@@ -1,4 +1,4 @@
-package com.wavesplatform.transaction
+package com.amurplatform.transaction
 
 trait ChainSpecific {
   val chainId: Byte

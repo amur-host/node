@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.directives
+package com.amurplatform.lang.directives
 
 sealed trait DirectiveKey
 object DirectiveKey {

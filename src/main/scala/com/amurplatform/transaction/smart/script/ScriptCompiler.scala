@@ -1,14 +1,14 @@
-package com.wavesplatform.transaction.smart.script
+package com.amurplatform.transaction.smart.script
 
 import cats.implicits._
-import com.wavesplatform.lang.ScriptVersion
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.directives.{Directive, DirectiveKey, DirectiveParser}
-import com.wavesplatform.lang.v1.ScriptEstimator
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.utils
-import com.wavesplatform.utils.functionCosts
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com.amurplatform.lang.ScriptVersion
+import com.amurplatform.lang.ScriptVersion.Versions.V1
+import com.amurplatform.lang.directives.{Directive, DirectiveKey, DirectiveParser}
+import com.amurplatform.lang.v1.ScriptEstimator
+import com.amurplatform.lang.v1.compiler.CompilerV1
+import com.amurplatform.utils
+import com.amurplatform.utils.functionCosts
+import com.amurplatform.transaction.smart.script.v1.ScriptV1
 
 import scala.util.{Failure, Success, Try}
 

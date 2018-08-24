@@ -1,19 +1,19 @@
-package com.wavesplatform.matcher.market
+package com.amurplatform.matcher.market
 
-import com.wavesplatform.WithDB
-import com.wavesplatform.matcher.model._
-import com.wavesplatform.matcher.{MatcherSettings, MatcherTestData}
-import com.wavesplatform.settings.{Constants, WalletSettings}
-import com.wavesplatform.state.{Blockchain, ByteStr, EitherExt2, LeaseBalance, Portfolio}
-import com.wavesplatform.utx.UtxPool
+import com.amurplatform.WithDB
+import com.amurplatform.matcher.model._
+import com.amurplatform.matcher.{MatcherSettings, MatcherTestData}
+import com.amurplatform.settings.{Constants, WalletSettings}
+import com.amurplatform.state.{Blockchain, ByteStr, EitherExt2, LeaseBalance, Portfolio}
+import com.amurplatform.utx.UtxPool
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.wallet.Wallet
+import com.amurplatform.account.{PrivateKeyAccount, PublicKeyAccount}
+import com.amurplatform.transaction.ValidationError
+import com.amurplatform.transaction.assets.IssueTransactionV1
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.wallet.Wallet
 
 class OrderValidatorSpecification
     extends WordSpec

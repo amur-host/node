@@ -1,9 +1,9 @@
-package com.wavesplatform.it.async.activation
+package com.amurplatform.it.async.activation
 
-import com.wavesplatform.features.BlockchainFeatureStatus
-import com.wavesplatform.features.api.{ActivationStatus, FeatureActivationStatus, NodeFeatureStatus}
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.api.AsyncHttpApi._
+import com.amurplatform.features.BlockchainFeatureStatus
+import com.amurplatform.features.api.{ActivationStatus, FeatureActivationStatus, NodeFeatureStatus}
+import com.amurplatform.it.Node
+import com.amurplatform.it.api.AsyncHttpApi._
 import org.scalactic.source.Position
 import org.scalatest.Matchers
 

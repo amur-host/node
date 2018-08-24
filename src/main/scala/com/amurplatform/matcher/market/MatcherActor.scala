@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher.market
+package com.amurplatform.matcher.market
 
 import java.util.concurrent.atomic.AtomicReference
 
@@ -9,22 +9,22 @@ import akka.persistence.{PersistentActor, RecoveryCompleted, _}
 import akka.util.Timeout
 import cats.implicits._
 import com.google.common.base.Charsets
-import com.wavesplatform.account.Address
-import com.wavesplatform.matcher.api.{BadMatcherResponse, MatcherResponse, StatusCodeMatcherResponse}
-import com.wavesplatform.matcher.market.OrderBookActor._
-import com.wavesplatform.matcher.model.OrderBook
-import com.wavesplatform.matcher.smart.MatcherScriptRunner
-import com.wavesplatform.matcher.{AssetPairBuilder, MatcherSettings}
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.{AssetDescription, Blockchain}
-import com.wavesplatform.transaction.ValidationError.{GenericError, ScriptExecutionError, TransactionNotAllowedByScript}
-import com.wavesplatform.transaction.assets.exchange.Validation.booleanOperators
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.{AssetId, ValidationError}
-import com.wavesplatform.utils.{Base58, NTP, ScorexLogging}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com.amurplatform.account.Address
+import com.amurplatform.matcher.api.{BadMatcherResponse, MatcherResponse, StatusCodeMatcherResponse}
+import com.amurplatform.matcher.market.OrderBookActor._
+import com.amurplatform.matcher.model.OrderBook
+import com.amurplatform.matcher.smart.MatcherScriptRunner
+import com.amurplatform.matcher.{AssetPairBuilder, MatcherSettings}
+import com.amurplatform.settings.FunctionalitySettings
+import com.amurplatform.state.{AssetDescription, Blockchain}
+import com.amurplatform.transaction.ValidationError.{GenericError, ScriptExecutionError, TransactionNotAllowedByScript}
+import com.amurplatform.transaction.assets.exchange.Validation.booleanOperators
+import com.amurplatform.transaction.assets.exchange.{AssetPair, Order}
+import com.amurplatform.transaction.smart.script.Script
+import com.amurplatform.transaction.{AssetId, ValidationError}
+import com.amurplatform.utils.{Base58, NTP, ScorexLogging}
+import com.amurplatform.utx.UtxPool
+import com.amurplatform.wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import play.api.libs.json._
 import scorex.utils._

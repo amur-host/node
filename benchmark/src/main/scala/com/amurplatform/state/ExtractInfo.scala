@@ -1,21 +1,21 @@
-package com.wavesplatform.state
+package com.amurplatform.state
 
 import java.io.{File, PrintWriter}
 import java.util.concurrent.ThreadLocalRandom
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.db.LevelDBFactory
-import com.wavesplatform.lang.v1.traits.DataType
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.bench.DataTestData
+import com.amurplatform.database.LevelDBWriter
+import com.amurplatform.db.LevelDBFactory
+import com.amurplatform.lang.v1.traits.DataType
+import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.state.bench.DataTestData
 import org.iq80.leveldb.{DB, Options}
 import scodec.bits.{BitVector, ByteVector}
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.assets.IssueTransaction
-import com.wavesplatform.transaction.{Authorized, CreateAliasTransactionV1, DataTransaction, Transaction}
+import com.amurplatform.account.AddressScheme
+import com.amurplatform.utils.ScorexLogging
+import com.amurplatform.block.Block
+import com.amurplatform.transaction.assets.IssueTransaction
+import com.amurplatform.transaction.{Authorized, CreateAliasTransactionV1, DataTransaction, Transaction}
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
