@@ -28,7 +28,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       case (gen, rest) =>
         val finalMinerBalances = rest.map {
           case (a @ (bmb: BlockAndMicroblockSequence, last: Block)) =>
-            withDomain(MicroblocksActivatedAt0WavesSettings) { d =>
+            withDomain(MicroblocksActivatedAt0AmurSettings) { d =>
               d.blockchainUpdater.processBlock(gen).explicitGet()
               bmb.foreach {
                 case (b, mbs) =>
@@ -53,7 +53,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       genesis: GenesisTransaction    = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
       payment: TransferTransactionV1 = createWavesTransfer(master, master, amt, fee, ts).explicitGet()
     } yield (miner, genesis, payment, ts)
-    scenario(preconditionsAndPayments, MicroblocksActivatedAt0WavesSettings) {
+    scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
       case (domain, (miner, genesis, payment, ts)) =>
         val genBlock       = buildBlockOfTxs(randomSig, Seq(genesis))
         val (base, micros) = chainBaseAndMicro(genBlock.uniqueId, Seq.empty, Seq(Seq(payment)), miner, 3, ts)

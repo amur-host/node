@@ -46,7 +46,7 @@ class UtxPoolSpecification extends FreeSpec with Matchers with MockFactory with 
   private def mkBlockchain(senderAccount: Address, senderBalance: Long) = {
     val config          = ConfigFactory.load()
     val genesisSettings = TestHelpers.genesisSettings(Map(senderAccount -> senderBalance))
-    val origSettings    = WavesSettings.fromConfig(config)
+    val origSettings    = AmurSettings.fromConfig(config)
     val settings = origSettings.copy(
       blockchainSettings = BlockchainSettings(
         'T',

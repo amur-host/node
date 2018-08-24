@@ -6,7 +6,7 @@ import com.typesafe.config.ConfigFactory
 import com.amurplatform.TestHelpers
 import com.amurplatform.database.LevelDBWriter
 import com.amurplatform.history.Domain
-import com.amurplatform.settings.{FunctionalitySettings, WavesSettings, loadConfig}
+import com.amurplatform.settings.{FunctionalitySettings, AmurSettings, loadConfig}
 import com.amurplatform.state.{Blockchain, BlockchainUpdaterImpl}
 import com.amurplatform.utils.{ScorexLogging, TimeImpl}
 
@@ -23,7 +23,7 @@ trait WithState extends ScorexLogging {
 
   def withStateAndHistory(fs: FunctionalitySettings)(test: Blockchain => Any): Unit = withState(fs)(test)
 
-  def withDomain[A](settings: WavesSettings = WavesSettings.fromConfig(loadConfig(ConfigFactory.load())))(test: Domain => A): A = {
+  def withDomain[A](settings: AmurSettings = AmurSettings.fromConfig(loadConfig(ConfigFactory.load())))(test: Domain => A): A = {
     val time = new TimeImpl
 
     try withState(settings.blockchainSettings.functionalitySettings) { blockchain =>

@@ -2,7 +2,7 @@ package com.amurplatform.db
 
 import com.typesafe.config.ConfigFactory
 import com.amurplatform.database.LevelDBWriter
-import com.amurplatform.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
+import com.amurplatform.settings.{TestFunctionalitySettings, AmurSettings, loadConfig}
 import com.amurplatform.state.{BlockchainUpdaterImpl, _}
 import com.amurplatform.{TransactionGen, WithDB}
 import org.scalacheck.Gen
@@ -129,7 +129,7 @@ class ScriptCacheTest extends FreeSpec with Matchers with WithDB with Transactio
   def withBlockchain(gen: Time => Gen[(Seq[PrivateKeyAccount], Seq[Block])])(f: (Seq[PrivateKeyAccount], BlockchainUpdater with NG) => Unit): Unit = {
     val time          = new TimeImpl
     val defaultWriter = new LevelDBWriter(db, TestFunctionalitySettings.Stub, CACHE_SIZE)
-    val settings0     = WavesSettings.fromConfig(loadConfig(ConfigFactory.load()))
+    val settings0     = AmurSettings.fromConfig(loadConfig(ConfigFactory.load()))
     val settings      = settings0.copy(featuresSettings = settings0.featuresSettings.copy(autoShutdownOnUnsupportedFeature = false))
     val bcu           = new BlockchainUpdaterImpl(defaultWriter, settings, time)
     try {

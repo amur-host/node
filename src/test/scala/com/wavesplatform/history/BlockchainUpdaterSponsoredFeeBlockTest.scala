@@ -2,7 +2,7 @@ package com.amurplatform.history
 
 import com.amurplatform.TransactionGen
 import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.settings.{BlockchainSettings, WavesSettings}
+import com.amurplatform.settings.{BlockchainSettings, AmurSettings}
 import com.amurplatform.state._
 import com.amurplatform.state.diffs._
 import org.scalacheck.Gen
@@ -101,10 +101,10 @@ class BlockchainUpdaterSponsoredFeeBlockTest
             blocksForFeatureActivation = 1,
             preActivatedFeatures = Map(BlockchainFeatures.FeeSponsorship.id -> 0, BlockchainFeatures.NG.id -> 0)))
 
-  val SponsoredActivatedAt0WavesSettings: WavesSettings = settings.copy(blockchainSettings = SponsoredFeeActivatedAt0BlockchainSettings)
+  val SponsoredActivatedAt0AmurSettings: AmurSettings = settings.copy(blockchainSettings = SponsoredFeeActivatedAt0BlockchainSettings)
 
   property("not enough waves to sponsor sponsored tx") {
-    scenario(sponsorPreconditions, SponsoredActivatedAt0WavesSettings) {
+    scenario(sponsorPreconditions, SponsoredActivatedAt0AmurSettings) {
       case (domain, (genesis, masterToAlice, feeAsset, sponsor, aliceToBob, bobToMaster, bobToMaster2)) =>
         val (block0, microBlocks) = chainBaseAndMicro(randomSig, genesis, Seq(masterToAlice, feeAsset, sponsor).map(Seq(_)))
         val block1 = customBuildBlockOfTxs(microBlocks.last.totalResBlockSig,

@@ -32,7 +32,7 @@ class BlockchainUpdaterGeneratorFeeNextBlockOrMicroBlockTest
 
   property("generator should get fees before applying block before applyMinerFeeWithTransactionAfter in two blocks") {
     assume(BlockchainFeatures.implemented.contains(BlockchainFeatures.SmartAccounts.id))
-    scenario(preconditionsAndPayments, DefaultWavesSettings) {
+    scenario(preconditionsAndPayments, DefaultAmurSettings) {
       case (domain: Domain, (genesis, somePayment, generatorPaymentOnFee, someOtherPayment)) =>
         val blocks = chainBlocks(Seq(Seq(genesis, somePayment), Seq(generatorPaymentOnFee, someOtherPayment)))
         all(blocks.map(block => domain.blockchainUpdater.processBlock(block))) shouldBe 'right
@@ -40,7 +40,7 @@ class BlockchainUpdaterGeneratorFeeNextBlockOrMicroBlockTest
   }
 
   property("generator should get fees before applying block before applyMinerFeeWithTransactionAfter in block + micro") {
-    scenario(preconditionsAndPayments, MicroblocksActivatedAt0WavesSettings) {
+    scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
       case (domain, (genesis, somePayment, generatorPaymentOnFee, someOtherPayment)) =>
         val (block, microBlocks) =
           chainBaseAndMicro(randomSig, genesis, Seq(Seq(somePayment), Seq(generatorPaymentOnFee, someOtherPayment)))
@@ -51,7 +51,7 @@ class BlockchainUpdaterGeneratorFeeNextBlockOrMicroBlockTest
   }
 
   property("generator should get fees after applying every transaction after applyMinerFeeWithTransactionAfter in two blocks") {
-    scenario(preconditionsAndPayments, MicroblocksActivatedAt0WavesSettings) {
+    scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
       case (domain, (genesis, somePayment, generatorPaymentOnFee, someOtherPayment)) =>
         val blocks = chainBlocks(Seq(Seq(genesis, somePayment), Seq(generatorPaymentOnFee, someOtherPayment)))
         domain.blockchainUpdater.processBlock(blocks(0)) shouldBe 'right
@@ -60,7 +60,7 @@ class BlockchainUpdaterGeneratorFeeNextBlockOrMicroBlockTest
   }
 
   property("generator should get fees after applying every transaction after applyMinerFeeWithTransactionAfter in block + micro") {
-    scenario(preconditionsAndPayments, MicroblocksActivatedAt0WavesSettings) {
+    scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
       case (domain, (genesis, somePayment, generatorPaymentOnFee, someOtherPayment)) =>
         val (block, microBlocks) =
           chainBaseAndMicro(randomSig, genesis, Seq(Seq(somePayment), Seq(generatorPaymentOnFee, someOtherPayment)))

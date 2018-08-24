@@ -31,7 +31,7 @@ class BlockchainUpdaterGeneratorFeeSameBlockTest
 
   property("block generator can spend fee after transaction before applyMinerFeeWithTransactionAfter") {
     assume(BlockchainFeatures.implemented.contains(BlockchainFeatures.SmartAccounts.id))
-    scenario(preconditionsAndPayments, DefaultWavesSettings) {
+    scenario(preconditionsAndPayments, DefaultAmurSettings) {
       case (domain, (genesis, somePayment, generatorPaymentOnFee)) =>
         val blocks = chainBlocks(Seq(Seq(genesis), Seq(generatorPaymentOnFee, somePayment)))
         all(blocks.map(block => domain.blockchainUpdater.processBlock(block))) shouldBe 'right
@@ -39,7 +39,7 @@ class BlockchainUpdaterGeneratorFeeSameBlockTest
   }
 
   property("block generator can't spend fee after transaction after applyMinerFeeWithTransactionAfter") {
-    scenario(preconditionsAndPayments, MicroblocksActivatedAt0WavesSettings) {
+    scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
       case (domain, (genesis, somePayment, generatorPaymentOnFee)) =>
         val blocks = chainBlocks(Seq(Seq(genesis), Seq(generatorPaymentOnFee, somePayment)))
         blocks.init.foreach(block => domain.blockchainUpdater.processBlock(block).explicitGet())

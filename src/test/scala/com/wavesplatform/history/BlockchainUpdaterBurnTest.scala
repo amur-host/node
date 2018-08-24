@@ -2,7 +2,7 @@ package com.amurplatform.history
 
 import com.amurplatform.TransactionGen
 import com.amurplatform.features.BlockchainFeatures
-import com.amurplatform.settings.{BlockchainSettings, WavesSettings}
+import com.amurplatform.settings.{BlockchainSettings, AmurSettings}
 import com.amurplatform.state._
 import com.amurplatform.state.diffs.{ENOUGH_AMT, produce}
 import org.scalacheck.Gen
@@ -41,10 +41,10 @@ class BlockchainUpdaterBurnTest extends PropSpec with PropertyChecks with Domain
         blocksForFeatureActivation = 1,
         preActivatedFeatures = Map(BlockchainFeatures.NG.id -> 0, BlockchainFeatures.DataTransaction.id -> 0)
       ))
-  val localWavesSettings: WavesSettings = settings.copy(blockchainSettings = localBlockchainSettings)
+  val localAmurSettings: AmurSettings = settings.copy(blockchainSettings = localBlockchainSettings)
 
   property("issue -> burn -> reissue in sequential blocks works correctly") {
-    scenario(preconditions, localWavesSettings) {
+    scenario(preconditions, localAmurSettings) {
       case (domain, (ts, genesis, masterToAlice, issue, burn, reissue)) =>
         val block0 = customBuildBlockOfTxs(randomSig, Seq(genesis), defaultSigner, 1, ts)
         val block1 = customBuildBlockOfTxs(block0.uniqueId, Seq(masterToAlice), defaultSigner, 1, ts + 150)
@@ -70,7 +70,7 @@ class BlockchainUpdaterBurnTest extends PropSpec with PropertyChecks with Domain
   }
 
   property("issue -> burn -> reissue in micro blocks works correctly") {
-    scenario(preconditions, localWavesSettings) {
+    scenario(preconditions, localAmurSettings) {
       case (domain, (ts, genesis, masterToAlice, issue, burn, reissue)) =>
         val block0 = customBuildBlockOfTxs(randomSig, Seq(genesis), defaultSigner, 1, ts)
         val block1 = customBuildBlockOfTxs(block0.uniqueId, Seq(masterToAlice), defaultSigner, 1, ts + 150)

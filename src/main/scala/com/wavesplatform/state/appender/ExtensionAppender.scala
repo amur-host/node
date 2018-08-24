@@ -4,7 +4,7 @@ import com.amurplatform.consensus.PoSSelector
 import com.amurplatform.metrics.{BlockStats, Instrumented, Metrics}
 import com.amurplatform.mining.Miner
 import com.amurplatform.network.{InvalidBlockStorage, PeerDatabase, formatBlocks, id}
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.AmurSettings
 import com.amurplatform.state._
 import com.amurplatform.utils.{ScorexLogging, Time}
 import com.amurplatform.utx.UtxPool
@@ -26,7 +26,7 @@ object ExtensionAppender extends ScorexLogging with Instrumented {
             utxStorage: UtxPool,
             pos: PoSSelector,
             time: Time,
-            settings: WavesSettings,
+            settings: AmurSettings,
             invalidBlocks: InvalidBlockStorage,
             peerDatabase: PeerDatabase,
             miner: Miner,
