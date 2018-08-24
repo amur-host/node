@@ -20,7 +20,7 @@ class OracleTransactionGenerator(settings: Settings, val accounts: Seq[PrivateKe
 
     val script = Gen.oracleScript(oracle, settings.requiredData)
 
-    val enoughFee = 0.005.waves
+    val enoughFee = 0.005.amur
 
     val setScript: Transaction =
       SetScriptTransaction
@@ -39,7 +39,7 @@ class OracleTransactionGenerator(settings: Settings, val accounts: Seq[PrivateKe
               None,
               scriptedAccount,
               oracle,
-              1.waves,
+              1.amur,
               System.currentTimeMillis(),
               None,
               enoughFee,
