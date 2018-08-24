@@ -37,32 +37,32 @@ class CancelOrderTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll
   nodes.waitForHeightArise()
 
   "cancel order using api-key" in {
-    val orderId = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 800, 100.waves).message.id
-    matcherNode.waitOrderStatus(wavesUsdPair, orderId, "Accepted", 1.minute)
+    val orderId = matcherNode.placeOrder(bobNode, amurUsdPair, OrderType.SELL, 800, 100.amur).message.id
+    matcherNode.waitOrderStatus(amurUsdPair, orderId, "Accepted", 1.minute)
 
     matcherNode.cancelOrderWithApiKey(orderId)
-    matcherNode.waitOrderStatus(wavesUsdPair, orderId, "Cancelled", 1.minute)
+    matcherNode.waitOrderStatus(amurUsdPair, orderId, "Cancelled", 1.minute)
 
     matcherNode.fullOrderHistory(bobNode).filter(_.id == orderId).head.status shouldBe "Cancelled"
-    matcherNode.orderHistoryByPair(bobNode, wavesUsdPair).filter(_.id == orderId).head.status shouldBe "Cancelled"
-    matcherNode.orderBook(wavesUsdPair).bids shouldBe empty
-    matcherNode.orderBook(wavesUsdPair).asks shouldBe empty
+    matcherNode.orderHistoryByPair(bobNode, amurUsdPair).filter(_.id == orderId).head.status shouldBe "Cancelled"
+    matcherNode.orderBook(amurUsdPair).bids shouldBe empty
+    matcherNode.orderBook(amurUsdPair).asks shouldBe empty
 
   }
 
   "Alice and Bob trade WAVES-USD" - {
-    "place usd-waves order" in {
+    "place usd-amur order" in {
       // Alice wants to sell USD for Waves
-      val orderId1      = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 800, 100.waves).message.id
-      val orderId2      = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 700, 100.waves).message.id
-      val bobSellOrder3 = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 600, 100.waves).message.id
+      val orderId1      = matcherNode.placeOrder(bobNode, amurUsdPair, OrderType.SELL, 800, 100.amur).message.id
+      val orderId2      = matcherNode.placeOrder(bobNode, amurUsdPair, OrderType.SELL, 700, 100.amur).message.id
+      val bobSellOrder3 = matcherNode.placeOrder(bobNode, amurUsdPair, OrderType.SELL, 600, 100.amur).message.id
 
       matcherNode.fullOrderHistory(aliceNode)
       matcherNode.fullOrderHistory(bobNode)
 
-      matcherNode.waitOrderStatus(wavesUsdPair, bobSellOrder3, "Accepted", 1.minute)
+      matcherNode.waitOrderStatus(amurUsdPair, bobSellOrder3, "Accepted", 1.minute)
 
-      val aliceOrder = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, 800, 0.00125.waves)
+      val aliceOrder = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, 800, 0.00125.amur)
       matcherNode.placeOrder(aliceOrder).message.id
 
       Thread.sleep(2000)
@@ -99,9 +99,9 @@ object CancelOrderTestSuite {
   private val ForbiddenAssetId = "FdbnAsset"
   private val Decimals: Byte   = 2
 
-  private val minerDisabled = parseString("waves.miner.enable = no")
+  private val minerDisabled = parseString("amur.miner.enable = no")
   private val matcherConfig = parseString(s"""
-       |waves.matcher {
+       |amur.matcher {
        |  enable = yes
        |  account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
        |  bind-address = "0.0.0.0"
@@ -127,7 +127,7 @@ object CancelOrderTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -141,7 +141,7 @@ object CancelOrderTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -160,13 +160,13 @@ object CancelOrderTestSuite {
     priceAsset = None
   )
 
-  val wavesUsdPair = AssetPair(
+  val amurUsdPair = AssetPair(
     amountAsset = None,
     priceAsset = Some(UsdId)
   )
 
   private val updatedMatcherConfig = parseString(s"""
-       |waves.matcher {
+       |amur.matcher {
        |  price-assets = [ "$UsdId", "WAVES"]
        |}
      """.stripMargin)

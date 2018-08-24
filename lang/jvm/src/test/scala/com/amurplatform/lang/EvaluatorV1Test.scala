@@ -12,7 +12,7 @@ import com.amurplatform.lang.v1.evaluator.EvaluatorV1
 import com.amurplatform.lang.v1.evaluator.FunctionIds._
 import com.amurplatform.lang.v1.evaluator.ctx._
 import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.WavesContext
 import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, EnvironmentFunctions, PureContext}
 import com.amurplatform.lang.v1.testing.ScriptGen
 import com.amurplatform.lang.v1.traits.Environment

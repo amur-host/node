@@ -7,7 +7,7 @@ import com.amurplatform.lang.v1.compiler.Terms._
 import com.amurplatform.lang.v1.compiler.{CompilerContext, CompilerV1}
 import com.amurplatform.lang.v1.evaluator.ctx._
 import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Types.transferTransactionType
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.Types.transferTransactionType
 import com.amurplatform.lang.v1.parser.Parser
 import com.amurplatform.lang.v1.testing.ScriptGen
 import com.amurplatform.lang._

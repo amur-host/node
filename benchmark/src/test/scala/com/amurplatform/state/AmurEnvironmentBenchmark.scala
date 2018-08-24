@@ -46,7 +46,7 @@ class WavesEnvironmentBenchmark {
   }
 
   @Benchmark
-  def accountBalanceOf_waves_test(st: AccountBalanceOfWavesSt, bh: Blackhole): Unit = {
+  def accountBalanceOf_amur_test(st: AccountBalanceOfWavesSt, bh: Blackhole): Unit = {
     bh.consume(st.environment.accountBalanceOf(Recipient.Address(ByteVector(st.accounts.random)), None))
   }
 
@@ -98,23 +98,23 @@ object WavesEnvironmentBenchmark {
   @State(Scope.Benchmark)
   class BaseSt {
     protected val benchSettings: Settings = Settings.fromConfig(ConfigFactory.load())
-    private val wavesSettings: WavesSettings = {
+    private val amurSettings: WavesSettings = {
       val config = loadConfig(ConfigFactory.parseFile(new File(benchSettings.networkConfigFile)))
       WavesSettings.fromConfig(config)
     }
 
     AddressScheme.current = new AddressScheme {
-      override val chainId: Byte = wavesSettings.blockchainSettings.addressSchemeCharacter.toByte
+      override val chainId: Byte = amurSettings.blockchainSettings.addressSchemeCharacter.toByte
     }
 
     private val db: DB = {
-      val dir = new File(wavesSettings.dataDirectory)
-      if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${wavesSettings.dataDirectory}'")
+      val dir = new File(amurSettings.dataDirectory)
+      if (!dir.isDirectory) throw new IllegalArgumentException(s"Can't find directory at '${amurSettings.dataDirectory}'")
       LevelDBFactory.factory.open(dir, new Options)
     }
 
     val environment: Environment = {
-      val state = new LevelDBWriter(db, wavesSettings.blockchainSettings.functionalitySettings)
+      val state = new LevelDBWriter(db, amurSettings.blockchainSettings.functionalitySettings)
       new WavesEnvironment(
         AddressScheme.current.chainId,
         Coeval.raiseError(new NotImplementedError("tx is not implemented")),

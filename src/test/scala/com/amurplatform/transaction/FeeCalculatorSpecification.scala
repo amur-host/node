@@ -16,7 +16,7 @@ import com.amurplatform.transaction.transfer._
 class FeeCalculatorSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen with MockFactory {
 
   private val configString =
-    """waves {
+    """amur {
       |  fees {
       |    payment {
       |      WAVES = 100000

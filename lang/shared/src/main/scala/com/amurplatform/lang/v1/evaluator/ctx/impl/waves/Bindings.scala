@@ -1,4 +1,4 @@
-package com.amurplatform.lang.v1.evaluator.ctx.impl.waves
+package com.amurplatform.lang.v1.evaluator.ctx.impl.amur
 
 import com.amurplatform.lang.v1.evaluator.ctx.CaseObj
 import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext.fromOption
