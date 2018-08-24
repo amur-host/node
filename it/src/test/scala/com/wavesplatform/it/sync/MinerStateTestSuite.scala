@@ -14,7 +14,7 @@ class MinerStateTestSuite extends FunSuite with CancelAfterFailure with NodesFro
 
   override protected def nodeConfigs: Seq[Config] = Configs
 
-  private val transferAmount = 1000.waves
+  private val transferAmount = 1000.amur
 
   private def miner               = nodes.head
   private def nodeWithZeroBalance = nodes.last

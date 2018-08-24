@@ -43,7 +43,7 @@ class OrderExclusionTestSuite
     "sell order could be placed and status it's correct" in {
       // Alice places sell order
       val aliceOrder = matcherNode
-        .placeOrder(aliceNode, aliceWavesPair, OrderType.SELL, 2.waves * Order.PriceConstant, 500, 2: Byte, 70.seconds)
+        .placeOrder(aliceNode, aliceWavesPair, OrderType.SELL, 2.amur * Order.PriceConstant, 500, 2: Byte, 70.seconds)
 
       aliceOrder.status shouldBe "OrderAccepted"
 
@@ -56,7 +56,7 @@ class OrderExclusionTestSuite
       // Alice check that order is correct
       val orders = matcherNode.orderBook(aliceWavesPair)
       orders.asks.head.amount shouldBe 500
-      orders.asks.head.price shouldBe 2.waves * Order.PriceConstant
+      orders.asks.head.price shouldBe 2.amur * Order.PriceConstant
 
       // sell order should be in the aliceNode orderbook
       matcherNode.fullOrderHistory(aliceNode).head.status shouldBe "Accepted"

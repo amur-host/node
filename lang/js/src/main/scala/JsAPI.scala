@@ -4,7 +4,7 @@ import com.amurplatform.lang.v1.FunctionHeader.{Native, User}
 import com.amurplatform.lang.v1.Serde
 import com.amurplatform.lang.v1.compiler.CompilerV1
 import com.amurplatform.lang.v1.compiler.Terms._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.LocalContext
 import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import com.amurplatform.lang.v1.parser.{Expressions, Parser}
 import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}

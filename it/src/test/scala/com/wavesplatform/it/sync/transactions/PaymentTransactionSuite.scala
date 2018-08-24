@@ -8,8 +8,8 @@ import org.scalatest.prop.TableDrivenPropertyChecks
 
 class PaymentTransactionSuite extends BaseTransactionSuite with TableDrivenPropertyChecks {
 
-  private val paymentAmount = 5.waves
-  private val defaulFee     = 1.waves
+  private val paymentAmount = 5.amur
+  private val defaulFee     = 1.amur
 
   test("waves payment changes waves balances and eff.b.") {
 
@@ -22,7 +22,7 @@ class PaymentTransactionSuite extends BaseTransactionSuite with TableDrivenPrope
     notMiner.assertBalances(secondAddress, secondBalance + paymentAmount, secondEffBalance + paymentAmount)
   }
 
-  val payment = PaymentRequest(5.waves, 1.waves, firstAddress, secondAddress)
+  val payment = PaymentRequest(5.amur, 1.amur, firstAddress, secondAddress)
   val endpoints =
     Table("/waves/payment/signature", "/waves/create-signed-payment", "/waves/external-payment", "/waves/broadcast-signed-payment")
   forAll(endpoints) { (endpoint: String) =>

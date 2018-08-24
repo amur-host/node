@@ -19,7 +19,7 @@ class CustomFeeTransactionSuite extends BaseTransactionSuite with CancelAfterFai
   override protected def nodeConfigs: Seq[Config] = Configs
 
   private val transferFee = 100000
-  private val assetFee    = 1.waves
+  private val assetFee    = 1.amur
   private val assetToken  = 100
 
   test("make transfer with sponsored asset") {
@@ -83,7 +83,7 @@ object CustomFeeTransactionSuite {
       quantity = defaultAssetQuantity,
       decimals = 2,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right

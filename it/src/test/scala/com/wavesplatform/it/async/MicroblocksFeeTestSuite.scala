@@ -29,7 +29,7 @@ class MicroblocksFeeTestSuite extends FreeSpec with Matchers with CancelAfterFai
           //Not mining node sends transfer transactions to another not mining node
           //Mining nodes collect fee
           (1 to n).map { _ =>
-            notMiner.transfer(notMiner.address, firstAddress, (1 + Random.nextInt(10)).waves, fee)
+            notMiner.transfer(notMiner.address, firstAddress, (1 + Random.nextInt(10)).amur, fee)
           }
         }
         .map(_ => ())
@@ -48,7 +48,7 @@ class MicroblocksFeeTestSuite extends FreeSpec with Matchers with CancelAfterFai
       height <- traverse(nodes)(_.height).map(_.max)
 
       _ <- traverse(nodes)(_.waitForHeight(microblockActivationHeight - 1))
-      _ <- txRequestsGen(200, 2.waves)
+      _ <- txRequestsGen(200, 2.amur)
       _ <- traverse(nodes)(_.waitForHeight(microblockActivationHeight + 2))
 
       initialBalances <- notMiner.debugStateAt(microblockActivationHeight - 1) //100%

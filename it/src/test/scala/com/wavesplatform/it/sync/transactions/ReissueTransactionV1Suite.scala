@@ -41,7 +41,7 @@ class ReissueTransactionV1Suite extends BaseTransactionSuite {
   test("not able to reissue if cannot pay fee - insufficient funds") {
 
     val (balance, effectiveBalance) = notMiner.accountBalances(firstAddress)
-    val reissueFee                  = effectiveBalance + 1.waves
+    val reissueFee                  = effectiveBalance + 1.amur
 
     val issuedAssetId = sender.issue(firstAddress, "name3", "description3", someAssetAmount, decimals = 2, reissuable = true, issueFee).id
 

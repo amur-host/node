@@ -35,7 +35,7 @@ class DataTransactionSuite extends BaseTransactionSuite {
     nodes.waitForHeightArise()
     notMiner.assertBalances(firstAddress, balance1, eff1)
 
-    val leaseAmount = 1.waves
+    val leaseAmount = 1.amur
     val leaseId     = sender.lease(firstAddress, secondAddress, leaseAmount, minFee).id
     nodes.waitForHeightAriseAndTxPresent(leaseId)
 

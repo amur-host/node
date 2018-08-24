@@ -1,7 +1,7 @@
 package com.amurplatform.history
 
 import com.amurplatform.database.{Keys, LevelDBWriter, RW}
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.LocalSettings
 import com.amurplatform.state.{BlockchainUpdaterImpl, NG}
 import com.amurplatform.transaction.BlockchainUpdater
 import com.amurplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}

@@ -125,7 +125,7 @@ object SeveralPartialOrdersTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right

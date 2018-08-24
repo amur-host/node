@@ -85,7 +85,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
         t <- randomPayments(accs, ts + 1, amt - 1)
       } yield h +: t
 
-  val TOTAL_WAVES = ENOUGH_AMT
+  val TOTAL_AMUR = ENOUGH_AMT
 
   def accsAndGenesis(): Gen[(Seq[PrivateKeyAccount], PrivateKeyAccount, Block, Int)] =
     for {

@@ -5,7 +5,7 @@ import com.amurplatform.consensus.PoSSelector
 import com.amurplatform.metrics._
 import com.amurplatform.mining.Miner
 import com.amurplatform.network._
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.LocalSettings
 import com.amurplatform.state.Blockchain
 import com.amurplatform.utils.{ScorexLogging, Time}
 import com.amurplatform.utx.UtxPool

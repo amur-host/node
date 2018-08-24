@@ -17,7 +17,7 @@ import scala.concurrent.duration._
 
 class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSending with CancelAfterFailure {
 
-  test("asset transfer changes sender's and recipient's asset balance; issuer's.waves balance is decreased by fee") {
+  test("asset transfer changes sender's and recipient's asset balance; issuer's.amur balance is decreased by fee") {
     val (firstBalance, firstEffBalance)   = notMiner.accountBalances(firstAddress)
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
@@ -101,7 +101,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSendi
   test("can not make transfer without having enough balance") {
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
-    assertBadRequestAndResponse(sender.transfer(secondAddress, firstAddress, secondBalance + 1.waves, minFee),
+    assertBadRequestAndResponse(sender.transfer(secondAddress, firstAddress, secondBalance + 1.amur, minFee),
                                 "Attempt to transfer unavailable funds")
     notMiner.assertBalances(secondAddress, secondBalance, secondEffBalance)
   }

@@ -7,8 +7,8 @@ import com.amurplatform.lang.Global
 import com.amurplatform.lang.v1.compiler.Types.{FINAL, UNIT}
 import com.amurplatform.lang.v1.evaluator.FunctionIds._
 import com.amurplatform.lang.v1.evaluator.ctx._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Bindings.orderObject
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Types._
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.Bindings.orderObject
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.Types._
 import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import com.amurplatform.lang.v1.{CTX, FunctionHeader}
 import com.amurplatform.transaction.assets.exchange.Order

@@ -26,7 +26,7 @@ class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFail
     val (balance2, eff2) = notMiner.accountBalances(secondAddress)
 
     //secondAddress effective balance more than general balance
-    assertBadRequestAndResponse(sender.lease(secondAddress, firstAddress, balance2 + 1.waves, minFee), "Reason: Cannot lease more than own")
+    assertBadRequestAndResponse(sender.lease(secondAddress, firstAddress, balance2 + 1.amur, minFee), "Reason: Cannot lease more than own")
     nodes.waitForHeightArise()
 
     notMiner.assertBalances(firstAddress, balance1, eff1)
@@ -119,7 +119,7 @@ class LeasingTransactionsSuite extends BaseTransactionSuite with CancelAfterFail
 
   test("can not make leasing without having enough your waves to self") {
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
-    assertBadRequestAndResponse(sender.lease(firstAddress, firstAddress, balance1 + 1.waves, minFee), "Transaction to yourself")
+    assertBadRequestAndResponse(sender.lease(firstAddress, firstAddress, balance1 + 1.amur, minFee), "Transaction to yourself")
     nodes.waitForHeightArise()
 
     notMiner.assertBalances(firstAddress, balance1, eff1)

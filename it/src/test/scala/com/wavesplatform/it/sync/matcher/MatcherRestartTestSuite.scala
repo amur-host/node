@@ -42,7 +42,7 @@ class MatcherRestartTestSuite
     "make order and after matcher's restart try to cancel it" in {
       // Alice places sell order
       val aliceOrder = matcherNode
-        .placeOrder(aliceNode, aliceWavesPair, OrderType.SELL, 2.waves * Order.PriceConstant, 500)
+        .placeOrder(aliceNode, aliceWavesPair, OrderType.SELL, 2.amur * Order.PriceConstant, 500)
       aliceOrder.status shouldBe "OrderAccepted"
       val firstOrder = aliceOrder.message.id
 
@@ -52,7 +52,7 @@ class MatcherRestartTestSuite
       // check that order is correct
       val orders = matcherNode.orderBook(aliceWavesPair)
       orders.asks.head.amount shouldBe 500
-      orders.asks.head.price shouldBe 2.waves * Order.PriceConstant
+      orders.asks.head.price shouldBe 2.amur * Order.PriceConstant
 
       // sell order should be in the aliceNode orderbook
       matcherNode.fullOrderHistory(aliceNode).head.status shouldBe "Accepted"
@@ -69,15 +69,15 @@ class MatcherRestartTestSuite
 
       val orders1 = matcherNode.orderBook(aliceWavesPair)
       orders1.asks.head.amount shouldBe 500
-      orders1.asks.head.price shouldBe 2.waves * Order.PriceConstant
+      orders1.asks.head.price shouldBe 2.amur * Order.PriceConstant
 
       val aliceSecondOrder = matcherNode
-        .placeOrder(aliceNode, aliceWavesPair, OrderType.SELL, 2.waves * Order.PriceConstant, 500, version = 1: Byte, 5.minutes)
+        .placeOrder(aliceNode, aliceWavesPair, OrderType.SELL, 2.amur * Order.PriceConstant, 500, version = 1: Byte, 5.minutes)
       aliceSecondOrder.status shouldBe "OrderAccepted"
 
       val orders2 = matcherNode.orderBook(aliceWavesPair)
       orders2.asks.head.amount shouldBe 1000
-      orders2.asks.head.price shouldBe 2.waves * Order.PriceConstant
+      orders2.asks.head.price shouldBe 2.amur * Order.PriceConstant
 
       val cancel = matcherNode.cancelOrder(aliceNode, aliceWavesPair, Some(firstOrder))
       cancel.status should be("OrderCanceled")

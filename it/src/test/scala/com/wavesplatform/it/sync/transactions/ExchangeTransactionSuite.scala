@@ -37,7 +37,7 @@ class ExchangeTransactionSuite extends BaseTransactionSuite {
           quantity = someAssetAmount,
           decimals = 2,
           reissuable = true,
-          fee = 1.waves,
+          fee = 1.amur,
           timestamp = System.currentTimeMillis()
         )
         .right

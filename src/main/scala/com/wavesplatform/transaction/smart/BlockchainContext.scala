@@ -3,7 +3,7 @@ package com.amurplatform.transaction.smart
 import cats.kernel.Monoid
 import com.amurplatform.lang.Global
 import com.amurplatform.lang.v1.evaluator.ctx.EvaluationContext
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.LocalContext
 import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import com.amurplatform.state._
 import com.amurplatform.transaction._

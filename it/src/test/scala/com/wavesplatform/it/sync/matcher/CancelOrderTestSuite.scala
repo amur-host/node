@@ -37,7 +37,7 @@ class CancelOrderTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll
   nodes.waitForHeightArise()
 
   "cancel order using api-key" in {
-    val orderId = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 800, 100.waves).message.id
+    val orderId = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 800, 100.amur).message.id
     matcherNode.waitOrderStatus(wavesUsdPair, orderId, "Accepted", 1.minute)
 
     matcherNode.cancelOrderWithApiKey(orderId)
@@ -53,16 +53,16 @@ class CancelOrderTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll
   "Alice and Bob trade WAVES-USD" - {
     "place usd-waves order" in {
       // Alice wants to sell USD for Waves
-      val orderId1      = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 800, 100.waves).message.id
-      val orderId2      = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 700, 100.waves).message.id
-      val bobSellOrder3 = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 600, 100.waves).message.id
+      val orderId1      = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 800, 100.amur).message.id
+      val orderId2      = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 700, 100.amur).message.id
+      val bobSellOrder3 = matcherNode.placeOrder(bobNode, wavesUsdPair, OrderType.SELL, 600, 100.amur).message.id
 
       matcherNode.fullOrderHistory(aliceNode)
       matcherNode.fullOrderHistory(bobNode)
 
       matcherNode.waitOrderStatus(wavesUsdPair, bobSellOrder3, "Accepted", 1.minute)
 
-      val aliceOrder = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, 800, 0.00125.waves)
+      val aliceOrder = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, 800, 0.00125.amur)
       matcherNode.placeOrder(aliceOrder).message.id
 
       Thread.sleep(2000)
@@ -127,7 +127,7 @@ object CancelOrderTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -141,7 +141,7 @@ object CancelOrderTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right

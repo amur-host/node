@@ -128,11 +128,11 @@ object Explorer extends ScorexLogging {
           val addressId = aid.parse(db.get(aid.keyBytes)).get
           log.info(s"Address id = $addressId")
 
-          val kwbh = Keys.wavesBalanceHistory(addressId)
+          val kwbh = Keys.amurBalanceHistory(addressId)
           val wbh  = kwbh.parse(db.get(kwbh.keyBytes))
 
           val balances = wbh.map { h =>
-            val k = Keys.wavesBalance(addressId)(h)
+            val k = Keys.amurBalance(addressId)(h)
             h -> k.parse(db.get(k.keyBytes))
           }
           balances.foreach(b => log.info(s"h = ${b._1}: balance = ${b._2}"))

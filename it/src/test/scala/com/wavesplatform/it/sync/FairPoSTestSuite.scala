@@ -12,8 +12,8 @@ class FairPoSTestSuite extends FunSuite with CancelAfterFailure with NodesFromDo
 
   override protected def nodeConfigs: Seq[Config] = Configs
 
-  private val transferFee    = 0.001.waves
-  private val transferAmount = 1000.waves
+  private val transferFee    = 0.001.amur
+  private val transferAmount = 1000.amur
 
   test("blockchain grows with FairPoS activated") {
     nodes.head.waitForHeight(10, 3.minutes)

@@ -1,7 +1,7 @@
 package com
 
 import com.amurplatform.block.Block
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.LocalSettings
 import com.amurplatform.state.{ByteStr, NG}
 import com.amurplatform.transaction.ValidationError.GenericError
 import com.amurplatform.transaction.{BlockchainUpdater, ValidationError}

@@ -11,7 +11,7 @@ import com.amurplatform.lang.v1.compiler.CompilerContext
 import com.amurplatform.lang.v1.compiler.CompilerContext._
 import com.amurplatform.lang.v1.compiler.Terms.TRUE
 import com.amurplatform.lang.v1.evaluator.ctx._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.LocalContext
 import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
 import com.amurplatform.lang.v1.{FunctionHeader, ScriptEstimator}
 import com.amurplatform.transaction.smart.{BlockchainContext, WavesEnvironment}

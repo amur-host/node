@@ -149,11 +149,11 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           // Amount of waves in order is smaller than fee
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
 
-          val oldestOrderId = bobPlacesWaveOrder(bobWavesPair, 10.waves * Order.PriceConstant, 1)
-          val newestOrderId = bobPlacesWaveOrder(bobWavesPair, 10.waves * Order.PriceConstant, 1)
+          val oldestOrderId = bobPlacesWaveOrder(bobWavesPair, 10.amur * Order.PriceConstant, 1)
+          val newestOrderId = bobPlacesWaveOrder(bobWavesPair, 10.amur * Order.PriceConstant, 1)
 
           //      waitForOrderStatus(matcherNode, bobAssetIdRaw, id, "Accepted")
-          val leaseAmount = bobBalance - TransactionFee - 10.waves - MatcherFee
+          val leaseAmount = bobBalance - TransactionFee - 10.amur - MatcherFee
           val leaseId     = bobNode.lease(bobNode.address, aliceNode.address, leaseAmount, TransactionFee).id
           nodes.waitForHeightAriseAndTxPresent(leaseId)
 
@@ -173,7 +173,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
 
         "leased waves, insufficient waves" in {
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
-          val price      = 1.waves
+          val price      = 1.amur
           val order2     = bobPlacesWaveOrder(bobWavesPair, price * Order.PriceConstant, 1)
 
           val leaseAmount = bobBalance - TransactionFee - price / 2

@@ -140,8 +140,8 @@ class TradeBalanceAndRoundingTestSuite
 
   "Alice and Bob trade WAVES-USD check CELLING" - {
     val price2           = 289
-    val buyOrderAmount2  = 0.07.waves
-    val sellOrderAmount2 = 3.waves
+    val buyOrderAmount2  = 0.07.amur
+    val sellOrderAmount2 = 3.amur
 
     val correctedSellAmount2 = correctAmount(sellOrderAmount2, price2)
 
@@ -287,7 +287,7 @@ object TradeBalanceAndRoundingTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right
@@ -301,7 +301,7 @@ object TradeBalanceAndRoundingTestSuite {
       quantity = defaultAssetQuantity,
       decimals = Decimals,
       reissuable = false,
-      fee = 1.waves,
+      fee = 1.amur,
       timestamp = System.currentTimeMillis()
     )
     .right

@@ -5,7 +5,7 @@ import com.amurplatform.features.BlockchainFeatures
 import com.amurplatform.features.FeatureProvider._
 import com.amurplatform.metrics.{Instrumented, TxsInBlockchainStats}
 import com.amurplatform.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.LocalSettings
 import com.amurplatform.state.diffs.BlockDiffer
 import com.amurplatform.state.reader.{CompositeBlockchain, LeaseDetails}
 import com.amurplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
@@ -479,8 +479,8 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, tim
   override def assetDistribution(assetId: AssetId): Map[Address, Long] =
     blockchain.assetDistribution(assetId) ++ changedBalances(_.assets.getOrElse(assetId, 0L) != 0, portfolio(_).assets.getOrElse(assetId, 0L))
 
-  override def wavesDistribution(height: Int): Map[Address, Long] = ngState.fold(blockchain.wavesDistribution(height)) { ng =>
-    val innerDistribution = blockchain.wavesDistribution(height)
+  override def wavesDistribution(height: Int): Map[Address, Long] = ngState.fold(blockchain.amurDistribution(height)) { ng =>
+    val innerDistribution = blockchain.amurDistribution(height)
     if (height < this.height) innerDistribution
     else {
       innerDistribution ++ changedBalances(_.balance != 0, portfolio(_).balance)

@@ -2,7 +2,7 @@ package com.amurplatform.lang.v1.evaluator.ctx.impl
 
 import com.amurplatform.lang.ExecutionError
 import com.amurplatform.lang.v1.evaluator.ctx.CaseObj
-import com.amurplatform.lang.v1.evaluator.ctx.impl.waves.Types
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.Types
 import com.amurplatform.lang.v1.traits.domain.Recipient
 import com.amurplatform.lang.v1.traits.domain.Recipient.{Address, Alias}
 import com.amurplatform.lang.v1.traits.{DataType, Environment}

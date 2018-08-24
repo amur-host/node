@@ -1,4 +1,4 @@
-package com.amurplatform.lang.v1.evaluator.ctx.impl.waves
+package com.amurplatform.lang.v1.evaluator.ctx.impl.amur
 
 import cats.data.EitherT
 import cats.implicits._
@@ -283,6 +283,6 @@ object WavesContext {
       wavesBalanceF
     )
 
-    CTX(Types.wavesTypes, vars, functions)
+    CTX(Types.amurTypes, vars, functions)
   }
 }

@@ -39,7 +39,7 @@ class IssueTransactionV1Suite extends BaseTransactionSuite with TableDrivenPrope
     val assetName        = "myasset"
     val assetDescription = "my asset description"
     val eff1             = notMiner.accountBalances(firstAddress)._2
-    val bigAssetFee      = eff1 + 1.waves
+    val bigAssetFee      = eff1 + 1.amur
 
     assertBadRequestAndMessage(sender.issue(firstAddress, assetName, assetDescription, someAssetAmount, 2, reissuable = false, bigAssetFee),
                                "negative waves balance")
