@@ -46,8 +46,8 @@ class TradeBalanceAndRoundingTestSuite
 
   "Alice and Bob trade WAVES-USD" - {
     nodes.waitForHeightArise()
-    val aliceWavesBalanceBefore = matcherNode.accountBalances(aliceNode.address)._1
-    val bobWavesBalanceBefore   = matcherNode.accountBalances(bobNode.address)._1
+    val aliceAmurBalanceBefore = matcherNode.accountBalances(aliceNode.address)._1
+    val bobAmurBalanceBefore   = matcherNode.accountBalances(bobNode.address)._1
 
     val price           = 238
     val buyOrderAmount  = 425532L
@@ -61,13 +61,13 @@ class TradeBalanceAndRoundingTestSuite
     log.debug(s"correctedSellAmount: $correctedSellAmount, adjustedAmount: $adjustedAmount, adjustedTotal: $adjustedTotal")
 
     "place usd-amur order" in {
-      // Alice wants to sell USD for Waves
+      // Alice wants to sell USD for Amur
 
       val bobOrder1   = matcherNode.prepareOrder(bobNode, amurUsdPair, OrderType.SELL, price, sellOrderAmount)
       val bobOrder1Id = matcherNode.placeOrder(bobOrder1).message.id
       matcherNode.waitOrderStatus(amurUsdPair, bobOrder1Id, "Accepted", 1.minute)
       matcherNode.reservedBalance(bobNode)("WAVES") shouldBe sellOrderAmount + matcherFee
-      matcherNode.tradableBalance(bobNode, amurUsdPair)("WAVES") shouldBe bobWavesBalanceBefore - (sellOrderAmount + matcherFee)
+      matcherNode.tradableBalance(bobNode, amurUsdPair)("WAVES") shouldBe bobAmurBalanceBefore - (sellOrderAmount + matcherFee)
 
       val aliceOrder   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, price, buyOrderAmount)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
@@ -94,17 +94,17 @@ class TradeBalanceAndRoundingTestSuite
     }
 
     "check usd and amur balance after fill" in {
-      val aliceWavesBalanceAfter = matcherNode.accountBalances(aliceNode.address)._1
+      val aliceAmurBalanceAfter = matcherNode.accountBalances(aliceNode.address)._1
       val aliceUsdBalance        = matcherNode.assetBalance(aliceNode.address, UsdId.base58).balance
 
-      val bobWavesBalanceAfter = matcherNode.accountBalances(bobNode.address)._1
+      val bobAmurBalanceAfter = matcherNode.accountBalances(bobNode.address)._1
       val bobUsdBalance        = matcherNode.assetBalance(bobNode.address, UsdId.base58).balance
 
-      (aliceWavesBalanceAfter - aliceWavesBalanceBefore) should be(
+      (aliceAmurBalanceAfter - aliceAmurBalanceBefore) should be(
         adjustedAmount - (BigInt(matcherFee) * adjustedAmount / buyOrderAmount).bigInteger.longValue())
 
       aliceUsdBalance - defaultAssetQuantity should be(-adjustedTotal)
-      bobWavesBalanceAfter - bobWavesBalanceBefore should be(
+      bobAmurBalanceAfter - bobAmurBalanceBefore should be(
         -adjustedAmount - (BigInt(matcherFee) * adjustedAmount / sellOrderAmount).bigInteger.longValue())
       bobUsdBalance should be(adjustedTotal)
     }
@@ -126,7 +126,7 @@ class TradeBalanceAndRoundingTestSuite
     }
 
     "check amur-usd tradable balance" in {
-      val expectedBobTradableBalance = bobWavesBalanceBefore - (correctedSellAmount + matcherFee)
+      val expectedBobTradableBalance = bobAmurBalanceBefore - (correctedSellAmount + matcherFee)
       matcherNode.tradableBalance(bobNode, amurUsdPair)("WAVES") shouldBe expectedBobTradableBalance
       matcherNode.tradableBalance(aliceNode, amurUsdPair)("WAVES") shouldBe aliceNode.accountBalances(aliceNode.address)._1
 
@@ -147,15 +147,15 @@ class TradeBalanceAndRoundingTestSuite
 
     "place usd-amur order" in {
       nodes.waitForHeightArise()
-      // Alice wants to sell USD for Waves
-      val bobWavesBalanceBefore = matcherNode.accountBalances(bobNode.address)._1
+      // Alice wants to sell USD for Amur
+      val bobAmurBalanceBefore = matcherNode.accountBalances(bobNode.address)._1
       matcherNode.tradableBalance(bobNode, amurUsdPair)("WAVES")
       val bobOrder1   = matcherNode.prepareOrder(bobNode, amurUsdPair, OrderType.SELL, price2, sellOrderAmount2)
       val bobOrder1Id = matcherNode.placeOrder(bobOrder1).message.id
       matcherNode.waitOrderStatus(amurUsdPair, bobOrder1Id, "Accepted", 1.minute)
 
       matcherNode.reservedBalance(bobNode)("WAVES") shouldBe correctedSellAmount2 + matcherFee
-      matcherNode.tradableBalance(bobNode, amurUsdPair)("WAVES") shouldBe bobWavesBalanceBefore - (correctedSellAmount2 + matcherFee)
+      matcherNode.tradableBalance(bobNode, amurUsdPair)("WAVES") shouldBe bobAmurBalanceBefore - (correctedSellAmount2 + matcherFee)
 
       val aliceOrder   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, price2, buyOrderAmount2)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
@@ -215,21 +215,21 @@ class TradeBalanceAndRoundingTestSuite
   }
 
   "Alice and Bob trade WCT-WAVES on not enoght fee when place order" - {
-    val wctWavesSellAmount = 2
-    val wctWavesPrice      = 11234560000000L
+    val wctAmurSellAmount = 2
+    val wctAmurPrice      = 11234560000000L
 
     "bob lease all amur exact half matcher fee" in {
       val leasingAmount = bobNode.accountBalances(bobNode.address)._1 - leasingFee - matcherFee / 2
       val leaseTxId =
         bobNode.lease(bobNode.address, matcherNode.address, leasingAmount, leasingFee).id
       nodes.waitForHeightAriseAndTxPresent(leaseTxId)
-      val bobOrderId = matcherNode.placeOrder(bobNode, wctWavesPair, SELL, wctWavesPrice, wctWavesSellAmount).message.id
-      matcherNode.waitOrderStatus(wctWavesPair, bobOrderId, "Accepted", 1.minute)
+      val bobOrderId = matcherNode.placeOrder(bobNode, wctAmurPair, SELL, wctAmurPrice, wctAmurSellAmount).message.id
+      matcherNode.waitOrderStatus(wctAmurPair, bobOrderId, "Accepted", 1.minute)
 
-      matcherNode.tradableBalance(bobNode, wctWavesPair)("WAVES") shouldBe matcherFee / 2 + receiveAmount(SELL, wctWavesPrice, wctWavesSellAmount) - matcherFee
-      matcherNode.cancelOrder(bobNode, wctWavesPair, Some(bobOrderId))
+      matcherNode.tradableBalance(bobNode, wctAmurPair)("WAVES") shouldBe matcherFee / 2 + receiveAmount(SELL, wctAmurPrice, wctAmurSellAmount) - matcherFee
+      matcherNode.cancelOrder(bobNode, wctAmurPair, Some(bobOrderId))
 
-      assertBadRequestAndResponse(matcherNode.placeOrder(bobNode, wctWavesPair, SELL, wctWavesPrice, wctWavesSellAmount / 2),
+      assertBadRequestAndResponse(matcherNode.placeOrder(bobNode, wctAmurPair, SELL, wctAmurPrice, wctAmurSellAmount / 2),
                                   "Not enough tradable balance")
 
       bobNode.cancelLease(bobNode.address, leaseTxId, leasingFee)
@@ -315,7 +315,7 @@ object TradeBalanceAndRoundingTestSuite {
     priceAsset = Some(UsdId)
   )
 
-  val wctWavesPair = AssetPair(
+  val wctAmurPair = AssetPair(
     amountAsset = Some(WctId),
     priceAsset = None
   )

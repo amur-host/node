@@ -5,7 +5,7 @@ import com.amurplatform.consensus.PoSSelector
 import com.amurplatform.metrics._
 import com.amurplatform.mining.Miner
 import com.amurplatform.network._
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.AmurSettings
 import com.amurplatform.state.Blockchain
 import com.amurplatform.utils.{ScorexLogging, Time}
 import com.amurplatform.utx.UtxPool
@@ -27,7 +27,7 @@ object BlockAppender extends ScorexLogging with Instrumented {
             time: Time,
             utxStorage: UtxPool,
             pos: PoSSelector,
-            settings: WavesSettings,
+            settings: AmurSettings,
             scheduler: Scheduler)(newBlock: Block): Task[Either[ValidationError, Option[BigInt]]] =
     Task {
       measureSuccessful(
@@ -48,7 +48,7 @@ object BlockAppender extends ScorexLogging with Instrumented {
             time: Time,
             utxStorage: UtxPool,
             pos: PoSSelector,
-            settings: WavesSettings,
+            settings: AmurSettings,
             allChannels: ChannelGroup,
             peerDatabase: PeerDatabase,
             miner: Miner,

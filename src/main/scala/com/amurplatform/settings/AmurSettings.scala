@@ -6,7 +6,7 @@ import com.amurplatform.metrics.Metrics
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 
-case class WavesSettings(directory: String,
+case class AmurSettings(directory: String,
                          dataDirectory: String,
                          maxCacheSize: Int,
                          networkSettings: NetworkSettings,
@@ -22,13 +22,13 @@ case class WavesSettings(directory: String,
                          featuresSettings: FeaturesSettings,
                          metrics: Metrics.Settings)
 
-object WavesSettings {
+object AmurSettings {
 
   import NetworkSettings.networkSettingsValueReader
 
   val configPath: String = "amur"
 
-  def fromConfig(config: Config): WavesSettings = {
+  def fromConfig(config: Config): AmurSettings = {
     val directory               = config.as[String](s"$configPath.directory")
     val dataDirectory           = config.as[String](s"$configPath.data-directory")
     val maxCacheSize            = config.as[Int](s"$configPath.max-cache-size")
@@ -45,7 +45,7 @@ object WavesSettings {
     val featuresSettings        = config.as[FeaturesSettings]("amur.features")
     val metrics                 = config.as[Metrics.Settings]("metrics")
 
-    WavesSettings(
+    AmurSettings(
       directory,
       dataDirectory,
       maxCacheSize,

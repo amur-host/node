@@ -30,7 +30,7 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
   val sponsor           = nodes(1)
   val alice             = nodes(2)
   val bob               = nodes(3)
-  val Waves             = 100000000L
+  val Amur             = 100000000L
   val Token             = 100L
   val sponsorAssetTotal = 100 * Token
   val minSponsorFee     = Token
@@ -50,8 +50,8 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
 
   "Fee in sponsored asset works fine" - {
 
-    val sponsorWavesBalance = sponsor.accountBalances(sponsor.address)._2
-    val minerWavesBalance   = miner.accountBalances(miner.address)._2
+    val sponsorAmurBalance = sponsor.accountBalances(sponsor.address)._2
+    val minerAmurBalance   = miner.accountBalances(miner.address)._2
 
     val sponsorAssetId =
       sponsor
@@ -74,7 +74,7 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
 
     "check balance before test accounts balances" in {
       sponsor.assertAssetBalance(sponsor.address, sponsorAssetId, sponsorAssetTotal / 2)
-      sponsor.assertBalances(sponsor.address, sponsorWavesBalance - 2 * issueFee - minFee)
+      sponsor.assertBalances(sponsor.address, sponsorAmurBalance - 2 * issueFee - minFee)
       alice.assertAssetBalance(alice.address, sponsorAssetId, sponsorAssetTotal / 2)
 
       val assetInfo = alice.assetsBalance(alice.address).balances.filter(_.assetId == sponsorAssetId).head
@@ -109,8 +109,8 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
       }
     }
 
-    val minerWavesBalanceAfterFirstXferTest   = minerWavesBalance + 2.amur + minFee + Sponsorship.FeeUnit * SmallFee / minSponsorFee
-    val sponsorWavesBalanceAfterFirstXferTest = sponsorWavesBalance - 2.amur - minFee - Sponsorship.FeeUnit * SmallFee / minSponsorFee
+    val minerAmurBalanceAfterFirstXferTest   = minerAmurBalance + 2.amur + minFee + Sponsorship.FeeUnit * SmallFee / minSponsorFee
+    val sponsorAmurBalanceAfterFirstXferTest = sponsorAmurBalance - 2.amur - minFee - Sponsorship.FeeUnit * SmallFee / minSponsorFee
 
     "fee should be written off in issued asset" - {
 
@@ -146,17 +146,17 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
 
       "sponsor should receive sponsored asset as fee, amur should be written off" in {
         miner.assertAssetBalance(sponsor.address, sponsorAssetId, sponsorAssetTotal / 2 + SmallFee)
-        miner.assertBalances(sponsor.address, sponsorWavesBalanceAfterFirstXferTest)
+        miner.assertBalances(sponsor.address, sponsorAmurBalanceAfterFirstXferTest)
       }
 
       "miner amur balance should be changed" in {
-        miner.assertBalances(miner.address, minerWavesBalanceAfterFirstXferTest)
+        miner.assertBalances(miner.address, minerAmurBalanceAfterFirstXferTest)
       }
     }
 
     "assets balance should contain sponsor fee info and sponsor balance" in {
-      val sponsorLeaseSomeWaves = sponsor.lease(sponsor.address, bob.address, leasingAmount, leasingFee).id
-      nodes.waitForHeightAriseAndTxPresent(sponsorLeaseSomeWaves)
+      val sponsorLeaseSomeAmur = sponsor.lease(sponsor.address, bob.address, leasingAmount, leasingFee).id
+      nodes.waitForHeightAriseAndTxPresent(sponsorLeaseSomeAmur)
       val (_, sponsorEffectiveBalance) = sponsor.accountBalances(sponsor.address)
       val assetsBalance                = alice.assetsBalance(alice.address).balances.filter(_.assetId == sponsorAssetId).head
       assetsBalance.minSponsoredAssetFee shouldBe Some(minSponsorFee)
@@ -173,10 +173,10 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
       miner.assertAssetBalance(bob.address, sponsorAssetId, 10 * Token)
       miner.assertBalances(
         sponsor.address,
-        sponsorWavesBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee,
-        sponsorWavesBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee - leasingAmount
+        sponsorAmurBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee,
+        sponsorAmurBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee - leasingAmount
       )
-      miner.assertBalances(miner.address, minerWavesBalanceAfterFirstXferTest + Sponsorship.FeeUnit * LargeFee / Token + leasingFee)
+      miner.assertBalances(miner.address, minerAmurBalanceAfterFirstXferTest + Sponsorship.FeeUnit * LargeFee / Token + leasingFee)
     }
 
     "cancel sponsorship" - {
@@ -207,10 +207,10 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
       "check sponsor and miner balances after cancel" in {
         miner.assertBalances(
           sponsor.address,
-          sponsorWavesBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee - issueFee,
-          sponsorWavesBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee - leasingAmount - issueFee
+          sponsorAmurBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee - issueFee,
+          sponsorAmurBalanceAfterFirstXferTest - Sponsorship.FeeUnit * LargeFee / Token - leasingFee - leasingAmount - issueFee
         )
-        miner.assertBalances(miner.address, minerWavesBalanceAfterFirstXferTest + Sponsorship.FeeUnit * LargeFee / Token + leasingFee + issueFee)
+        miner.assertBalances(miner.address, minerAmurBalanceAfterFirstXferTest + Sponsorship.FeeUnit * LargeFee / Token + leasingFee + issueFee)
       }
 
       "cancel sponsopship again" in {
@@ -235,9 +235,9 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
         val sponsoredBalance    = sponsor.accountBalances(sponsor.address)
         val sponsorAssetBalance = sponsor.assetBalance(sponsor.address, sponsorAssetId).balance
         val aliceAssetBalance   = alice.assetBalance(alice.address, sponsorAssetId).balance
-        val aliceWavesBalance   = alice.accountBalances(alice.address)
+        val aliceAmurBalance   = alice.accountBalances(alice.address)
         val bobAssetBalance     = bob.assetBalance(bob.address, sponsorAssetId).balance
-        val bobWavesBalance     = bob.accountBalances(bob.address)
+        val bobAmurBalance     = bob.accountBalances(bob.address)
         val minerBalance        = miner.accountBalances(miner.address)
         val minerAssetBalance   = miner.assetBalance(miner.address, sponsorAssetId).balance
 
@@ -249,8 +249,8 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
         sponsor.assertBalances(sponsor.address, sponsoredBalance._1 - amurFee, sponsoredBalance._2 - amurFee)
         sponsor.assertAssetBalance(sponsor.address, sponsorAssetId, sponsorAssetBalance + TinyFee)
         alice.assertAssetBalance(alice.address, sponsorAssetId, aliceAssetBalance - TinyFee)
-        alice.assertBalances(alice.address, aliceWavesBalance._2 - 1.amur)
-        bob.assertBalances(bob.address, bobWavesBalance._1 + 1.amur, bobWavesBalance._2 + 1.amur)
+        alice.assertBalances(alice.address, aliceAmurBalance._2 - 1.amur)
+        bob.assertBalances(bob.address, bobAmurBalance._1 + 1.amur, bobAmurBalance._2 + 1.amur)
         bob.assertAssetBalance(bob.address, sponsorAssetId, bobAssetBalance)
         miner.assertBalances(miner.address, minerBalance._2 + amurFee)
         miner.assertAssetBalance(miner.address, sponsorAssetId, minerAssetBalance)
@@ -280,8 +280,8 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
         val sponsoredBalance    = sponsor.accountBalances(sponsor.address)
         val sponsorAssetBalance = sponsor.assetBalance(sponsor.address, sponsorAssetId).balance
         val aliceAssetBalance   = alice.assetBalance(alice.address, sponsorAssetId).balance
-        val aliceWavesBalance   = alice.accountBalances(alice.address)
-        val bobWavesBalance     = bob.accountBalances(bob.address)
+        val aliceAmurBalance   = alice.accountBalances(alice.address)
+        val bobAmurBalance     = bob.accountBalances(bob.address)
         val minerBalance        = miner.accountBalances(miner.address)
 
         val transferTxCustomFeeAlice = alice.transfer(alice.address, bob.address, 1.amur, LargeFee, None, Some(sponsorAssetId)).id
@@ -292,8 +292,8 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
         sponsor.assertBalances(sponsor.address, sponsoredBalance._1 - amurFee, sponsoredBalance._2 - amurFee)
         sponsor.assertAssetBalance(sponsor.address, sponsorAssetId, sponsorAssetBalance + LargeFee)
         alice.assertAssetBalance(alice.address, sponsorAssetId, aliceAssetBalance - LargeFee)
-        alice.assertBalances(alice.address, aliceWavesBalance._2 - 1.amur)
-        bob.assertBalances(bob.address, bobWavesBalance._1 + 1.amur, bobWavesBalance._2 + 1.amur)
+        alice.assertBalances(alice.address, aliceAmurBalance._2 - 1.amur)
+        bob.assertBalances(bob.address, bobAmurBalance._1 + 1.amur, bobAmurBalance._2 + 1.amur)
         miner.assertBalances(miner.address, minerBalance._2 + amurFee)
       }
 
@@ -327,13 +327,13 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
       assetInfoAfterReissue.quantity shouldBe sponsorAssetTotal / 2 + sponsorAssetTotal
       assetInfoAfterReissue.reissuable shouldBe true
 
-      val aliceTransferWaves = alice.transfer(alice.address, bob.address, transferAmount, SmallFee, None, Some(sponsorAssetId2)).id
-      nodes.waitForHeightAriseAndTxPresent(aliceTransferWaves)
+      val aliceTransferAmur = alice.transfer(alice.address, bob.address, transferAmount, SmallFee, None, Some(sponsorAssetId2)).id
+      nodes.waitForHeightAriseAndTxPresent(aliceTransferAmur)
       nodes.waitForHeightArise()
 
-      val totalWavesFee = Sponsorship.FeeUnit * SmallFee / Token + issueFee + sponsorFee + burnFee + minFee + issueFee
-      miner.assertBalances(miner.address, minerBalance._1 + totalWavesFee)
-      sponsor.assertBalances(sponsor.address, sponsorBalance._1 - totalWavesFee, sponsorBalance._2 - totalWavesFee)
+      val totalAmurFee = Sponsorship.FeeUnit * SmallFee / Token + issueFee + sponsorFee + burnFee + minFee + issueFee
+      miner.assertBalances(miner.address, minerBalance._1 + totalAmurFee)
+      sponsor.assertBalances(sponsor.address, sponsorBalance._1 - totalAmurFee, sponsorBalance._2 - totalAmurFee)
       sponsor.assertAssetBalance(sponsor.address, sponsorAssetId2, SmallFee + sponsorAssetTotal)
     }
 
@@ -352,8 +352,8 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
       nodes.waitForHeightArise()
 
       miner.assertBalances(miner.address, minerBalance._1)
-      val aliceSponsoredTransferWaves = alice.transfer(alice.address, bob.address, transferAmount, SmallFee, None, Some(minersSpondorAssetId)).id
-      nodes.waitForHeightAriseAndTxPresent(aliceSponsoredTransferWaves)
+      val aliceSponsoredTransferAmur = alice.transfer(alice.address, bob.address, transferAmount, SmallFee, None, Some(minersSpondorAssetId)).id
+      nodes.waitForHeightAriseAndTxPresent(aliceSponsoredTransferAmur)
       nodes.waitForHeightArise()
 
       miner.assertBalances(miner.address, minerBalance._1)
@@ -362,11 +362,11 @@ class SponsorshipSuite extends FreeSpec with NodesFromDocker with Matchers with 
 
     "tx is declined if sponsor has not enough effective balance to pay fee" in {
       val (sponsorBalance, sponsorEffectiveBalance) = sponsor.accountBalances(sponsor.address)
-      val sponsorLeaseAllAvaliableWaves             = sponsor.lease(sponsor.address, bob.address, sponsorEffectiveBalance - leasingFee, leasingFee).id
-      nodes.waitForHeightAriseAndTxPresent(sponsorLeaseAllAvaliableWaves)
+      val sponsorLeaseAllAvaliableAmur             = sponsor.lease(sponsor.address, bob.address, sponsorEffectiveBalance - leasingFee, leasingFee).id
+      nodes.waitForHeightAriseAndTxPresent(sponsorLeaseAllAvaliableAmur)
       assertBadRequestAndMessage(alice.transfer(alice.address, bob.address, 10 * Token, LargeFee, Some(sponsorAssetId), Some(sponsorAssetId)),
                                  "unavailable funds")
-      val cancelLeasingTx = sponsor.cancelLease(sponsor.address, sponsorLeaseAllAvaliableWaves, leasingFee).id
+      val cancelLeasingTx = sponsor.cancelLease(sponsor.address, sponsorLeaseAllAvaliableAmur, leasingFee).id
       nodes.waitForHeightAriseAndTxPresent(cancelLeasingTx)
     }
   }

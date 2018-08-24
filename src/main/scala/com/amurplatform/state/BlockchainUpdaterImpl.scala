@@ -5,7 +5,7 @@ import com.amurplatform.features.BlockchainFeatures
 import com.amurplatform.features.FeatureProvider._
 import com.amurplatform.metrics.{Instrumented, TxsInBlockchainStats}
 import com.amurplatform.mining.{MiningConstraint, MiningConstraints, MultiDimensionalMiningConstraint}
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.AmurSettings
 import com.amurplatform.state.diffs.BlockDiffer
 import com.amurplatform.state.reader.{CompositeBlockchain, LeaseDetails}
 import com.amurplatform.utils.{ScorexLogging, Time, UnsupportedFeature, forceStopApplication}
@@ -22,7 +22,7 @@ import com.amurplatform.transaction._
 import com.amurplatform.transaction.lease._
 import com.amurplatform.transaction.smart.script.Script
 
-class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, time: Time)
+class BlockchainUpdaterImpl(blockchain: Blockchain, settings: AmurSettings, time: Time)
     extends BlockchainUpdater
     with NG
     with ScorexLogging
@@ -435,7 +435,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, tim
     ngState.fold(blockchain.filledVolumeAndFee(orderId))(
       _.bestLiquidDiff.orderFills.get(orderId).orEmpty.combine(blockchain.filledVolumeAndFee(orderId)))
 
-  /** Retrieves Waves balance snapshot in the [from, to] range (inclusive) */
+  /** Retrieves Amur balance snapshot in the [from, to] range (inclusive) */
   override def balanceSnapshots(address: Address, from: Int, to: Int): Seq[BalanceSnapshot] =
     if (to <= blockchain.height || ngState.isEmpty) {
       blockchain.balanceSnapshots(address, from, to)
@@ -501,7 +501,7 @@ class BlockchainUpdaterImpl(blockchain: Blockchain, settings: WavesSettings, tim
 
   /** Builds a new portfolio map by applying a partial function to all portfolios on which the function is defined.
     *
-    * @note Portfolios passed to `pf` only contain Waves and Leasing balances to improve performance */
+    * @note Portfolios passed to `pf` only contain Amur and Leasing balances to improve performance */
   override def collectLposPortfolios[A](pf: PartialFunction[(Address, Portfolio), A]): Map[Address, A] =
     ngState.fold(blockchain.collectLposPortfolios(pf)) { ng =>
       val b = Map.newBuilder[Address, A]

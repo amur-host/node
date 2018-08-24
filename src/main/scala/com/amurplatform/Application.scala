@@ -21,7 +21,7 @@ import com.amurplatform.consensus.nxt.api.http.NxtConsensusApiRoute
 import com.amurplatform.db.openDB
 import com.amurplatform.features.api.ActivationApiRoute
 import com.amurplatform.history.{CheckpointServiceImpl, StorageFactory}
-import com.amurplatform.http.{DebugApiRoute, NodeApiRoute, WavesApiRoute}
+import com.amurplatform.http.{DebugApiRoute, NodeApiRoute, AmurApiRoute}
 import com.amurplatform.matcher.Matcher
 import com.amurplatform.metrics.Metrics
 import com.amurplatform.mining.{Miner, MinerImpl}
@@ -52,7 +52,7 @@ import scala.concurrent.duration._
 import scala.reflect.runtime.universe._
 import scala.util.Try
 
-class Application(val actorSystem: ActorSystem, val settings: WavesSettings, configRoot: ConfigObject) extends ScorexLogging {
+class Application(val actorSystem: ActorSystem, val settings: AmurSettings, configRoot: ConfigObject) extends ScorexLogging {
 
   import monix.execution.Scheduler.Implicits.{global => scheduler}
 
@@ -262,7 +262,7 @@ class Application(val actorSystem: ActorSystem, val settings: WavesSettings, con
           scoreStatsReporter,
           configRoot
         ),
-        WavesApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time),
+        AmurApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, time),
         AssetsApiRoute(settings.restAPISettings, wallet, utxStorage, allChannels, blockchainUpdater, time),
         ActivationApiRoute(settings.restAPISettings, settings.blockchainSettings.functionalitySettings, settings.featuresSettings, blockchainUpdater),
         AssetsBroadcastApiRoute(settings.restAPISettings, utxStorage, allChannels),
@@ -283,7 +283,7 @@ class Application(val actorSystem: ActorSystem, val settings: WavesSettings, con
         typeOf[PeersApiRoute],
         typeOf[AddressApiRoute],
         typeOf[DebugApiRoute],
-        typeOf[WavesApiRoute],
+        typeOf[AmurApiRoute],
         typeOf[AssetsApiRoute],
         typeOf[ActivationApiRoute],
         typeOf[AssetsBroadcastApiRoute],
@@ -419,7 +419,7 @@ object Application extends ScorexLogging {
       SystemInformationReporter.report(config)
     }
 
-    val settings = WavesSettings.fromConfig(config)
+    val settings = AmurSettings.fromConfig(config)
     if (config.getBoolean("kamon.enable")) {
       log.info("Aggregated metrics are enabled")
       Kamon.reconfigure(config)

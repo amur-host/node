@@ -12,7 +12,7 @@ import com.amurplatform.lang.v1.evaluator.EvaluatorV1
 import com.amurplatform.lang.v1.evaluator.FunctionIds._
 import com.amurplatform.lang.v1.evaluator.ctx._
 import com.amurplatform.lang.v1.evaluator.ctx.impl.PureContext._
-import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.WavesContext
+import com.amurplatform.lang.v1.evaluator.ctx.impl.amur.AmurContext
 import com.amurplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, EnvironmentFunctions, PureContext}
 import com.amurplatform.lang.v1.testing.ScriptGen
 import com.amurplatform.lang.v1.traits.Environment
@@ -35,7 +35,7 @@ class EvaluatorV1Test extends PropSpec with PropertyChecks with Matchers with Sc
     Seq(
       defaultCryptoContext,
       PureContext.ctx,
-      WavesContext.build(environment)
+      AmurContext.build(environment)
     )
   )
 

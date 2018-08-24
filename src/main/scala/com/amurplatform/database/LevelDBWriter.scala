@@ -221,12 +221,12 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
     val threshold = height - 2000
 
-    val newAddressesForWaves = ArrayBuffer.empty[BigInt]
+    val newAddressesForAmur = ArrayBuffer.empty[BigInt]
     val updatedBalanceAddresses = for ((addressId, balance) <- amurBalances) yield {
       val kwbh = Keys.amurBalanceHistory(addressId)
       val wbh  = rw.get(kwbh)
       if (wbh.isEmpty) {
-        newAddressesForWaves += addressId
+        newAddressesForAmur += addressId
       }
       rw.put(Keys.amurBalance(addressId)(height), balance)
       expiredKeys ++= updateHistory(rw, wbh, kwbh, threshold, Keys.amurBalance(addressId))
@@ -235,10 +235,10 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
     val changedAddresses = (addressTransactions.keys ++ updatedBalanceAddresses)
 
-    if (newAddressesForWaves.nonEmpty) {
-      val newSeqNr = rw.get(Keys.addressesForWavesSeqNr) + 1
-      rw.put(Keys.addressesForWavesSeqNr, newSeqNr)
-      rw.put(Keys.addressesForWaves(newSeqNr), newAddressesForWaves)
+    if (newAddressesForAmur.nonEmpty) {
+      val newSeqNr = rw.get(Keys.addressesForAmurSeqNr) + 1
+      rw.put(Keys.addressesForAmurSeqNr, newSeqNr)
+      rw.put(Keys.addressesForAmur(newSeqNr), newAddressesForAmur)
     }
 
     for ((addressId, leaseBalance) <- leaseBalances) {
@@ -642,8 +642,8 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
   override def amurDistribution(height: Int): Map[Address, Long] = readOnly { db =>
     (for {
-      seqNr     <- (1 to db.get(Keys.addressesForWavesSeqNr)).par
-      addressId <- db.get(Keys.addressesForWaves(seqNr)).par
+      seqNr     <- (1 to db.get(Keys.addressesForAmurSeqNr)).par
+      addressId <- db.get(Keys.addressesForAmur(seqNr)).par
       history = db.get(Keys.amurBalanceHistory(addressId))
       actualHeight <- history.partition(_ > height)._2.headOption
       balance = db.get(Keys.amurBalance(addressId)(actualHeight))

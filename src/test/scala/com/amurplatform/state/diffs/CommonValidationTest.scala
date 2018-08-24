@@ -82,7 +82,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
   }
 
   property("checkFee for smart tokens fails if the fee is in tokens") {
-    smartTokensCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions with smart tokens require Waves as fee"))
+    smartTokensCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions with smart tokens require Amur as fee"))
   }
 
   private def smartAccountCheckFeeTest(feeInAssets: Boolean, feeAmount: Long)(f: Either[ValidationError, Unit] => Assertion): Unit = {
@@ -104,7 +104,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
   }
 
   property("checkFee for smart accounts fails if the fee is in tokens") {
-    smartAccountCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions from scripted accounts require Waves as fee"))
+    smartAccountCheckFeeTest(feeInAssets = true, feeAmount = 1)(_ should produce("Transactions from scripted accounts require Amur as fee"))
   }
 
   property("checkFee sponsored + smart tokens + smart accounts sunny") {
@@ -157,7 +157,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
             .selfSigned(richAcc, "test".getBytes(), "desc".getBytes(), Long.MaxValue, 2, reissuable = false, Constants.UnitsInWave, ts)
             .explicitGet()
 
-      val transferWavesTx = TransferTransactionV1
+      val transferAmurTx = TransferTransactionV1
         .selfSigned(None, richAcc, recipientAcc, 10 * Constants.UnitsInWave, ts, None, 1 * Constants.UnitsInWave, Array.emptyByteArray)
         .explicitGet()
 
@@ -202,7 +202,7 @@ class CommonValidationTest extends PropSpec with PropertyChecks with Matchers wi
         )
         .explicitGet()
 
-      (TestBlock.create(Vector[Transaction](genesisTx, issueTx, transferWavesTx, transferAssetTx) ++ sponsorTx ++ setScriptTx), transferBackTx)
+      (TestBlock.create(Vector[Transaction](genesisTx, issueTx, transferAmurTx, transferAssetTx) ++ sponsorTx ++ setScriptTx), transferBackTx)
     }
 
   private def createSettings(preActivatedFeatures: (BlockchainFeature, Int)*): FunctionalitySettings =

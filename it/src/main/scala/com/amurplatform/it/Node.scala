@@ -4,7 +4,7 @@ import java.net.{InetSocketAddress, URL}
 
 import com.typesafe.config.Config
 import com.amurplatform.it.util.GlobalTimer
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.AmurSettings
 import com.amurplatform.state.EitherExt2
 import com.amurplatform.utils.{Base58, LoggerFacade}
 import org.asynchttpclient.Dsl.{config => clientConfig, _}
@@ -18,7 +18,7 @@ abstract class Node(config: Config) extends AutoCloseable {
   lazy val log: LoggerFacade =
     LoggerFacade(LoggerFactory.getLogger(s"${getClass.getCanonicalName}.${this.name}"))
 
-  val settings: WavesSettings = WavesSettings.fromConfig(config)
+  val settings: AmurSettings = AmurSettings.fromConfig(config)
   val client: AsyncHttpClient = asyncHttpClient(
     clientConfig()
       .setKeepAlive(false)

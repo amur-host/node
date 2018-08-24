@@ -31,10 +31,10 @@ object BlockDiffer extends ScorexLogging with Instrumented {
             (assetId, totalFee, desc.sponsorship)
         }
       val unsponsoredPf = portfolio.copy(assets = portfolio.assets -- sponsoredAssets.map(_._1))
-      val sponsoredWaves = sponsoredAssets.map {
-        case (_, totalFee, baseFee) => Sponsorship.toWaves(totalFee, baseFee)
+      val sponsoredAmur = sponsoredAssets.map {
+        case (_, totalFee, baseFee) => Sponsorship.toAmur(totalFee, baseFee)
       }.sum
-      unsponsoredPf.copy(balance = unsponsoredPf.balance + sponsoredWaves)
+      unsponsoredPf.copy(balance = unsponsoredPf.balance + sponsoredAmur)
     } else portfolio
   }
 

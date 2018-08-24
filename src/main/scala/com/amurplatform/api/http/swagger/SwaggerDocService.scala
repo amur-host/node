@@ -16,9 +16,9 @@ class SwaggerDocService(val actorSystem: ActorSystem, val materializer: ActorMat
 
   override val host: String = settings.bindAddress + ":" + settings.port
   override val info: Info = Info(
-    "The Web Interface to the Waves Full Node API",
+    "The Web Interface to the Amur Full Node API",
     Version.VersionString,
-    "Waves Full Node",
+    "Amur Full Node",
     "License: Apache License, Version 2.0",
     None,
     Some(License("Apache License, Version 2.0", "https://github.com/amur-host/node/blob/master/LICENSE"))

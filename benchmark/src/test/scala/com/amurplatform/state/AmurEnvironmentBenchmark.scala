@@ -9,10 +9,10 @@ import com.amurplatform.database.LevelDBWriter
 import com.amurplatform.db.LevelDBFactory
 import com.amurplatform.lang.v1.traits.Environment
 import com.amurplatform.lang.v1.traits.domain.Recipient
-import com.amurplatform.settings.{WavesSettings, loadConfig}
-import com.amurplatform.state.WavesEnvironmentBenchmark._
+import com.amurplatform.settings.{AmurSettings, loadConfig}
+import com.amurplatform.state.AmurEnvironmentBenchmark._
 import com.amurplatform.state.bench.DataTestData
-import com.amurplatform.transaction.smart.WavesEnvironment
+import com.amurplatform.transaction.smart.AmurEnvironment
 import com.amurplatform.utils.Base58
 import monix.eval.Coeval
 import org.iq80.leveldb.{DB, Options}
@@ -28,7 +28,7 @@ import scala.io.Codec
 @Fork(1)
 @Warmup(iterations = 10)
 @Measurement(iterations = 10)
-class WavesEnvironmentBenchmark {
+class AmurEnvironmentBenchmark {
 
   @Benchmark
   def resolveAddress_test(st: ResolveAddressSt, bh: Blackhole): Unit = {
@@ -46,7 +46,7 @@ class WavesEnvironmentBenchmark {
   }
 
   @Benchmark
-  def accountBalanceOf_amur_test(st: AccountBalanceOfWavesSt, bh: Blackhole): Unit = {
+  def accountBalanceOf_amur_test(st: AccountBalanceOfAmurSt, bh: Blackhole): Unit = {
     bh.consume(st.environment.accountBalanceOf(Recipient.Address(ByteVector(st.accounts.random)), None))
   }
 
@@ -63,7 +63,7 @@ class WavesEnvironmentBenchmark {
 
 }
 
-object WavesEnvironmentBenchmark {
+object AmurEnvironmentBenchmark {
 
   @State(Scope.Benchmark)
   class ResolveAddressSt extends BaseSt {
@@ -79,12 +79,12 @@ object WavesEnvironmentBenchmark {
   class TransactionHeightByIdSt extends TransactionByIdSt
 
   @State(Scope.Benchmark)
-  class AccountBalanceOfWavesSt extends BaseSt {
+  class AccountBalanceOfAmurSt extends BaseSt {
     val accounts: Vector[Array[Byte]] = load("accounts", benchSettings.accountsFile)(x => AddressOrAlias.fromString(x).explicitGet().bytes.arr)
   }
 
   @State(Scope.Benchmark)
-  class AccountBalanceOfAssetSt extends AccountBalanceOfWavesSt {
+  class AccountBalanceOfAssetSt extends AccountBalanceOfAmurSt {
     val assets: Vector[Array[Byte]] = load("assets", benchSettings.assetsFile)(x => Base58.decode(x).get)
   }
 
@@ -98,9 +98,9 @@ object WavesEnvironmentBenchmark {
   @State(Scope.Benchmark)
   class BaseSt {
     protected val benchSettings: Settings = Settings.fromConfig(ConfigFactory.load())
-    private val amurSettings: WavesSettings = {
+    private val amurSettings: AmurSettings = {
       val config = loadConfig(ConfigFactory.parseFile(new File(benchSettings.networkConfigFile)))
-      WavesSettings.fromConfig(config)
+      AmurSettings.fromConfig(config)
     }
 
     AddressScheme.current = new AddressScheme {
@@ -115,7 +115,7 @@ object WavesEnvironmentBenchmark {
 
     val environment: Environment = {
       val state = new LevelDBWriter(db, amurSettings.blockchainSettings.functionalitySettings)
-      new WavesEnvironment(
+      new AmurEnvironment(
         AddressScheme.current.chainId,
         Coeval.raiseError(new NotImplementedError("tx is not implemented")),
         Coeval(state.height),

@@ -59,7 +59,7 @@ class OrderValidatorSpecification
   }
 
   val wbtc         = ByteStr("WBTC".getBytes)
-  val pairWavesBtc = AssetPair(None, Some(wbtc))
+  val pairAmurBtc = AssetPair(None, Some(wbtc))
 
   "OrderValidator" should {
     "allows buy WAVES for BTC without balance for order fee" in {
@@ -84,7 +84,7 @@ class OrderValidatorSpecification
   private def validateNewOrderTest(expectedPortfolio: Portfolio): Either[ValidationError.GenericError, Order] = {
     (ov.utxPool.portfolio _).when(*).returns(expectedPortfolio)
     val o = buy(
-      pair = pairWavesBtc,
+      pair = pairAmurBtc,
       price = 0.0022,
       amount = 100 * Constants.UnitsInWave,
       matcherFee = Some((0.003 * Constants.UnitsInWave).toLong)

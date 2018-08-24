@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory
 import com.amurplatform.account.AddressScheme
 import com.amurplatform.db.openDB
 import com.amurplatform.history.StorageFactory
-import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.settings.{AmurSettings, loadConfig}
 import com.amurplatform.state.Blockchain
 import com.amurplatform.utils._
 import org.slf4j.bridge.SLF4JBridgeHandler
@@ -25,7 +25,7 @@ object Exporter extends ScorexLogging {
     val exportHeight         = Try(args(2)).toOption.flatMap(s => Try(s.toInt).toOption)
     val format               = Try(args(3)).toOption.filter(s => s.toUpperCase == "JSON").getOrElse("BINARY").toUpperCase
 
-    val settings = WavesSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
+    val settings = AmurSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
     AddressScheme.current = new AddressScheme {
       override val chainId: Byte = settings.blockchainSettings.addressSchemeCharacter.toByte
     }
