@@ -10,9 +10,9 @@ import com.amurplatform.db.LevelDBFactory
 import com.amurplatform.lang.v1.traits.Environment
 import com.amurplatform.lang.v1.traits.domain.Recipient
 import com.amurplatform.settings.{WavesSettings, loadConfig}
-import com.amurplatform.state.WavesEnvironmentBenchmark._
+import com.amurplatform.state.LocalEnvironmentBenchmark._
 import com.amurplatform.state.bench.DataTestData
-import com.amurplatform.transaction.smart.WavesEnvironment
+import com.amurplatform.transaction.smart.LocalEnvironment
 import com.amurplatform.utils.Base58
 import monix.eval.Coeval
 import org.iq80.leveldb.{DB, Options}
