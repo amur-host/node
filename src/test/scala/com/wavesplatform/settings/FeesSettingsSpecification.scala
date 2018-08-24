@@ -22,12 +22,12 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
 
     val settings = FeesSettings.fromConfig(config)
     settings.fees.size should be(6)
-    settings.fees(2) should be(List(FeeSettings("WAVES", 100000)))
-    settings.fees(3) should be(List(FeeSettings("WAVES", 100000000)))
-    settings.fees(4) should be(List(FeeSettings("WAVES", 100000)))
-    settings.fees(5) should be(List(FeeSettings("WAVES", 100000)))
-    settings.fees(6) should be(List(FeeSettings("WAVES", 100000)))
-    settings.fees(7) should be(List(FeeSettings("WAVES", 100000)))
+    settings.fees(2) should be(List(FeeSettings("AMUR", 100000)))
+    settings.fees(3) should be(List(FeeSettings("AMUR", 100000000)))
+    settings.fees(4) should be(List(FeeSettings("AMUR", 100000)))
+    settings.fees(5) should be(List(FeeSettings("AMUR", 100000)))
+    settings.fees(6) should be(List(FeeSettings("AMUR", 100000)))
+    settings.fees(7) should be(List(FeeSettings("AMUR", 100000)))
   }
 
   it should "combine read few fees for one transaction type" in {
@@ -82,8 +82,8 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
 
     val settings = FeesSettings.fromConfig(config)
     settings.fees.size should be(6)
-    settings.fees(2).toSet should equal(Set(FeeSettings("WAVES", 100000), FeeSettings("WAVES1", 1111)))
-    settings.fees(5).toSet should equal(Set(FeeSettings("WAVES", 100000), FeeSettings("WAVES5", 0)))
+    settings.fees(2).toSet should equal(Set(FeeSettings("AMUR", 100000), FeeSettings("WAVES1", 1111)))
+    settings.fees(5).toSet should equal(Set(FeeSettings("AMUR", 100000), FeeSettings("WAVES5", 0)))
   }
 
   it should "fail on incorrect long values" in {
@@ -100,7 +100,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
         |  transfer.WAVES="1000"
         |}""".stripMargin).resolve()
     val settings = FeesSettings.fromConfig(config)
-    settings.fees(4).toSet should equal(Set(FeeSettings("WAVES", 1000)))
+    settings.fees(4).toSet should equal(Set(FeeSettings("AMUR", 1000)))
   }
 
   it should "fail on unknown transaction type" in {
@@ -157,17 +157,17 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
       """.stripMargin).withFallback(defaultConfig).resolve()
     val settings      = FeesSettings.fromConfig(config)
     settings.fees.size should be(12)
-    settings.fees(3).toSet should equal(Set(FeeSettings("WAVES", 200000000)))
-    settings.fees(4).toSet should equal(Set(FeeSettings("WAVES", 300000), FeeSettings("6MPKrD5B7GrfbciHECg1MwdvRUhRETApgNZspreBJ8JL", 1)))
-    settings.fees(5).toSet should equal(Set(FeeSettings("WAVES", 400000)))
-    settings.fees(6).toSet should equal(Set(FeeSettings("WAVES", 500000)))
-    settings.fees(7).toSet should equal(Set(FeeSettings("WAVES", 600000)))
-    settings.fees(8).toSet should equal(Set(FeeSettings("WAVES", 700000)))
-    settings.fees(9).toSet should equal(Set(FeeSettings("WAVES", 800000)))
-    settings.fees(10).toSet should equal(Set(FeeSettings("WAVES", 900000)))
-    settings.fees(11).toSet should equal(Set(FeeSettings("WAVES", 10000)))
-    settings.fees(12).toSet should equal(Set(FeeSettings("WAVES", 200000)))
-    settings.fees(13).toSet should equal(Set(FeeSettings("WAVES", 300000)))
-    settings.fees(14).toSet should equal(Set(FeeSettings("WAVES", 400000)))
+    settings.fees(3).toSet should equal(Set(FeeSettings("AMUR", 200000000)))
+    settings.fees(4).toSet should equal(Set(FeeSettings("AMUR", 300000), FeeSettings("6MPKrD5B7GrfbciHECg1MwdvRUhRETApgNZspreBJ8JL", 1)))
+    settings.fees(5).toSet should equal(Set(FeeSettings("AMUR", 400000)))
+    settings.fees(6).toSet should equal(Set(FeeSettings("AMUR", 500000)))
+    settings.fees(7).toSet should equal(Set(FeeSettings("AMUR", 600000)))
+    settings.fees(8).toSet should equal(Set(FeeSettings("AMUR", 700000)))
+    settings.fees(9).toSet should equal(Set(FeeSettings("AMUR", 800000)))
+    settings.fees(10).toSet should equal(Set(FeeSettings("AMUR", 900000)))
+    settings.fees(11).toSet should equal(Set(FeeSettings("AMUR", 10000)))
+    settings.fees(12).toSet should equal(Set(FeeSettings("AMUR", 200000)))
+    settings.fees(13).toSet should equal(Set(FeeSettings("AMUR", 300000)))
+    settings.fees(14).toSet should equal(Set(FeeSettings("AMUR", 400000)))
   }
 }
