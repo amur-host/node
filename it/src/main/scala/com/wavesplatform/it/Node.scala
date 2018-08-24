@@ -4,7 +4,7 @@ import java.net.{InetSocketAddress, URL}
 
 import com.typesafe.config.Config
 import com.amurplatform.it.util.GlobalTimer
-import com.amurplatform.settings.WavesSettings
+import com.amurplatform.settings.LocalSettings
 import com.amurplatform.state.EitherExt2
 import com.amurplatform.utils.{Base58, LoggerFacade}
 import org.asynchttpclient.Dsl.{config => clientConfig, _}
