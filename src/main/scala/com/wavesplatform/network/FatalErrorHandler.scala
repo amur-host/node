@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package com..network
 
 import java.io.IOException
 
-import com.wavesplatform.utils.{ScorexLogging, forceStopApplication}
+import com..utils.{ScorexLogging, forceStopApplication}
 import io.netty.channel.ChannelHandler.Sharable
 import io.netty.channel.{ChannelHandlerContext, ChannelInboundHandlerAdapter}
 

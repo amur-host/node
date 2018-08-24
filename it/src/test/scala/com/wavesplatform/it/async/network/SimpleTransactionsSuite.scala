@@ -1,19 +1,19 @@
-package com.wavesplatform.it.async.network
+package com..it.async.network
 
 import java.nio.charset.StandardCharsets
 
 import com.typesafe.config.Config
-import com.wavesplatform.it._
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.api.AsyncNetworkApi._
-import com.wavesplatform.it.api._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.network.{RawBytes, TransactionSpec}
-import com.wavesplatform.state.EitherExt2
+import com..it._
+import com..it.api.AsyncHttpApi._
+import com..it.api.AsyncNetworkApi._
+import com..it.api._
+import com..it.transactions.BaseTransactionSuite
+import com..network.{RawBytes, TransactionSpec}
+import com..state.EitherExt2
 import org.scalatest._
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
-import com.wavesplatform.account.Address
-import com.wavesplatform.transaction.transfer._
+import com..account.Address
+import com..transaction.transfer._
 
 import scala.concurrent.Await
 import scala.concurrent.Future.traverse

@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.state.{ByteStr, EitherExt2}
+import com..TransactionGen
+import com..state.{ByteStr, EitherExt2}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com.wavesplatform.account.{Address, PublicKeyAccount}
-import com.wavesplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1, LeaseTransactionV2}
+import com..account.{Address, PublicKeyAccount}
+import com..transaction.lease.{LeaseTransaction, LeaseTransactionV1, LeaseTransactionV2}
 
 class LeaseTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

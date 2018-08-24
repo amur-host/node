@@ -1,10 +1,10 @@
-package com.wavesplatform.it.async
+package com..it.async
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.api._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{NodeConfigs, ReportingTestName}
+import com..it.api.AsyncHttpApi._
+import com..it.api._
+import com..it.transactions.NodesFromDocker
+import com..it.{NodeConfigs, ReportingTestName}
 import org.scalatest._
 
 import scala.concurrent.Await

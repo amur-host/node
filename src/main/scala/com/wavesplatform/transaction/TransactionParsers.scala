@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.utils.base58Length
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
-import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.crypto._
+import com..utils.base58Length
+import com..transaction.assets._
+import com..transaction.assets.exchange.{ExchangeTransactionV1, ExchangeTransactionV2}
+import com..transaction.lease.{LeaseCancelTransactionV1, LeaseCancelTransactionV2, LeaseTransactionV1, LeaseTransactionV2}
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.transfer._
+import com..crypto._
 
 import scala.util.{Failure, Success, Try}
 

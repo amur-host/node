@@ -1,21 +1,21 @@
-package com.wavesplatform.state
+package com..state
 
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.crypto.SignatureLength
-import com.wavesplatform.db.WithState
-import com.wavesplatform.features._
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.lang.v1.compiler.Terms.TRUE
-import com.wavesplatform.settings.{TestFunctionalitySettings, WavesSettings}
-import com.wavesplatform.state.reader.LeaseDetails
-import com.wavesplatform.transaction.ValidationError.AliasDoesNotExist
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
-import com.wavesplatform.transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction}
-import com.wavesplatform.{NoShrink, TestTime, TransactionGen, history}
+import com..account.{Address, PrivateKeyAccount}
+import com..crypto.SignatureLength
+import com..db.WithState
+import com..features._
+import com..lagonaki.mocks.TestBlock
+import com..lang.v1.compiler.Terms.TRUE
+import com..settings.{TestFunctionalitySettings, WavesSettings}
+import com..state.reader.LeaseDetails
+import com..transaction.ValidationError.AliasDoesNotExist
+import com..transaction.assets.{IssueTransactionV1, ReissueTransactionV1}
+import com..transaction.lease.{LeaseCancelTransactionV1, LeaseTransactionV1}
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.v1.ScriptV1
+import com..transaction.transfer._
+import com..transaction.{CreateAliasTransactionV1, DataTransaction, GenesisTransaction}
+import com..{NoShrink, TestTime, TransactionGen, history}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
@@ -34,7 +34,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
     TransferTransactionV1.selfSigned(None, sender, recipient, amount, nextTs, None, 1, Array.empty[Byte]).explicitGet()
 
   private def randomOp(sender: PrivateKeyAccount, recipient: Address, amount: Long, op: Int) = {
-    import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+    import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
     op match {
       case 1 =>
         val lease = LeaseTransactionV1.selfSigned(sender, amount, 100000, nextTs, recipient).explicitGet()
@@ -74,7 +74,7 @@ class RollbackSpec extends FreeSpec with Matchers with WithState with Transactio
     "forget rollbacked transaction for querying" in forAll(accountGen, accountGen, Gen.nonEmptyListOf(Gen.choose(1, 10))) {
       case (sender, recipient, txCount) =>
         withDomain(createSettings(BlockchainFeatures.MassTransfer -> 0)) { d =>
-          d.appendBlock(genesisBlock(nextTs, sender, com.wavesplatform.state.diffs.ENOUGH_AMT))
+          d.appendBlock(genesisBlock(nextTs, sender, com..state.diffs.ENOUGH_AMT))
 
           val genesisSignature = d.lastBlockId
 

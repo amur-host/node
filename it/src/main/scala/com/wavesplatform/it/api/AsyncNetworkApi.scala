@@ -1,8 +1,8 @@
-package com.wavesplatform.it.api
+package com..it.api
 
-import com.wavesplatform.it.Node
-import com.wavesplatform.network.RawBytes
-import com.wavesplatform.network.client.NetworkSender
+import com..it.Node
+import com..network.RawBytes
+import com..network.client.NetworkSender
 
 import scala.concurrent.Future
 

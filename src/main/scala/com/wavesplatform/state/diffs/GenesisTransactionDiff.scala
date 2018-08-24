@@ -1,8 +1,8 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
-import com.wavesplatform.state.{Diff, LeaseBalance, Portfolio}
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.{GenesisTransaction, ValidationError}
+import com..state.{Diff, LeaseBalance, Portfolio}
+import com..transaction.ValidationError.GenericError
+import com..transaction.{GenesisTransaction, ValidationError}
 
 import scala.util.{Left, Right}
 

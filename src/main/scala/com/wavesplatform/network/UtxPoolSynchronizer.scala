@@ -1,15 +1,15 @@
-package com.wavesplatform.network
+package com..network
 
 import java.util.concurrent.TimeUnit
 
 import com.google.common.cache.CacheBuilder
-import com.wavesplatform.settings.SynchronizationSettings.UtxSynchronizerSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utx.UtxPool
+import com..settings.SynchronizationSettings.UtxSynchronizerSettings
+import com..state.ByteStr
+import com..utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.{ChannelGroup, ChannelMatcher}
 import monix.execution.{CancelableFuture, Scheduler}
-import com.wavesplatform.transaction.Transaction
+import com..transaction.Transaction
 
 object UtxPoolSynchronizer {
   def start(utx: UtxPool,

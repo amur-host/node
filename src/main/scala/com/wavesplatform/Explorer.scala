@@ -1,16 +1,16 @@
-package com.wavesplatform
+package com.
 
 import java.io.File
 import java.nio.ByteBuffer
 import java.util
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{Address, AddressScheme}
-import com.wavesplatform.database.{Keys, LevelDBWriter}
-import com.wavesplatform.db.openDB
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.utils.{Base58, Base64, ScorexLogging}
+import com..account.{Address, AddressScheme}
+import com..database.{Keys, LevelDBWriter}
+import com..db.openDB
+import com..settings.{WavesSettings, loadConfig}
+import com..state.{ByteStr, EitherExt2}
+import com..utils.{Base58, Base64, ScorexLogging}
 import org.slf4j.bridge.SLF4JBridgeHandler
 
 import scala.collection.JavaConverters._

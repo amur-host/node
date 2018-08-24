@@ -1,13 +1,13 @@
-package com.wavesplatform.block
+package com..block
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.state.ByteStr
+import com..state.ByteStr
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.serialization.{BytesSerializable, JsonSerializable}
-import com.wavesplatform.transaction.Transaction
+import com..account.PublicKeyAccount
+import com..utils.Base58
+import com..serialization.{BytesSerializable, JsonSerializable}
+import com..transaction.Transaction
 
 abstract class BlockField[T] extends BytesSerializable with JsonSerializable {
   val name: String

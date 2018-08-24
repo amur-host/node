@@ -1,13 +1,13 @@
-package com.wavesplatform.api.http.assets
+package com..api.http.assets
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.functional.syntax._
 import play.api.libs.json._
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.TransactionParsers.SignatureStringLength
-import com.wavesplatform.transaction.assets.BurnTransactionV1
-import com.wavesplatform.transaction.{AssetIdStringLength, ValidationError}
+import com..account.PublicKeyAccount
+import com..api.http.BroadcastRequest
+import com..transaction.TransactionParsers.SignatureStringLength
+import com..transaction.assets.BurnTransactionV1
+import com..transaction.{AssetIdStringLength, ValidationError}
 
 object SignedBurnV1Request {
   implicit val reads: Reads[SignedBurnV1Request] = (

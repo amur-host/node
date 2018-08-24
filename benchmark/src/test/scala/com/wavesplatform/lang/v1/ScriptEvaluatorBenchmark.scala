@@ -1,16 +1,16 @@
-package com.wavesplatform.lang.v1
+package com..lang.v1
 
 import java.util.concurrent.TimeUnit
 
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.FunctionHeader.Native
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
-import com.wavesplatform.lang.v1.evaluator.FunctionIds.{FROMBASE58, TOBASE58, SIGVERIFY}
-import com.wavesplatform.lang.v1.evaluator.ctx.EvaluationContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.utils.Base58
+import com..lang.Global
+import com..lang.v1.FunctionHeader.Native
+import com..lang.v1.compiler.Terms._
+import com..lang.v1.evaluator.EvaluatorV1
+import com..lang.v1.evaluator.FunctionIds.{FROMBASE58, TOBASE58, SIGVERIFY}
+import com..lang.v1.evaluator.ctx.EvaluationContext
+import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com..utils.Base58
 import org.openjdk.jmh.annotations._
 import org.openjdk.jmh.infra.Blackhole
 import scodec.bits.ByteVector

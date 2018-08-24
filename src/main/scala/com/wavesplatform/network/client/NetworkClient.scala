@@ -1,12 +1,12 @@
-package com.wavesplatform.network.client
+package com..network.client
 
 import java.io.IOException
 import java.net.InetSocketAddress
 
-import com.wavesplatform.Version
-import com.wavesplatform.network.Handshake
-import com.wavesplatform.settings._
-import com.wavesplatform.utils.ScorexLogging
+import com..Version
+import com..network.Handshake
+import com..settings._
+import com..utils.ScorexLogging
 import io.netty.bootstrap.Bootstrap
 import io.netty.channel._
 import io.netty.channel.group.ChannelGroup

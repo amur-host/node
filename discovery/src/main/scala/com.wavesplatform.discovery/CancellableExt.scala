@@ -1,4 +1,4 @@
-package com.wavesplatform.discovery
+package com..discovery
 
 import akka.actor.Cancellable
 

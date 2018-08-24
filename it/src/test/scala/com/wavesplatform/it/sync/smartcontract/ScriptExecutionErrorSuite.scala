@@ -1,16 +1,16 @@
-package com.wavesplatform.it.sync.smartcontract
+package com..it.sync.smartcontract
 
-import com.wavesplatform.it.api.SyncHttpApi.assertBadRequestAndResponse
-import com.wavesplatform.it.sync.minFee
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.lang.v1.FunctionHeader
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com..it.api.SyncHttpApi.assertBadRequestAndResponse
+import com..it.sync.minFee
+import com..it.transactions.BaseTransactionSuite
+import com..lang.v1.FunctionHeader
+import com..lang.v1.compiler.Terms
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.v1.ScriptV1
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.JsNumber
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.state._
+import com..it.api.SyncHttpApi._
+import com..state._
 
 class ScriptExecutionErrorSuite extends BaseTransactionSuite with CancelAfterFailure {
 

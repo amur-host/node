@@ -1,10 +1,10 @@
-package com.wavesplatform.transaction.api.http.assets
+package com..transaction.api.http.assets
 
-import com.wavesplatform.state.EitherExt2
-import com.wavesplatform.utils.Base58
+import com..state.EitherExt2
+import com..utils.Base58
 import org.scalatest.{FunSuite, Matchers}
 import play.api.libs.json.Json
-import com.wavesplatform.api.http.assets._
+import com..api.http.assets._
 
 class SignedRequestsTest extends FunSuite with Matchers {
 

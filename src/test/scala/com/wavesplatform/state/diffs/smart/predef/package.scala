@@ -1,13 +1,13 @@
-package com.wavesplatform.state.diffs.smart
+package com..state.diffs.smart
 
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.smart.BlockchainContext
-import com.wavesplatform.transaction.transfer.TransferTransaction
-import com.wavesplatform.transaction.{DataTransaction, Transaction}
-import com.wavesplatform.utils.dummyCompilerContext
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.evaluator.EvaluatorV1
+import com..lang.v1.parser.Parser
+import com..state.ByteStr
+import com..transaction.smart.BlockchainContext
+import com..transaction.transfer.TransferTransaction
+import com..transaction.{DataTransaction, Transaction}
+import com..utils.dummyCompilerContext
 import fastparse.core.Parsed.Success
 import monix.eval.Coeval
 import shapeless.Coproduct

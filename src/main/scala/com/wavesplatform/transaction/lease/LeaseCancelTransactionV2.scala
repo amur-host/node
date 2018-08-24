@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.lease
+package com..transaction.lease
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.crypto
-import com.wavesplatform.state._
+import com..crypto
+import com..state._
 import monix.eval.Coeval
-import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.transaction.ValidationError.{GenericError, UnsupportedVersion}
-import com.wavesplatform.transaction._
+import com..account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
+import com..transaction.ValidationError.{GenericError, UnsupportedVersion}
+import com..transaction._
 
 import scala.util.{Failure, Success, Try}
 

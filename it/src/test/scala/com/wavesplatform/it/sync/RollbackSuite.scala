@@ -1,10 +1,10 @@
-package com.wavesplatform.it.sync
+package com..it.sync
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{NodeConfigs, TransferSending}
-import com.wavesplatform.state.{BooleanDataEntry, IntegerDataEntry}
+import com..it.api.SyncHttpApi._
+import com..it.transactions.NodesFromDocker
+import com..it.{NodeConfigs, TransferSending}
+import com..state.{BooleanDataEntry, IntegerDataEntry}
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
 
 import scala.concurrent.Await

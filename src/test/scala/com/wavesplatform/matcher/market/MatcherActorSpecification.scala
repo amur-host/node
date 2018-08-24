@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher.market
+package com..matcher.market
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicReference
@@ -7,24 +7,24 @@ import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.http.scaladsl.model.StatusCodes
 import akka.persistence.inmemory.extension.{InMemoryJournalStorage, StorageExtension}
 import akka.testkit.{ImplicitSender, TestActorRef, TestKit, TestProbe}
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.matcher.api.StatusCodeMatcherResponse
-import com.wavesplatform.matcher.fixtures.RestartableActor
-import com.wavesplatform.matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse, MarketData}
-import com.wavesplatform.matcher.market.OrderBookActor._
-import com.wavesplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
-import com.wavesplatform.matcher.model.OrderBook
-import com.wavesplatform.matcher.{AssetPairBuilder, MatcherTestData}
-import com.wavesplatform.settings.{TestFunctionalitySettings, WalletSettings}
-import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr, LeaseBalance, Portfolio}
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.wavesplatform.transaction.smart.script.ScriptCompiler
-import com.wavesplatform.utils.{NTP, ScorexLogging}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com..account.{PrivateKeyAccount, PublicKeyAccount}
+import com..account.{PrivateKeyAccount, PublicKeyAccount}
+import com..matcher.api.StatusCodeMatcherResponse
+import com..matcher.fixtures.RestartableActor
+import com..matcher.market.MatcherActor.{GetMarkets, GetMarketsResponse, MarketData}
+import com..matcher.market.OrderBookActor._
+import com..matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
+import com..matcher.model.OrderBook
+import com..matcher.{AssetPairBuilder, MatcherTestData}
+import com..settings.{TestFunctionalitySettings, WalletSettings}
+import com..state.{AssetDescription, Blockchain, ByteStr, LeaseBalance, Portfolio}
+import com..transaction.AssetId
+import com..transaction.assets.IssueTransactionV1
+import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com..transaction.smart.script.ScriptCompiler
+import com..utils.{NTP, ScorexLogging}
+import com..utx.UtxPool
+import com..wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, Matchers, WordSpecLike}

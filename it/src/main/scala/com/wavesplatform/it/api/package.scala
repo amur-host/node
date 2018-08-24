@@ -1,4 +1,4 @@
-package com.wavesplatform.it
+package com..it
 
 import java.nio.charset.StandardCharsets
 

@@ -1,7 +1,7 @@
-package com.wavesplatform.transaction
+package com..transaction
 
 import play.api.libs.json._
-import com.wavesplatform.utils.Base58
+import com..utils.Base58
 
 trait ProvenTransaction extends Transaction with Proven {
 

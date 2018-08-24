@@ -1,12 +1,12 @@
-package com.wavesplatform.api.http.leasing
+package com..api.http.leasing
 
 import io.swagger.annotations.ApiModelProperty
 import play.api.libs.json.{Format, Json}
-import com.wavesplatform.account.{AddressOrAlias, PublicKeyAccount}
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.TransactionParsers.SignatureStringLength
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.lease.LeaseTransactionV1
+import com..account.{AddressOrAlias, PublicKeyAccount}
+import com..api.http.BroadcastRequest
+import com..transaction.TransactionParsers.SignatureStringLength
+import com..transaction.ValidationError
+import com..transaction.lease.LeaseTransactionV1
 
 case class SignedLeaseV1Request(@ApiModelProperty(value = "Base58 encoded sender public key", required = true)
                                 senderPublicKey: String,

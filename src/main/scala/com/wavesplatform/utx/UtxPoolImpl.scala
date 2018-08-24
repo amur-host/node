@@ -1,23 +1,23 @@
-package com.wavesplatform.utx
+package com..utx
 
 import java.time.Duration
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.ConcurrentHashMap
 
 import cats._
-import com.wavesplatform.account.Address
-import com.wavesplatform.consensus.TransactionsOrdering
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.mining.MultiDimensionalMiningConstraint
-import com.wavesplatform.settings.{FunctionalitySettings, UtxSettings}
-import com.wavesplatform.state.diffs.TransactionDiffer
-import com.wavesplatform.state.reader.CompositeBlockchain.composite
-import com.wavesplatform.state.{Blockchain, ByteStr, Diff, Portfolio}
-import com.wavesplatform.transaction.ValidationError.{GenericError, SenderIsBlacklisted}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.ReissueTransaction
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.{ScorexLogging, Time}
+import com..account.Address
+import com..consensus.TransactionsOrdering
+import com..metrics.Instrumented
+import com..mining.MultiDimensionalMiningConstraint
+import com..settings.{FunctionalitySettings, UtxSettings}
+import com..state.diffs.TransactionDiffer
+import com..state.reader.CompositeBlockchain.composite
+import com..state.{Blockchain, ByteStr, Diff, Portfolio}
+import com..transaction.ValidationError.{GenericError, SenderIsBlacklisted}
+import com..transaction._
+import com..transaction.assets.ReissueTransaction
+import com..transaction.transfer._
+import com..utils.{ScorexLogging, Time}
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.eval.Task
@@ -35,7 +35,7 @@ class UtxPoolImpl(time: Time, blockchain: Blockchain, feeCalculator: FeeCalculat
     with UtxPool {
   outer =>
 
-  import com.wavesplatform.utx.UtxPoolImpl._
+  import com..utx.UtxPoolImpl._
 
   private implicit val scheduler: SchedulerService = Scheduler.singleThread("utx-pool-cleanup")
 

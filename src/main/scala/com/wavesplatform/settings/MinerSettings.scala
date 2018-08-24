@@ -1,7 +1,7 @@
-package com.wavesplatform.settings
+package com..settings
 
 import com.typesafe.config.Config
-import com.wavesplatform.mining.Miner
+import com..mining.Miner
 
 import scala.concurrent.duration.FiniteDuration
 

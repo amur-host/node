@@ -1,15 +1,15 @@
-package com.wavesplatform.it.sync.transactions
+package com..it.sync.transactions
 
 import com.typesafe.config.Config
-import com.wavesplatform.api.http.assets.SignedSponsorFeeRequest
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
-import com.wavesplatform.it.{NodeConfigs, ReportingTestName}
-import com.wavesplatform.state.{ByteStr, Sponsorship}
-import com.wavesplatform.transaction.assets.SponsorFeeTransaction
-import com.wavesplatform.utils.Base58
+import com..api.http.assets.SignedSponsorFeeRequest
+import com..it.api.SyncHttpApi._
+import com..it.sync._
+import com..it.transactions.NodesFromDocker
+import com..it.util._
+import com..it.{NodeConfigs, ReportingTestName}
+import com..state.{ByteStr, Sponsorship}
+import com..transaction.assets.SponsorFeeTransaction
+import com..utils.Base58
 import org.scalatest.{Assertion, CancelAfterFailure, FreeSpec, Matchers}
 import play.api.libs.json.{JsNumber, JsObject, Json}
 

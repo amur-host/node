@@ -1,15 +1,15 @@
-package com.wavesplatform.network
+package com..network
 
 import java.nio.charset.StandardCharsets
 
-import com.wavesplatform.TransactionGen
+import com..TransactionGen
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.embedded.EmbeddedChannel
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.{ProvenTransaction, Transaction}
+import com..transaction.assets.IssueTransactionV1
+import com..transaction.{ProvenTransaction, Transaction}
 
 class MessageCodecSpec extends FreeSpec with Matchers with MockFactory with PropertyChecks with TransactionGen {
 

@@ -1,7 +1,7 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.crypto
-import com.wavesplatform.state.{ByteStr, _}
+import com..crypto
+import com..state.{ByteStr, _}
 import monix.eval.Coeval
 import play.api.libs.json._
 

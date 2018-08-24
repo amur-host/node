@@ -1,11 +1,11 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.state._
-import com.wavesplatform.utils.base58Length
+import com..state._
+import com..utils.base58Length
 import monix.eval.Coeval
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction.ValidationError.GenericError
+import com..utils.Base58
+import com..serialization.Deser
+import com..transaction.ValidationError.GenericError
 
 import scala.util.Try
 

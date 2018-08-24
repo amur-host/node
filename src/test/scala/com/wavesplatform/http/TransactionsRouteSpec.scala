@@ -1,18 +1,18 @@
-package com.wavesplatform.http
+package com..http
 
 import akka.http.scaladsl.model.StatusCodes
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.http.ApiMarshallers._
-import com.wavesplatform.lang.v1.compiler.Terms.TRUE
-import com.wavesplatform.settings.{TestFunctionalitySettings, WalletSettings}
-import com.wavesplatform.state.{AssetDescription, Blockchain, ByteStr}
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
-import com.wavesplatform.{BlockGen, NoShrink, TestTime, TransactionGen}
+import com..account.PublicKeyAccount
+import com..api.http.{InvalidAddress, InvalidSignature, TooBigArrayAllocation, TransactionsApiRoute}
+import com..features.BlockchainFeatures
+import com..http.ApiMarshallers._
+import com..lang.v1.compiler.Terms.TRUE
+import com..settings.{TestFunctionalitySettings, WalletSettings}
+import com..state.{AssetDescription, Blockchain, ByteStr}
+import com..transaction.smart.script.v1.ScriptV1
+import com..utils.Base58
+import com..utx.UtxPool
+import com..wallet.Wallet
+import com..{BlockGen, NoShrink, TestTime, TransactionGen}
 import io.netty.channel.group.ChannelGroup
 import org.scalacheck.Gen._
 import org.scalamock.scalatest.MockFactory

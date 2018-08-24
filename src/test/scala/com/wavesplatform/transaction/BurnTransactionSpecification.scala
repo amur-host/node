@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.state.{ByteStr, EitherExt2}
+import com..TransactionGen
+import com..state.{ByteStr, EitherExt2}
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
 import play.api.libs.json.Json
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.transaction.assets.{BurnTransaction, BurnTransactionV1, BurnTransactionV2}
+import com..account.PublicKeyAccount
+import com..transaction.assets.{BurnTransaction, BurnTransactionV1, BurnTransactionV2}
 
 class BurnTransactionSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

@@ -1,19 +1,19 @@
-package com.wavesplatform.db
+package com..db
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
-import com.wavesplatform.state.{BlockchainUpdaterImpl, _}
-import com.wavesplatform.{TransactionGen, WithDB}
+import com..database.LevelDBWriter
+import com..settings.{TestFunctionalitySettings, WavesSettings, loadConfig}
+import com..state.{BlockchainUpdaterImpl, _}
+import com..{TransactionGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.{FreeSpec, Matchers}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.utils.{Time, TimeImpl}
-import com.wavesplatform.block.Block
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
-import com.wavesplatform.transaction.{BlockchainUpdater, GenesisTransaction}
+import com..account.PrivateKeyAccount
+import com..utils.{Time, TimeImpl}
+import com..block.Block
+import com..lagonaki.mocks.TestBlock
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.{Script, ScriptCompiler}
+import com..transaction.{BlockchainUpdater, GenesisTransaction}
 
 class ScriptCacheTest extends FreeSpec with Matchers with WithDB with TransactionGen {
 

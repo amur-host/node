@@ -1,15 +1,15 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry}
-import com.wavesplatform.{NoShrink, TransactionGen, WithDB}
+import com..features.BlockchainFeatures
+import com..state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, EitherExt2, IntegerDataEntry}
+import com..{NoShrink, TransactionGen, WithDB}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.lagonaki.mocks.TestBlock.{create => block}
-import com.wavesplatform.transaction.{DataTransaction, GenesisTransaction}
+import com..account.PrivateKeyAccount
+import com..settings.TestFunctionalitySettings
+import com..lagonaki.mocks.TestBlock.{create => block}
+import com..transaction.{DataTransaction, GenesisTransaction}
 
 class DataTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink with WithDB {
 

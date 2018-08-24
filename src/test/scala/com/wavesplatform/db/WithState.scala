@@ -1,14 +1,14 @@
-package com.wavesplatform.db
+package com..db
 
 import java.nio.file.Files
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.TestHelpers
-import com.wavesplatform.database.LevelDBWriter
-import com.wavesplatform.history.Domain
-import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings, loadConfig}
-import com.wavesplatform.state.{Blockchain, BlockchainUpdaterImpl}
-import com.wavesplatform.utils.{ScorexLogging, TimeImpl}
+import com..TestHelpers
+import com..database.LevelDBWriter
+import com..history.Domain
+import com..settings.{FunctionalitySettings, WavesSettings, loadConfig}
+import com..state.{Blockchain, BlockchainUpdaterImpl}
+import com..utils.{ScorexLogging, TimeImpl}
 
 trait WithState extends ScorexLogging {
   private def withState[A](fs: FunctionalitySettings)(f: Blockchain => A): A = {

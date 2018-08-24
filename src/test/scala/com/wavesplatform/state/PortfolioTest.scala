@@ -1,4 +1,4 @@
-package com.wavesplatform.state
+package com..state
 
 import java.nio.charset.StandardCharsets
 

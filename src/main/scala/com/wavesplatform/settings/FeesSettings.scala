@@ -1,9 +1,9 @@
-package com.wavesplatform.settings
+package com..settings
 
 import com.google.common.base.CaseFormat
 import com.typesafe.config.Config
 import net.ceedubs.ficus.Ficus._
-import com.wavesplatform.transaction.TransactionParsers
+import com..transaction.TransactionParsers
 
 import scala.collection.JavaConverters._
 

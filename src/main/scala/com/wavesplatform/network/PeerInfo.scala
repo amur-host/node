@@ -1,4 +1,4 @@
-package com.wavesplatform.network
+package com..network
 
 import java.net.{InetSocketAddress, SocketAddress}
 

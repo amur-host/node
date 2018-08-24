@@ -1,8 +1,8 @@
-package com.wavesplatform.actor
+package com..actor
 
 import akka.actor.{ActorSystem, AllForOneStrategy, SupervisorStrategy, SupervisorStrategyConfigurator}
 import com.typesafe.config.Config
-import com.wavesplatform.utils.ScorexLogging
+import com..utils.ScorexLogging
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration

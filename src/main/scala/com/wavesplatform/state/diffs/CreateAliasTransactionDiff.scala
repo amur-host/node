@@ -1,10 +1,10 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.{CreateAliasTransaction, ValidationError}
-import com.wavesplatform.features.FeatureProvider._
+import com..features.BlockchainFeatures
+import com..state.{Blockchain, Diff, LeaseBalance, Portfolio}
+import com..transaction.ValidationError.GenericError
+import com..transaction.{CreateAliasTransaction, ValidationError}
+import com..features.FeatureProvider._
 
 import scala.util.Right
 

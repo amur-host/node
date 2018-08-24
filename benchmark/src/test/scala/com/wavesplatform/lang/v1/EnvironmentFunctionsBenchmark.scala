@@ -1,13 +1,13 @@
-package com.wavesplatform.lang.v1
+package com..lang.v1
 
 import java.util.concurrent.{ThreadLocalRandom, TimeUnit}
 
-import com.wavesplatform.lang.{Common, Global}
-import com.wavesplatform.lang.v1.EnvironmentFunctionsBenchmark._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.EnvironmentFunctions
-import com.wavesplatform.lang.v1.traits._
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.wavesplatform.state.EitherExt2
+import com..lang.{Common, Global}
+import com..lang.v1.EnvironmentFunctionsBenchmark._
+import com..lang.v1.evaluator.ctx.impl.EnvironmentFunctions
+import com..lang.v1.traits._
+import com..lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com..state.EitherExt2
 import org.openjdk.jmh.annotations._
 import shapeless.:+:
 import shapeless.CNil

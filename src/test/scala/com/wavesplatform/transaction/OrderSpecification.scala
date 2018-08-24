@@ -1,15 +1,15 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.matcher.ValidationMatcher
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.utils.NTP
+import com..TransactionGen
+import com..matcher.ValidationMatcher
+import com..state.ByteStr
+import com..state.diffs._
+import com..transaction.assets.exchange._
+import com..utils.NTP
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.transaction.smart.Verifier
+import com..OrderOps._
+import com..transaction.smart.Verifier
 
 class OrderSpecification extends PropSpec with PropertyChecks with Matchers with TransactionGen with ValidationMatcher {
 

@@ -1,4 +1,4 @@
-package com.wavesplatform.db
+package com..db
 
 trait VersionedStorage {
   this: PropertiesStorage =>

@@ -1,6 +1,6 @@
-package com.wavesplatform.it
+package com..it
 
-import com.wavesplatform.settings.Constants
+import com..settings.Constants
 import io.netty.util.Timer
 
 import scala.concurrent.duration.FiniteDuration

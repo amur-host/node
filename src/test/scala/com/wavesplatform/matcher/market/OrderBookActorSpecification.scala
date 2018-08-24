@@ -1,27 +1,27 @@
-package com.wavesplatform.matcher.market
+package com..matcher.market
 
 import java.util.concurrent.ConcurrentHashMap
 
 import akka.actor.{Actor, ActorRef, ActorSystem, Props}
 import akka.persistence.inmemory.extension.{InMemoryJournalStorage, InMemorySnapshotStorage, StorageExtension}
 import akka.testkit.{ImplicitSender, TestActorRef, TestKit, TestProbe}
-import com.wavesplatform.OrderOps._
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.matcher.MatcherTestData
-import com.wavesplatform.matcher.fixtures.RestartableActor
-import com.wavesplatform.matcher.fixtures.RestartableActor.RestartActor
-import com.wavesplatform.matcher.market.OrderBookActor._
-import com.wavesplatform.matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
-import com.wavesplatform.matcher.model.Events.Event
-import com.wavesplatform.matcher.model.{BuyLimitOrder, LimitOrder, OrderBook, SellLimitOrder}
-import com.wavesplatform.settings.{Constants, FunctionalitySettings, TestFunctionalitySettings, WalletSettings}
-import com.wavesplatform.state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
-import com.wavesplatform.utils.{NTP, ScorexLogging}
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com..OrderOps._
+import com..account.PrivateKeyAccount
+import com..matcher.MatcherTestData
+import com..matcher.fixtures.RestartableActor
+import com..matcher.fixtures.RestartableActor.RestartActor
+import com..matcher.market.OrderBookActor._
+import com..matcher.market.OrderHistoryActor.{ValidateOrder, ValidateOrderResult}
+import com..matcher.model.Events.Event
+import com..matcher.model.{BuyLimitOrder, LimitOrder, OrderBook, SellLimitOrder}
+import com..settings.{Constants, FunctionalitySettings, TestFunctionalitySettings, WalletSettings}
+import com..state.{Blockchain, ByteStr, Diff, LeaseBalance, Portfolio}
+import com..transaction._
+import com..transaction.assets.IssueTransactionV1
+import com..transaction.assets.exchange.{AssetPair, ExchangeTransaction, Order}
+import com..utils.{NTP, ScorexLogging}
+import com..utx.UtxPool
+import com..wallet.Wallet
 import io.netty.channel.group.ChannelGroup
 import org.scalamock.scalatest.PathMockFactory
 import org.scalatest._

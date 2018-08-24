@@ -1,15 +1,15 @@
-package com.wavesplatform.state.diffs.smart.scenarios
+package com..state.diffs.smart.scenarios
 
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.diffs.smart._
-import com.wavesplatform.utils.dummyCompilerContext
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.parser.Parser
+import com..state._
+import com..state.diffs._
+import com..state.diffs.smart._
+import com..utils.dummyCompilerContext
+import com..{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.lagonaki.mocks.TestBlock
+import com..lagonaki.mocks.TestBlock
 
 class OnlyTransferIsAllowedTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

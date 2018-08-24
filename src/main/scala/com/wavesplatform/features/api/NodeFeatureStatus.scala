@@ -1,4 +1,4 @@
-package com.wavesplatform.features.api
+package com..features.api
 
 sealed trait NodeFeatureStatus
 

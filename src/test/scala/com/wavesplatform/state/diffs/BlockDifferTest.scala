@@ -1,18 +1,18 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
 import java.util.concurrent.ThreadLocalRandom
 
-import com.wavesplatform.BlockGen
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.Block
-import com.wavesplatform.db.WithState
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.mining.MiningConstraint
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.{Blockchain, Diff, EitherExt2}
-import com.wavesplatform.transaction.{GenesisTransaction, ValidationError}
+import com..BlockGen
+import com..account.PrivateKeyAccount
+import com..block.Block
+import com..db.WithState
+import com..lagonaki.mocks.TestBlock
+import com..mining.MiningConstraint
+import com..settings.FunctionalitySettings
+import com..state.{Blockchain, Diff, EitherExt2}
+import com..transaction.{GenesisTransaction, ValidationError}
 import org.scalatest.{FreeSpecLike, Matchers}
-import com.wavesplatform.crypto._
+import com..crypto._
 
 class BlockDifferTest extends FreeSpecLike with Matchers with BlockGen with WithState {
 

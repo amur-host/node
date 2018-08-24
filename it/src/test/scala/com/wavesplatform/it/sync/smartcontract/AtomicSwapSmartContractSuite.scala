@@ -1,20 +1,20 @@
-package com.wavesplatform.it.sync.smartcontract
+package com..it.sync.smartcontract
 
 import com.typesafe.config.Config
-import com.wavesplatform.account.AddressOrAlias
-import com.wavesplatform.crypto
-import com.wavesplatform.it.NodeConfigs
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.dummyCompilerContext
+import com..account.AddressOrAlias
+import com..crypto
+import com..it.NodeConfigs
+import com..it.api.SyncHttpApi._
+import com..it.sync._
+import com..it.transactions.BaseTransactionSuite
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.parser.Parser
+import com..state._
+import com..transaction.Proofs
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.v1.ScriptV1
+import com..transaction.transfer._
+import com..utils.dummyCompilerContext
 import org.scalatest.CancelAfterFailure
 import play.api.libs.json.JsNumber
 

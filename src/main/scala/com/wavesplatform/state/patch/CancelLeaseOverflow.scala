@@ -1,8 +1,8 @@
-package com.wavesplatform.state.patch
+package com..state.patch
 
-import com.wavesplatform.state.{Blockchain, Diff, LeaseBalance, Portfolio}
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
+import com..state.{Blockchain, Diff, LeaseBalance, Portfolio}
+import com..utils.ScorexLogging
+import com..transaction.lease.{LeaseTransaction, LeaseTransactionV1}
 
 object CancelLeaseOverflow extends ScorexLogging {
   def apply(blockchain: Blockchain): Diff = {

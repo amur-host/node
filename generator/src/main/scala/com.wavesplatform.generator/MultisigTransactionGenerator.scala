@@ -1,14 +1,14 @@
-package com.wavesplatform.generator
+package com..generator
 import cats.Show
-import com.wavesplatform.crypto
-import com.wavesplatform.generator.utils.Gen
-import com.wavesplatform.state._
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.transfer.TransferTransactionV2
-import com.wavesplatform.transaction.{Proofs, Transaction}
-import com.wavesplatform.it.util._
+import com..crypto
+import com..generator.utils.Gen
+import com..state._
+import com..account.PrivateKeyAccount
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.Script
+import com..transaction.transfer.TransferTransactionV2
+import com..transaction.{Proofs, Transaction}
+import com..it.util._
 import scala.util.Random
 
 class MultisigTransactionGenerator(settings: MultisigTransactionGenerator.Settings, val accounts: Seq[PrivateKeyAccount])

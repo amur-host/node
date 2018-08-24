@@ -1,8 +1,8 @@
-package com.wavesplatform.settings
+package com..settings
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
-import com.wavesplatform.settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
+import com..network.InvalidBlockStorageImpl.InvalidBlockStorageSettings
+import com..settings.SynchronizationSettings.{HistoryReplierSettings, MicroblockSynchronizerSettings, UtxSynchronizerSettings}
 import org.scalatest.{FlatSpec, Matchers}
 
 import scala.concurrent.duration._

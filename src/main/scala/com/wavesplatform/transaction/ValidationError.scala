@@ -1,11 +1,11 @@
-package com.wavesplatform.transaction
+package com..transaction
 
 import com.google.common.base.Throwables
-import com.wavesplatform.lang.v1.evaluator.ctx.LazyVal
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.{Block, MicroBlock}
-import com.wavesplatform.transaction.assets.exchange.Order
+import com..lang.v1.evaluator.ctx.LazyVal
+import com..state.ByteStr
+import com..account.{Address, Alias}
+import com..block.{Block, MicroBlock}
+import com..transaction.assets.exchange.Order
 
 import scala.util.Either
 

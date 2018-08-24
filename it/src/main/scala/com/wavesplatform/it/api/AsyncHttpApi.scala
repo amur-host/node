@@ -1,24 +1,24 @@
-package com.wavesplatform.it.api
+package com..it.api
 
 import java.io.IOException
 import java.net.InetSocketAddress
 import java.util.concurrent.TimeoutException
 
-import com.wavesplatform.api.http.PeersApiRoute.{ConnectReq, connectFormat}
-import com.wavesplatform.api.http.alias.CreateAliasV1Request
-import com.wavesplatform.api.http.assets._
-import com.wavesplatform.api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
-import com.wavesplatform.api.http.{AddressApiRoute, DataRequest}
-import com.wavesplatform.features.api.ActivationStatus
-import com.wavesplatform.http.DebugApiRoute._
-import com.wavesplatform.http.DebugMessage._
-import com.wavesplatform.http.{DebugMessage, RollbackParams, api_key}
-import com.wavesplatform.it.Node
-import com.wavesplatform.it.util.GlobalTimer.{instance => timer}
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.{DataEntry, Portfolio}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
-import com.wavesplatform.transaction.transfer._
+import com..api.http.PeersApiRoute.{ConnectReq, connectFormat}
+import com..api.http.alias.CreateAliasV1Request
+import com..api.http.assets._
+import com..api.http.leasing.{LeaseCancelV1Request, LeaseV1Request, SignedLeaseCancelV1Request, SignedLeaseV1Request}
+import com..api.http.{AddressApiRoute, DataRequest}
+import com..features.api.ActivationStatus
+import com..http.DebugApiRoute._
+import com..http.DebugMessage._
+import com..http.{DebugMessage, RollbackParams, api_key}
+import com..it.Node
+import com..it.util.GlobalTimer.{instance => timer}
+import com..it.util._
+import com..state.{DataEntry, Portfolio}
+import com..transaction.transfer.MassTransferTransaction.Transfer
+import com..transaction.transfer._
 import org.asynchttpclient.Dsl.{get => _get, post => _post}
 import org.asynchttpclient._
 import org.asynchttpclient.util.HttpConstants

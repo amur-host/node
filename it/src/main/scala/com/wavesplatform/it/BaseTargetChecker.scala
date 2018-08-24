@@ -1,15 +1,15 @@
-package com.wavesplatform.it
+package com..it
 
 import com.typesafe.config.ConfigFactory.{defaultApplication, defaultReference}
-import com.wavesplatform.consensus.PoSSelector
-import com.wavesplatform.db.openDB
-import com.wavesplatform.history.StorageFactory
-import com.wavesplatform.settings._
-import com.wavesplatform.state.{ByteStr, EitherExt2}
+import com..consensus.PoSSelector
+import com..db.openDB
+import com..history.StorageFactory
+import com..settings._
+import com..state.{ByteStr, EitherExt2}
 import net.ceedubs.ficus.Ficus._
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.utils.NTP
-import com.wavesplatform.block.Block
+import com..account.PublicKeyAccount
+import com..utils.NTP
+import com..block.Block
 
 object BaseTargetChecker {
   def main(args: Array[String]): Unit = {

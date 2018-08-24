@@ -1,7 +1,7 @@
-package com.wavesplatform.history
+package com..history
 
-import com.wavesplatform.db.WithState
-import com.wavesplatform.settings.WavesSettings
+import com..db.WithState
+import com..settings.WavesSettings
 import org.scalacheck.Gen
 import org.scalatest.Assertion
 import org.scalatest.prop.GeneratorDrivenPropertyChecks

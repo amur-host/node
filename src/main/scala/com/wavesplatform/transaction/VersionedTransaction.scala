@@ -1,4 +1,4 @@
-package com.wavesplatform.transaction
+package com..transaction
 
 trait VersionedTransaction {
   def version: Byte

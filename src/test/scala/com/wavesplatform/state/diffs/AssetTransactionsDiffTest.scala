@@ -1,24 +1,24 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
 import cats._
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.smart.smartEnabledFS
-import com.wavesplatform.utils.dummyCompilerContext
-import com.wavesplatform.{NoShrink, TransactionGen, WithDB}
+import com..features.BlockchainFeatures
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.parser.Parser
+import com..state._
+import com..state.diffs.smart.smartEnabledFS
+import com..utils.dummyCompilerContext
+import com..{NoShrink, TransactionGen, WithDB}
 import fastparse.core.Parsed
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
+import com..account.AddressScheme
+import com..settings.TestFunctionalitySettings
+import com..lagonaki.mocks.TestBlock
+import com..transaction.GenesisTransaction
+import com..transaction.assets._
+import com..transaction.smart.script.v1.ScriptV1
+import com..transaction.transfer._
 
 class AssetTransactionsDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink with WithDB {
 

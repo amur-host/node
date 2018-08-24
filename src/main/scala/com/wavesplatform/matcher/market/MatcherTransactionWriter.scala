@@ -1,14 +1,14 @@
-package com.wavesplatform.matcher.market
+package com..matcher.market
 
 import akka.actor.{Actor, Props}
 import akka.http.scaladsl.model.StatusCodes
-import com.wavesplatform.database.{DBExt, RW}
-import com.wavesplatform.matcher.api.MatcherResponse
-import com.wavesplatform.matcher.model.Events._
-import com.wavesplatform.matcher.{MatcherKeys, MatcherSettings}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.utils.ScorexLogging
+import com..database.{DBExt, RW}
+import com..matcher.api.MatcherResponse
+import com..matcher.model.Events._
+import com..matcher.{MatcherKeys, MatcherSettings}
+import com..state._
+import com..transaction.assets.exchange.ExchangeTransaction
+import com..utils.ScorexLogging
 import org.iq80.leveldb.DB
 import play.api.libs.json.JsArray
 

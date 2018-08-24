@@ -1,8 +1,8 @@
-package com.wavesplatform.lang.v1.compiler
+package com..lang.v1.compiler
 
-import com.wavesplatform.lang.v1.compiler.Types._
-import com.wavesplatform.lang._
-import com.wavesplatform.lang.v1.evaluator.ctx.DefinedType
+import com..lang.v1.compiler.Types._
+import com..lang._
+import com..lang.v1.evaluator.ctx.DefinedType
 
 object TypeInferrer {
 

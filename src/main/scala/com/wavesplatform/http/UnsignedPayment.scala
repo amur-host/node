@@ -1,4 +1,4 @@
-package com.wavesplatform.http
+package com..http
 
 import play.api.libs.json.{Format, Json}
 

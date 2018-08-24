@@ -1,4 +1,4 @@
-package com.wavesplatform.transaction.assets
+package com..transaction.assets
 
 import java.nio.charset.StandardCharsets
 
@@ -6,12 +6,12 @@ import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs}
 import monix.eval.Coeval
 import play.api.libs.json.Json
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.validation._
-import com.wavesplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
-import com.wavesplatform.crypto._
+import com..account.PublicKeyAccount
+import com..serialization.Deser
+import com..transaction.smart.script.Script
+import com..transaction.validation._
+import com..transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
+import com..crypto._
 
 trait IssueTransaction extends ProvenTransaction with VersionedTransaction {
   def name: Array[Byte]

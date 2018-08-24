@@ -1,14 +1,14 @@
-package com.wavesplatform.transaction.assets
+package com..transaction.assets
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
+import com..crypto
+import com..state.ByteStr
 import monix.eval.Coeval
-import com.wavesplatform.account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.transaction.ValidationError.{GenericError, UnsupportedVersion}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
+import com..account.{AddressScheme, PrivateKeyAccount, PublicKeyAccount}
+import com..serialization.Deser
+import com..transaction.ValidationError.{GenericError, UnsupportedVersion}
+import com..transaction._
+import com..transaction.smart.script.{Script, ScriptReader}
 
 import scala.util.Try
 

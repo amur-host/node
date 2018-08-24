@@ -1,14 +1,14 @@
-package com.wavesplatform.generator.utils
+package com..generator.utils
 
 import java.util.concurrent.ThreadLocalRandom
 
-import com.wavesplatform.generator.utils.Implicits._
-import com.wavesplatform.state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, IntegerDataEntry, StringDataEntry}
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.transaction.smart.script.{Script, ScriptCompiler}
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{Proofs, Transaction}
+import com..generator.utils.Implicits._
+import com..state.{BinaryDataEntry, BooleanDataEntry, ByteStr, DataEntry, IntegerDataEntry, StringDataEntry}
+import com..account.{Address, PrivateKeyAccount}
+import com..transaction.smart.script.{Script, ScriptCompiler}
+import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com..transaction.transfer._
+import com..transaction.{Proofs, Transaction}
 import scorex.crypto.signatures.Curve25519._
 
 object Gen {

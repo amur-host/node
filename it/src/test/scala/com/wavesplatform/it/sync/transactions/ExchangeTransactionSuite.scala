@@ -1,14 +1,14 @@
-package com.wavesplatform.it.sync.transactions
+package com..it.sync.transactions
 
-import com.wavesplatform.api.http.assets.{SignedExchangeRequest, SignedExchangeRequestV2}
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.util._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.assets.exchange.OrderJson._
-import com.wavesplatform.utils.{Base58, NTP}
+import com..api.http.assets.{SignedExchangeRequest, SignedExchangeRequestV2}
+import com..it.api.SyncHttpApi._
+import com..it.util._
+import com..it.sync._
+import com..it.transactions.BaseTransactionSuite
+import com..transaction.assets.IssueTransactionV1
+import com..transaction.assets.exchange._
+import com..transaction.assets.exchange.OrderJson._
+import com..utils.{Base58, NTP}
 import play.api.libs.json._
 
 class ExchangeTransactionSuite extends BaseTransactionSuite {

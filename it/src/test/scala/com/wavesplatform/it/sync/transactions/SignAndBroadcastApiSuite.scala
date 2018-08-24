@@ -1,19 +1,19 @@
-package com.wavesplatform.it.sync.transactions
+package com..it.sync.transactions
 
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.sync.someAssetAmount
-import com.wavesplatform.it.transactions.BaseTransactionSuite
-import com.wavesplatform.it.util._
-import com.wavesplatform.state._
+import com..crypto
+import com..it.api.SyncHttpApi._
+import com..it.sync.someAssetAmount
+import com..it.transactions.BaseTransactionSuite
+import com..it.util._
+import com..state._
 import org.asynchttpclient.util.HttpConstants
 import play.api.libs.json._
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.assets.SignedTransferV1Request
-import com.wavesplatform.utils.{Base58, NTP}
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.it.sync._
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.Transfer
+import com..account.PublicKeyAccount
+import com..api.http.assets.SignedTransferV1Request
+import com..utils.{Base58, NTP}
+import com..transaction.assets.exchange._
+import com..it.sync._
+import com..transaction.transfer.MassTransferTransaction.Transfer
 
 import scala.util.Random
 

@@ -1,10 +1,10 @@
-package com.wavesplatform.matcher.smart
+package com..matcher.smart
 
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
-import com.wavesplatform.lang.v1.evaluator.ctx.EvaluationContext
-import com.wavesplatform.transaction.assets.exchange.Order
-import com.wavesplatform.transaction.smart.script.Script
+import com..account.AddressScheme
+import com..lang.v1.evaluator.EvaluatorV1
+import com..lang.v1.evaluator.ctx.EvaluationContext
+import com..transaction.assets.exchange.Order
+import com..transaction.smart.script.Script
 import monix.eval.Coeval
 import cats.implicits._
 

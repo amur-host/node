@@ -1,12 +1,12 @@
-package com.wavesplatform.network
+package com..network
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.state.ByteStr
+import com..TransactionGen
+import com..state.ByteStr
 import org.scalacheck.Gen
 import org.scalatest.concurrent.Eventually
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
-import com.wavesplatform.crypto._
+import com..crypto._
 
 class MicroBlockInvSpecSpec extends FreeSpec with Matchers with PropertyChecks with Eventually with TransactionGen {
 

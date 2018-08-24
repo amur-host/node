@@ -1,10 +1,10 @@
-package com.wavesplatform.consensus
+package com..consensus
 
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.account.Address
-import com.wavesplatform.block.Block
+import com..features.BlockchainFeatures
+import com..settings.FunctionalitySettings
+import com..state.Blockchain
+import com..account.Address
+import com..block.Block
 
 object GeneratingBalanceProvider {
   private val MinimalEffectiveBalanceForGenerator1: Long = 1000000000000L

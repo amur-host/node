@@ -1,15 +1,15 @@
-package com.wavesplatform.transaction
+package com..transaction
 
 import java.util
 
 import com.google.common.primitives.{Bytes, Ints, Longs}
-import com.wavesplatform.crypto
-import com.wavesplatform.state._
+import com..crypto
+import com..state._
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.transaction.TransactionParsers._
-import com.wavesplatform.crypto._
+import com..account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com..transaction.TransactionParsers._
+import com..crypto._
 import scala.util.{Failure, Success, Try}
 
 case class PaymentTransaction private (sender: PublicKeyAccount, recipient: Address, amount: Long, fee: Long, timestamp: Long, signature: ByteStr)

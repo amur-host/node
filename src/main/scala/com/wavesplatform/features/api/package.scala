@@ -1,7 +1,7 @@
-package com.wavesplatform.features
+package com..features
 
-import com.wavesplatform.features.BlockchainFeatureStatus.{Activated, Approved, Undefined}
-import com.wavesplatform.features.api.NodeFeatureStatus.{Implemented, NotImplemented, Voted}
+import com..features.BlockchainFeatureStatus.{Activated, Approved, Undefined}
+import com..features.api.NodeFeatureStatus.{Implemented, NotImplemented, Voted}
 import play.api.libs.json._
 
 package object api {

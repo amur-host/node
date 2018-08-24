@@ -1,12 +1,12 @@
-package com.wavesplatform.lang
+package com..lang
 
-import com.wavesplatform.lang.Common._
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext
-import com.wavesplatform.lang.v1.parser.Expressions
-import com.wavesplatform.lang.v1.testing.ScriptGen
-import com.wavesplatform.lang.v1.{FunctionHeader, Serde}
+import com..lang.Common._
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.compiler.Terms._
+import com..lang.v1.evaluator.ctx.impl.PureContext
+import com..lang.v1.parser.Expressions
+import com..lang.v1.testing.ScriptGen
+import com..lang.v1.{FunctionHeader, Serde}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertion, FreeSpec, Matchers}
 import scodec.bits.ByteVector

@@ -1,13 +1,13 @@
-package com.wavesplatform.lang.v1.evaluator
+package com..lang.v1.evaluator
 
 import cats.implicits._
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.v1.FunctionHeader
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.EvaluationContext.Lenses._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.task.imports._
-import com.wavesplatform.lang.{ExecutionError, ExprEvaluator}
+import com..lang.ScriptVersion.Versions.V1
+import com..lang.v1.FunctionHeader
+import com..lang.v1.compiler.Terms._
+import com..lang.v1.evaluator.ctx.EvaluationContext.Lenses._
+import com..lang.v1.evaluator.ctx._
+import com..lang.v1.task.imports._
+import com..lang.{ExecutionError, ExprEvaluator}
 
 object EvaluatorV1 extends ExprEvaluator {
 

@@ -1,23 +1,23 @@
-package com.wavesplatform.state.diffs.smart.scenarios
+package com..state.diffs.smart.scenarios
 
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
-import com.wavesplatform.lang.v1.evaluator.ctx.CaseObj
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.{ENOUGH_AMT, assertDiffAndState, produce}
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.evaluator.EvaluatorV1
+import com..lang.v1.evaluator.ctx.CaseObj
+import com..lang.v1.parser.Parser
+import com..state._
+import com..state.diffs.{ENOUGH_AMT, assertDiffAndState, produce}
+import com..{NoShrink, TransactionGen}
 import fastparse.core.Parsed
 import monix.eval.Coeval
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 import scodec.bits.ByteVector
-import com.wavesplatform.account.{AddressOrAlias, AddressScheme, PrivateKeyAccount}
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.smart.BlockchainContext
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.transaction.{CreateAliasTransaction, GenesisTransaction, Transaction}
+import com..account.{AddressOrAlias, AddressScheme, PrivateKeyAccount}
+import com..lagonaki.mocks.TestBlock
+import com..transaction.smart.BlockchainContext
+import com..transaction.transfer._
+import com..transaction.{CreateAliasTransaction, GenesisTransaction, Transaction}
 import shapeless._
 
 class AddressFromRecipientScenarioTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
@@ -35,7 +35,7 @@ class AddressFromRecipientScenarioTest extends PropSpec with PropertyChecks with
     transferViaAlias   <- transferGeneratorP(master, AddressOrAlias.fromBytes(alias.bytes.arr, 0).explicitGet()._1, None, None)
   } yield (Seq(genesis1, genesis2), aliasTx, transferViaAddress, transferViaAlias)
 
-  def evalScript(tx: Transaction, blockchain: Blockchain): Either[com.wavesplatform.lang.ExecutionError, CaseObj] = {
+  def evalScript(tx: Transaction, blockchain: Blockchain): Either[com..lang.ExecutionError, CaseObj] = {
     val context =
       BlockchainContext.build(AddressScheme.current.chainId, Coeval.evalOnce(Coproduct(tx)), Coeval.evalOnce(blockchain.height), blockchain)
 
@@ -46,7 +46,7 @@ class AddressFromRecipientScenarioTest extends PropSpec with PropertyChecks with
         |  }
         |  """.stripMargin)
     assert(expr.size == 1)
-    val Right((typedExpr, _)) = CompilerV1(com.wavesplatform.utils.dummyCompilerContext, expr.head)
+    val Right((typedExpr, _)) = CompilerV1(com..utils.dummyCompilerContext, expr.head)
     EvaluatorV1[CaseObj](context, typedExpr)._2
   }
 

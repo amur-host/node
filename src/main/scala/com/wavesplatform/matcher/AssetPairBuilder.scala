@@ -1,10 +1,10 @@
-package com.wavesplatform.matcher
+package com..matcher
 
 import com.google.common.base.Charsets.UTF_8
-import com.wavesplatform.metrics._
-import com.wavesplatform.state.{Blockchain, ByteStr}
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.AssetPair
+import com..metrics._
+import com..state.{Blockchain, ByteStr}
+import com..transaction.AssetId
+import com..transaction.assets.exchange.AssetPair
 import kamon.Kamon
 import scorex.utils.ByteArray
 

@@ -1,6 +1,6 @@
-package com.wavesplatform.lang.v1.evaluator.ctx
+package com..lang.v1.evaluator.ctx
 
-import com.wavesplatform.lang.v1.compiler.Types.CASETYPEREF
+import com..lang.v1.compiler.Types.CASETYPEREF
 
 case class CaseObj(caseType: CASETYPEREF, fields: Map[String, Any]) {
   override def toString: String = {

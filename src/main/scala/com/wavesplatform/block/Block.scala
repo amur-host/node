@@ -1,21 +1,21 @@
-package com.wavesplatform.block
+package com..block
 
 import java.nio.ByteBuffer
 
 import cats._
 import com.google.common.primitives.{Bytes, Ints, Longs}
-import com.wavesplatform.crypto
-import com.wavesplatform.settings.GenesisSettings
-import com.wavesplatform.state._
+import com..crypto
+import com..settings.GenesisSettings
+import com..state._
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.block.fields.FeaturesBlockField
-import com.wavesplatform.consensus.nxt.{NxtConsensusBlockField, NxtLikeConsensusBlockData}
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction._
-import com.wavesplatform.crypto._
+import com..account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com..block.fields.FeaturesBlockField
+import com..consensus.nxt.{NxtConsensusBlockField, NxtLikeConsensusBlockData}
+import com..utils.ScorexLogging
+import com..transaction.ValidationError.GenericError
+import com..transaction._
+import com..crypto._
 import scala.util.{Failure, Try}
 
 class BlockHeader(val timestamp: Long,

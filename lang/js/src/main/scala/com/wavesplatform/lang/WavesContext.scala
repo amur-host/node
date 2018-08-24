@@ -1,7 +1,7 @@
-package com.wavesplatform.lang
+package com..lang
 
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.wavesplatform.lang.v1.traits.{DataType, Environment}
+import com..lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com..lang.v1.traits.{DataType, Environment}
 import shapeless.{:+:, CNil}
 
 object WavesContext {

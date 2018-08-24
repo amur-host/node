@@ -1,21 +1,21 @@
-package com.wavesplatform.it.sync
+package com..it.sync
 
 import com.typesafe.config.Config
-import com.wavesplatform.consensus.FairPoSCalculator
-import com.wavesplatform.crypto
-import com.wavesplatform.it.api.AsyncNetworkApi.NodeAsyncNetworkApi
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{NodeConfigs, WaitForHeight2}
-import com.wavesplatform.network.RawBytes
-import com.wavesplatform.state._
-import com.wavesplatform.utils.Base58
+import com..consensus.FairPoSCalculator
+import com..crypto
+import com..it.api.AsyncNetworkApi.NodeAsyncNetworkApi
+import com..it.api.SyncHttpApi._
+import com..it.transactions.NodesFromDocker
+import com..it.{NodeConfigs, WaitForHeight2}
+import com..network.RawBytes
+import com..state._
+import com..utils.Base58
 import org.scalatest.{CancelAfterFailure, FunSuite, Matchers}
 import play.api.libs.json.{JsSuccess, Json, Reads}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.block.{Block, SignerData}
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.http.DebugMessage
+import com..account.PrivateKeyAccount
+import com..block.{Block, SignerData}
+import com..consensus.nxt.NxtLikeConsensusBlockData
+import com..http.DebugMessage
 
 import scala.util.Random
 

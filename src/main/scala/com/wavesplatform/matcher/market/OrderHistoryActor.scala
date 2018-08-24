@@ -1,22 +1,22 @@
-package com.wavesplatform.matcher.market
+package com..matcher.market
 
 import akka.actor.{Actor, Props}
 import akka.http.scaladsl.model.{StatusCode, StatusCodes}
-import com.wavesplatform.account.Address
-import com.wavesplatform.matcher.MatcherSettings
-import com.wavesplatform.matcher.api.{BadMatcherResponse, DBUtils, MatcherResponse}
-import com.wavesplatform.matcher.market.OrderBookActor.CancelOrder
-import com.wavesplatform.matcher.market.OrderHistoryActor.{ExpirableOrderHistoryRequest, _}
-import com.wavesplatform.matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
-import com.wavesplatform.matcher.model._
-import com.wavesplatform.metrics.TimerExt
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.AssetAcc
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order}
-import com.wavesplatform.utils.NTP
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com..account.Address
+import com..matcher.MatcherSettings
+import com..matcher.api.{BadMatcherResponse, DBUtils, MatcherResponse}
+import com..matcher.market.OrderBookActor.CancelOrder
+import com..matcher.market.OrderHistoryActor.{ExpirableOrderHistoryRequest, _}
+import com..matcher.model.Events.{OrderAdded, OrderCanceled, OrderExecuted}
+import com..matcher.model._
+import com..metrics.TimerExt
+import com..state.ByteStr
+import com..transaction.AssetAcc
+import com..transaction.ValidationError.GenericError
+import com..transaction.assets.exchange.{AssetPair, Order}
+import com..utils.NTP
+import com..utx.UtxPool
+import com..wallet.Wallet
 import kamon.Kamon
 import org.iq80.leveldb.DB
 import play.api.libs.json._

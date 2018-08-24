@@ -1,10 +1,10 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.settings.{FeesSettings, FunctionalitySettings}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.FeeCalculator._
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.transfer._
+import com..settings.{FeesSettings, FunctionalitySettings}
+import com..state._
+import com..transaction.FeeCalculator._
+import com..transaction.ValidationError.GenericError
+import com..transaction.transfer._
 
 class FeeCalculator(settings: FeesSettings, blockchain: Blockchain) {
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.state.{ByteStr, EitherExt2, HistoryTest}
-import com.wavesplatform.{TransactionGen, WithDB}
+import com..state.{ByteStr, EitherExt2, HistoryTest}
+import com..{TransactionGen, WithDB}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
 import play.api.libs.json.Json
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.transaction.assets.IssueTransactionV2
+import com..account.PublicKeyAccount
+import com..transaction.assets.IssueTransactionV2
 
 class IssueTransactionV2Specification extends PropSpec with PropertyChecks with Matchers with TransactionGen with WithDB with HistoryTest {
 

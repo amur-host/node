@@ -1,6 +1,6 @@
-package com.wavesplatform.consensus
+package com..consensus
 
-import com.wavesplatform.transaction.Transaction
+import com..transaction.Transaction
 
 object TransactionsOrdering {
   trait WavesOrdering extends Ordering[Transaction] {

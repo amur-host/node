@@ -1,19 +1,19 @@
-package com.wavesplatform.it.async
+package com..it.async
 
 import com.typesafe.config.Config
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{NodeConfigs, TransferSending}
-import com.wavesplatform.lang.v1.compiler.Terms
-import com.wavesplatform.mining.MiningConstraints.MaxScriptRunsInBlock
-import com.wavesplatform.state.EitherExt2
+import com..it.api.AsyncHttpApi._
+import com..it.transactions.NodesFromDocker
+import com..it.{NodeConfigs, TransferSending}
+import com..lang.v1.compiler.Terms
+import com..mining.MiningConstraints.MaxScriptRunsInBlock
+import com..state.EitherExt2
 import org.scalatest._
 import play.api.libs.json.{JsNumber, Json}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.api.http.assets.SignedSetScriptRequest
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
+import com..account.PrivateKeyAccount
+import com..api.http.assets.SignedSetScriptRequest
+import com..utils.Base58
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.v1.ScriptV1
 
 import scala.concurrent.Await.result
 import scala.concurrent.ExecutionContext.Implicits.global

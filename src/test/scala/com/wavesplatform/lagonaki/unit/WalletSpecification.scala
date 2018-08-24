@@ -1,11 +1,11 @@
-package com.wavesplatform.lagonaki.unit
+package com..lagonaki.unit
 
 import java.io.File
 import java.nio.file.Files
 
-import com.wavesplatform.settings.WalletSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.wallet.Wallet
+import com..settings.WalletSettings
+import com..state.ByteStr
+import com..wallet.Wallet
 import org.scalatest.{FunSuite, Matchers}
 
 class WalletSpecification extends FunSuite with Matchers {

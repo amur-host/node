@@ -1,22 +1,22 @@
-package com.wavesplatform.state.appender
+package com..state.appender
 
 import cats.data.EitherT
-import com.wavesplatform.consensus.PoSSelector
-import com.wavesplatform.metrics._
-import com.wavesplatform.mining.Miner
-import com.wavesplatform.network._
-import com.wavesplatform.settings.WavesSettings
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.utils.{ScorexLogging, Time}
-import com.wavesplatform.utx.UtxPool
+import com..consensus.PoSSelector
+import com..metrics._
+import com..mining.Miner
+import com..network._
+import com..settings.WavesSettings
+import com..state.Blockchain
+import com..utils.{ScorexLogging, Time}
+import com..utx.UtxPool
 import io.netty.channel.Channel
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import monix.eval.Task
 import monix.execution.Scheduler
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.ValidationError.{BlockAppendError, InvalidSignature}
-import com.wavesplatform.transaction.{BlockchainUpdater, CheckpointService, ValidationError}
+import com..block.Block
+import com..transaction.ValidationError.{BlockAppendError, InvalidSignature}
+import com..transaction.{BlockchainUpdater, CheckpointService, ValidationError}
 
 import scala.util.Right
 

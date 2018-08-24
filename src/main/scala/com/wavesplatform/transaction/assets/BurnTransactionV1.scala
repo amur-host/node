@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.assets
+package com..transaction.assets
 
 import com.google.common.primitives.Bytes
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
+import com..crypto
+import com..state.ByteStr
 import monix.eval.Coeval
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.transaction._
-import com.wavesplatform.crypto._
+import com..account.{PrivateKeyAccount, PublicKeyAccount}
+import com..transaction._
+import com..crypto._
 import scala.util.{Failure, Success, Try}
 
 case class BurnTransactionV1 private (sender: PublicKeyAccount, assetId: ByteStr, quantity: Long, fee: Long, timestamp: Long, signature: ByteStr)

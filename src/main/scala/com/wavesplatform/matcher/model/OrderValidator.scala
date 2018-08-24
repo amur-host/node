@@ -1,20 +1,20 @@
-package com.wavesplatform.matcher.model
+package com..matcher.model
 
 import cats.implicits._
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.matcher.MatcherSettings
-import com.wavesplatform.matcher.market.OrderBookActor.CancelOrder
-import com.wavesplatform.matcher.model.OrderHistory.OrderInfoChange
-import com.wavesplatform.metrics.TimerExt
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.AssetAcc
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.assets.exchange.Validation.booleanOperators
-import com.wavesplatform.transaction.assets.exchange.{Order, Validation}
-import com.wavesplatform.transaction.smart.Verifier
-import com.wavesplatform.utils.NTP
-import com.wavesplatform.utx.UtxPool
-import com.wavesplatform.wallet.Wallet
+import com..account.PublicKeyAccount
+import com..matcher.MatcherSettings
+import com..matcher.market.OrderBookActor.CancelOrder
+import com..matcher.model.OrderHistory.OrderInfoChange
+import com..metrics.TimerExt
+import com..state._
+import com..transaction.AssetAcc
+import com..transaction.ValidationError.GenericError
+import com..transaction.assets.exchange.Validation.booleanOperators
+import com..transaction.assets.exchange.{Order, Validation}
+import com..transaction.smart.Verifier
+import com..utils.NTP
+import com..utx.UtxPool
+import com..wallet.Wallet
 import kamon.Kamon
 
 trait OrderValidator {

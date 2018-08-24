@@ -1,7 +1,7 @@
-package com.wavesplatform.db
+package com..db
 
-import com.wavesplatform.network.{BlockCheckpoint, Checkpoint}
-import com.wavesplatform.state.EitherExt2
+import com..network.{BlockCheckpoint, Checkpoint}
+import com..state.EitherExt2
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{FreeSpec, Matchers}
 

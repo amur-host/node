@@ -1,9 +1,9 @@
-package com.wavesplatform.network.client
+package com..network.client
 
 import java.io.IOException
 
-import com.wavesplatform.network._
-import com.wavesplatform.utils.ScorexLogging
+import com..network._
+import com..utils.ScorexLogging
 import io.netty.channel._
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.{LengthFieldBasedFrameDecoder, LengthFieldPrepender}

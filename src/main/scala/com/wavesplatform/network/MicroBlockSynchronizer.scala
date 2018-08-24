@@ -1,18 +1,18 @@
-package com.wavesplatform.network
+package com..network
 
 import java.util.concurrent.TimeUnit
 
 import com.google.common.cache.{Cache, CacheBuilder}
-import com.wavesplatform.metrics.BlockStats
-import com.wavesplatform.settings.SynchronizationSettings.MicroblockSynchronizerSettings
-import com.wavesplatform.state.ByteStr
+import com..metrics.BlockStats
+import com..settings.SynchronizationSettings.MicroblockSynchronizerSettings
+import com..state.ByteStr
 import io.netty.channel._
 import monix.eval.{Coeval, Task}
 import monix.execution.CancelableFuture
 import monix.execution.schedulers.SchedulerService
 import monix.reactive.Observable
-import com.wavesplatform.block.Block.BlockId
-import com.wavesplatform.block.MicroBlock
+import com..block.Block.BlockId
+import com..block.MicroBlock
 
 import scala.collection.mutable.{Set => MSet}
 import scala.concurrent.duration.FiniteDuration

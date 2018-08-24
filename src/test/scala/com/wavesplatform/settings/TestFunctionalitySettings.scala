@@ -1,6 +1,6 @@
-package com.wavesplatform.settings
+package com..settings
 
-import com.wavesplatform.features.BlockchainFeatures
+import com..features.BlockchainFeatures
 
 object TestFunctionalitySettings {
   val Enabled = FunctionalitySettings(

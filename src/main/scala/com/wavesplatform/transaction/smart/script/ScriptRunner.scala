@@ -1,15 +1,15 @@
-package com.wavesplatform.transaction.smart.script
+package com..transaction.smart.script
 
 import cats.implicits._
-import com.wavesplatform.lang.v1.evaluator.EvaluatorV1
-import com.wavesplatform.lang.v1.evaluator.ctx.EvaluationContext
-import com.wavesplatform.lang.ExecutionError
-import com.wavesplatform.state._
+import com..lang.v1.evaluator.EvaluatorV1
+import com..lang.v1.evaluator.ctx.EvaluationContext
+import com..lang.ExecutionError
+import com..state._
 import monix.eval.Coeval
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.assets.exchange.Order
-import com.wavesplatform.transaction.smart.BlockchainContext
+import com..account.AddressScheme
+import com..transaction.Transaction
+import com..transaction.assets.exchange.Order
+import com..transaction.smart.BlockchainContext
 import shapeless._
 
 object ScriptRunner {

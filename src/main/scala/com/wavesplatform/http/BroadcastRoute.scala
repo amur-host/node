@@ -1,9 +1,9 @@
-package com.wavesplatform.http
+package com..http
 
-import com.wavesplatform.api.http.ApiError
-import com.wavesplatform.network._
-import com.wavesplatform.transaction.{Transaction, ValidationError}
-import com.wavesplatform.utx.UtxPool
+import com..api.http.ApiError
+import com..network._
+import com..transaction.{Transaction, ValidationError}
+import com..utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 
 import scala.concurrent.Future

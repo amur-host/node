@@ -1,29 +1,29 @@
-package com.wavesplatform.mining
+package com..mining
 
 import cats.data.EitherT
 import cats.implicits._
-import com.wavesplatform.consensus.{GeneratingBalanceProvider, PoSSelector}
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.metrics.{BlockStats, HistogramExt, Instrumented}
-import com.wavesplatform.network._
-import com.wavesplatform.settings.{FunctionalitySettings, WavesSettings}
-import com.wavesplatform.state._
-import com.wavesplatform.state.appender.{BlockAppender, MicroblockAppender}
-import com.wavesplatform.utx.UtxPool
+import com..consensus.{GeneratingBalanceProvider, PoSSelector}
+import com..features.BlockchainFeatures
+import com..features.FeatureProvider._
+import com..metrics.{BlockStats, HistogramExt, Instrumented}
+import com..network._
+import com..settings.{FunctionalitySettings, WavesSettings}
+import com..state._
+import com..state.appender.{BlockAppender, MicroblockAppender}
+import com..utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import kamon.Kamon
 import kamon.metric.MeasurementUnit
 import monix.eval.Task
 import monix.execution.cancelables.{CompositeCancelable, SerialCancelable}
 import monix.execution.schedulers.SchedulerService
-import com.wavesplatform.account.{Address, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.block.Block._
-import com.wavesplatform.block.{Block, MicroBlock}
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
-import com.wavesplatform.utils.{ScorexLogging, Time}
-import com.wavesplatform.transaction._
-import com.wavesplatform.wallet.Wallet
+import com..account.{Address, PrivateKeyAccount, PublicKeyAccount}
+import com..block.Block._
+import com..block.{Block, MicroBlock}
+import com..consensus.nxt.NxtLikeConsensusBlockData
+import com..utils.{ScorexLogging, Time}
+import com..transaction._
+import com..wallet.Wallet
 
 import scala.collection.mutable.{Map => MMap}
 import scala.concurrent.Await

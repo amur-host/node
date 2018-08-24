@@ -1,20 +1,20 @@
-package com.wavesplatform.generator
+package com..generator
 
 import java.util.concurrent.Executors
 
 import cats.implicits.showInterpolator
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.generator.cli.ScoptImplicits
-import com.wavesplatform.generator.config.FicusImplicits
-import com.wavesplatform.network.client.NetworkSender
-import com.wavesplatform.settings.inetSocketAddressReader
+import com..generator.cli.ScoptImplicits
+import com..generator.config.FicusImplicits
+import com..network.client.NetworkSender
+import com..settings.inetSocketAddressReader
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.{EnumerationReader, NameMapper}
 import org.slf4j.LoggerFactory
 import scopt.OptionParser
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.utils.LoggerFacade
+import com..account.AddressScheme
+import com..utils.LoggerFacade
 
 import scala.concurrent._
 import scala.concurrent.duration._

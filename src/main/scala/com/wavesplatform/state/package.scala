@@ -1,10 +1,10 @@
-package com.wavesplatform
+package com.
 
-import com.wavesplatform.account.{Address, AddressOrAlias, Alias}
-import com.wavesplatform.block.Block
-import com.wavesplatform.transaction.ValidationError.{AliasDoesNotExist, GenericError}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.lease.{LeaseTransaction, LeaseTransactionV1}
+import com..account.{Address, AddressOrAlias, Alias}
+import com..block.Block
+import com..transaction.ValidationError.{AliasDoesNotExist, GenericError}
+import com..transaction._
+import com..transaction.lease.{LeaseTransaction, LeaseTransactionV1}
 
 import scala.reflect.ClassTag
 import scala.util.Try

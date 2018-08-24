@@ -1,12 +1,12 @@
-package com.wavesplatform.it.async.activation
+package com..it.async.activation
 
 import com.typesafe.config.Config
-import com.wavesplatform.features.BlockchainFeatureStatus
-import com.wavesplatform.features.api.{FeatureActivationStatus, NodeFeatureStatus}
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.api.BlockHeaders
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.{NodeConfigs, ReportingTestName}
+import com..features.BlockchainFeatureStatus
+import com..features.api.{FeatureActivationStatus, NodeFeatureStatus}
+import com..it.api.AsyncHttpApi._
+import com..it.api.BlockHeaders
+import com..it.transactions.NodesFromDocker
+import com..it.{NodeConfigs, ReportingTestName}
 import org.scalatest.{CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.Await

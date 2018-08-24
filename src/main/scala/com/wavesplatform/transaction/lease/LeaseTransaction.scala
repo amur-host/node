@@ -1,11 +1,11 @@
-package com.wavesplatform.transaction.lease
+package com..transaction.lease
 
 import com.google.common.primitives.{Bytes, Longs}
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.{Address, AddressOrAlias, PublicKeyAccount}
-import com.wavesplatform.transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
-import com.wavesplatform.crypto._
+import com..account.{Address, AddressOrAlias, PublicKeyAccount}
+import com..transaction.{AssetId, ProvenTransaction, ValidationError, VersionedTransaction}
+import com..crypto._
 import scala.util.Try
 
 trait LeaseTransaction extends ProvenTransaction with VersionedTransaction {

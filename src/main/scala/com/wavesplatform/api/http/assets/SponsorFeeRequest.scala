@@ -1,12 +1,12 @@
-package com.wavesplatform.api.http.assets
+package com..api.http.assets
 
 import cats.implicits._
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import play.api.libs.json.Json
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.api.http.BroadcastRequest
-import com.wavesplatform.transaction.assets.SponsorFeeTransaction
-import com.wavesplatform.transaction.{AssetIdStringLength, Proofs, ValidationError}
+import com..account.PublicKeyAccount
+import com..api.http.BroadcastRequest
+import com..transaction.assets.SponsorFeeTransaction
+import com..transaction.{AssetIdStringLength, Proofs, ValidationError}
 
 object SponsorFeeRequest {
   implicit val unsignedSponsorRequestFormat = Json.format[SponsorFeeRequest]

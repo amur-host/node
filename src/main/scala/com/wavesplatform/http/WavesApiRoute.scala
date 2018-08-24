@@ -1,16 +1,16 @@
-package com.wavesplatform.http
+package com..http
 
 import akka.http.scaladsl.server.{Directive, Route}
-import com.wavesplatform.api.http.assets.TransferV1Request
-import com.wavesplatform.api.http.{ApiRoute, DiscontinuedApi}
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.transaction.TransactionFactory
-import com.wavesplatform.utils.Time
-import com.wavesplatform.utx.UtxPool
+import com..api.http.assets.TransferV1Request
+import com..api.http.{ApiRoute, DiscontinuedApi}
+import com..settings.RestAPISettings
+import com..transaction.TransactionFactory
+import com..utils.Time
+import com..utx.UtxPool
 import io.netty.channel.group.ChannelGroup
 import io.swagger.annotations._
 import javax.ws.rs.Path
-import com.wavesplatform.wallet.Wallet
+import com..wallet.Wallet
 
 @Path("/waves")
 @Api(value = "waves")
@@ -39,7 +39,7 @@ case class WavesApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool
         value = "Json with data",
         required = true,
         paramType = "body",
-        dataType = "com.wavesplatform.api.http.assets.TransferV1Request",
+        dataType = "com..api.http.assets.TransferV1Request",
         defaultValue = "{\n\t\"amount\":400,\n\t\"fee\":1,\n\t\"sender\":\"senderId\",\n\t\"recipient\":\"recipientId\"\n}"
       )
     ))

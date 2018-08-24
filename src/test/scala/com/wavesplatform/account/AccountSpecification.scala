@@ -1,9 +1,9 @@
-package com.wavesplatform.account
+package com..account
 
-import com.wavesplatform.crypto
+import com..crypto
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.utils.Base58
+import com..utils.Base58
 
 class AccountSpecification extends PropSpec with PropertyChecks with Matchers {
 

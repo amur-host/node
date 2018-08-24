@@ -1,17 +1,17 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state.{EitherExt2, LeaseBalance, Portfolio}
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..features.BlockchainFeatures
+import com..state.{EitherExt2, LeaseBalance, Portfolio}
+import com..{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.lagonaki.mocks.TestBlock.{create => block}
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com..account.{Address, PrivateKeyAccount}
+import com..settings.TestFunctionalitySettings
+import com..lagonaki.mocks.TestBlock.{create => block}
+import com..transaction.GenesisTransaction
+import com..transaction.assets.IssueTransactionV1
+import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
 
 class MassTransferTransactionDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 
@@ -63,7 +63,7 @@ class MassTransferTransactionDiffTest extends PropSpec with PropertyChecks with 
       }
     }
 
-    import com.wavesplatform.transaction.transfer.MassTransferTransaction.{MaxTransferCount => Max}
+    import com..transaction.transfer.MassTransferTransaction.{MaxTransferCount => Max}
     Seq(0, 1, Max) foreach testDiff // test edge cases
     Gen.choose(2, Max - 1) map testDiff
   }

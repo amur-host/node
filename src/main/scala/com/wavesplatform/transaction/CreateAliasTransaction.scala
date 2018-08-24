@@ -1,11 +1,11 @@
-package com.wavesplatform.transaction
+package com..transaction
 
 import com.google.common.primitives.{Bytes, Longs}
-import com.wavesplatform.account.{Alias, PublicKeyAccount}
-import com.wavesplatform.serialization.Deser
+import com..account.{Alias, PublicKeyAccount}
+import com..serialization.Deser
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.crypto._
+import com..crypto._
 
 import scala.util.{Failure, Success, Try}
 

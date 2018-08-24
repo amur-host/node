@@ -1,4 +1,4 @@
-package com.wavesplatform.api.http.assets
+package com..api.http.assets
 
 import play.api.libs.json._
 

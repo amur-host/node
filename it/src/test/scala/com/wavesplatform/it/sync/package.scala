@@ -1,7 +1,7 @@
-package com.wavesplatform.it
+package com..it
 
-import com.wavesplatform.state.DataEntry
-import com.wavesplatform.it.util._
+import com..state.DataEntry
+import com..it.util._
 
 package object sync {
   val minFee                     = 0.001.waves

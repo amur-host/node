@@ -1,4 +1,4 @@
-package com.wavesplatform.lang.v1.traits.domain
+package com..lang.v1.traits.domain
 
 sealed trait OrdType
 object OrdType {

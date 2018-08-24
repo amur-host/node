@@ -1,8 +1,8 @@
-package com.wavesplatform.it.async
+package com..it.async
 
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.it.{DockerBased, NodeConfigs}
-import com.wavesplatform.utils.ScorexLogging
+import com..it.api.AsyncHttpApi._
+import com..it.{DockerBased, NodeConfigs}
+import com..utils.ScorexLogging
 import org.scalatest.{FreeSpec, Matchers}
 
 import scala.concurrent.ExecutionContext.Implicits.global

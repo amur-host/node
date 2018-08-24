@@ -1,17 +1,17 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.{Constants, TestFunctionalitySettings}
-import com.wavesplatform.state._
-import com.wavesplatform.utils.Base58
+import com..TransactionGen
+import com..features.BlockchainFeatures
+import com..settings.{Constants, TestFunctionalitySettings}
+import com..state._
+import com..utils.Base58
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.lagonaki.mocks.TestBlock.{create => block}
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
-import com.wavesplatform.transaction.lease.LeaseTransactionV1
-import com.wavesplatform.transaction.transfer._
+import com..lagonaki.mocks.TestBlock.{create => block}
+import com..transaction.GenesisTransaction
+import com..transaction.assets.{IssueTransactionV1, SponsorFeeTransaction}
+import com..transaction.lease.LeaseTransactionV1
+import com..transaction.transfer._
 
 class SponsorshipDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen {
 

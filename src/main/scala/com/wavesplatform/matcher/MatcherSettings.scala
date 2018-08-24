@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher
+package com..matcher
 
 import java.io.File
 

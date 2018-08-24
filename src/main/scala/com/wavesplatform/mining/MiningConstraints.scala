@@ -1,11 +1,11 @@
-package com.wavesplatform.mining
+package com..mining
 
 import cats.data.NonEmptyList
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.settings.MinerSettings
-import com.wavesplatform.state.Blockchain
-import com.wavesplatform.block.Block
+import com..features.BlockchainFeatures
+import com..features.FeatureProvider._
+import com..settings.MinerSettings
+import com..state.Blockchain
+import com..block.Block
 
 case class MiningConstraints(total: MiningConstraint, keyBlock: MiningConstraint, micro: MiningConstraint)
 

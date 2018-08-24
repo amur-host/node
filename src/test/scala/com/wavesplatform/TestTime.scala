@@ -1,6 +1,6 @@
-package com.wavesplatform
+package com.
 
-import com.wavesplatform.utils.Time
+import com..utils.Time
 
 import scala.concurrent.duration.FiniteDuration
 

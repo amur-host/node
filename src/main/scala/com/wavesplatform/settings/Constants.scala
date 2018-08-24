@@ -1,7 +1,7 @@
-package com.wavesplatform.settings
+package com..settings
 
-import com.wavesplatform.Version
-import com.wavesplatform.utils.ScorexLogging
+import com..Version
+import com..utils.ScorexLogging
 
 /**
   * System constants here.

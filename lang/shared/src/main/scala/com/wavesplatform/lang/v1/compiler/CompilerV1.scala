@@ -1,21 +1,21 @@
-package com.wavesplatform.lang.v1.compiler
+package com..lang.v1.compiler
 
 import cats.Show
 import cats.implicits._
-import com.wavesplatform.lang.ExprCompiler
-import com.wavesplatform.lang.ScriptVersion.Versions.V1
-import com.wavesplatform.lang.directives.Directive
-import com.wavesplatform.lang.v1.compiler.CompilationError._
-import com.wavesplatform.lang.v1.compiler.CompilerContext._
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.Types.{FINAL, _}
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.PureContext
-import com.wavesplatform.lang.v1.parser.BinaryOperation._
-import com.wavesplatform.lang.v1.parser.Expressions.Pos.AnyPos
-import com.wavesplatform.lang.v1.parser.Expressions.{BINARY_OP, MATCH_CASE, PART, Pos}
-import com.wavesplatform.lang.v1.parser.{BinaryOperation, Expressions, Parser}
-import com.wavesplatform.lang.v1.task.imports._
+import com..lang.ExprCompiler
+import com..lang.ScriptVersion.Versions.V1
+import com..lang.directives.Directive
+import com..lang.v1.compiler.CompilationError._
+import com..lang.v1.compiler.CompilerContext._
+import com..lang.v1.compiler.Terms._
+import com..lang.v1.compiler.Types.{FINAL, _}
+import com..lang.v1.evaluator.ctx._
+import com..lang.v1.evaluator.ctx.impl.PureContext
+import com..lang.v1.parser.BinaryOperation._
+import com..lang.v1.parser.Expressions.Pos.AnyPos
+import com..lang.v1.parser.Expressions.{BINARY_OP, MATCH_CASE, PART, Pos}
+import com..lang.v1.parser.{BinaryOperation, Expressions, Parser}
+import com..lang.v1.task.imports._
 
 class CompilerV1(ctx: CompilerContext) extends ExprCompiler {
   override type V = V1.type

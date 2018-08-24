@@ -1,9 +1,9 @@
-package com.wavesplatform.http
+package com..http
 
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.crypto
-import com.wavesplatform.settings.RestAPISettings
-import com.wavesplatform.utils.Base58
+import com..crypto
+import com..settings.RestAPISettings
+import com..utils.Base58
 
 trait RestAPISettingsHelper {
   def apiKey: String = "test_api_key"

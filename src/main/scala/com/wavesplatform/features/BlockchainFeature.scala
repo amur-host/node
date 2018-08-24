@@ -1,4 +1,4 @@
-package com.wavesplatform.features
+package com..features
 
 case class BlockchainFeature private (id: Short, description: String)
 

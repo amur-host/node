@@ -1,19 +1,19 @@
-package com.wavesplatform.transaction.transfer
+package com..transaction.transfer
 
 import cats.implicits._
 import com.google.common.primitives.{Bytes, Longs, Shorts}
-import com.wavesplatform.account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.crypto
-import com.wavesplatform.serialization.Deser
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.ValidationError.Validation
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.{ParsedTransfer, toJson}
-import com.wavesplatform.utils.Base58
+import com..account.{AddressOrAlias, PrivateKeyAccount, PublicKeyAccount}
+import com..crypto
+import com..serialization.Deser
+import com..state._
+import com..transaction.ValidationError.Validation
+import com..transaction._
+import com..transaction.transfer.MassTransferTransaction.{ParsedTransfer, toJson}
+import com..utils.Base58
 import io.swagger.annotations.{ApiModel, ApiModelProperty}
 import monix.eval.Coeval
 import play.api.libs.json.{Format, JsObject, JsValue, Json}
-import com.wavesplatform.crypto._
+import com..crypto._
 
 import scala.annotation.meta.field
 import scala.util.{Either, Failure, Success, Try}

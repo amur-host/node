@@ -1,4 +1,4 @@
-package com.wavesplatform
+package com.
 
 import java.io.File
 import java.security.Security
@@ -10,29 +10,29 @@ import akka.http.scaladsl.Http.ServerBinding
 import akka.stream.ActorMaterializer
 import cats.instances.all._
 import com.typesafe.config._
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.actor.RootActorSystem
-import com.wavesplatform.api.http._
-import com.wavesplatform.api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
-import com.wavesplatform.api.http.assets.{AssetsApiRoute, AssetsBroadcastApiRoute}
-import com.wavesplatform.api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
-import com.wavesplatform.consensus.PoSSelector
-import com.wavesplatform.consensus.nxt.api.http.NxtConsensusApiRoute
-import com.wavesplatform.db.openDB
-import com.wavesplatform.features.api.ActivationApiRoute
-import com.wavesplatform.history.{CheckpointServiceImpl, StorageFactory}
-import com.wavesplatform.http.{DebugApiRoute, NodeApiRoute, WavesApiRoute}
-import com.wavesplatform.matcher.Matcher
-import com.wavesplatform.metrics.Metrics
-import com.wavesplatform.mining.{Miner, MinerImpl}
-import com.wavesplatform.network.RxExtensionLoader.RxExtensionLoaderShutdownHook
-import com.wavesplatform.network._
-import com.wavesplatform.settings._
-import com.wavesplatform.state.appender.{BlockAppender, CheckpointAppender, ExtensionAppender, MicroblockAppender}
-import com.wavesplatform.transaction._
-import com.wavesplatform.utils.{NTP, ScorexLogging, SystemInformationReporter, Time, forceStopApplication}
-import com.wavesplatform.utx.{MatcherUtxPool, UtxPool, UtxPoolImpl}
-import com.wavesplatform.wallet.Wallet
+import com..account.AddressScheme
+import com..actor.RootActorSystem
+import com..api.http._
+import com..api.http.alias.{AliasApiRoute, AliasBroadcastApiRoute}
+import com..api.http.assets.{AssetsApiRoute, AssetsBroadcastApiRoute}
+import com..api.http.leasing.{LeaseApiRoute, LeaseBroadcastApiRoute}
+import com..consensus.PoSSelector
+import com..consensus.nxt.api.http.NxtConsensusApiRoute
+import com..db.openDB
+import com..features.api.ActivationApiRoute
+import com..history.{CheckpointServiceImpl, StorageFactory}
+import com..http.{DebugApiRoute, NodeApiRoute, WavesApiRoute}
+import com..matcher.Matcher
+import com..metrics.Metrics
+import com..mining.{Miner, MinerImpl}
+import com..network.RxExtensionLoader.RxExtensionLoaderShutdownHook
+import com..network._
+import com..settings._
+import com..state.appender.{BlockAppender, CheckpointAppender, ExtensionAppender, MicroblockAppender}
+import com..transaction._
+import com..utils.{NTP, ScorexLogging, SystemInformationReporter, Time, forceStopApplication}
+import com..utx.{MatcherUtxPool, UtxPool, UtxPoolImpl}
+import com..wallet.Wallet
 import io.netty.channel.Channel
 import io.netty.channel.group.DefaultChannelGroup
 import io.netty.util.concurrent.GlobalEventExecutor
@@ -384,7 +384,7 @@ object Application extends ScorexLogging {
         if (!cfg.hasPath("waves")) {
           log.error("Malformed configuration file was provided! Aborting!")
           log.error("Please, read following article about configuration file format:")
-          log.error("https://github.com/wavesplatform/Waves/wiki/Waves-Node-configuration-file")
+          log.error("https://github.com//Waves/wiki/Waves-Node-configuration-file")
           forceStopApplication()
         }
         loadConfig(cfg)
@@ -429,7 +429,7 @@ object Application extends ScorexLogging {
 
     val isMetricsStarted = Metrics.start(settings.metrics)
 
-    RootActorSystem.start("wavesplatform", config) { actorSystem =>
+    RootActorSystem.start("", config) { actorSystem =>
       import actorSystem.dispatcher
       isMetricsStarted.foreach { started =>
         if (started) {

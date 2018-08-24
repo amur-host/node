@@ -1,6 +1,6 @@
-package com.wavesplatform.it.transactions
+package com..it.transactions
 
-import com.wavesplatform.it.{Docker, DockerBased, Node, Nodes}
+import com..it.{Docker, DockerBased, Node, Nodes}
 import monix.eval.Coeval
 import org.scalatest.Suite
 

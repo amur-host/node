@@ -1,13 +1,13 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
 import cats._
 import cats.implicits._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.account.Address
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.lease._
+import com..settings.FunctionalitySettings
+import com..state._
+import com..account.Address
+import com..transaction.ValidationError
+import com..transaction.ValidationError.GenericError
+import com..transaction.lease._
 
 import scala.util.{Left, Right}
 

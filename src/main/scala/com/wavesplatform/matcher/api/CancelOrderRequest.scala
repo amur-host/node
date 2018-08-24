@@ -1,11 +1,11 @@
-package com.wavesplatform.matcher.api
+package com..matcher.api
 
 import com.google.common.primitives.Longs
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.OrderJson._
-import com.wavesplatform.utils.Base58
+import com..account.PublicKeyAccount
+import com..crypto
+import com..state.ByteStr
+import com..transaction.assets.exchange.OrderJson._
+import com..utils.Base58
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
 import play.api.libs.functional.syntax._

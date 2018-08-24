@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction.assets.exchange
+package com..transaction.assets.exchange
 
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.crypto
-import com.wavesplatform.serialization.{BytesSerializable, JsonSerializable}
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.exchange.Validation.booleanOperators
-import com.wavesplatform.utils.Base58
+import com..account.{PrivateKeyAccount, PublicKeyAccount}
+import com..crypto
+import com..serialization.{BytesSerializable, JsonSerializable}
+import com..state.ByteStr
+import com..transaction.ValidationError.GenericError
+import com..transaction._
+import com..transaction.assets.exchange.Validation.booleanOperators
+import com..utils.Base58
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}

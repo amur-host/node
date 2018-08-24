@@ -1,4 +1,4 @@
-package com.wavesplatform.matcher
+package com..matcher
 
 import java.io.File
 import java.util.{HashMap => JHashMap}
@@ -6,17 +6,17 @@ import java.util.{HashMap => JHashMap}
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.Shorts
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.account.{Address, AddressScheme}
-import com.wavesplatform.crypto.DigestSize
-import com.wavesplatform.database.DBExt
-import com.wavesplatform.db.openDB
-import com.wavesplatform.matcher.api.DBUtils
-import com.wavesplatform.matcher.model.{LimitOrder, OrderInfo}
-import com.wavesplatform.settings.{WavesSettings, loadConfig}
-import com.wavesplatform.state.{ByteStr, EitherExt2}
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.exchange.AssetPair
-import com.wavesplatform.utils.ScorexLogging
+import com..account.{Address, AddressScheme}
+import com..crypto.DigestSize
+import com..database.DBExt
+import com..db.openDB
+import com..matcher.api.DBUtils
+import com..matcher.model.{LimitOrder, OrderInfo}
+import com..settings.{WavesSettings, loadConfig}
+import com..state.{ByteStr, EitherExt2}
+import com..transaction.AssetId
+import com..transaction.assets.exchange.AssetPair
+import com..utils.ScorexLogging
 import org.iq80.leveldb.DB
 
 import scala.collection.JavaConverters._

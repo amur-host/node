@@ -1,4 +1,4 @@
-package com.wavesplatform
+package com.
 
 trait Shutdownable {
   def shutdown(): Unit

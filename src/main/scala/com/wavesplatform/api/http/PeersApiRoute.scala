@@ -1,4 +1,4 @@
-package com.wavesplatform.api.http
+package com..api.http
 
 import java.net.{InetAddress, InetSocketAddress}
 import java.util.concurrent.ConcurrentMap
@@ -6,8 +6,8 @@ import java.util.stream.Collectors
 import javax.ws.rs.Path
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.network.{PeerDatabase, PeerInfo}
-import com.wavesplatform.settings.RestAPISettings
+import com..network.{PeerDatabase, PeerInfo}
+import com..settings.RestAPISettings
 import io.netty.channel.Channel
 import io.swagger.annotations._
 import play.api.libs.json._

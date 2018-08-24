@@ -1,17 +1,17 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
 import cats._
-import com.wavesplatform.state._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..state._
+import com..{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.Address
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.wavesplatform.transaction.transfer._
+import com..account.Address
+import com..settings.TestFunctionalitySettings
+import com..lagonaki.mocks.TestBlock
+import com..transaction.GenesisTransaction
+import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com..transaction.transfer._
 
 class LeaseTransactionsDiffTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package com..network
 
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{FreeSpec, Matchers, OneInstancePerTest}
-import com.wavesplatform.crypto._
+import com..crypto._
 
 class CheckpointSpecification extends FreeSpec with Matchers with MockFactory with OneInstancePerTest {
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.account
+package com..account
 
 import java.nio.ByteBuffer
 
-import com.wavesplatform.crypto
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utils.{Base58, ScorexLogging, base58Length}
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.InvalidAddress
+import com..crypto
+import com..state.ByteStr
+import com..utils.{Base58, ScorexLogging, base58Length}
+import com..transaction.ValidationError
+import com..transaction.ValidationError.InvalidAddress
 
 sealed trait Address extends AddressOrAlias {
   val bytes: ByteStr

@@ -1,16 +1,16 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
-import com.wavesplatform.metrics._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.ValidationError.UnsupportedTransactionType
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.wavesplatform.transaction.smart.{SetScriptTransaction, Verifier}
-import com.wavesplatform.transaction.transfer._
-import com.wavesplatform.utils.ScorexLogging
+import com..metrics._
+import com..settings.FunctionalitySettings
+import com..state._
+import com..transaction.ValidationError.UnsupportedTransactionType
+import com..transaction._
+import com..transaction.assets._
+import com..transaction.assets.exchange.ExchangeTransaction
+import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com..transaction.smart.{SetScriptTransaction, Verifier}
+import com..transaction.transfer._
+import com..utils.ScorexLogging
 
 object TransactionDiffer extends Instrumented with ScorexLogging {
 

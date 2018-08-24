@@ -1,14 +1,14 @@
-package com.wavesplatform.history
+package com..history
 
-import com.wavesplatform.TransactionGen
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
+import com..TransactionGen
+import com..features.BlockchainFeatures
+import com..state._
+import com..state.diffs._
 import org.scalacheck.Gen
 import org.scalatest._
 import org.scalatest.prop.PropertyChecks
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.transfer._
+import com..transaction._
+import com..transaction.transfer._
 
 class BlockchainUpdaterInMemoryDiffTest
     extends PropSpec

@@ -1,7 +1,7 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.network.{BlockCheckpoint, Checkpoint}
-import com.wavesplatform.state.ByteStr
+import com..network.{BlockCheckpoint, Checkpoint}
+import com..state.ByteStr
 
 trait CheckpointService {
 

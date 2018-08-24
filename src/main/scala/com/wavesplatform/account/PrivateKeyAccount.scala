@@ -1,8 +1,8 @@
-package com.wavesplatform.account
+package com..account
 
-import com.wavesplatform.crypto
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.transaction.ValidationError.GenericError
+import com..crypto
+import com..utils.Base58
+import com..transaction.ValidationError.GenericError
 
 import scala.util.{Failure, Success}
 

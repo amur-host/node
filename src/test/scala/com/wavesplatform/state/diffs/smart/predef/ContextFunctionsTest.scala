@@ -1,18 +1,18 @@
-package com.wavesplatform.state.diffs.smart.predef
+package com..state.diffs.smart.predef
 
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.smart.smartEnabledFS
-import com.wavesplatform.state.diffs.{ENOUGH_AMT, assertDiffAndState}
-import com.wavesplatform.utils.{Base58, dummyCompilerContext}
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..account.PrivateKeyAccount
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.parser.Parser
+import com..state._
+import com..state.diffs.smart.smartEnabledFS
+import com..state.diffs.{ENOUGH_AMT, assertDiffAndState}
+import com..utils.{Base58, dummyCompilerContext}
+import com..{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.GenesisTransaction
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.v1.ScriptV1
+import com..transaction.GenesisTransaction
 import org.scalacheck.Gen
 
 class ContextFunctionsTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {

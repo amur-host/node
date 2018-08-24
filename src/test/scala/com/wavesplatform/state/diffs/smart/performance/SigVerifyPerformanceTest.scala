@@ -1,22 +1,22 @@
-package com.wavesplatform.state.diffs.smart.performance
+package com..state.diffs.smart.performance
 
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.parser.Parser
-import com.wavesplatform.metrics.Instrumented
-import com.wavesplatform.state._
-import com.wavesplatform.utils._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.state.diffs.smart._
-import com.wavesplatform.{NoShrink, TransactionGen, WithDB}
+import com..lang.v1.compiler.Terms._
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.parser.Parser
+import com..metrics.Instrumented
+import com..state._
+import com..utils._
+import com..state.diffs._
+import com..state.diffs.smart._
+import com..{NoShrink, TransactionGen, WithDB}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}
-import com.wavesplatform.account.{PrivateKeyAccount, PublicKeyAccount}
-import com.wavesplatform.lagonaki.mocks.TestBlock
-import com.wavesplatform.transaction.GenesisTransaction
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer._
+import com..account.{PrivateKeyAccount, PublicKeyAccount}
+import com..lagonaki.mocks.TestBlock
+import com..transaction.GenesisTransaction
+import com..transaction.smart.script.v1.ScriptV1
+import com..transaction.transfer._
 
 class SigVerifyPerformanceTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink with WithDB {
 

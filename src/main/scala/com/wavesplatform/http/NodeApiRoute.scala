@@ -1,16 +1,16 @@
-package com.wavesplatform.http
+package com..http
 
 import java.time.Instant
 
 import akka.http.scaladsl.server.Route
-import com.wavesplatform.Shutdownable
-import com.wavesplatform.settings.{Constants, RestAPISettings}
-import com.wavesplatform.state.Blockchain
+import com..Shutdownable
+import com..settings.{Constants, RestAPISettings}
+import com..state.Blockchain
 import io.swagger.annotations._
 import javax.ws.rs.Path
 import play.api.libs.json.Json
-import com.wavesplatform.api.http.{ApiRoute, CommonApiFunctions}
-import com.wavesplatform.utils.ScorexLogging
+import com..api.http.{ApiRoute, CommonApiFunctions}
+import com..utils.ScorexLogging
 
 @Path("/node")
 @Api(value = "node")

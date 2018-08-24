@@ -1,14 +1,14 @@
-package com.wavesplatform.database.patch
+package com..database.patch
 
 import java.nio.ByteBuffer
 import java.util
 
 import com.google.common.primitives.Shorts
-import com.wavesplatform.database.{Keys, RW}
-import com.wavesplatform.account.Alias
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.BlockHeader
-import com.wavesplatform.transaction.{CreateAliasTransaction, TransactionParsers}
+import com..database.{Keys, RW}
+import com..account.Alias
+import com..utils.ScorexLogging
+import com..block.BlockHeader
+import com..transaction.{CreateAliasTransaction, TransactionParsers}
 
 import scala.collection.JavaConverters._
 

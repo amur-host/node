@@ -1,4 +1,4 @@
-package com.wavesplatform
+package com.
 
 import java.nio.ByteBuffer
 
@@ -6,9 +6,9 @@ import com.google.common.base.Charsets.UTF_8
 import com.google.common.io.ByteStreams.{newDataInput, newDataOutput}
 import com.google.common.io.{ByteArrayDataInput, ByteArrayDataOutput}
 import com.google.common.primitives.{Ints, Shorts}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
-import com.wavesplatform.transaction.{Transaction, TransactionParsers}
+import com..state._
+import com..transaction.smart.script.{Script, ScriptReader}
+import com..transaction.{Transaction, TransactionParsers}
 import org.iq80.leveldb.{DB, ReadOptions}
 import java.util.{Map => JMap}
 

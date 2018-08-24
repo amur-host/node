@@ -1,18 +1,18 @@
-package com.wavesplatform.matcher.smart
+package com..matcher.smart
 
 import cats.data.EitherT
 import cats.implicits._
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.compiler.Types.{FINAL, UNIT}
-import com.wavesplatform.lang.v1.evaluator.FunctionIds._
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.Bindings.orderObject
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.Types._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.{CTX, FunctionHeader}
-import com.wavesplatform.transaction.assets.exchange.Order
-import com.wavesplatform.transaction.smart.RealTransactionWrapper
+import com..lang.Global
+import com..lang.v1.compiler.Types.{FINAL, UNIT}
+import com..lang.v1.evaluator.FunctionIds._
+import com..lang.v1.evaluator.ctx._
+import com..lang.v1.evaluator.ctx.impl.waves.Bindings.orderObject
+import com..lang.v1.evaluator.ctx.impl.waves.Types._
+import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com..lang.v1.{CTX, FunctionHeader}
+import com..transaction.assets.exchange.Order
+import com..transaction.smart.RealTransactionWrapper
 import monix.eval.Coeval
 
 object MatcherContext {
@@ -28,7 +28,7 @@ object MatcherContext {
     val matcherTypes = Seq(addressType, aliasType, orderType, assetPairType)
 
     val matcherVars: Map[String, (FINAL, LazyVal)] = Map(
-      ("height", (com.wavesplatform.lang.v1.compiler.Types.LONG, LazyVal(EitherT(heightCoeval)))),
+      ("height", (com..lang.v1.compiler.Types.LONG, LazyVal(EitherT(heightCoeval)))),
       ("tx", (orderType.typeRef, LazyVal(EitherT(inputEntityCoeval))))
     )
 

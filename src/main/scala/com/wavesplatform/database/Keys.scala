@@ -1,12 +1,12 @@
-package com.wavesplatform.database
+package com..database
 
 import com.google.common.base.Charsets.UTF_8
 import com.google.common.primitives.{Ints, Longs}
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.smart.script.{Script, ScriptReader}
+import com..account.{Address, Alias}
+import com..block.{Block, BlockHeader}
+import com..state._
+import com..transaction.Transaction
+import com..transaction.smart.script.{Script, ScriptReader}
 
 object Keys {
   import KeyHelpers._

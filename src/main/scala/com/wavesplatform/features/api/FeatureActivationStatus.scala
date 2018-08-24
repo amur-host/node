@@ -1,6 +1,6 @@
-package com.wavesplatform.features.api
+package com..features.api
 
-import com.wavesplatform.features.BlockchainFeatureStatus
+import com..features.BlockchainFeatureStatus
 
 case class FeatureActivationStatus(id: Short,
                                    description: String,

@@ -1,4 +1,4 @@
-package com.wavesplatform.utils
+package com..utils
 
 import java.net.{InetAddress, SocketTimeoutException}
 

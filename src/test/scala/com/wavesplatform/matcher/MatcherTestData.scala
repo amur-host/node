@@ -1,16 +1,16 @@
-package com.wavesplatform.matcher
+package com..matcher
 
 import com.google.common.primitives.{Bytes, Ints}
 import com.typesafe.config.ConfigFactory
-import com.wavesplatform.crypto
-import com.wavesplatform.matcher.model.MatcherModel.Price
-import com.wavesplatform.matcher.model.{BuyLimitOrder, SellLimitOrder}
-import com.wavesplatform.settings.loadConfig
-import com.wavesplatform.state.ByteStr
+import com..crypto
+import com..matcher.model.MatcherModel.Price
+import com..matcher.model.{BuyLimitOrder, SellLimitOrder}
+import com..settings.loadConfig
+import com..state.ByteStr
 import org.scalacheck.{Arbitrary, Gen}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.utils.NTP
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com..account.PrivateKeyAccount
+import com..utils.NTP
+import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
 
 trait MatcherTestData {
   private val signatureSize = 32

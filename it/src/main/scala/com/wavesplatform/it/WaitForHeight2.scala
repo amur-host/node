@@ -1,7 +1,7 @@
-package com.wavesplatform.it
+package com..it
 
-import com.wavesplatform.it.api.AsyncHttpApi._
-import com.wavesplatform.utils.ScorexLogging
+import com..it.api.AsyncHttpApi._
+import com..utils.ScorexLogging
 import org.scalatest._
 
 import scala.concurrent.{Await, Future}

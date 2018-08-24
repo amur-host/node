@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.assets.exchange
+package com..transaction.assets.exchange
 
 import play.api.libs.json._
 
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.utils.Base58
-import com.wavesplatform.crypto.SignatureLength
+import com..state.ByteStr
+import com..transaction.Proofs
+import com..account.PublicKeyAccount
+import com..utils.Base58
+import com..crypto.SignatureLength
 
 import scala.util.{Failure, Success}
 

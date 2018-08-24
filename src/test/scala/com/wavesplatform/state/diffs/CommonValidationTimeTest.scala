@@ -1,9 +1,9 @@
-package com.wavesplatform.state.diffs
+package com..state.diffs
 
-import com.wavesplatform.db.WithState
-import com.wavesplatform.settings.TestFunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..db.WithState
+import com..settings.TestFunctionalitySettings
+import com..state._
+import com..{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

@@ -1,4 +1,4 @@
-package com.wavesplatform.settings
+package com..settings
 
 import com.typesafe.config.ConfigException.WrongType
 import com.typesafe.config.ConfigFactory

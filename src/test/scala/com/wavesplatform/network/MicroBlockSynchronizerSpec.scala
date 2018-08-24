@@ -1,8 +1,8 @@
-package com.wavesplatform.network
+package com..network
 
-import com.wavesplatform.settings.SynchronizationSettings.MicroblockSynchronizerSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.{BlockGen, RxScheduler, TransactionGen}
+import com..settings.SynchronizationSettings.MicroblockSynchronizerSettings
+import com..state.ByteStr
+import com..{BlockGen, RxScheduler, TransactionGen}
 import io.netty.channel.Channel
 import io.netty.channel.embedded.EmbeddedChannel
 import monix.reactive.Observable

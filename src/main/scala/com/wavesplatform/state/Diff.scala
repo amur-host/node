@@ -1,13 +1,13 @@
-package com.wavesplatform.state
+package com..state
 
 import cats.implicits._
 import cats.kernel.Monoid
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.features.FeatureProvider._
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.account.{Address, Alias, PublicKeyAccount}
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.{AssetId, Transaction}
+import com..features.BlockchainFeatures
+import com..features.FeatureProvider._
+import com..settings.FunctionalitySettings
+import com..account.{Address, Alias, PublicKeyAccount}
+import com..transaction.smart.script.Script
+import com..transaction.{AssetId, Transaction}
 
 case class LeaseBalance(in: Long, out: Long)
 

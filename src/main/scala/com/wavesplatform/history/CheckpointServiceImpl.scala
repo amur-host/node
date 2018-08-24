@@ -1,12 +1,12 @@
-package com.wavesplatform.history
+package com..history
 
-import com.wavesplatform.crypto
-import com.wavesplatform.db.{CheckpointCodec, PropertiesStorage, SubStorage}
-import com.wavesplatform.network.Checkpoint
-import com.wavesplatform.settings.CheckpointsSettings
+import com..crypto
+import com..db.{CheckpointCodec, PropertiesStorage, SubStorage}
+import com..network.Checkpoint
+import com..settings.CheckpointsSettings
 import org.iq80.leveldb.DB
-import com.wavesplatform.transaction.ValidationError.GenericError
-import com.wavesplatform.transaction.{CheckpointService, ValidationError}
+import com..transaction.ValidationError.GenericError
+import com..transaction.{CheckpointService, ValidationError}
 
 class CheckpointServiceImpl(db: DB, settings: CheckpointsSettings)
     extends SubStorage(db, "checkpoints")

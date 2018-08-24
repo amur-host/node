@@ -1,4 +1,4 @@
-package com.wavesplatform.features
+package com..features
 
 sealed trait BlockchainFeatureStatus
 

@@ -1,20 +1,20 @@
-package com.wavesplatform
+package com.
 
 import java.security.SecureRandom
 
 import cats.kernel.Monoid
 import com.google.common.base.Throwables
-import com.wavesplatform.account.AddressScheme
-import com.wavesplatform.db.{Storage, VersionedStorage}
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.compiler.CompilerContext
-import com.wavesplatform.lang.v1.compiler.CompilerContext._
-import com.wavesplatform.lang.v1.compiler.Terms.TRUE
-import com.wavesplatform.lang.v1.evaluator.ctx._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.{FunctionHeader, ScriptEstimator}
-import com.wavesplatform.transaction.smart.{BlockchainContext, WavesEnvironment}
+import com..account.AddressScheme
+import com..db.{Storage, VersionedStorage}
+import com..lang.Global
+import com..lang.v1.compiler.CompilerContext
+import com..lang.v1.compiler.CompilerContext._
+import com..lang.v1.compiler.Terms.TRUE
+import com..lang.v1.evaluator.ctx._
+import com..lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com..lang.v1.{FunctionHeader, ScriptEstimator}
+import com..transaction.smart.{BlockchainContext, WavesEnvironment}
 import monix.eval.Coeval
 import monix.execution.UncaughtExceptionReporter
 import org.joda.time.Duration

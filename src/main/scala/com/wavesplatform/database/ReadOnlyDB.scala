@@ -1,4 +1,4 @@
-package com.wavesplatform.database
+package com..database
 
 import org.iq80.leveldb.{DB, ReadOptions}
 

@@ -1,25 +1,25 @@
-package com.wavesplatform.database
+package com..database
 
 import cats.kernel.Monoid
 import com.google.common.cache.CacheBuilder
-import com.wavesplatform.database.patch.DisableHijackedAliases
-import com.wavesplatform.features.BlockchainFeatures
-import com.wavesplatform.settings.FunctionalitySettings
-import com.wavesplatform.state._
-import com.wavesplatform.state.reader.LeaseDetails
+import com..database.patch.DisableHijackedAliases
+import com..features.BlockchainFeatures
+import com..settings.FunctionalitySettings
+import com..state._
+import com..state.reader.LeaseDetails
 import org.iq80.leveldb.{DB, ReadOptions}
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.utils.ScorexLogging
-import com.wavesplatform.block.{Block, BlockHeader}
-import com.wavesplatform.transaction.Transaction.Type
-import com.wavesplatform.transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange.ExchangeTransaction
-import com.wavesplatform.transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.transfer._
+import com..account.{Address, Alias}
+import com..utils.ScorexLogging
+import com..block.{Block, BlockHeader}
+import com..transaction.Transaction.Type
+import com..transaction.ValidationError.{AliasDoesNotExist, AliasIsDisabled}
+import com..transaction._
+import com..transaction.assets._
+import com..transaction.assets.exchange.ExchangeTransaction
+import com..transaction.lease.{LeaseCancelTransaction, LeaseTransaction}
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.Script
+import com..transaction.transfer._
 
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer

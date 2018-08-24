@@ -1,4 +1,4 @@
-package com.wavesplatform.settings
+package com..settings
 
 import java.net.InetSocketAddress
 

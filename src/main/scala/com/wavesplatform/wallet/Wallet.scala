@@ -1,17 +1,17 @@
-package com.wavesplatform.wallet
+package com..wallet
 
 import java.io.File
 
 import com.google.common.primitives.{Bytes, Ints}
-import com.wavesplatform.crypto
-import com.wavesplatform.settings.WalletSettings
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.utils.{JsonFileStorage, _}
+import com..crypto
+import com..settings.WalletSettings
+import com..state.ByteStr
+import com..utils.{JsonFileStorage, _}
 import play.api.libs.json._
-import com.wavesplatform.account.{Address, PrivateKeyAccount}
-import com.wavesplatform.transaction.ValidationError
-import com.wavesplatform.transaction.ValidationError.MissingSenderPrivateKey
-import com.wavesplatform.utils.randomBytes
+import com..account.{Address, PrivateKeyAccount}
+import com..transaction.ValidationError
+import com..transaction.ValidationError.MissingSenderPrivateKey
+import com..utils.randomBytes
 
 import scala.collection.concurrent.TrieMap
 import scala.util.control.NonFatal

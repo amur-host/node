@@ -1,6 +1,6 @@
-package com.wavesplatform.lang.v1.compiler
+package com..lang.v1.compiler
 
-import com.wavesplatform.lang.v1.FunctionHeader
+import com..lang.v1.FunctionHeader
 import scodec.bits.ByteVector
 
 object Terms {

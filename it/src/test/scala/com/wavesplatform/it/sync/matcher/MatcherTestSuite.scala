@@ -1,14 +1,14 @@
-package com.wavesplatform.it.sync.matcher
+package com..it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it.ReportingTestName
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.api.{AssetDecimalsInfo, LevelResponse}
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com..it.ReportingTestName
+import com..it.api.SyncHttpApi._
+import com..it.api.SyncMatcherHttpApi._
+import com..it.api.{AssetDecimalsInfo, LevelResponse}
+import com..it.transactions.NodesFromDocker
+import com..it.util._
+import com..state.ByteStr
+import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -397,7 +397,7 @@ class MatcherTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
 object MatcherTestSuite {
 
   import ConfigFactory._
-  import com.wavesplatform.it.NodeConfigs._
+  import com..it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   private val AssetQuantity    = 1000

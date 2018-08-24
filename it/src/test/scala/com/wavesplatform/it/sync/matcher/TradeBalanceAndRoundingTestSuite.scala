@@ -1,21 +1,21 @@
-package com.wavesplatform.it.sync.matcher
+package com..it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.account.PrivateKeyAccount
-import com.wavesplatform.api.http.assets.SignedIssueV1Request
-import com.wavesplatform.it.ReportingTestName
-import com.wavesplatform.it.api.AssetDecimalsInfo
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
-import com.wavesplatform.it.sync._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.it.util._
-import com.wavesplatform.transaction.AssetId
-import com.wavesplatform.transaction.assets.IssueTransactionV1
-import com.wavesplatform.transaction.assets.exchange.OrderType.{BUY, SELL}
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
-import com.wavesplatform.utils.Base58
+import com..account.PrivateKeyAccount
+import com..api.http.assets.SignedIssueV1Request
+import com..it.ReportingTestName
+import com..it.api.AssetDecimalsInfo
+import com..it.api.SyncHttpApi._
+import com..it.api.SyncMatcherHttpApi._
+import com..it.sync.CustomFeeTransactionSuite.defaultAssetQuantity
+import com..it.sync._
+import com..it.transactions.NodesFromDocker
+import com..it.util._
+import com..transaction.AssetId
+import com..transaction.assets.IssueTransactionV1
+import com..transaction.assets.exchange.OrderType.{BUY, SELL}
+import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com..utils.Base58
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._
@@ -252,7 +252,7 @@ class TradeBalanceAndRoundingTestSuite
 object TradeBalanceAndRoundingTestSuite {
 
   import ConfigFactory._
-  import com.wavesplatform.it.NodeConfigs._
+  import com..it.NodeConfigs._
 
   private val ForbiddenAssetId = "FdbnAsset"
   val Decimals: Byte           = 2

@@ -1,6 +1,6 @@
-package com.wavesplatform.state
+package com..state
 
-import com.wavesplatform.block.Block.BlockId
-import com.wavesplatform.consensus.nxt.NxtLikeConsensusBlockData
+import com..block.Block.BlockId
+import com..consensus.nxt.NxtLikeConsensusBlockData
 
 case class BlockMinerInfo(consensus: NxtLikeConsensusBlockData, timestamp: Long, blockId: BlockId)

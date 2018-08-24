@@ -1,8 +1,8 @@
-package com.wavesplatform.it.api
+package com..it.api
 
-import com.wavesplatform.it.Node
-import com.wavesplatform.transaction.Proofs
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com..it.Node
+import com..transaction.Proofs
+import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
 import org.asynchttpclient.util.HttpConstants
 import org.asynchttpclient.{RequestBuilder, Response}
 import org.scalatest.{Assertions, Matchers}
@@ -18,7 +18,7 @@ object SyncMatcherHttpApi extends Assertions {
 
   implicit class MatcherNodeExtSync(m: Node) extends Matchers {
 
-    import com.wavesplatform.it.api.AsyncMatcherHttpApi.{MatcherAsyncHttpApi => async}
+    import com..it.api.AsyncMatcherHttpApi.{MatcherAsyncHttpApi => async}
 
     private val RequestAwaitTime      = 15.seconds
     private val OrderRequestAwaitTime = 1.minutes

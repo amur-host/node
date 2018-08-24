@@ -1,8 +1,8 @@
-package com.wavesplatform.transaction
+package com..transaction
 
-import com.wavesplatform.state._
+import com..state._
 import monix.eval.Coeval
-import com.wavesplatform.serialization.{BytesSerializable, JsonSerializable}
+import com..serialization.{BytesSerializable, JsonSerializable}
 
 trait Transaction extends BytesSerializable with JsonSerializable {
   val id: Coeval[ByteStr]

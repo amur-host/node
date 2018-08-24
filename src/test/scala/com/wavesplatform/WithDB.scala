@@ -1,8 +1,8 @@
-package com.wavesplatform
+package com.
 
 import java.nio.file.{Files, Path}
 
-import com.wavesplatform.db.LevelDBFactory
+import com..db.LevelDBFactory
 import org.iq80.leveldb.{DB, Options}
 import org.scalatest.{BeforeAndAfterEach, TestSuite}
 

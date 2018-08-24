@@ -1,10 +1,10 @@
-package com.wavesplatform.state.diffs.smart.predef
+package com..state.diffs.smart.predef
 
-import com.wavesplatform.account.{Address, Alias}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.assets.exchange.Order
-import com.wavesplatform.transaction.{Proofs, ProvenTransaction, VersionedTransaction}
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..account.{Address, Alias}
+import com..state._
+import com..transaction.assets.exchange.Order
+import com..transaction.{Proofs, ProvenTransaction, VersionedTransaction}
+import com..{NoShrink, TransactionGen}
 import org.scalacheck.Gen
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Matchers, PropSpec}

@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction.smart
+package com..transaction.smart
 
 import cats.kernel.Monoid
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.evaluator.ctx.EvaluationContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.waves.WavesContext
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets.exchange.Order
+import com..lang.Global
+import com..lang.v1.evaluator.ctx.EvaluationContext
+import com..lang.v1.evaluator.ctx.impl.waves.WavesContext
+import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com..state._
+import com..transaction._
+import com..transaction.assets.exchange.Order
 import monix.eval.Coeval
 import shapeless._
 

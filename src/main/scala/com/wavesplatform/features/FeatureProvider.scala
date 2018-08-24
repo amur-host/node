@@ -1,6 +1,6 @@
-package com.wavesplatform.features
+package com..features
 
-import com.wavesplatform.state.Blockchain
+import com..state.Blockchain
 
 object FeatureProvider {
   implicit class FeatureProviderExt(provider: Blockchain) {

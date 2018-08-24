@@ -1,30 +1,30 @@
-package com.wavesplatform
+package com.
 
 import cats.syntax.semigroup._
-import com.wavesplatform.lang.Global
-import com.wavesplatform.lang.v1.compiler.CompilerV1
-import com.wavesplatform.lang.v1.compiler.Terms._
-import com.wavesplatform.lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
-import com.wavesplatform.lang.v1.testing.ScriptGen
-import com.wavesplatform.settings.Constants
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs.ENOUGH_AMT
+import com..lang.Global
+import com..lang.v1.compiler.CompilerV1
+import com..lang.v1.compiler.Terms._
+import com..lang.v1.evaluator.ctx.impl.{CryptoContext, PureContext}
+import com..lang.v1.testing.ScriptGen
+import com..settings.Constants
+import com..state._
+import com..state.diffs.ENOUGH_AMT
 import org.scalacheck.Gen.{alphaLowerChar, alphaUpperChar, frequency, numChar}
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalatest.{BeforeAndAfterAll, Suite}
-import com.wavesplatform.account.PublicKeyAccount._
-import com.wavesplatform.account._
-import com.wavesplatform.transaction._
-import com.wavesplatform.transaction.assets._
-import com.wavesplatform.transaction.assets.exchange._
-import com.wavesplatform.transaction.lease._
-import com.wavesplatform.transaction.smart.SetScriptTransaction
-import com.wavesplatform.transaction.smart.script.Script
-import com.wavesplatform.transaction.smart.script.v1.ScriptV1
-import com.wavesplatform.transaction.transfer.MassTransferTransaction.ParsedTransfer
-import com.wavesplatform.transaction.transfer._
+import com..account.PublicKeyAccount._
+import com..account._
+import com..transaction._
+import com..transaction.assets._
+import com..transaction.assets.exchange._
+import com..transaction.lease._
+import com..transaction.smart.SetScriptTransaction
+import com..transaction.smart.script.Script
+import com..transaction.smart.script.v1.ScriptV1
+import com..transaction.transfer.MassTransferTransaction.ParsedTransfer
+import com..transaction.transfer._
 import MassTransferTransaction.MaxTransferCount
-import com.wavesplatform.utils.TimeImpl
+import com..utils.TimeImpl
 
 import scala.util.Random
 

@@ -1,12 +1,12 @@
-package com.wavesplatform.it.sync.matcher
+package com..it.sync.matcher
 
 import com.typesafe.config.{Config, ConfigFactory}
-import com.wavesplatform.it._
-import com.wavesplatform.it.api.SyncHttpApi._
-import com.wavesplatform.it.api.SyncMatcherHttpApi._
-import com.wavesplatform.it.transactions.NodesFromDocker
-import com.wavesplatform.state.ByteStr
-import com.wavesplatform.transaction.assets.exchange.{AssetPair, Order, OrderType}
+import com..it._
+import com..it.api.SyncHttpApi._
+import com..it.api.SyncMatcherHttpApi._
+import com..it.transactions.NodesFromDocker
+import com..state.ByteStr
+import com..transaction.assets.exchange.{AssetPair, Order, OrderType}
 import org.scalatest.{BeforeAndAfterAll, CancelAfterFailure, FreeSpec, Matchers}
 
 import scala.concurrent.duration._

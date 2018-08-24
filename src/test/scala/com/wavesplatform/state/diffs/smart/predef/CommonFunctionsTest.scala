@@ -1,14 +1,14 @@
-package com.wavesplatform.state.diffs.smart.predef
+package com..state.diffs.smart.predef
 
-import com.wavesplatform.state._
-import com.wavesplatform.state.diffs._
-import com.wavesplatform.{NoShrink, TransactionGen}
+import com..state._
+import com..state.diffs._
+import com..{NoShrink, TransactionGen}
 import org.scalatest.prop.PropertyChecks
 import org.scalatest.{Assertions, Matchers, PropSpec}
 import scodec.bits.ByteVector
-import com.wavesplatform.account.{Address, Alias}
+import com..account.{Address, Alias}
 import org.scalacheck.Gen
-import com.wavesplatform.transaction.{DataTransaction, Proofs}
+import com..transaction.{DataTransaction, Proofs}
 
 class CommonFunctionsTest extends PropSpec with PropertyChecks with Matchers with TransactionGen with NoShrink {
 

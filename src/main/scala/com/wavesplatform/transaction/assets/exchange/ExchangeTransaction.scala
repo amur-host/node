@@ -1,13 +1,13 @@
-package com.wavesplatform.transaction.assets.exchange
+package com..transaction.assets.exchange
 
 import io.swagger.annotations.ApiModelProperty
 import monix.eval.Coeval
 import play.api.libs.json.{JsObject, Json}
-import com.wavesplatform.account.PublicKeyAccount
-import com.wavesplatform.transaction.ValidationError.{GenericError, OrderValidationError}
+import com..account.PublicKeyAccount
+import com..transaction.ValidationError.{GenericError, OrderValidationError}
 
 import scala.util.Failure
-import com.wavesplatform.transaction._
+import com..transaction._
 
 import scala.util.Try
 

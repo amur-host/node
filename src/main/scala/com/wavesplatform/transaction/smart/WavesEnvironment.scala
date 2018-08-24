@@ -1,12 +1,12 @@
-package com.wavesplatform.transaction.smart
+package com..transaction.smart
 
-import com.wavesplatform.account.AddressOrAlias
-import com.wavesplatform.lang.v1.traits._
-import com.wavesplatform.lang.v1.traits.domain.Recipient._
-import com.wavesplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
-import com.wavesplatform.state._
-import com.wavesplatform.transaction.Transaction
-import com.wavesplatform.transaction.assets.exchange.Order
+import com..account.AddressOrAlias
+import com..lang.v1.traits._
+import com..lang.v1.traits.domain.Recipient._
+import com..lang.v1.traits.domain.{Ord, Recipient, Tx}
+import com..state._
+import com..transaction.Transaction
+import com..transaction.assets.exchange.Order
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 import shapeless._
@@ -29,11 +29,11 @@ class WavesEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], 
     for {
       address <- recipient match {
         case Address(bytes) =>
-          com.wavesplatform.account.Address
+          com..account.Address
             .fromBytes(bytes.toArray)
             .toOption
         case Alias(name) =>
-          com.wavesplatform.account.Alias
+          com..account.Alias
             .buildWithCurrentNetworkByte(name)
             .flatMap(blockchain.resolveAlias)
             .toOption
@@ -52,7 +52,7 @@ class WavesEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], 
   }
   override def resolveAlias(name: String): Either[String, Recipient.Address] =
     blockchain
-      .resolveAlias(com.wavesplatform.account.Alias.buildWithCurrentNetworkByte(name).explicitGet())
+      .resolveAlias(com..account.Alias.buildWithCurrentNetworkByte(name).explicitGet())
       .left
       .map(_.toString)
       .right
@@ -64,7 +64,7 @@ class WavesEnvironment(nByte: Byte, in: Coeval[Transaction :+: Order :+: CNil], 
     (for {
       aoa <- addressOrAlias match {
         case Address(bytes) => AddressOrAlias.fromBytes(bytes.toArray, position = 0).map(_._1)
-        case Alias(name)    => com.wavesplatform.account.Alias.buildWithCurrentNetworkByte(name)
+        case Alias(name)    => com..account.Alias.buildWithCurrentNetworkByte(name)
       }
       address <- blockchain.resolveAlias(aoa)
       balance = blockchain.balance(address, maybeAssetId.map(ByteStr(_)))
