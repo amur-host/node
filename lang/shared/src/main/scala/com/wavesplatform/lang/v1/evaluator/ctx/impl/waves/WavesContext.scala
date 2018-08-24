@@ -246,7 +246,7 @@ object WavesContext {
         case _ => ???
       }
 
-    val wavesBalanceF: UserFunction = UserFunction("wavesBalance", LONG, "addressOrAlias" -> addressOrAliasType) {
+    val amurBalanceF: UserFunction = UserFunction("amurBalance", LONG, "addressOrAlias" -> addressOrAliasType) {
       case aoa :: Nil => FUNCTION_CALL(assetBalanceF.header, List(aoa, REF("unit")))
       case _          => ???
     }
@@ -280,7 +280,7 @@ object WavesContext {
       addressFromStringF,
       addressFromRecipientF,
       assetBalanceF,
-      wavesBalanceF
+      amurBalanceF
     )
 
     CTX(Types.amurTypes, vars, functions)

@@ -7,7 +7,7 @@ import com.amurplatform.it.sync._
 
 class ReissueTransactionV1Suite extends BaseTransactionSuite {
 
-  test("asset reissue changes issuer's asset balance; issuer's waves balance is decreased by fee") {
+  test("asset reissue changes issuer's asset balance; issuer's amur balance is decreased by fee") {
 
     val (balance, effectiveBalance) = notMiner.accountBalances(firstAddress)
 
@@ -48,7 +48,7 @@ class ReissueTransactionV1Suite extends BaseTransactionSuite {
     nodes.waitForHeightAriseAndTxPresent(issuedAssetId)
 
     assertBadRequestAndMessage(sender.reissue(firstAddress, issuedAssetId, someAssetAmount, reissuable = true, fee = reissueFee),
-                               "negative waves balance")
+                               "negative amur balance")
     nodes.waitForHeightArise()
 
     notMiner.assertAssetBalance(firstAddress, issuedAssetId, someAssetAmount)

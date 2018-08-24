@@ -95,7 +95,7 @@ object MatcherRestartTestSuite {
   val ForbiddenAssetId = "FdbnAsset"
   import NodeConfigs.Default
   private val matcherConfig = ConfigFactory.parseString(s"""
-                                                           |waves {
+                                                           |amur {
                                                            |  matcher {
                                                            |    enable = yes
                                                            |    account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
@@ -111,7 +111,7 @@ object MatcherRestartTestSuite {
                                                            |  miner.enable=no
                                                            |}""".stripMargin)
   private val nonGeneratingPeersConfig = ConfigFactory.parseString(
-    """waves {
+    """amur {
       | matcher.order-cleanup-interval = 30s
       | miner.enable=no
       |}""".stripMargin

@@ -10,8 +10,8 @@ import scala.concurrent.duration._
 
 class MatcherSettingsSpecification extends FlatSpec with Matchers {
   "MatcherSettings" should "read values" in {
-    val config = loadConfig(ConfigFactory.parseString("""waves {
-        |  directory: "/waves"
+    val config = loadConfig(ConfigFactory.parseString("""amur {
+        |  directory: "/amur"
         |  matcher {
         |    enable: yes
         |    account: "BASE58MATCHERACCOUNT"
@@ -42,8 +42,8 @@ class MatcherSettingsSpecification extends FlatSpec with Matchers {
     settings.port should be(6886)
     settings.minOrderFee should be(100000)
     settings.orderMatchTxFee should be(100000)
-    settings.journalDataDir should be("/waves/matcher/journal")
-    settings.snapshotsDataDir should be("/waves/matcher/snapshots")
+    settings.journalDataDir should be("/amur/matcher/journal")
+    settings.snapshotsDataDir should be("/amur/matcher/snapshots")
     settings.snapshotsInterval should be(1.day)
     settings.orderCleanupInterval should be(5.minute)
     settings.maxOrdersPerRequest should be(100)

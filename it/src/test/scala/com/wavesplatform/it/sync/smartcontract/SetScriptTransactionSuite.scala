@@ -24,7 +24,7 @@ class SetScriptTransactionSuite extends BaseTransactionSuite with CancelAfterFai
   private val acc2 = pkByAddress(thirdAddress)
   private val acc3 = pkByAddress(fourthAddress)
 
-  test("setup acc0 with 1 waves") {
+  test("setup acc0 with 1 amur") {
     val tx =
       TransferTransactionV2
         .selfSigned(

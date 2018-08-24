@@ -6,7 +6,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class FeesSettingsSpecification extends FlatSpec with Matchers {
   "FeesSettings" should "read values" in {
-    val config = ConfigFactory.parseString("""waves {
+    val config = ConfigFactory.parseString("""amur {
         |  network.file = "xxx"
         |  fees {
         |    payment.AMUR = 100000
@@ -31,7 +31,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   }
 
   it should "combine read few fees for one transaction type" in {
-    val config = ConfigFactory.parseString("""waves.fees {
+    val config = ConfigFactory.parseString("""amur.fees {
         |  payment {
         |    WAVES0 = 0
         |  }
@@ -54,7 +54,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   }
 
   it should "allow empty list" in {
-    val config = ConfigFactory.parseString("waves.fees {}".stripMargin).resolve()
+    val config = ConfigFactory.parseString("amur.fees {}".stripMargin).resolve()
 
     val settings = FeesSettings.fromConfig(config)
     settings.fees.size should be(0)
@@ -62,13 +62,13 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
 
   it should "override values" in {
     val config = ConfigFactory
-      .parseString("""waves.fees {
+      .parseString("""amur.fees {
         |  payment.AMUR1 = 1111
         |  reissue.AMUR5 = 0
         |}
       """.stripMargin)
       .withFallback(
-        ConfigFactory.parseString("""waves.fees {
+        ConfigFactory.parseString("""amur.fees {
           |  payment.AMUR = 100000
           |  issue.AMUR = 100000000
           |  transfer.AMUR = 100000
@@ -87,7 +87,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   }
 
   it should "fail on incorrect long values" in {
-    val config = ConfigFactory.parseString("""waves.fees {
+    val config = ConfigFactory.parseString("""amur.fees {
         |  payment.AMUR=N/A
         |}""".stripMargin).resolve()
     intercept[WrongType] {
@@ -96,7 +96,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   }
 
   it should "not fail on long values as strings" in {
-    val config   = ConfigFactory.parseString("""waves.fees {
+    val config   = ConfigFactory.parseString("""amur.fees {
         |  transfer.AMUR="1000"
         |}""".stripMargin).resolve()
     val settings = FeesSettings.fromConfig(config)
@@ -104,7 +104,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   }
 
   it should "fail on unknown transaction type" in {
-    val config = ConfigFactory.parseString("""waves.fees {
+    val config = ConfigFactory.parseString("""amur.fees {
         |  shmayment.AMUR=100
         |}""".stripMargin).resolve()
     intercept[NoSuchElementException] {
@@ -115,7 +115,7 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   it should "override values from default config" in {
     val defaultConfig = ConfigFactory.load()
     val config        = ConfigFactory.parseString("""
-        |waves.fees {
+        |amur.fees {
         |  issue {
         |    AMUR = 200000000
         |  }

@@ -69,7 +69,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
       matcherNode.matcherGet("/matcher").getResponseBody.stripPrefix("\"").stripSuffix("\"") shouldBe matcherNode.publicKeyStr
     }
 
-    "owner moves assets/waves to another account and order become an invalid" ignore {
+    "owner moves assets/amur to another account and order become an invalid" ignore {
       // todo: reactivate after balance watcher is reimplemented
       // Could not work sometimes because of NODE-546
       "order with assets" - {
@@ -95,7 +95,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(transferBackId)
         }
 
-        "leased waves, insufficient fee" in {
+        "leased amur, insufficient fee" in {
           val bobBalance    = bobNode.accountBalances(bobNode.address)._1
           val oldestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
           val newestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
@@ -119,7 +119,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(cancelLeaseId)
         }
 
-        "moved waves, insufficient fee" in {
+        "moved amur, insufficient fee" in {
           val bobBalance    = matcherNode.accountBalances(bobNode.address)._1
           val oldestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
           val newestOrderId = bobPlacesAssetOrder(1000, twoAssetsPair, bobNewAsset)
@@ -144,9 +144,9 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
         }
       }
 
-      "order with waves" - {
-        "leased waves, insufficient fee for one ExchangeTransaction" in {
-          // Amount of waves in order is smaller than fee
+      "order with amur" - {
+        "leased amur, insufficient fee for one ExchangeTransaction" in {
+          // Amount of amur in order is smaller than fee
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
 
           val oldestOrderId = bobPlacesWaveOrder(bobWavesPair, 10.amur * Order.PriceConstant, 1)
@@ -171,7 +171,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(cancelLeaseId)
         }
 
-        "leased waves, insufficient waves" in {
+        "leased amur, insufficient amur" in {
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
           val price      = 1.amur
           val order2     = bobPlacesWaveOrder(bobWavesPair, price * Order.PriceConstant, 1)
@@ -190,8 +190,8 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(cancelLeaseId)
         }
 
-        "moved waves, insufficient fee" in {
-          // Amount of waves in order is smaller than fee
+        "moved amur, insufficient fee" in {
+          // Amount of amur in order is smaller than fee
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
           val price      = TransactionFee / 2
           val order3     = bobPlacesWaveOrder(bobWavesPair, price * Order.PriceConstant, 1)
@@ -245,9 +245,9 @@ object TradersTestSuite {
   private val MatcherFee       = 300000
   private val TransactionFee   = 300000
 
-  private val minerDisabled = parseString("waves.miner.enable = no")
+  private val minerDisabled = parseString("amur.miner.enable = no")
   private val matcherConfig = parseString(s"""
-                                             |waves.matcher {
+                                             |amur.matcher {
                                              |  enable = yes
                                              |  account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
                                              |  bind-address = "0.0.0.0"

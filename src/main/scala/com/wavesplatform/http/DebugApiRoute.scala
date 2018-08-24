@@ -57,7 +57,7 @@ case class DebugApiRoute(ws: WavesSettings,
 
   private lazy val configStr             = configRoot.render(ConfigRenderOptions.concise().setJson(true).setFormatted(true))
   private lazy val fullConfig: JsValue   = Json.parse(configStr)
-  private lazy val wavesConfig: JsObject = Json.obj("amur" -> (fullConfig \ "amur").get)
+  private lazy val amurConfig: JsObject = Json.obj("amur" -> (fullConfig \ "amur").get)
 
   override val settings = ws.restAPISettings
   override lazy val route: Route = pathPrefix("debug") {
@@ -266,7 +266,7 @@ case class DebugApiRoute(ws: WavesSettings,
       new ApiResponse(code = 200, message = "Json state")
     ))
   def configInfo: Route = (path("configInfo") & get & parameter('full.as[Boolean]) & withAuth) { full =>
-    complete(if (full) fullConfig else wavesConfig)
+    complete(if (full) fullConfig else amurConfig)
   }
 
   @Path("/rollback-to/{signature}")

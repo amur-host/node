@@ -37,7 +37,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSendi
     notMiner.assertAssetBalance(secondAddress, issuedAssetId, someAssetAmount)
   }
 
-  test("waves transfer changes waves balances and eff.b.") {
+  test("amur transfer changes amur balances and eff.b.") {
     val (firstBalance, firstEffBalance)   = notMiner.accountBalances(firstAddress)
     val (secondBalance, secondEffBalance) = notMiner.accountBalances(secondAddress)
 
@@ -49,7 +49,7 @@ class TransferTransactionV1Suite extends BaseTransactionSuite with TransferSendi
     notMiner.assertBalances(secondAddress, secondBalance + transferAmount, secondEffBalance + transferAmount)
   }
 
-  test("invalid signed waves transfer should not be in UTX or blockchain") {
+  test("invalid signed amur transfer should not be in UTX or blockchain") {
     def invalidTx(timestamp: Long = System.currentTimeMillis, fee: Long = 100000) =
       TransferTransactionV1
         .selfSigned(None, sender.privateKey, AddressOrAlias.fromString(sender.address).explicitGet(), 1, timestamp, None, fee, Array.emptyByteArray)

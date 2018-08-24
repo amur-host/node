@@ -36,7 +36,7 @@ class ExchangeTransactionDiffTest extends PropSpec with PropertyChecks with Matc
     )
   )
 
-  property("preserves waves invariant, stores match info, rewards matcher") {
+  property("preserves amur invariant, stores match info, rewards matcher") {
 
     val preconditionsAndExchange: Gen[(GenesisTransaction, GenesisTransaction, IssueTransaction, IssueTransaction, ExchangeTransaction)] = for {
       buyer  <- accountGen
@@ -93,7 +93,7 @@ class ExchangeTransactionDiffTest extends PropSpec with PropertyChecks with Matc
     }
   }
 
-  property("buy waves without enough money for fee") {
+  property("buy amur without enough money for fee") {
     val preconditions: Gen[(GenesisTransaction, GenesisTransaction, IssueTransactionV1, ExchangeTransaction)] = for {
       buyer  <- accountGen
       seller <- accountGen

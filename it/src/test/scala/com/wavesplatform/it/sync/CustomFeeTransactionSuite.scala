@@ -92,14 +92,14 @@ object CustomFeeTransactionSuite {
   val assetId = assetTx.id()
 
   private val minerConfig = ConfigFactory.parseString(s"""
-      | waves.fees.transfer.$assetId = 100000
-      | waves.blockchain.custom.functionality {
+      | amur.fees.transfer.$assetId = 100000
+      | amur.blockchain.custom.functionality {
       |   feature-check-blocks-period = $featureCheckBlocksPeriod
       |   blocks-for-feature-activation = $featureCheckBlocksPeriod
       |   pre-activated-features = { 7 = 0 }
       |}""".stripMargin)
 
-  private val notMinerConfig = ConfigFactory.parseString("waves.miner.enable=no").withFallback(minerConfig)
+  private val notMinerConfig = ConfigFactory.parseString("amur.miner.enable=no").withFallback(minerConfig)
 
   val Configs: Seq[Config] = Seq(
     minerConfig.withFallback(Default.head),

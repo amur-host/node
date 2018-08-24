@@ -60,7 +60,7 @@ object MatcherContext {
     val addressFromStringF: BaseFunction    = inaccessibleUserFunction("addressFromStringF")
     val addressFromRecipientF: BaseFunction = inaccessibleFunction("addressFromRecipientF", ADDRESSFROMRECIPIENT)
     val assetBalanceF: BaseFunction         = inaccessibleFunction("assetBalanceF", ACCOUNTASSETBALANCE)
-    val wavesBalanceF: BaseFunction         = inaccessibleUserFunction("wavesBalanceF")
+    val amurBalanceF: BaseFunction         = inaccessibleUserFunction("amurBalanceF")
 
     val functions = Seq(
       txByIdF,
@@ -73,7 +73,7 @@ object MatcherContext {
       addressFromStringF,
       addressFromRecipientF,
       assetBalanceF,
-      wavesBalanceF
+      amurBalanceF
     )
 
     val matcherContext = CTX(matcherTypes, matcherVars, functions).evaluationContext

@@ -46,13 +46,13 @@ object ExchangeTransactionDiff {
       sellAmountAssetChange <- t.sellOrder.getSpendAmount(t.price, t.amount).liftValidationError(tx).map(-_)
     } yield {
 
-      def wavesPortfolio(amt: Long) = Portfolio(amt, LeaseBalance.empty, Map.empty)
+      def amurPortfolio(amt: Long) = Portfolio(amt, LeaseBalance.empty, Map.empty)
 
       val feeDiff = Monoid.combineAll(
         Seq(
-          Map(matcher -> wavesPortfolio(t.buyMatcherFee + t.sellMatcherFee - t.fee)),
-          Map(buyer   -> wavesPortfolio(-t.buyMatcherFee)),
-          Map(seller  -> wavesPortfolio(-t.sellMatcherFee))
+          Map(matcher -> amurPortfolio(t.buyMatcherFee + t.sellMatcherFee - t.fee)),
+          Map(buyer   -> amurPortfolio(-t.buyMatcherFee)),
+          Map(seller  -> amurPortfolio(-t.sellMatcherFee))
         ))
 
       val priceDiff = t.buyOrder.assetPair.priceAsset match {

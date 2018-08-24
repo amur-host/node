@@ -8,7 +8,7 @@ import org.scalatest.prop.TableDrivenPropertyChecks
 
 class IssueTransactionV1Suite extends BaseTransactionSuite with TableDrivenPropertyChecks {
 
-  test("asset issue changes issuer's asset balance; issuer's waves balance is decreased by fee") {
+  test("asset issue changes issuer's asset balance; issuer's amur balance is decreased by fee") {
     val assetName        = "myasset"
     val assetDescription = "my asset description"
     val (balance1, eff1) = notMiner.accountBalances(firstAddress)
@@ -42,7 +42,7 @@ class IssueTransactionV1Suite extends BaseTransactionSuite with TableDrivenPrope
     val bigAssetFee      = eff1 + 1.amur
 
     assertBadRequestAndMessage(sender.issue(firstAddress, assetName, assetDescription, someAssetAmount, 2, reissuable = false, bigAssetFee),
-                               "negative waves balance")
+                               "negative amur balance")
   }
 
   val invalidAssetValue =

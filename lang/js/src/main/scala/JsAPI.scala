@@ -47,7 +47,7 @@ object JsAPI {
   @JSExportTopLevel("compile")
   def compile(input: String): js.Dynamic = {
 
-    val wavesContext = WavesContext.build(new Environment {
+    val amurContext = WavesContext.build(new Environment {
       override def height: Int                                                                                     = ???
       override def networkByte: Byte                                                                               = ???
       override def inputEntity: Tx :+: Ord :+: CNil                                                                = ???
@@ -61,7 +61,7 @@ object JsAPI {
     //comment
     val cryptoContext = CryptoContext.build(Global)
 
-    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, wavesContext)).compilerContext
+    val compilerContext = Monoid.combineAll(Seq(PureContext.ctx, cryptoContext, amurContext)).compilerContext
 
     def hash(m: Array[Byte]) = Global.keccak256(Global.blake2b256(m))
 

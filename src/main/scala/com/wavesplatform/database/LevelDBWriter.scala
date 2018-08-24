@@ -194,7 +194,7 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
 
   override protected def doAppend(block: Block,
                                   newAddresses: Map[Address, BigInt],
-                                  wavesBalances: Map[BigInt, Long],
+                                  amurBalances: Map[BigInt, Long],
                                   assetBalances: Map[BigInt, Map[ByteStr, Long]],
                                   leaseBalances: Map[BigInt, LeaseBalance],
                                   leaseStates: Map[ByteStr, Boolean],
@@ -222,7 +222,7 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
     val threshold = height - 2000
 
     val newAddressesForLocal = ArrayBuffer.empty[BigInt]
-    val updatedBalanceAddresses = for ((addressId, balance) <- wavesBalances) yield {
+    val updatedBalanceAddresses = for ((addressId, balance) <- amurBalances) yield {
       val kwbh = Keys.amurBalanceHistory(addressId)
       val wbh  = rw.get(kwbh)
       if (wbh.isEmpty) {
@@ -640,7 +640,7 @@ class LevelDBWriter(writableDB: DB, fs: FunctionalitySettings, val maxCacheSize:
     } yield db.get(Keys.idToAddress(addressId)) -> balance).toMap.seq
   }
 
-  override def wavesDistribution(height: Int): Map[Address, Long] = readOnly { db =>
+  override def amurDistribution(height: Int): Map[Address, Long] = readOnly { db =>
     (for {
       seqNr     <- (1 to db.get(Keys.addressesForWavesSeqNr)).par
       addressId <- db.get(Keys.addressesForWaves(seqNr)).par

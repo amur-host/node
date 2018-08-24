@@ -25,8 +25,8 @@ object Explorer extends ScorexLogging {
     "score",
     "block-at-height",
     "height-of",
-    "waves-balance-history",
-    "waves-balance",
+    "amur-balance-history",
+    "amur-balance",
     "assets-for-address",
     "asset-balance-history",
     "asset-balance",
@@ -57,8 +57,8 @@ object Explorer extends ScorexLogging {
     "data",
     "sponsorship-history",
     "sponsorship",
-    "addresses-for-waves-seq-nr",
-    "addresses-for-waves",
+    "addresses-for-amur-seq-nr",
+    "addresses-for-amur",
     "addresses-for-asset-seq-nr",
     "addresses-for-asset",
     "address-transaction-ids-seq-nr",
@@ -70,7 +70,7 @@ object Explorer extends ScorexLogging {
     SLF4JBridgeHandler.removeHandlersForRootLogger()
     SLF4JBridgeHandler.install()
 
-    val configFilename = Try(args(0)).toOption.getOrElse("waves-testnet.conf")
+    val configFilename = Try(args(0)).toOption.getOrElse("amur-testnet.conf")
 
     val settings = WavesSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
     AddressScheme.current = new AddressScheme {

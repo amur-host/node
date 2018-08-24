@@ -194,5 +194,5 @@ object Types {
   val scriptInputType    = UNION.create((orderType :: activeTransactionTypes).map(_.typeRef))
   val anyTransactionType = UNION.create(transactionTypes.map(_.typeRef))
 
-  val wavesTypes = Seq(addressType, aliasType, transfer, orderType, assetPairType, dataEntryType, transactionsCommonType) ++ transactionTypes
+  val amurTypes = Seq(addressType, aliasType, transfer, orderType, assetPairType, dataEntryType, transactionsCommonType) ++ transactionTypes
 }

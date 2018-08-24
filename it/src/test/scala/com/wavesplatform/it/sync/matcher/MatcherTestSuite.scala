@@ -276,7 +276,7 @@ class MatcherTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
         matcherNode.expectIncorrectOrderPlacement(bobOrder, 400, "OrderRejected")
       }
 
-      "trader can buy waves for assets with order without having waves" in {
+      "trader can buy amur for assets with order without having amur" in {
         // Bob issues new asset
         val bobAssetQuantity = 10000
         val bobAssetName     = "BobCoin2"
@@ -298,7 +298,7 @@ class MatcherTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
         val order8 = matcherNode.placeOrder(bobOrder)
         matcherNode.waitOrderStatus(bobWavesPair, order8.message.id, "Accepted")
 
-        // Bob moves all waves to Alice
+        // Bob moves all amur to Alice
         val h1              = matcherNode.height
         val bobBalance      = matcherNode.accountBalances(bobNode.address)._1
         val transferAmount  = bobBalance - TransactionFee
@@ -405,9 +405,9 @@ object MatcherTestSuite {
   private val TransactionFee   = 300000
   private val orderLimit       = 20
 
-  private val minerDisabled = parseString("waves.miner.enable = no")
+  private val minerDisabled = parseString("amur.miner.enable = no")
   private val matcherConfig = parseString(s"""
-       |waves.matcher {
+       |amur.matcher {
        |  enable = yes
        |  account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
        |  bind-address = "0.0.0.0"

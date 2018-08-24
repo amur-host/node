@@ -12,7 +12,7 @@ import io.swagger.annotations._
 import javax.ws.rs.Path
 import com.amurplatform.wallet.Wallet
 
-@Path("/waves")
+@Path("/amur")
 @Api(value = "amur")
 @Deprecated
 case class WavesApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool, allChannels: ChannelGroup, time: Time)

@@ -138,7 +138,7 @@ package object predef {
        |   case _ => false
        | }
        |
-       | let balances = assetBalance(tx.sender, unit) > 0 && wavesBalance(tx.sender) != 0
+       | let balances = assetBalance(tx.sender, unit) > 0 && amurBalance(tx.sender) != 0
        |
        | let local = txById && entries && balances && aFromPK && aFromStrOrRecip && height > 0
        |
@@ -150,7 +150,7 @@ package object predef {
        |
        | let crypto = bks && sig && str58 && str64
        |
-       | pure && waves && crypto
+       | pure && amur && crypto
     """.stripMargin
 
 }

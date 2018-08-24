@@ -50,25 +50,25 @@ class SeveralPartialOrdersTestSuite
     val buyOrderAmount  = 425532L
     val sellOrderAmount = 840340L
 
-    "place usd-waves order" in {
+    "place usd-amur order" in {
       // Alice wants to sell USD for Waves
 
-      val bobOrder   = matcherNode.prepareOrder(bobNode, wavesUsdPair, OrderType.SELL, price, sellOrderAmount)
+      val bobOrder   = matcherNode.prepareOrder(bobNode, amurUsdPair, OrderType.SELL, price, sellOrderAmount)
       val bobOrderId = matcherNode.placeOrder(bobOrder).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrderId, "Accepted", 1.minute)
+      matcherNode.waitOrderStatus(amurUsdPair, bobOrderId, "Accepted", 1.minute)
       matcherNode.reservedBalance(bobNode)("AMUR") shouldBe sellOrderAmount + matcherFee
-      matcherNode.tradableBalance(bobNode, wavesUsdPair)("AMUR") shouldBe bobWavesBalanceBefore - (sellOrderAmount + matcherFee)
+      matcherNode.tradableBalance(bobNode, amurUsdPair)("AMUR") shouldBe bobWavesBalanceBefore - (sellOrderAmount + matcherFee)
 
-      val aliceOrder   = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, price, buyOrderAmount)
+      val aliceOrder   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, price, buyOrderAmount)
       val aliceOrderId = matcherNode.placeOrder(aliceOrder).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrderId, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(amurUsdPair, aliceOrderId, "Filled", 1.minute)
 
-      val aliceOrder2   = matcherNode.prepareOrder(aliceNode, wavesUsdPair, OrderType.BUY, price, buyOrderAmount)
+      val aliceOrder2   = matcherNode.prepareOrder(aliceNode, amurUsdPair, OrderType.BUY, price, buyOrderAmount)
       val aliceOrder2Id = matcherNode.placeOrder(aliceOrder2).message.id
-      matcherNode.waitOrderStatus(wavesUsdPair, aliceOrder2Id, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(amurUsdPair, aliceOrder2Id, "Filled", 1.minute)
 
       // Bob wants to buy some USD
-      matcherNode.waitOrderStatus(wavesUsdPair, bobOrderId, "Filled", 1.minute)
+      matcherNode.waitOrderStatus(amurUsdPair, bobOrderId, "Filled", 1.minute)
 
       // Each side get fair amount of assets
       val exchangeTx = matcherNode.transactionsByOrder(bobOrder.idStr()).headOption.getOrElse(fail("Expected an exchange transaction"))
@@ -99,9 +99,9 @@ object SeveralPartialOrdersTestSuite {
   private val ForbiddenAssetId = "FdbnAsset"
   private val Decimals: Byte   = 2
 
-  private val minerDisabled = parseString("waves.miner.enable = no")
+  private val minerDisabled = parseString("amur.miner.enable = no")
   private val matcherConfig = parseString(s"""
-                                             |waves.matcher {
+                                             |amur.matcher {
                                              |  enable = yes
                                              |  account = 3HmFkAoQRs4Y3PE2uR6ohN7wS4VqPBGKv7k
                                              |  bind-address = "0.0.0.0"
@@ -133,13 +133,13 @@ object SeveralPartialOrdersTestSuite {
 
   val UsdId: AssetId = IssueUsdTx.id()
 
-  val wavesUsdPair = AssetPair(
+  val amurUsdPair = AssetPair(
     amountAsset = None,
     priceAsset = Some(UsdId)
   )
 
   private val updatedMatcherConfig = parseString(s"""
-                                                    |waves.matcher {
+                                                    |amur.matcher {
                                                     |  price-assets = [ "$UsdId", "AMUR"]
                                                     |}
      """.stripMargin)
