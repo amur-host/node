@@ -61,7 +61,7 @@ class MatcherTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
       markets.amountAssetName shouldBe amountAssetName
       markets.amountAssetInfo shouldBe Some(AssetDecimalsInfo(aliceCoinDecimals))
 
-      markets.priceAssetName shouldBe "WAVES"
+      markets.priceAssetName shouldBe "AMUR"
       markets.priceAssetInfo shouldBe Some(AssetDecimalsInfo(8))
     }
 

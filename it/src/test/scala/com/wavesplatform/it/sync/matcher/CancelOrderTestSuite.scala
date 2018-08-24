@@ -167,7 +167,7 @@ object CancelOrderTestSuite {
 
   private val updatedMatcherConfig = parseString(s"""
        |waves.matcher {
-       |  price-assets = [ "$UsdId", "WAVES"]
+       |  price-assets = [ "$UsdId", "AMUR"]
        |}
      """.stripMargin)
 

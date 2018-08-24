@@ -13,13 +13,13 @@ import javax.ws.rs.Path
 import com.amurplatform.wallet.Wallet
 
 @Path("/waves")
-@Api(value = "waves")
+@Api(value = "amur")
 @Deprecated
 case class WavesApiRoute(settings: RestAPISettings, wallet: Wallet, utx: UtxPool, allChannels: ChannelGroup, time: Time)
     extends ApiRoute
     with BroadcastRoute {
 
-  override lazy val route = pathPrefix("waves") {
+  override lazy val route = pathPrefix("amur") {
     externalPayment ~ signPayment ~ broadcastSignedPayment ~ payment ~ createdSignedPayment
   }
 
