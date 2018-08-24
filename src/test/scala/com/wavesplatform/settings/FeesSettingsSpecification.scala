@@ -33,24 +33,24 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
   it should "combine read few fees for one transaction type" in {
     val config = ConfigFactory.parseString("""amur.fees {
         |  payment {
-        |    WAVES0 = 0
+        |    AMUR0 = 0
         |  }
         |  issue {
-        |    WAVES1 = 111
-        |    WAVES2 = 222
-        |    WAVES3 = 333
+        |    AMUR1 = 111
+        |    AMUR2 = 222
+        |    AMUR3 = 333
         |  }
         |  transfer {
-        |    WAVES4 = 444
+        |    AMUR4 = 444
         |  }
         |}
       """.stripMargin).resolve()
 
     val settings = FeesSettings.fromConfig(config)
     settings.fees.size should be(3)
-    settings.fees(2).toSet should equal(Set(FeeSettings("WAVES0", 0)))
-    settings.fees(3).toSet should equal(Set(FeeSettings("WAVES1", 111), FeeSettings("WAVES2", 222), FeeSettings("WAVES3", 333)))
-    settings.fees(4).toSet should equal(Set(FeeSettings("WAVES4", 444)))
+    settings.fees(2).toSet should equal(Set(FeeSettings("AMUR0", 0)))
+    settings.fees(3).toSet should equal(Set(FeeSettings("AMUR1", 111), FeeSettings("AMUR2", 222), FeeSettings("AMUR3", 333)))
+    settings.fees(4).toSet should equal(Set(FeeSettings("AMUR4", 444)))
   }
 
   it should "allow empty list" in {
@@ -82,8 +82,8 @@ class FeesSettingsSpecification extends FlatSpec with Matchers {
 
     val settings = FeesSettings.fromConfig(config)
     settings.fees.size should be(6)
-    settings.fees(2).toSet should equal(Set(FeeSettings("AMUR", 100000), FeeSettings("WAVES1", 1111)))
-    settings.fees(5).toSet should equal(Set(FeeSettings("AMUR", 100000), FeeSettings("WAVES5", 0)))
+    settings.fees(2).toSet should equal(Set(FeeSettings("AMUR", 100000), FeeSettings("AMUR1", 1111)))
+    settings.fees(5).toSet should equal(Set(FeeSettings("AMUR", 100000), FeeSettings("AMUR5", 0)))
   }
 
   it should "fail on incorrect long values" in {

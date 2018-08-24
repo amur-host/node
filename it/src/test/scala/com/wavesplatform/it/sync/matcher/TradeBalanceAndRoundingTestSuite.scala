@@ -44,7 +44,7 @@ class TradeBalanceAndRoundingTestSuite
   matcherNode.signedIssue(createSignedIssueRequest(IssueWctTx))
   nodes.waitForHeightArise()
 
-  "Alice and Bob trade WAVES-USD" - {
+  "Alice and Bob trade AMUR-USD" - {
     nodes.waitForHeightArise()
     val aliceAmurBalanceBefore = matcherNode.accountBalances(aliceNode.address)._1
     val bobAmurBalanceBefore   = matcherNode.accountBalances(bobNode.address)._1
@@ -138,7 +138,7 @@ class TradeBalanceAndRoundingTestSuite
     }
   }
 
-  "Alice and Bob trade WAVES-USD check CELLING" - {
+  "Alice and Bob trade AMUR-USD check CELLING" - {
     val price2           = 289
     val buyOrderAmount2  = 0.07.amur
     val sellOrderAmount2 = 3.amur
@@ -214,7 +214,7 @@ class TradeBalanceAndRoundingTestSuite
     markets.priceAssetInfo shouldBe Some(AssetDecimalsInfo(Decimals))
   }
 
-  "Alice and Bob trade WCT-WAVES on not enoght fee when place order" - {
+  "Alice and Bob trade WCT-AMUR on not enoght fee when place order" - {
     val wctAmurSellAmount = 2
     val wctAmurPrice      = 11234560000000L
 

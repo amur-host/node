@@ -246,7 +246,7 @@ class MatcherTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
       }
 
       "request order book for blacklisted pair" in {
-        val f = matcherNode.matcherGetStatusCode(s"/matcher/orderbook/$ForbiddenAssetId/WAVES", 404)
+        val f = matcherNode.matcherGetStatusCode(s"/matcher/orderbook/$ForbiddenAssetId/AMUR", 404)
         f.message shouldBe s"Invalid Asset ID: $ForbiddenAssetId"
       }
 

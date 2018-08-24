@@ -42,7 +42,7 @@ class SeveralPartialOrdersTestSuite
   matcherNode.signedIssue(createSignedIssueRequest(IssueUsdTx))
   nodes.waitForHeightArise()
 
-  "Alice and Bob trade WAVES-USD" - {
+  "Alice and Bob trade AMUR-USD" - {
     nodes.waitForHeightArise()
     val bobAmurBalanceBefore = matcherNode.accountBalances(bobNode.address)._1
 

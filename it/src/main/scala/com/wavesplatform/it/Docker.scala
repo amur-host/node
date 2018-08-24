@@ -263,7 +263,7 @@ class Docker(suiteConfig: Config = empty, tag: String = "", enableProfiling: Boo
           amurNetwork.name() -> endpointConfigFor(nodeName)
         ).asJava))
         .hostConfig(hostConfig)
-        .env(s"WAVES_OPTS=$configOverrides")
+        .env(s"AMUR_OPTS=$configOverrides")
         .build()
 
       val containerId = {
