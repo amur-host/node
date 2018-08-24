@@ -35,7 +35,7 @@ class EvaluatorV1Test extends PropSpec with PropertyChecks with Matchers with Sc
     Seq(
       defaultCryptoContext,
       PureContext.ctx,
-      WavesContext.build(environment)
+      AmurContext.build(environment)
     )
   )
 

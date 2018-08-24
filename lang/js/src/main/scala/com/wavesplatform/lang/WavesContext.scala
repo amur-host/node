@@ -4,7 +4,7 @@ import com.amurplatform.lang.v1.traits.domain.{Ord, Recipient, Tx}
 import com.amurplatform.lang.v1.traits.{DataType, Environment}
 import shapeless.{:+:, CNil}
 
-object WavesContext {
+object AmurContext {
   val env = new Environment {
     override def height: Int                                         = impl.Environment.height
     override def networkByte: Byte                                   = impl.Environment.networkByte

@@ -21,7 +21,7 @@ package object amurplatform extends ScorexLogging {
     }
   }
 
-  def checkGenesis(settings: WavesSettings, blockchainUpdater: BlockchainUpdater with NG): Unit = {
+  def checkGenesis(settings: AmurSettings, blockchainUpdater: BlockchainUpdater with NG): Unit = {
     Block.genesis(settings.blockchainSettings.genesisSettings).flatMap(b => checkOrAppend(b, blockchainUpdater)).left.foreach { e =>
       log.error("INCORRECT NODE CONFIGURATION!!! NODE STOPPED BECAUSE OF THE FOLLOWING ERROR:")
       log.error(e.toString)

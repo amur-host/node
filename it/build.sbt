@@ -18,7 +18,7 @@ inTask(docker)(
   Seq(
     dockerfile := {
       val configTemplate = (Compile / resourceDirectory).value / "template.conf"
-      val startWaves     = sourceDirectory.value / "container" / "start-amur.sh"
+      val startAmur     = sourceDirectory.value / "container" / "start-amur.sh"
 
       val withAspectJ     = Option(System.getenv("WITH_ASPECTJ")).fold(false)(_.toBoolean)
       val aspectjAgentUrl = "http://search.maven.org/remotecontent?filepath=org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar"
@@ -38,7 +38,7 @@ inTask(docker)(
         if (withAspectJ) run("wget", "--quiet", aspectjAgentUrl, "-O", "/opt/amur/aspectjweaver.jar")
 
         add((assembly in LocalProject("node")).value, "/opt/amur/amur.jar")
-        add(Seq(configTemplate, startWaves), "/opt/amur/")
+        add(Seq(configTemplate, startAmur), "/opt/amur/")
         run("chmod", "+x", "/opt/amur/start-amur.sh")
         entryPoint("/opt/amur/start-amur.sh")
         expose(10001)

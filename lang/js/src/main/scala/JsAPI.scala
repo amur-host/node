@@ -47,7 +47,7 @@ object JsAPI {
   @JSExportTopLevel("compile")
   def compile(input: String): js.Dynamic = {
 
-    val amurContext = WavesContext.build(new Environment {
+    val amurContext = AmurContext.build(new Environment {
       override def height: Int                                                                                     = ???
       override def networkByte: Byte                                                                               = ???
       override def inputEntity: Tx :+: Ord :+: CNil                                                                = ???

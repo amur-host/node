@@ -51,7 +51,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       fee    <- smallFeeGen
       amt    <- smallFeeGen
       genesis: GenesisTransaction    = GenesisTransaction.create(master, ENOUGH_AMT, ts).explicitGet()
-      payment: TransferTransactionV1 = createWavesTransfer(master, master, amt, fee, ts).explicitGet()
+      payment: TransferTransactionV1 = createAmurTransfer(master, master, amt, fee, ts).explicitGet()
     } yield (miner, genesis, payment, ts)
     scenario(preconditionsAndPayments, MicroblocksActivatedAt0AmurSettings) {
       case (domain, (miner, genesis, payment, ts)) =>
@@ -74,7 +74,7 @@ class BlockchainUpdaterBlockMicroblockSequencesSameTransactionsTest
       to   <- Gen.oneOf(accs)
       fee  <- smallFeeGen
       amt  <- smallFeeGen
-    } yield createWavesTransfer(from, to, amt, fee, ts).explicitGet()
+    } yield createAmurTransfer(from, to, amt, fee, ts).explicitGet()
 
   def randomPayments(accs: Seq[PrivateKeyAccount], ts: Long, amt: Int): Gen[Seq[TransferTransactionV1]] =
     if (amt == 0)

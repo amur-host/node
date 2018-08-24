@@ -39,15 +39,15 @@ object CommonValidation {
         }
 
         val spendings       = Monoid.combine(amountDiff, feeDiff)
-        val oldWavesBalance = blockchain.portfolio(sender).balance
+        val oldAmurBalance = blockchain.portfolio(sender).balance
 
-        val newWavesBalance = oldWavesBalance + spendings.balance
-        if (newWavesBalance < 0) {
+        val newAmurBalance = oldAmurBalance + spendings.balance
+        if (newAmurBalance < 0) {
           Left(
             GenericError(
               "Attempt to transfer unavailable funds: Transaction application leads to " +
-                s"negative amur balance to (at least) temporary negative state, current balance equals $oldWavesBalance, " +
-                s"spends equals ${spendings.balance}, result is $newWavesBalance"))
+                s"negative amur balance to (at least) temporary negative state, current balance equals $oldAmurBalance, " +
+                s"spends equals ${spendings.balance}, result is $newAmurBalance"))
         } else if (spendings.assets.nonEmpty) {
           val oldAssetBalances = blockchain.portfolio(sender).assets
           val balanceError = spendings.assets.collectFirst {
@@ -202,8 +202,8 @@ object CommonValidation {
       .flatMap(feeAfterSmartTokens)
       .flatMap(feeAfterSmartAccounts)
       .map {
-        case (Some((assetId, assetInfo)), amountInWaves) => (Some(assetId), Sponsorship.fromWaves(amountInWaves, assetInfo.sponsorship))
-        case (None, amountInWaves)                       => (None, amountInWaves)
+        case (Some((assetId, assetInfo)), amountInAmur) => (Some(assetId), Sponsorship.fromAmur(amountInAmur, assetInfo.sponsorship))
+        case (None, amountInAmur)                       => (None, amountInAmur)
       }
   }
 
@@ -221,7 +221,7 @@ object CommonValidation {
                 assetInfo <- blockchain.assetDescription(x).toRight(GenericError(s"Asset $x does not exist, cannot be used to pay fees"))
                 amurFee <- Either.cond(
                   assetInfo.sponsorship > 0,
-                  Sponsorship.toWaves(feeAmount, assetInfo.sponsorship),
+                  Sponsorship.toAmur(feeAmount, assetInfo.sponsorship),
                   GenericError(s"Asset $x is not sponsored, cannot be used to pay fees")
                 )
               } yield amurFee
@@ -243,7 +243,7 @@ object CommonValidation {
       if (isSmartToken) {
         val (feeAssetId, feeAmount) = inputFee
         for {
-          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions with smart tokens require Waves as fee"))
+          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions with smart tokens require Amur as fee"))
           restFeeAmount = feeAmount - ScriptExtraFee
           _ <- Either.cond(
             restFeeAmount >= 0,
@@ -262,7 +262,7 @@ object CommonValidation {
       if (hasSmartAccountScript) {
         val (feeAssetId, feeAmount) = inputFee
         for {
-          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions from scripted accounts require Waves as fee"))
+          _ <- Either.cond(feeAssetId.isEmpty, (), GenericError("Transactions from scripted accounts require Amur as fee"))
           restFeeAmount = feeAmount - ScriptExtraFee
           _ <- Either.cond(
             restFeeAmount >= 0,

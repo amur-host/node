@@ -31,7 +31,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
       aliceNode.issue(aliceNode.address, "AliceCoin", "AliceCoin for matcher's tests", AssetQuantity, 0, reissuable = false, 100000000L).id
     nodes.waitForHeightAriseAndTxPresent(aliceAsset)
 
-    // val aliceWavesPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
+    // val aliceAmurPair = AssetPair(ByteStr.decodeBase58(aliceAsset).toOption, None)
 
     // Wait for balance on Alice's account
     aliceNode.assertAssetBalance(aliceNode.address, aliceAsset, AssetQuantity)
@@ -45,7 +45,7 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
     val bobAssetId   = ByteStr.decodeBase58(bobNewAsset).get
     val aliceAssetId = ByteStr.decodeBase58(aliceAsset).get
 
-    val bobWavesPair = AssetPair(
+    val bobAmurPair = AssetPair(
       amountAsset = Some(bobAssetId),
       priceAsset = None
     )
@@ -81,10 +81,10 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(transferId)
 
           withClue(s"The oldest order '$oldestOrderId' was cancelled") {
-            matcherNode.waitOrderStatus(bobWavesPair, oldestOrderId, "Cancelled")
+            matcherNode.waitOrderStatus(bobAmurPair, oldestOrderId, "Cancelled")
           }
           withClue(s"The newest order '$newestOrderId' is still active") {
-            matcherNode.orderStatus(newestOrderId, bobWavesPair).status shouldBe "Accepted"
+            matcherNode.orderStatus(newestOrderId, bobAmurPair).status shouldBe "Accepted"
           }
 
           // Cleanup
@@ -106,10 +106,10 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(leaseId)
 
           withClue(s"The oldest order '$oldestOrderId' was cancelled") {
-            matcherNode.waitOrderStatus(bobWavesPair, oldestOrderId, "Cancelled")
+            matcherNode.waitOrderStatus(bobAmurPair, oldestOrderId, "Cancelled")
           }
           withClue(s"The newest order '$newestOrderId' is still active") {
-            matcherNode.orderStatus(newestOrderId, bobWavesPair).status shouldBe "Accepted"
+            matcherNode.orderStatus(newestOrderId, bobAmurPair).status shouldBe "Accepted"
           }
 
           // Cleanup
@@ -130,10 +130,10 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(transferId)
 
           withClue(s"The oldest order '$oldestOrderId' was cancelled") {
-            matcherNode.waitOrderStatus(bobWavesPair, oldestOrderId, "Cancelled")
+            matcherNode.waitOrderStatus(bobAmurPair, oldestOrderId, "Cancelled")
           }
           withClue(s"The newest order '$newestOrderId' is still active") {
-            matcherNode.orderStatus(newestOrderId, bobWavesPair).status shouldBe "Accepted"
+            matcherNode.orderStatus(newestOrderId, bobAmurPair).status shouldBe "Accepted"
           }
 
           // Cleanup
@@ -149,8 +149,8 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           // Amount of amur in order is smaller than fee
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
 
-          val oldestOrderId = bobPlacesWaveOrder(bobWavesPair, 10.amur * Order.PriceConstant, 1)
-          val newestOrderId = bobPlacesWaveOrder(bobWavesPair, 10.amur * Order.PriceConstant, 1)
+          val oldestOrderId = bobPlacesWaveOrder(bobAmurPair, 10.amur * Order.PriceConstant, 1)
+          val newestOrderId = bobPlacesWaveOrder(bobAmurPair, 10.amur * Order.PriceConstant, 1)
 
           //      waitForOrderStatus(matcherNode, bobAssetIdRaw, id, "Accepted")
           val leaseAmount = bobBalance - TransactionFee - 10.amur - MatcherFee
@@ -158,15 +158,15 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           nodes.waitForHeightAriseAndTxPresent(leaseId)
 
           withClue(s"The newest order '$oldestOrderId' is Cancelled") {
-            matcherNode.waitOrderStatus(bobWavesPair, oldestOrderId, "Cancelled")
+            matcherNode.waitOrderStatus(bobAmurPair, oldestOrderId, "Cancelled")
           }
           withClue(s"The newest order '$newestOrderId' is still active") {
-            matcherNode.orderStatus(newestOrderId, bobWavesPair).status shouldBe "Accepted"
+            matcherNode.orderStatus(newestOrderId, bobAmurPair).status shouldBe "Accepted"
           }
 
           // Cleanup
           nodes.waitForHeightArise()
-          matcherNode.cancelOrder(bobNode, bobWavesPair, Some(newestOrderId)).status should be("OrderCanceled")
+          matcherNode.cancelOrder(bobNode, bobAmurPair, Some(newestOrderId)).status should be("OrderCanceled")
           val cancelLeaseId = bobNode.cancelLease(bobNode.address, leaseId, TransactionFee).id
           nodes.waitForHeightAriseAndTxPresent(cancelLeaseId)
         }
@@ -174,14 +174,14 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
         "leased amur, insufficient amur" in {
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
           val price      = 1.amur
-          val order2     = bobPlacesWaveOrder(bobWavesPair, price * Order.PriceConstant, 1)
+          val order2     = bobPlacesWaveOrder(bobAmurPair, price * Order.PriceConstant, 1)
 
           val leaseAmount = bobBalance - TransactionFee - price / 2
           val leaseId     = bobNode.lease(bobNode.address, aliceNode.address, leaseAmount, TransactionFee).id
           nodes.waitForHeightAriseAndTxPresent(leaseId)
 
           withClue(s"The order '$order2' was cancelled") {
-            matcherNode.waitOrderStatus(bobWavesPair, order2, "Cancelled")
+            matcherNode.waitOrderStatus(bobAmurPair, order2, "Cancelled")
           }
 
           // Cleanup
@@ -194,14 +194,14 @@ class TradersTestSuite extends FreeSpec with Matchers with BeforeAndAfterAll wit
           // Amount of amur in order is smaller than fee
           val bobBalance = bobNode.accountBalances(bobNode.address)._1
           val price      = TransactionFee / 2
-          val order3     = bobPlacesWaveOrder(bobWavesPair, price * Order.PriceConstant, 1)
+          val order3     = bobPlacesWaveOrder(bobAmurPair, price * Order.PriceConstant, 1)
 
           val transferAmount = bobBalance - TransactionFee - price
           val txId           = bobNode.transfer(bobNode.address, aliceNode.address, transferAmount, TransactionFee, None, None).id
           nodes.waitForHeightAriseAndTxPresent(txId)
 
           withClue(s"The order '$order3' was cancelled") {
-            matcherNode.waitOrderStatus(bobWavesPair, order3, "Cancelled")
+            matcherNode.waitOrderStatus(bobAmurPair, order3, "Cancelled")
           }
 
           // Cleanup

@@ -39,7 +39,7 @@ class TransactionsRouteSpec
   private val route       = TransactionsApiRoute(restAPISettings, TestFunctionalitySettings.Stub, wallet, blockchain, utx, allChannels, new TestTime).route
 
   routePath("/calculateFee") - {
-    "transfer with Waves fee" - {
+    "transfer with Amur fee" - {
       "TransferTransaction" in {
         val sender: PublicKeyAccount = accountGen.sample.get
         val transferTx = Json.obj(

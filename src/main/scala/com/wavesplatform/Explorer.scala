@@ -8,7 +8,7 @@ import com.typesafe.config.ConfigFactory
 import com.amurplatform.account.{Address, AddressScheme}
 import com.amurplatform.database.{Keys, LevelDBWriter}
 import com.amurplatform.db.openDB
-import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.settings.{AmurSettings, loadConfig}
 import com.amurplatform.state.{ByteStr, EitherExt2}
 import com.amurplatform.utils.{Base58, Base64, ScorexLogging}
 import org.slf4j.bridge.SLF4JBridgeHandler
@@ -72,7 +72,7 @@ object Explorer extends ScorexLogging {
 
     val configFilename = Try(args(0)).toOption.getOrElse("amur-testnet.conf")
 
-    val settings = WavesSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
+    val settings = AmurSettings.fromConfig(loadConfig(ConfigFactory.parseFile(new File(configFilename))))
     AddressScheme.current = new AddressScheme {
       override val chainId: Byte = settings.blockchainSettings.addressSchemeCharacter.toByte
     }

@@ -14,7 +14,7 @@ import com.amurplatform.lang.v1.{CTX, FunctionHeader}
 import monix.eval.Coeval
 import scodec.bits.ByteVector
 
-object WavesContext {
+object AmurContext {
 
   import Bindings._
   import Types._

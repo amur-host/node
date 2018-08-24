@@ -110,8 +110,8 @@ inConfig(Test)(
 inConfig(Linux)(
   Seq(
     maintainer := "amurplatform.com",
-    packageSummary := "Waves node",
-    packageDescription := "Waves node"
+    packageSummary := "Amur node",
+    packageDescription := "Amur node"
   ))
 
 bashScriptExtraDefines += s"""addJava "-Damur.directory=/var/lib/${normalizedName.value}""""

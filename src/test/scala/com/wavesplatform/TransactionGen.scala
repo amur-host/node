@@ -271,7 +271,7 @@ trait TransactionGenBase extends ScriptGen {
       (_, _, _, _, timestamp, _, feeAmount, attachment) <- transferParamGen
     } yield MassTransferTransaction.selfSigned(version, assetId, sender, transfers, timestamp, feeAmount, attachment).explicitGet()
 
-  def createWavesTransfer(sender: PrivateKeyAccount,
+  def createAmurTransfer(sender: PrivateKeyAccount,
                           recipient: Address,
                           amount: Long,
                           fee: Long,
@@ -302,11 +302,11 @@ trait TransactionGenBase extends ScriptGen {
     } yield TransferTransactionV2.create(version, None, sender, recipient, amt, timestamp, None, fee, Array.emptyByteArray, proofs).explicitGet())
       .label("VersionedTransferTransactionP")
 
-  val transferWithWavesFeeGen = for {
+  val transferWithAmurFeeGen = for {
     (assetId, sender, recipient, amount, timestamp, _, feeAmount, attachment) <- transferParamGen
   } yield TransferTransactionV1.selfSigned(assetId, sender, recipient, amount, timestamp, None, feeAmount, attachment).explicitGet()
 
-  val selfTransferWithWavesFeeGen: Gen[TransferTransactionV1] = for {
+  val selfTransferWithAmurFeeGen: Gen[TransferTransactionV1] = for {
     (assetId, sender, _, amount, timestamp, _, feeAmount, attachment) <- transferParamGen
   } yield TransferTransactionV1.selfSigned(assetId, sender, sender, amount, timestamp, None, feeAmount, attachment).explicitGet()
 

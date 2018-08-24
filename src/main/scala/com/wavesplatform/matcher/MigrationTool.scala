@@ -12,7 +12,7 @@ import com.amurplatform.database.DBExt
 import com.amurplatform.db.openDB
 import com.amurplatform.matcher.api.DBUtils
 import com.amurplatform.matcher.model.{LimitOrder, OrderInfo}
-import com.amurplatform.settings.{WavesSettings, loadConfig}
+import com.amurplatform.settings.{AmurSettings, loadConfig}
 import com.amurplatform.state.{ByteStr, EitherExt2}
 import com.amurplatform.transaction.AssetId
 import com.amurplatform.transaction.assets.exchange.AssetPair
@@ -187,7 +187,7 @@ object MigrationTool extends ScorexLogging {
     log.info(s"OK, engine start")
 
     val userConfig = args.headOption.fold(ConfigFactory.empty())(f => ConfigFactory.parseFile(new File(f)))
-    val settings   = WavesSettings.fromConfig(loadConfig(userConfig))
+    val settings   = AmurSettings.fromConfig(loadConfig(userConfig))
     val db         = openDB(settings.matcherSettings.dataDir)
 
     AddressScheme.current = new AddressScheme {
